@@ -7,6 +7,6 @@
 <title>어댕가지~?</title>
 </head>
 <body>
-	<h1>Test '어댕가지~?' Main page</h1>
+	<h1> Test '어댕가지~?' Main page </h1>
 </body>
 </html>
