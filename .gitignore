@@ -8,6 +8,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
+driver.properties
 local.properties
 # .settings/
 .loadpath
