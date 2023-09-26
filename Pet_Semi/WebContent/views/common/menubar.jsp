@@ -18,8 +18,7 @@
 		background-color: #fff5ce;
 	}
 
-
-	.head a {
+	.header a {
 		text-decoration : none;
 		width : 100%;
 		height : 100%;
@@ -27,7 +26,19 @@
 		line-height : 40px;
 		color : black;
 		font-weight : bold;
-		font-size:  20px;
+		font-size:  23px;
+	}
+
+	.head_login, .admin_login{
+		margin-right: 30px;
+	}
+
+	.btn_img{
+		background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
+		border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
 	}
 
 	.navbar {
@@ -39,7 +50,7 @@
 
 	.menu{
 		display : table-cell;
-		height : 40px;
+		height : 50px;
 		width : 200px;
 	}
 
@@ -48,10 +59,10 @@
 		width : 100%;
 		height : 100%;
 		display: block;
-		line-height : 40px;
+		line-height : 50px;
 		color : black;
 		font-weight : bold;
-		font-size:  20px;
+		font-size:  25px;
 	}
 
 	.menu a:hover{
@@ -66,13 +77,28 @@
 	<div class="header">
 		<h1 class="head_logo" align="center">어댕가지~?</h1>
 		<div align="right" class="head_login">
-			<ul>
-				<li><a href="#">로그인</a></li>
-				<li><a href="#">회원가입</a></li>
-			</ul>
+			<table>
+				<tr>
+					<td><a href="#">로그인</a></td>
+					<td> &nbsp; | &nbsp; </td>
+					<td><a href="#">회원가입</a></td>
+					<td>&nbsp;&nbsp;</td>
+					<td><input type="button" class="btn_img"></td>
+				</tr>
+			</table>
+		</div>
+		<div align="right" class="admin_login" style="visibility: hidden;" >
+			<table>
+				<tr>
+					<td><a href="#">회원관리</a></td>
+					<td> &nbsp; | &nbsp; </td>
+					<td><a href="#">리뷰관리</a></td>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-	<br><br>
+	<br>
 	<!-- 네비게이션 바 위치 -->
 	<div class="navbar navbar-expand-sm justify-content-center sticky-top" >
 		<div class="menu"><a href="#">HOME</a></div>
