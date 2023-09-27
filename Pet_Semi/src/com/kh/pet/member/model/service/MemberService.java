@@ -7,6 +7,7 @@ public class MemberService {
 		
 		
 		System.out.println("핫하 받아랏 ~ ~ ~ ");
+		System.out.println("핫하~~");
 	}
 
 }
