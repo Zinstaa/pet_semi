@@ -28,7 +28,7 @@
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" name="memberPwd" maxlength="15" required></td>
-				<td></td>
+				<td>
 			</tr>
 		</table>
 		<br><br>

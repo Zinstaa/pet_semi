@@ -9,8 +9,7 @@
 
 </head>
 <body>
-	<%@ include file="../commn/" %>
-
+	
 
 
 </body>

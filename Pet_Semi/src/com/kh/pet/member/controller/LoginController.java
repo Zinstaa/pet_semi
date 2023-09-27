@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.pet.member.model.service.MemberService;
 import com.kh.pet.member.model.vo.Member;
@@ -36,12 +37,24 @@ public class LoginController extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
 		
-		
-		
 		Member loginUser = new MemberService().loginMember(memberId,memberPwd);
 		
-		
-		
+		if(loginUser==null) {
+			request.setAttribute("errorMsg", "로그인에 실패했습니다!" );
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			
+			view.forward(request, response);
+			
+		} else { 
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("loginUser", loginUser);
+			
+			response.sendRedirect(request.getContextPath());
+			
+		}
+	
 	}
 
 	/**
