@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.kh.pet.member.model.vo.Member" %>
+<%
+	Member loginUser = (Member)session.getAttribute("loginUser");
+
+String contextPath = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +43,7 @@
 	}
 
 	.head_logo{
-		width : 80%;
+		width : 79%;
 	}
 
 	.head_logo > h1 {
@@ -45,7 +52,7 @@
 	}
 
 	.head_login{
-		width : 20%;
+		width : 21%;
 		height: 100%;
 	}
 
@@ -59,9 +66,10 @@
 		float: left;
 	}
 
-	#login > a, #bar, #access > a {
+	#login > button, #bar, #access > button {
 		text-align: center;
 		line-height: 100px;
+		color : black;
 	}
 
 	#search{
@@ -135,23 +143,33 @@
 		<div class="head_logo">
 			<h1>어댕가지~?</h1>
 		</div>
+	
 		<div class="head_login">
 			<div id="member_login">
 				<div id="login">
-					<a href="#">로그인</a>
+					<button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
 				</div>
 				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
 				<div id="access">
-					<a href="#">회원가입</a>
+					<button type="button" class="btn btn-link">회원가입</button>
 				</div>
 				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-				</div>
+				</div> <!--id="member_login" 닫히는부분-->
 				<div id="search">
 					<input type="button" id="btn_img"></td>
 				</div>
-			</div>
+			</div> <!-- <div class="head_login"> 닫히는부분 -->
+			</form>
+			<script>
+			function loginPage(){
+				location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+				
+
+				}
+			</script>
+			
 		</div>
-		<div id="admin_login" align="right" style="display: none;">
+			<div id="admin_login" align="right" style="display: none;">
 			<table>
 				<tr>
 					<td><a href="#">회원관리</a></td>
@@ -172,6 +190,6 @@
 		<div class="menu"><a href="#">고객센터</a></div>
 	</div>
 	
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br>
 </body>
 </html>

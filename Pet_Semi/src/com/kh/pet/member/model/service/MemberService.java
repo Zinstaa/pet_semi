@@ -1,13 +1,23 @@
 package com.kh.pet.member.model.service;
 
+import java.sql.Connection;
+
+import com.kh.pet.common.JDBCTemplate;
+import com.kh.pet.member.model.dao.MemberDao;
+import com.kh.pet.member.model.vo.Member;
+import static com.kh.pet.common.JDBCTemplate.*;
+
+
 public class MemberService {
 	
-	
-	public void hi() {
+	public Member loginMember(String userId, String userPwd) {
 		
+		Connection conn = JDBCTemplate.getConnection();
+		Member m = new MemberDao().loginMember(conn, userId, userPwd);
 		
-		System.out.println("핫하 받아랏 ~ ~ ~ ");
-		System.out.println("핫하~~");
+		JDBCTemplate.close(conn);
+		
+		return m;
 	}
 
 }
