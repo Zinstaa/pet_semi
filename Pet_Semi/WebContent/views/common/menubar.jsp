@@ -15,7 +15,7 @@
 <style>
 	body{
 		font-family: 'Noto Sans KR', sans-serif;
-		background-color: #fff5ce;
+		/*background-color: #fff5ce;*/
 	}
 
 	.header a {
@@ -26,7 +26,7 @@
 		line-height : 40px;
 		color : black;
 		font-weight : bold;
-		font-size:  23px;
+		font-size:  18px;
 	}
 
 	.head_login, .admin_login{
@@ -62,7 +62,7 @@
 		line-height : 50px;
 		color : black;
 		font-weight : bold;
-		font-size:  25px;
+		font-size:  20px;
 	}
 
 	.menu a:hover{
