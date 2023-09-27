@@ -10,7 +10,7 @@ tmp/
 *~.nib
 driver.properties
 local.properties
-# .settings/
+.settings/
 .loadpath
 .recommenders
 /Servers
