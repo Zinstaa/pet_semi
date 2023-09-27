@@ -17,6 +17,11 @@
 		font-family: 'Noto Sans KR', sans-serif;
 		/*background-color: #fff5ce;*/
 	}
+	
+	.header{
+		width : 1200px;
+		margin : auto;
+	}
 
 	.header a {
 		text-decoration : none;
@@ -29,9 +34,6 @@
 		font-size:  18px;
 	}
 
-	.head_login, .admin_login{
-		margin-right: 30px;
-	}
 
 	.btn_img{
 		background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
@@ -50,7 +52,7 @@
 
 	.menu{
 		display : table-cell;
-		height : 50px;
+		height : 40px;
 		width : 200px;
 	}
 
@@ -59,14 +61,14 @@
 		width : 100%;
 		height : 100%;
 		display: block;
-		line-height : 50px;
+		line-height : 40px;
 		color : black;
 		font-weight : bold;
 		font-size:  20px;
 	}
 
 	.menu a:hover{
-		background-color : #ffec9f;
+		border-bottom : 5px solid #ffce50;
 	} 
 </style>
 </head>
