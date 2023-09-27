@@ -87,7 +87,7 @@
 				</tr>
 			</table>
 		</div>
-		<div align="right" class="admin_login" style="visibility: hidden;" >
+		<div align="right" class="admin_login" >
 			<table>
 				<tr>
 					<td><a href="#">회원관리</a></td>
