@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메뉴 바</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,13 +17,66 @@
 		font-family: 'Noto Sans KR', sans-serif;
 		/*background-color: #fff5ce;*/
 	}
+
+	div {
+        box-sizing: border-box;
+		/*border: 1px solid red;*/
+    }
 	
 	.header{
 		width : 1200px;
+		height: 100px;
 		margin : auto;
+		margin-bottom: 10px;
 	}
 
-	.header a {
+	.header > div{
+		float: left;
+		height: 100%
+	}
+
+	.head_logo{
+		width : 80%;
+	}
+
+	.head_logo > h1 {
+		text-align: center;
+		line-height : 100px;
+	}
+
+	.head_login{
+		width : 20%;
+		height: 100%;
+	}
+
+	.head_login > div{
+		float: left;
+		height: 100%;
+	}
+
+	#member_login > div {
+		height: 100%;
+		float: left;
+	}
+
+	#login > a, #bar, #access > a {
+		text-align: center;
+		line-height: 100px;
+	}
+
+	#search{
+		margin-top: 35px;
+		height: auto;
+	}
+
+	#admin_login {
+		height: 100%;
+		width: 10%;
+		float: right;
+		margin-right: 20%;
+	}
+
+	.header a, #admin_login a {
 		text-decoration : none;
 		width : 100%;
 		height : 100%;
@@ -34,16 +87,18 @@
 		font-size:  18px;
 	}
 
-
-	.btn_img{
+	#btn_img{
 		background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
+		background-size: auto;
 		border: none;
         width: 32px;
         height: 32px;
         cursor: pointer;
+		background-repeat: no-repeat;
 	}
 
 	.navbar {
+		margin-top: 30px;
 		background-color : #fff5ce;
 		text-align: center;
 		border-top: 2px  solid lightgray;
@@ -77,19 +132,26 @@
 	<!-- 로고 위치 -->
 	
 	<div class="header">
-		<h1 class="head_logo" align="center">어댕가지~?</h1>
-		<div align="right" class="head_login">
-			<table>
-				<tr>
-					<td><a href="#">로그인</a></td>
-					<td> &nbsp; | &nbsp; </td>
-					<td><a href="#">회원가입</a></td>
-					<td>&nbsp;&nbsp;</td>
-					<td><input type="button" class="btn_img"></td>
-				</tr>
-			</table>
+		<div class="head_logo">
+			<h1>어댕가지~?</h1>
 		</div>
-		<div align="right" class="admin_login" >
+		<div class="head_login">
+			<div id="member_login">
+				<div id="login">
+					<a href="#">로그인</a>
+				</div>
+				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
+				<div id="access">
+					<a href="#">회원가입</a>
+				</div>
+				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
+				</div>
+				<div id="search">
+					<input type="button" id="btn_img"></td>
+				</div>
+			</div>
+		</div>
+		<div id="admin_login" align="right" style="display: none;">
 			<table>
 				<tr>
 					<td><a href="#">회원관리</a></td>
