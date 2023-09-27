@@ -135,6 +135,7 @@
 		<div class="head_logo">
 			<h1>어댕가지~?</h1>
 		</div>
+	
 		<div class="head_login">
 			<div id="member_login">
 				<div id="login">
@@ -145,13 +146,20 @@
 					<a href="#">회원가입</a>
 				</div>
 				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-				</div>
+				</div> <!--id="member_login" 닫히는부분-->
 				<div id="search">
 					<input type="button" id="btn_img"></td>
 				</div>
-			</div>
+			</div> <!-- <div class="head_login"> 닫히는부분 -->
+			</form>
+			<script>
+				function loginPage(){
+					
+				}
+			</script>
+			
 		</div>
-		<div id="admin_login" align="right" style="display: none;">
+			<div id="admin_login" align="right" style="display: none;">
 			<table>
 				<tr>
 					<td><a href="#">회원관리</a></td>

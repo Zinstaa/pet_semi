@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>어댕가지~?</title>
+<title>로그인</title>
+
+
 </head>
 <body>
-	
-	<%@ include file = "views/common/menubar.jsp" %>
-	
-	
+	<%@ include file="../commn/" %>
+
+
+
 </body>
 </html>
