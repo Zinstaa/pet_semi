@@ -7,7 +7,6 @@
 <title>어댕가지~?</title>
 </head>
 <body>
-	
 	<%@ include file = "views/common/menubar.jsp" %>
 	
 	

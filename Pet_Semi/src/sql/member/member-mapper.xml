@@ -3,6 +3,29 @@
 <properties>
 	<comment>회원 관련 SQL</comment>
 
-
+	<entry key="loginMember">
+		
+		SELECT
+			MEMBER_NO,
+			MEMBER_ID,
+			MEMBER_PWD,
+			MEMBER_NAME,
+			EMAIL,
+			PHONE,
+			NICKNAME,
+			ADDRESS,
+			AGE,
+			GENDER,
+			ENROLL_DATE,
+			STATUS
+		FROM
+			MEMBER
+		WHERE
+			MEMBER_ID = ?
+		AND
+			MEMBER_PWD = ?
+		AND
+			STATUS = 'Y'
+	</entry>
 
 </properties>
