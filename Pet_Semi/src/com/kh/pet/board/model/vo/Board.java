@@ -7,7 +7,7 @@ public class Board {
 	private int boardNo;
 	private String boardName;
 	private String boardContent;
-	private Date boardDate;
+	private Date boardDate; 
 	private int boardView;
 	private String status;
 	private int memberNo;
