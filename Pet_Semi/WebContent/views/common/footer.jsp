@@ -9,10 +9,10 @@
 	div {
         box-sizing: border-box;
         border: 1px solid red;
-		background-color: #975228;
     }
 
 	#footer{
+		background-color: #975228;
 		position: relative;
 		width: 100%;
 		height: 150px;
