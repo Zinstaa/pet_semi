@@ -243,7 +243,7 @@
             </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             <div id="access">
-               <button type="button" class="btn btn-link">회원가입</button>
+               <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
             </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             </div> <!--id="member_login" 닫히는부분-->
@@ -255,6 +255,9 @@
          <script>
             function loginPage(){
                location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+            }
+            function enrollPage(){
+            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
             }
          </script>
          
@@ -274,10 +277,17 @@
          <%} %>
       </div>
       </div>
+<<<<<<< HEAD
          <div id="admin_login" align="right" style="display: none;">
          <table>
             <tr>
                <td><a href="#">회원관리</a></td>
+=======
+         <div id="admin_login" align="right">
+         <table>
+            <tr>
+               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
+>>>>>>> af4c4397188db24db1d8b3564fa5c3d78aa6b404
                <td> &nbsp; | &nbsp; </td>
                <td><a href="#">리뷰관리</a></td>
                <td>&nbsp;&nbsp;</td>
@@ -325,5 +335,16 @@
       </ul>
    </div>
 
+<<<<<<< HEAD
+   <div>
 
+   </div>
+   
+=======
+
+	
+	
+	
+>>>>>>> af4c4397188db24db1d8b3564fa5c3d78aa6b404
+</body>
 </html>
