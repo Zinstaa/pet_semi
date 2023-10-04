@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>어댕가지~?</title>
+<title>어댕가지~?(메인화면)</title>
 </head>
 <body>
-	<%@ include file = "views/common/menubar.jsp" %>
 	
-	
-</body>
-</html>
+	<%@ include file = "/views/common/menubar.jsp" %>
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+  </html>

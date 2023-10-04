@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.kh.pet.member.model.vo.Member" %>
+<%@ page import="com.kh.pet.member.model.vo.Member" %>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 
 	String contextPath = request.getContextPath();
+	
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메뉴 바</title>
+<title>메뉴바</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,7 +187,7 @@
 		<div class="menu"><a href="#">HOME</a></div>
 		<div class="menu"><a href="#">플레이스</a></div>
 		<div class="menu"><a href="#">커뮤니티</a></div>
-		<div class="menu"><a href="#">알림 / 소식</a></div>
+		<div class="menu"><a href="<%= contextPath %>/promotelist.pr">알림 / 소식</a></div>
 		<div class="menu"><a href="#">고객센터</a></div>
 	</div>
 	
