@@ -14,7 +14,7 @@
 		<br><br>
 		<h2 align="center">회원가입</h2>
 		<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
-		<form id="enroll-form" action="<%=contextPath %>/insert.me">
+		<form id="enroll-form" action="<%=contextPath %>/enroll.me">
 			<table align="center">
 				<tr>
 					<td>*아이디 </td>
