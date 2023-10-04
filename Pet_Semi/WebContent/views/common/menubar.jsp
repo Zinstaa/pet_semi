@@ -272,6 +272,7 @@
          </div>
          <%} %>
       </div>
+
    </div>
    <div id="admin_login" align = "right">
       <table>
@@ -321,6 +322,9 @@
             </li>
          </div>
       </ul>
+   </div>
+   <div>
+
    </div>
 </body>
 </html>
