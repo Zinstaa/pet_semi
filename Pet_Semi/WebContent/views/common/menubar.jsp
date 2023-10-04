@@ -23,6 +23,10 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- swiper.js 라이브러리추가 -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 <style>
 	/* 페이지 글꼴 설정 */
 	body{
@@ -217,6 +221,9 @@
 		list-style: none;
 		padding: 0;
 	}
+	/* swiper 라이브러리 css */
+	/* 이미지 영역 사이즈 조절 */
+    
 
 </style>
 </head>
@@ -265,6 +272,7 @@
 			</table>
 			</div>
 			<%} %>
+<<<<<<< HEAD
 		<%} else { %>
 		<div id="user-info">
 		<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
@@ -274,12 +282,14 @@
 			<a href="<%=contextPath %>/logout.me">로그아웃</a>
 		</div>
 		<%} %>
+=======
+>>>>>>> ed7e2da0499483a997bed73bc01cd0d486347e68
 		</div>
 		</div>
-			<div id="admin_login" align="right">
+			<div id="admin_login" align="right" style="display: none;">
 			<table>
 				<tr>
-					<td><a href="<%=contextPath %>/member.me">회원관리</a></td>
+					<td><a href="#">회원관리</a></td>
 					<td> &nbsp; | &nbsp; </td>
 					<td><a href="#">리뷰관리</a></td>
 					<td>&nbsp;&nbsp;</td>
@@ -327,6 +337,14 @@
 		</ul>
 	</div>
 
+<<<<<<< HEAD
 	<br><br><br>
+=======
+	<div>
+
+	</div>
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+>>>>>>> ed7e2da0499483a997bed73bc01cd0d486347e68
 </body>
 </html>
