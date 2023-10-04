@@ -49,4 +49,37 @@
 		ORDER BY
 			MEMBER_NO
 	</entry>
+	
+	<entry key="insertMember">
+		INSERT
+		INTO
+		MEMBER
+		(
+		MEMBER_NO,
+		MEMBER_ID,
+		MEMBER_PWD,
+		MEMBER_NAME,
+		EMAIL,
+		PHONE,
+		NICKNAME,
+		ADDRESS,
+		AGE,
+		GENDER		
+		)
+		VALUES
+		(
+		SEQ_UNO.NEXTVAL,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?
+		)
+	</entry>
+	
+	
 </properties>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.pet.member.model.vo.Member;
+import com.kh.pet.common.JDBCTemplate.*;
 
 public class MemberDao {
 	
@@ -51,7 +52,7 @@ private Properties prop = new Properties();
 							   rset.getString("PHONE"),
 							   rset.getString("NICKNAME"),
 							   rset.getString("ADDRESS"),
-							   rset.getInt("AGE"),
+							   rset.getString("AGE"),
 							   rset.getString("GENDER"),
 							   rset.getDate("ENROLL_DATE"),
 							   rset.getString("STATUS"));
@@ -113,7 +114,7 @@ private Properties prop = new Properties();
 						   rset.getString("PHONE"),
 						   rset.getString("NICKNAME"),
 						   rset.getString("ADDRESS"),
-						   rset.getInt("AGE"),
+						   rset.getString("AGE"),
 						   rset.getString("GENDER"),
 						   rset.getDate("ENROLL_DATE"),
 						   rset.getString("STATUS"));
@@ -129,4 +130,32 @@ private Properties prop = new Properties();
 		}
 		return list;
 	}
+	
+	public int insertMember(Connection conn, Member m ) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMember");
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, m.getMemberId());
+				pstmt.setString(2, m.getMemberPwd());
+				pstmt.setString(3, m.getMemberName());
+				pstmt.setString(4, m.getEmail());
+				pstmt.setString(5, m.getPhone());
+				pstmt.setString(6, m.getNickName());
+				pstmt.setString(7, m.getAddress());
+				pstmt.setString(8, m.getAge());
+				pstmt.setString(9, m.getGender());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
+	
+		
+	}
 }
+		

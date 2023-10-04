@@ -12,7 +12,7 @@ public class Member {
 	private String phone; // PHONE	VARCHAR2(13 BYTE)
 	private String nickName; // NICKNAME	VARCHAR2(20 BYTE)
 	private String address; // ADDRESS	VARCHAR2(100 BYTE)
-	private int age; // AGE	NUMBER
+	private String age; // AGE	NUMBER
 	private String gender; // GENDER	CHAR(1 BYTE)
 	private Date enrollDate; // ENROLL_DATE	DATE
 	private String status; // STATUS	CHAR(1 BYTE)
@@ -82,10 +82,10 @@ public class Member {
 		this.address = address;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
@@ -112,7 +112,7 @@ public class Member {
 
 
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, String email, String phone,
-			String nickName, String address, int age, String gender, Date enrollDate, String status) {
+			String nickName, String address, String age, String gender, Date enrollDate, String status) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -128,6 +128,22 @@ public class Member {
 		this.status = status;
 	}
 
+	
+	public Member(String memberId, String memberPwd, String memberName, String email, String phone, String nickName,
+			String address, String age, String gender) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.email = email;
+		this.phone = phone;
+		this.nickName = nickName;
+		this.address = address;
+		this.age = age;
+		this.gender = gender;
+	}
+
+	
 	public Member() {
 		super();
 	}
