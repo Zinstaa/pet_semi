@@ -128,7 +128,7 @@
 		}
 		
 		$(function(){
-			$('#memberlist>thead>tr').click(function(){
+			$('#memberlist>tbody').on('click','tr',function(){
 				console.log(this);
 			});
 		});
