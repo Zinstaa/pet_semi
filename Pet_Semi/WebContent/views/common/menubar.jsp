@@ -143,7 +143,7 @@
 		<div class="head_logo">
 			<h1>어댕가지~?</h1>
 		</div>
-	
+		<%if(loginUser==null) {%>
 		<div class="head_login">
 			<div id="member_login">
 				<div id="login">
@@ -163,10 +163,22 @@
 			<script>
 			function loginPage(){
 				location.href = "<%= contextPath %>/views/member/loginPage.jsp"
-				
-
 				}
 			</script>
+			
+			
+			<%} else { %>
+			<div id="user-info">
+			<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
+			<div align = "center">
+				<a href="<%= contextPath %>/mypage.me">마이페이지</a>
+				<!--  <a href="/jsp/logout.me">로그아웃</a>-->
+				<a href="<%=contextPath %>/logout.me">로그아웃</a>
+			</div>
+			<%} %>
+		</div>
+			
+			
 			
 		</div>
 			<div id="admin_login" align="right" style="display: none;">

@@ -33,8 +33,18 @@
 		</table>
 		<br><br>
 		<div align="center">
-				<button type="submit">로그인</button>
-			</div>
+		<button type="submit">로그인</button>
+		</div>
+
+<!-- 		
+		<div align="center">
+		<button type="submit">아이디 찾기</button>
+		</div>
+		
+		<div align="center">
+		<button type="submit">비밀번호 찾기</button>
+		</div>
+-->	
 			
 	</form>
 	</div>
