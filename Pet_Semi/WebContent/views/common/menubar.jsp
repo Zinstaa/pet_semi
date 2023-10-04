@@ -182,9 +182,6 @@
 		list-style: none;
 		padding: 0;
 	}
-	/* swiper 라이브러리 css */
-	/* 이미지 영역 사이즈 조절 */
-    
 
 </style>
 </head>
@@ -220,15 +217,15 @@
 			</script>
 			
 			
-			<%} else { %>
-			<div id="user-info">
-			<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
-			<div align = "center">
-				<a href="<%= contextPath %>/mypage.me">마이페이지</a>
-				<!--  <a href="/jsp/logout.me">로그아웃</a>-->
-				<a href="<%=contextPath %>/logout.me">로그아웃</a>
-			</div>
-			<%} %>
+		<%} else { %>
+		<div id="user-info">
+		<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
+		<div align = "center">
+			<a href="<%= contextPath %>/mypage.me">마이페이지</a>
+			<!--  <a href="/jsp/logout.me">로그아웃</a>-->
+			<a href="<%=contextPath %>/logout.me">로그아웃</a>
+		</div>
+		<%} %>
 		</div>
 			
 			
@@ -285,9 +282,7 @@
 		</ul>
 	</div>
 
-	<div>
-
-	</div>
+	
 	
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
