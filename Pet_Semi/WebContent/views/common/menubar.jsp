@@ -252,7 +252,6 @@
 			</script>
 			
 			
-<<<<<<< HEAD
 			<%} else { %>
 			<div id="login_info">
 			<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
@@ -266,7 +265,6 @@
 			</table>
 			</div>
 			<%} %>
-=======
 		<%} else { %>
 		<div id="user-info">
 		<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
@@ -276,7 +274,6 @@
 			<a href="<%=contextPath %>/logout.me">로그아웃</a>
 		</div>
 		<%} %>
->>>>>>> 54ab648da5cfe73f4e86b5bdb5e133f1a0b9bb99
 		</div>
 		</div>
 			<div id="admin_login" align="right">
@@ -329,14 +326,7 @@
 			</div>
 		</ul>
 	</div>
-<<<<<<< HEAD
-	
-<<<<<<< Updated upstream
+
 	<br><br><br>
-=======
-	
->>>>>>> Stashed changes
 </body>
-=======
->>>>>>> 54ab648da5cfe73f4e86b5bdb5e133f1a0b9bb99
 </html>
