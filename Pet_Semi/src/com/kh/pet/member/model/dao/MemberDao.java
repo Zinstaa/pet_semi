@@ -54,7 +54,6 @@ private Properties prop = new Properties();
 							   rset.getDate("ENROLL_DATE"),
 							   rset.getString("STATUS"));
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -1,4 +1,4 @@
-package com.kh.pet;
+package com.kh.pet.qna;
 
 public class z {
 	public void z() {
