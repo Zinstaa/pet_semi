@@ -123,6 +123,12 @@
 			})
 		}
 		
+		$(function(){
+			$('.memberlist>tbody>tr').click(function(){
+				console.log(location.href);
+			});
+		});
+		
 	</script>
 	
 </body>
