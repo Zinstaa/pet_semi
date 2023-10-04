@@ -334,17 +334,5 @@
          </div>
       </ul>
    </div>
-
-<<<<<<< HEAD
-   <div>
-
-   </div>
-   
-=======
-
-	
-	
-	
->>>>>>> af4c4397188db24db1d8b3564fa5c3d78aa6b404
 </body>
 </html>
