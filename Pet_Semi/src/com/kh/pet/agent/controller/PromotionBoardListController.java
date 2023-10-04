@@ -1,6 +1,7 @@
-package com.kh.pet.board.controller;
+package com.kh.pet.agent.controller;
 
-import java.io.IOException;  
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.board.model.service.BoardService;
+import com.kh.pet.board.model.service.PromotionBoardService;
+import com.kh.pet.board.model.vo.PromotionBoard;
 
 /**
- * Servlet implementation class BoardListController
+ * Servlet implementation class PromotionBoardListController
  */
-@WebServlet("/list.bo")
-public class BoardListController extends HttpServlet {
+@WebServlet("/promotelist.pr")
+public class PromotionBoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListController() {
+    public PromotionBoardListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,26 +31,12 @@ public class BoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionList();
+		request.setAttribute("list", list);
 		
-		int listCount;
-		int currentPage;
-		int pageLimit;
-		int boardLimit;
-		
-		int maxPage;
-		int startPage;
-		int endPage;
-		
-		listCount = new BoardService().selectListCount();
-		
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
-		
-		//System.out.println(listCount);
-		//System.out.println(currentPage);
-		
-		
-		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp");
+	
+	
 	}
 
 	/**

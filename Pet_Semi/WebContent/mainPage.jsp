@@ -32,15 +32,12 @@
     }
 
 	/* 슬라이드 바색 변경 (기본색은 파란색) */
-	.swiper-pagination {
-		margin-top: 10px;
-	}
-	.swiper-pagination-bullet { 
-		width: 12px; height: 12px; background: transparent; border: 1px solid #ffce50; opacity: 1; 
-	}
-	.swiper-pagination-bullet-active {
-		width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
-	}
+    .swiper-pagination-bullet { 
+        width: 12px; height: 12px; background: transparent; border: 1px solid #ffce50; opacity: 1; 
+    }
+    .swiper-pagination-bullet-active { 
+        width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
+    }
 </style>
 
 </head>
@@ -89,6 +86,18 @@
                 nextEl: '.swiper-button-next'
             }
         }); 
+
+        $(".swiper-pagination").on("click", function(){
+            swiper.autoplay.start();
+        })
+
+        $(".swiper-button-prev").on("click", function(){
+            swiper.autoplay.start();
+        })
+
+        $(".swiper-button-next").on("click", function(){
+            swiper.autoplay.start();
+        })
     </script>
 	<%@ include file = "views/common/footer.jsp" %>
 </body>
