@@ -75,36 +75,54 @@
 		box-sizing: border-box;
 	}
 
-	form.example input[type=text] {
-		padding: 10px;
-		font-size: 17px;
-		border: 1px solid grey;
-		float: left;
-		width: 80%;
-		background: #f1f1f1;
+	body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
 	}
 
-	form.example button {
-		float: left;
-		width: 20%;
-		padding: 10px;
-		background: #2196F3;
-		color: white;
-		font-size: 17px;
-		border: 1px solid grey;
-		border-left: none;
-		cursor: pointer;
+	.topnav {
+	overflow: hidden;
+	background-color: #e9e9e9;
 	}
 
-	form.example button:hover {
-		background: #0b7dda;
+	.topnav .search-container {
+	float: right;
 	}
 
-	form.example::after {
-		content: "";
-		clear: both;
-		display: table;
+	.topnav input[type=text] {
+	padding: 15px;
+	margin-left: 445px;
+	font-size: 17px;
+	border: 1px solid gray;
 	}
+
+	.topnav .search-container button {
+	float: right;
+	padding: 15px 30px;
+	margin-right: 16px;
+	background: #fff5ce;
+	font-size: 17px;
+	border: none;
+	cursor: pointer;
+	}
+
+	@media screen and (max-width: 600px) {
+	.topnav .search-container {
+		float: none;
+	}
+	.topnav a, .topnav input[type=text], .topnav .search-container button {
+		float: none;
+		display: block;
+		text-align: left;
+		width: 100%;
+		margin: 0;
+		padding: 14px;
+	}
+	.topnav input[type=text] {
+		border: 1px solid #ccc;  
+	}
+}
+
 </style>
 </head>
 
@@ -117,7 +135,7 @@
 		<h2 align="center">커뮤니티</h2>
 		<br>
 		
-<div class="dropdown">
+<span class="dropdown">
   <button onclick="myFunction()" class="dropbtn">커뮤니티 ▽</button>
   <div id="myDropdown" class="dropdown-content">
     <a href="#">자유게시판</a>
@@ -125,11 +143,17 @@
     <a href="#">공지사항</a>
 	<a href="#">QNA</a>
 	<a href="#">1:1문의</a>
-	
   </div>
 
-  <br><br><br><br>
-</div>
+  <span class="topnav">
+	<div class="search-container">
+	  <form action="">
+		<input type="text" placeholder="검색.." name="search">
+		<button type="submit"><i class="fa fa-search"></i></button>
+	  </form>
+	</div>
+  </span>
+</span>
 
 
 <script>
@@ -149,7 +173,11 @@ window.onclick = function(event) {
     }
   }
 }
+
 </script>
+
+<hr>
+
 
 		<table class="list-area" align="center">
 			<thead>
