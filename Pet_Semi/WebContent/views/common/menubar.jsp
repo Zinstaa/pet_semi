@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.kh.pet.member.model.vo.Member" %>
 <%
-   Member loginUser = (Member)session.getAttribute("loginUser");
+Member loginUser = (Member)session.getAttribute("loginUser");
 
-   String contextPath = request.getContextPath();
+String alertMsg = (String)session.getAttribute("alertMsg");
+String contextPath = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -220,6 +221,14 @@
 </style>
 </head>
 <body>
+<script>
+		var msg = '<%= alertMsg %>';
+		if(msg != 'null'){
+		alert(msg);
+		}
+	<% session.removeAttribute("alertMsg");	%>
+	</script>
+
    <br><br>
    <!-- 로고 위치 -->
    
@@ -250,10 +259,11 @@
          </form>
          <script>
             function loginPage(){
-               location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+               location.href = "<%= contextPath %>/login.mem"
             }
             function enrollPage(){
-            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
+            	location.href = "<%= contextPath %>/enroll.me"
+            	
             }
          </script>
          

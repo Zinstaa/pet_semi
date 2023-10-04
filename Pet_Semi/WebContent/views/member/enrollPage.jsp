@@ -14,7 +14,7 @@
 		<br><br>
 		<h2 align="center">회원가입</h2>
 		<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
-		<form id="enroll-form" action="<%=contextPath %>/enroll.me">
+		<form id="enroll-form" action="<%=contextPath %>/insert.me">
 			<table align="center">
 				<tr>
 					<td>*아이디 </td>
@@ -65,8 +65,8 @@
 				 <tr>
 				 <th>&nbsp;성별</th>
 				 	<td>
-					 	<input type="radio" name="gender" value="male" checked> 남자
-					 	<input type="radio" name="gender" value="female"> 여자
+					 	<input type="radio" name="gender" value="m" checked> 남자
+					 	<input type="radio" name="gender" value="f"> 여자
 					 </td>
 				 </tr>
 			</table>

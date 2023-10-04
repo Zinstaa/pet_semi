@@ -18,7 +18,7 @@
 	<%@ include file="../common/menubar.jsp" %>
 	<div class="outer">
 	<h2 align="center"> 로 그 인 </h2>
-	<form id = "login-form" action="<%= contextPath%>/login.me" method="post">
+	<form id = "login-form" action="<%=contextPath%>/login.me" method="post">
 	
 		<table align="center">
 			<tr>
