@@ -20,7 +20,7 @@
 	<%@ include file = "../../common/menubar.jsp" %>
 	<!-- 회원 검색창 -->
 	<div>
-		<form action="<%=contextPath %>/search.me" id="member-search-area">
+		
 			<table>
 				<tr>
 					<th>검색조건</th>
@@ -42,11 +42,12 @@
 					
 				</tr>
 			</table>
+			
 			<div>
-				<button type="submit" onclick="search();">검색</button>
+				<button onclick="search();">검색</button>
 				<button type="reset">리셋</button>
 			</div>
-		</form>
+		
 	</div>
 	<div>
 		<table id="memberlist">
@@ -85,15 +86,34 @@
 	
 	<script>
 		function search(){
+			
 			$.ajax({
+				
 				url : 'search.me',
 				data : {
 					memberCondition : $('#member-condition').val(),
 					memberSearch : $('#member-search').val()
-				}
+				},
+					
 				success : function(result){
 					let resultList = '';
-					for()
+					for(let i =0; i < result.length; i++){
+						resultStr += '<tr>'
+								+ '<td>' + result[i].memberNo + '</td>'
+								+ '<td>' + result[i].memberId + '</td>'
+								+ '<td>' + result[i].memberName + '</td>'
+								+ '<td>' + result[i].email + '</td>'
+								+ '<td>' + result[i].phone + '</td>'
+								+ '<td>' + result[i].nickName + '</td>'
+								+ '<td>' + result[i].enrollDate + '</td>'
+								+ '<td>' + result[i].status + '</td>'
+								+ '</tr>'
+					}
+					$('#memberlist tbody').html(resultStr);
+				},
+				error : function(){
+					console.log('AJAX실패')
+					console.log(result);
 				}
 			})
 		}

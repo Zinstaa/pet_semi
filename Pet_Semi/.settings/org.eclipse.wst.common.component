@@ -2,7 +2,6 @@
     <wb-module deploy-name="Pet_Semi">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF/lib"/>
         <property name="context-root" value="Pet_Semi"/>
         <property name="java-output-path" value="/Pet_Semi/WebContent/WEB-INF/classes"/>
     </wb-module>
