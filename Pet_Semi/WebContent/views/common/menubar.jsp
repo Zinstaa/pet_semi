@@ -43,7 +43,7 @@
 	}
 
 	.head_logo{
-		width : 79%;
+		width : 75%;
 	}
 
 	.head_logo > h1 {
@@ -52,7 +52,7 @@
 	}
 
 	.head_login{
-		width : 21%;
+		width : 25%;
 		height: 100%;
 	}
 
@@ -66,15 +66,21 @@
 		float: left;
 	}
 
-	#login > button, #bar, #access > button {
+	#bar {
+		text-align: center;
+		line-height: 100px;
+		color : black;
+		margin-top: 5px;
+	}
+
+	#login > button,  #access > button {
 		text-align: center;
 		line-height: 100px;
 		color : black;
 	}
 
-	#search{
-		margin-top: 35px;
-		height: auto;
+	#search > input{
+		margin-top: 40px;
 	}
 
 	#admin_login {
@@ -106,16 +112,22 @@
 	}
 
 	.navbar {
-		margin-top: 30px;
+		margin: 0;
 		background-color : #fff5ce;
 		text-align: center;
 		border-top: 2px  solid lightgray;
 		border-bottom: 2px  solid lightgray;
+		line-height: 100%;
+		height: 70px;
+	}
+
+	.navbar ul, .navbar li {
+		list-style: none;
 	}
 
 	.menu{
 		display : table-cell;
-		height : 40px;
+		height : 50px;
 		width : 200px;
 	}
 
@@ -124,15 +136,43 @@
 		width : 100%;
 		height : 100%;
 		display: block;
-		line-height : 40px;
+		line-height : 50px;
 		color : black;
 		font-weight : bold;
 		font-size:  20px;
 	}
 
 	.menu a:hover{
-		border-bottom : 5px solid #ffce50;
+		border-bottom : 2px solid #ffce50;
 	} 
+
+	.menu > li > ul {
+		z-index: 1;
+		position: relative;
+		list-style: none;
+		padding: 0;
+		display: none; /* 평소에는 안보이다가 마우스가 올라가는 순간 펼쳐지는 효과 1 */
+	}
+
+	.menu > li > a:hover + ul, .menu > li > ul:hover {
+		display: block; /* 평소에는 안보이다가 마우스가 올라가는 순간 펼쳐지는 효과 2 */
+	}
+
+	#co, #me {
+		width: 200px;
+		height: 50px;
+	}
+
+	#co > li > ul, #me > li > ul {
+		z-index: 1;
+		position: relative;
+		background-color: #fff5ce;
+		border: 2px solid lightgray;
+		border-top: none;
+		list-style: none;
+		padding: 0;
+	}
+
 </style>
 </head>
 <body>
@@ -161,10 +201,8 @@
 			</div> <!-- <div class="head_login"> 닫히는부분 -->
 			</form>
 			<script>
-			function loginPage(){
-				location.href = "<%= contextPath %>/views/member/loginPage.jsp"
-				
-
+				function loginPage(){
+					location.href = "<%= contextPath %>/views/member/loginPage.jsp"
 				}
 			</script>
 			
@@ -182,14 +220,48 @@
 	</div>
 	<br>
 	<!-- 네비게이션 바 위치 -->
-	<div class="navbar navbar-expand-sm justify-content-center sticky-top" >
-		<div class="menu"><a href="#">HOME</a></div>
-		<div class="menu"><a href="#">플레이스</a></div>
-		<div class="menu"><a href="#">커뮤니티</a></div>
-		<div class="menu"><a href="#">알림 / 소식</a></div>
-		<div class="menu"><a href="#">고객센터</a></div>
+	<div class="navbar justify-content-center sticky-top" >
+		<ul>
+			<div class="menu" id="ma">
+				<li>
+					<a href="#">HOME</a>
+				</li>
+			</div>
+			<div class="menu" id="pl">
+				<li>
+					<a href="#">플레이스</a>
+				</li>
+			</div>
+			<div class="menu" id="co">
+				<li>
+					<a href="#">커뮤니티</a>
+					<ul>
+						<li><a href="#">자유게시판</a></li>
+						<li><a href="#">홍보게시판</a></li>
+					</ul>
+				</li>
+			</div>
+			<div class="menu" id="al">
+				<li>
+					<a href="#">알림 / 소식</a>
+				</li>
+			</div>
+			<div class="menu" id="me">
+				<li>
+					<a href="#">고객센터</a>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">Q&A</a></li>
+					</ul>
+				</li>
+			</div>
+		</ul>
+	</div>
+
+	<div>
+
 	</div>
 	
-	<br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
