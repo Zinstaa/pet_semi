@@ -1,4 +1,4 @@
-package com.kh.pet;
+package com.kh.pet.inqury;
 
 public class z {
 	public void z() {

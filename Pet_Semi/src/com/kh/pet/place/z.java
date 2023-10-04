@@ -1,4 +1,4 @@
-package com.kh.pet;
+package com.kh.pet.place;
 
 public class z {
 	public void z() {
