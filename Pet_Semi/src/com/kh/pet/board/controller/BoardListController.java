@@ -43,8 +43,8 @@ public class BoardListController extends HttpServlet {
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
-		System.out.println(listCount);
-		System.out.println(currentPage);
+		//System.out.println(listCount);
+		//System.out.println(currentPage);
 		
 		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);

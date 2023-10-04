@@ -301,7 +301,7 @@
             <li>
                <a href="#">커뮤니티</a>
                <ul>
-                  <li><a href="#">자유게시판</a></li>
+                  <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
                   <li><a href="#">홍보게시판</a></li>
                </ul>
             </li>
