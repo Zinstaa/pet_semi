@@ -45,7 +45,7 @@
 		FROM
 			MEMBER
 		WHERE
-			||?|| like '%'||?||'%'
+			? like '%'||?||'%'
 		ORDER BY
 			MEMBER_NO
 	</entry>
