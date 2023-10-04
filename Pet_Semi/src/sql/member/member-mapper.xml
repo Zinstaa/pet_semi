@@ -28,4 +28,25 @@
 			STATUS = 'Y'
 	</entry>
 
+	<entry key="searchMember">
+		SELECT
+			MEMBER_NO,
+			MEMBER_ID,
+			MEMBER_PWD,
+			MEMBER_NAME,
+			EMAIL,
+			PHONE,
+			NICKNAME,
+			ADDRESS,
+			AGE,
+			GENDER,
+			ENROLL_DATE,
+			STATUS
+		FROM
+			MEMBER
+		WHERE
+			||?|| like '%'||?||'%'
+		ORDER BY
+			MEMBER_NO
+	</entry>
 </properties>

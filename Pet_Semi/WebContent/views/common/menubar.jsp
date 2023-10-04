@@ -169,10 +169,10 @@
 			</script>
 			
 		</div>
-			<div id="admin_login" align="right" style="display: none;">
+			<div id="admin_login" align="right">
 			<table>
 				<tr>
-					<td><a href="#">회원관리</a></td>
+					<td><a href="<%=contextPath %>/member.me">회원관리</a></td>
 					<td> &nbsp; | &nbsp; </td>
 					<td><a href="#">리뷰관리</a></td>
 					<td>&nbsp;&nbsp;</td>
@@ -190,6 +190,10 @@
 		<div class="menu"><a href="#">고객센터</a></div>
 	</div>
 	
+<<<<<<< Updated upstream
 	<br><br><br>
+=======
+	
+>>>>>>> Stashed changes
 </body>
 </html>
