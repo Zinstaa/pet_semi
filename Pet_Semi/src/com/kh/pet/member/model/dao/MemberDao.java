@@ -67,19 +67,45 @@ private Properties prop = new Properties();
 	}
 	
 	public ArrayList<Member> searchMember(Connection conn, String memberCondition, String memberSearch) {
+		System.out.println(456);
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList();
-		
-		String sql = prop.getProperty("searchMember");
-		
+		//System.out.println(memberCondition.substring(1,memberCondition.length()-1));
+		String sql = "SELECT "
+						+ "MEMBER_NO,"
+						+ "MEMBER_ID,"
+						+ "MEMBER_PWD,"
+						+ "MEMBER_NAME,"
+						+ "EMAIL,"
+						+ "PHONE,"
+						+ "NICKNAME,"
+						+ "ADDRESS,"
+						+ "AGE,"
+						+ "GENDER,"
+						+ "ENROLL_DATE,"
+						+ "STATUS "
+					+ "FROM"
+						+ " MEMBER"
+					+ " WHERE "
+						+ memberCondition
+						+ " LIKE "
+						//+ "?"
+						+ "'%'||?||'%'"
+					+ " ORDER BY "
+						+ "MEMBER_NO";
+		//sql = sql.replaceAll("'","");
+		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberCondition);
-			pstmt.setString(2, memberSearch);
+			
+			pstmt.setString(1, memberSearch);
+			
+			//System.out.println(memberCondition);
+			System.out.println(memberSearch);
 			
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			while(rset.next()) {
 				Member m = new Member(rset.getInt("MEMBER_NO"),
 						   rset.getString("MEMBER_ID"),
 						   rset.getString("MEMBER_PWD"),
@@ -94,6 +120,7 @@ private Properties prop = new Properties();
 						   rset.getString("STATUS"));
 				list.add(m);
 			}
+			System.out.println(list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
