@@ -32,7 +32,12 @@
     }
 
 	/* 슬라이드 바색 변경 (기본색은 파란색) */
-    
+    .swiper-pagination-bullet { 
+        width: 12px; height: 12px; background: transparent; border: 1px solid #ffce50; opacity: 1; 
+    }
+    .swiper-pagination-bullet-active { 
+        width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
+    }
 </style>
 
 </head>
