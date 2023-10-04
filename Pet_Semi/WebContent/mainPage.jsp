@@ -20,9 +20,9 @@
 
     /* 이미지 사이즈 조절 */
     .swiper-slide>img {
-        width : 100%;
+        width : 90%;
         height : 100%;
-        margin: auto;
+        margin-left: 60px;
     }
 
     /* 화살표 버튼색 변경 (기본색은 파란색) */
@@ -92,7 +92,7 @@
             <div class="swiper-button-next"></div>
         
             <!-- If we need scrollbar -->
-            <div class="swiper-scrollbar"></div>
+            <!-- <div class="swiper-scrollbar"></div> -->
         </div>
     </div>
 
