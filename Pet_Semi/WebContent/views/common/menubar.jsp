@@ -296,7 +296,7 @@
       <ul>
          <div class="menu" id="ma">
             <li>
-               <a href="#">HOME</a>
+               <a href="<%= contextPath %>/">HOME</a>
             </li>
          </div>
          <div class="menu" id="pl">
