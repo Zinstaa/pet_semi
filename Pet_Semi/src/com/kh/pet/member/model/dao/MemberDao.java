@@ -66,7 +66,7 @@ private Properties prop = new Properties();
 		return m;
 	}
 	
-	public ArrayList<Member> searchMember(Connection conn, String searchList, String searchValue) {
+	public ArrayList<Member> searchMember(Connection conn, String memberCondition, String memberSearch) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList();
@@ -75,8 +75,8 @@ private Properties prop = new Properties();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, searchList);
-			pstmt.setString(2, searchValue);
+			pstmt.setString(1, memberCondition);
+			pstmt.setString(2, memberSearch);
 			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {

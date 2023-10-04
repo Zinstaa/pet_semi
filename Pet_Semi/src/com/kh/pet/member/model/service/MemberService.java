@@ -22,10 +22,10 @@ public class MemberService {
 		return m;
 	}
 	
-	public ArrayList<Member> searchMember(String searchList, String searchValue) {
+	public ArrayList<Member> searchMember(String memberCondition, String memberSearch) {
 		Connection conn = getConnection();
 		
-		ArrayList<Member> list = new MemberDao().searchMember(conn, searchList, searchValue);
+		ArrayList<Member> list = new MemberDao().searchMember(conn, memberCondition, memberSearch);
 		close(conn);
 		
 		return list;

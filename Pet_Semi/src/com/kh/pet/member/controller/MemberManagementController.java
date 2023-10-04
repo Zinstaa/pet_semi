@@ -28,7 +28,6 @@ public class MemberManagementController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("q2332");
 		RequestDispatcher view = request.getRequestDispatcher("/views/admin/member/memberManagement.jsp");
 		view.forward(request, response);
 	

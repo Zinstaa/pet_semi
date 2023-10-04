@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <style>
 	
 </style>
@@ -24,7 +25,7 @@
 				<tr>
 					<th>검색조건</th>
 					<td>
-						<select name="search-list">
+						<select id="member-condition" name="search-list">
 							<option value="memberNo">회원번호</option>
 							<option value="memberId">아이디</option>
 							<option value="memberName">회원이름</option>
@@ -42,13 +43,13 @@
 				</tr>
 			</table>
 			<div>
-				<button type="submit">검색</button>
+				<button type="submit" onclick="search();">검색</button>
 				<button type="reset">리셋</button>
 			</div>
 		</form>
 	</div>
 	<div>
-		<table>
+		<table id="memberlist">
 			<thead>
 				<tr>
 					<th>회원번호</th>
@@ -61,6 +62,9 @@
 					<th>회원상태</th>
 				</tr>
 			</thead>
+			<tbody>
+				  
+			</tbody>
 			<!-- 
 			<tbody>
 				<tr>
@@ -78,6 +82,22 @@
 			 -->
 		</table>
 	</div>
+	
+	<script>
+		function search(){
+			$.ajax({
+				url : 'search.me',
+				data : {
+					memberCondition : $('#member-condition').val(),
+					memberSearch : $('#member-search').val()
+				}
+				success : function(result){
+					let resultList = '';
+					for()
+				}
+			})
+		}
+	</script>
 	
 </body>
 </html>
