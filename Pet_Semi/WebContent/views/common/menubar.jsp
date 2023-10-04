@@ -187,7 +187,7 @@
    }
 
    .menu a:hover{
-      border-bottom : 2px solid #ffce50;
+      color: #ffce50;
    } 
 
    .menu > li > ul {
