@@ -30,6 +30,23 @@ public class BoardListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new BoardService().selectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		System.out.println(listCount);
+		System.out.println(currentPage);
+		
+		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		
 	}
