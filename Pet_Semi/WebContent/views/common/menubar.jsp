@@ -74,7 +74,7 @@
    }
 
    #member_login > div {
-      height: 100%;
+      height: auto;
       float: left;
    }
    #member-info{
@@ -144,7 +144,6 @@
       float: left;
    }
 
-
    #btn_img{
       background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
       background-size: auto;
@@ -154,6 +153,7 @@
         cursor: pointer;
       background-repeat: no-repeat;
    }
+
    /* 네비게이션 바 css*/
    .navbar {
       margin : 0;
@@ -163,6 +163,7 @@
       border-bottom: 2px  solid lightgray;
       line-height: 100%;
       height: 70px;
+      box-shadow: 1px 1px 1px 1px lightgray;
    }
 
    .navbar ul, .navbar li {
