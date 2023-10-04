@@ -9,11 +9,8 @@
 		FROM
 			BOARD
 		WHERE
-			STATUS='Y'
-	
-	
-	
-	
+			STATUS = 'Y'
+
 	</entry>
 
 

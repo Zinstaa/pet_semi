@@ -34,6 +34,10 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT(*)");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
