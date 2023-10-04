@@ -77,14 +77,4 @@ public class Board {
 				+ memberNo + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

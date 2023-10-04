@@ -12,10 +12,10 @@ import com.kh.pet.member.model.vo.Member;
 
 public class MemberService {
 	
-	public Member loginMember(String userId, String userPwd) {
+	public Member loginMember(String memberId, String memberPwd) {
 		
 		Connection conn = JDBCTemplate.getConnection();
-		Member m = new MemberDao().loginMember(conn, userId, userPwd);
+		Member m = new MemberDao().loginMember(conn, memberId, memberPwd);
 		
 		JDBCTemplate.close(conn);
 		
