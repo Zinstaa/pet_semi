@@ -99,6 +99,10 @@
             swiper.autoplay.start();
         })
     </script>
+
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
 	<%@ include file = "views/common/footer.jsp" %>
 </body>
 </html>
