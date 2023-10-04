@@ -243,7 +243,7 @@
             </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             <div id="access">
-               <button type="button" class="btn btn-link">회원가입</button>
+               <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
             </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             </div> <!--id="member_login" 닫히는부분-->
@@ -255,6 +255,9 @@
          <script>
             function loginPage(){
                location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+            }
+            function enrollPage(){
+            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
             }
          </script>
          
