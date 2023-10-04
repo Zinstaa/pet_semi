@@ -12,24 +12,34 @@
 <head>
 <meta charset="UTF-8">
 <title>메뉴 바</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- Noto Sans Korean 글꼴 추가 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap 4 추가 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- swiper.js 라이브러리추가 -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 <style>
+	/* 페이지 글꼴 설정 */
 	body{
 		font-family: 'Noto Sans KR', sans-serif;
 		/*background-color: #fff5ce;*/
 	}
-
+	/* 박스 테두리 설정 */
 	div {
         box-sizing: border-box;
 		/*border: 1px solid red;*/
     }
 	
+	/* 해더 부분 css */
 	.header{
 		width : 1200px;
 		height: 100px;
@@ -110,7 +120,7 @@
         cursor: pointer;
 		background-repeat: no-repeat;
 	}
-
+	/* 네비게이션 바 css*/
 	.navbar {
 		margin: 0;
 		background-color : #fff5ce;
@@ -172,6 +182,9 @@
 		list-style: none;
 		padding: 0;
 	}
+	/* swiper 라이브러리 css */
+	/* 이미지 영역 사이즈 조절 */
+    
 
 </style>
 </head>
