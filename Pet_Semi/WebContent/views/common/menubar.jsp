@@ -337,14 +337,5 @@
 		</ul>
 	</div>
 
-<<<<<<< HEAD
-	<br><br><br>
-=======
-	<div>
-
-	</div>
-	
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
->>>>>>> ed7e2da0499483a997bed73bc01cd0d486347e68
 </body>
 </html>
