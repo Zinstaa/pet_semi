@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .outer{
-        width: 1000px;
+        width: 1200px;
         margin : auto;
         background-color: #fff5ce;
         margin-top: 5px;
@@ -91,7 +91,7 @@
 
 	.topnav input[type=text] {
 	padding: 15px;
-	margin-left: 445px;
+	margin-left: 645px;
 	font-size: 17px;
 	border: 1px solid gray;
 	}

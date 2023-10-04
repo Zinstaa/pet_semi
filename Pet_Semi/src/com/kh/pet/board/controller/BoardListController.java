@@ -1,6 +1,6 @@
 package com.kh.pet.board.controller;
 
-import java.io.IOException;  
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.board.model.service.BoardService;
+import com.kh.pet.common.model.PageInfo;
 
 /**
  * Servlet implementation class BoardListController
@@ -46,6 +47,27 @@ public class BoardListController extends HttpServlet {
 		//System.out.println(listCount);
 		//System.out.println(currentPage);
 		
+		pageLimit = 10;
+		
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		//System.out.println(maxPage);
+		
+		startPage = (currentPage - 1) / pageLimit * pageLimit +1;
+		
+		endPage = startPage + pageLimit -1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		//System.out.println(pi);
+		
+		new BoardService().selectList(pi);
 		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		

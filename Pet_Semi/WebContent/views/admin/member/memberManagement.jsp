@@ -13,7 +13,11 @@
 <title>회원관리</title>
 
 <style>
+	#memberlist>tbody>tr:hover{
+	cursor : pointer;
+	background-color : yellow;
 	
+	}
 </style>
 </head>
 <body>
@@ -124,12 +128,12 @@
 		}
 		
 		$(function(){
-			$('.memberlist>tbody>tr').click(function(){
-				console.log(location.href);
+			$('#memberlist>tbody').on('click','tr',function(){
+				console.log(this);
 			});
 		});
-		
-	</script>
 	
+	</script>
+
 </body>
 </html>

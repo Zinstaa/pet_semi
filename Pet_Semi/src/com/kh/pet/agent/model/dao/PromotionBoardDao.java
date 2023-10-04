@@ -34,6 +34,7 @@ public class PromotionBoardDao {
 				pb.setTitleImg(rset.getString("TITLEIMG"));
 				
 				list.add(b);
+				//
 			}
 			
 		} catch (SQLException e) {
