@@ -98,6 +98,7 @@
 				success : function(result){
 					console.log(result);
 					let resultList = '';
+					if(result.length > 0){
 					for(let i =0; i < result.length; i++){
 						resultList += '<tr>'
 								+ '<td>' + result[i].memberNo + '</td>'
@@ -110,6 +111,9 @@
 								+ '<td>' + result[i].status + '</td>'
 								+ '</tr>'
 					}
+					}else{
+						resultList = '<tr><td colspan="8">검색 결과가 없습니다.</td></tr>';
+					}
 					$('#memberlist tbody').html(resultList);
 				},
 				error : function(){
@@ -117,6 +121,10 @@
 					console.log(result);
 				}
 			})
+		}
+		
+		function memberlist>tbody>tr(){
+			
 		}
 	</script>
 	

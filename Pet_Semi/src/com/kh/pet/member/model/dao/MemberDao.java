@@ -87,22 +87,24 @@ private Properties prop = new Properties();
 					+ "FROM"
 						+ " MEMBER"
 					+ " WHERE "
-						+ "?"
-						+ " like "
-						+ "?"
+						+ memberCondition
+						+ " LIKE "
+						//+ "?"
+						+ "'%'||?||'%'"
 					+ " ORDER BY "
 						+ "MEMBER_NO";
-		sql = sql.replaceAll("'","");
+		//sql = sql.replaceAll("'","");
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberCondition);
-			pstmt.setString(2, "'%" + memberSearch + "%'");
-			System.out.println(memberCondition);
-			System.out.println("'%" + memberSearch + "%'");
+			
+			pstmt.setString(1, memberSearch);
+			
+			//System.out.println(memberCondition);
+			System.out.println(memberSearch);
 			
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			while(rset.next()) {
 				Member m = new Member(rset.getInt("MEMBER_NO"),
 						   rset.getString("MEMBER_ID"),
 						   rset.getString("MEMBER_PWD"),
