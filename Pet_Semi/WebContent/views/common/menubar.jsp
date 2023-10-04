@@ -35,7 +35,7 @@
    }
    /* 박스 테두리 설정 */
    div {
-        box-sizing: border-box;
+      box-sizing: border-box;
       /*border: 1px solid red;*/
     }
    
@@ -105,12 +105,11 @@
 
    #admin_login {
       height: 100%;
-      width: 10%;
-      float: right;
-      margin-right: 20%;
+      width: 1200px;
+      margin: auto;
    }
 
-   .header a, #admin_login a{
+   .header > a, #admin_login a{
       text-decoration : none;
       width : 100%;
       height : 100%;
@@ -161,7 +160,7 @@
    }
    /* 네비게이션 바 css*/
    .navbar {
-      margin: 0;
+      margin : 0;
       background-color : #fff5ce;
       text-align: center;
       border-top: 2px  solid lightgray;
@@ -241,16 +240,20 @@
             <div id="login">
                <button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
             </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            </div>
             <div id="access">
                <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
             </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-            </div> <!--id="member_login" 닫히는부분-->
-            <div id="search">
-               <input type="button" id="btn_img"></td>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             </div>
-         </div> <!-- <div class="head_login"> 닫히는부분 -->
+         </div> <!--id="member_login" 닫히는부분-->
+         <div id="search">
+            <input type="button" id="btn_img"></td>
+         </div>
+      </div> <!-- <div class="head_login"> 닫히는부분 -->
          </form>
          <script>
             function loginPage(){
@@ -262,8 +265,8 @@
          </script>
          
          
-         <%} else { %>
-         <div id="login_info">
+      <%} else { %>
+      <div id="login_info">
          <b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
          <div id="login_bar" align = "left">
          <table>
@@ -276,17 +279,16 @@
          </div>
          <%} %>
       </div>
-      </div>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
-               <td> &nbsp; | &nbsp; </td>
-               <td><a href="#">리뷰관리</a></td>
-               <td>&nbsp;&nbsp;</td>
-            </tr>
-         </table>
-      </div>
+   </div>
+   <div id="admin_login" align = "right">
+      <table>
+         <tr>
+            <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
+            <td> &nbsp; | &nbsp; </td>
+            <td><a href="#">리뷰관리</a></td>
+            <td>&nbsp;&nbsp;</td>
+         </tr>
+      </table>
    </div>
    <br>
    <!-- 네비게이션 바 위치 -->
