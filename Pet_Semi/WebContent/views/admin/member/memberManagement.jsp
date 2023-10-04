@@ -123,9 +123,6 @@
 			})
 		}
 		
-		function memberlist>tbody>tr(){
-			
-		}
 	</script>
 	
 </body>
