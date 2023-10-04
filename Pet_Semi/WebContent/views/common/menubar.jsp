@@ -23,6 +23,10 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- swiper.js 라이브러리추가 -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 <style>
 	/* 페이지 글꼴 설정 */
 	body{
@@ -60,6 +64,12 @@
 	.head_login{
 		width : 25%;
 		height: 100%;
+		float: right;
+	}
+	.head_login > #login-bar{
+		width : 30%;
+		height: 40%;
+		float: right;
 	}
 
 	.head_login > div{
@@ -70,6 +80,10 @@
 	#member_login > div {
 		height: 100%;
 		float: left;
+	}
+	#member-info{
+		height:25%;
+		float: right;
 	}
 
 	#bar {
@@ -96,7 +110,7 @@
 		margin-right: 20%;
 	}
 
-	.header a, #admin_login a {
+	.header a, #admin_login a{
 		text-decoration : none;
 		width : 100%;
 		height : 100%;
@@ -106,6 +120,35 @@
 		font-weight : bold;
 		font-size:  18px;
 	}
+	
+	#login_info  {
+		display: block;
+		color : black;
+		font-weight : bold;
+		font-size:  18px;
+		width : 25%;
+		height: 100%;
+		float: right;
+	}
+	#login_info>#login_bar{
+		display: block;
+		color : black;
+		font-weight : bold;
+		font-size:  18px;
+		width : 100%;
+		height: 75%;
+		float: right;
+	}
+	#login_info>#login_bar>tr>a{
+		display: block;
+		color : black;
+		font-weight : bold;
+		font-size:  18px;
+		width : 32%;
+		height: 75%;
+		float: left;
+	}
+
 
 	#btn_img{
 		background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
@@ -178,6 +221,9 @@
 		list-style: none;
 		padding: 0;
 	}
+	/* swiper 라이브러리 css */
+	/* 이미지 영역 사이즈 조절 */
+    
 
 </style>
 </head>
@@ -213,6 +259,20 @@
 			</script>
 			
 			
+			<%} else { %>
+			<div id="login_info">
+			<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
+			<div id="login_bar" align = "left">
+			<table>
+				<tr>
+					<td><a href="<%= contextPath %>/mypage.me">마이페이지 </a></td>
+					<td> &nbsp; | &nbsp; </td>
+					<td><a href="<%=contextPath %>/logout.me">&nbsp;로그아웃</a></td>
+				</tr>
+			</table>
+			</div>
+			<%} %>
+<<<<<<< HEAD
 		<%} else { %>
 		<div id="user-info">
 		<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
@@ -222,10 +282,9 @@
 			<a href="<%=contextPath %>/logout.me">로그아웃</a>
 		</div>
 		<%} %>
+=======
+>>>>>>> ed7e2da0499483a997bed73bc01cd0d486347e68
 		</div>
-			
-			
-			
 		</div>
 			<div id="admin_login" align="right" style="display: none;">
 			<table>
@@ -277,4 +336,15 @@
 			</div>
 		</ul>
 	</div>
+
+<<<<<<< HEAD
+	<br><br><br>
+=======
+	<div>
+
+	</div>
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+>>>>>>> ed7e2da0499483a997bed73bc01cd0d486347e68
+</body>
 </html>
