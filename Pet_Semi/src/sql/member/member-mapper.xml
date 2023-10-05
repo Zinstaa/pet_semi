@@ -28,7 +28,7 @@
 			STATUS = 'U'
 	</entry>
 
-	<entry key="searchMember">
+	<entry key="detailMember">
 		SELECT
 			MEMBER_NO,
 			MEMBER_ID,
@@ -45,9 +45,7 @@
 		FROM
 			MEMBER
 		WHERE
-			? like '%'||?||'%'
-		ORDER BY
-			MEMBER_NO
+			MEMBER_ID = ?
 	</entry>
 	
 	<entry key="insertMember">
