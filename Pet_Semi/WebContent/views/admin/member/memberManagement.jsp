@@ -130,6 +130,11 @@
 		$(function(){
 			$('#memberlist>tbody').on('click','tr',function(){
 				console.log(this);
+				console.log(location.href);
+				//http://localhost:9999/pet/member.me
+				console.log($(this).children().eq(0).text());
+				const mno = $(this).children().eq(0).text()
+				//회원 상세페이지 만들어주고 전달하기.
 			});
 		});
 	
