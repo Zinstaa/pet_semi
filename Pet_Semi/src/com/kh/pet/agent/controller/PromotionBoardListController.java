@@ -1,4 +1,4 @@
-package com.kh.pet.promoitonBoard.controller;
+package com.kh.pet.agent.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.promoitonBoard.model.service.PromotionBoardService;
-import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
+import com.kh.pet.board.model.service.PromotionBoardService;
+import com.kh.pet.board.model.vo.PromotionBoard;
 
 /**
  * Servlet implementation class PromotionBoardListController
  */
-@WebServlet("/promotelist.prl")
+@WebServlet("/promotelist.pr")
 public class PromotionBoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,9 @@ public class PromotionBoardListController extends HttpServlet {
 		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionList();
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp");
+	
+	
 	}
 
 	/**
