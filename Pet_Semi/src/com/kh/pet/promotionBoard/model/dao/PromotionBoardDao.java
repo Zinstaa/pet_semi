@@ -1,4 +1,4 @@
-package com.kh.pet.promoitonBoard.model.dao;
+package com.kh.pet.promotionBoard.model.dao;
 
 import static com.kh.pet.common.JDBCTemplate.close;
 
@@ -9,9 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.kh.pet.promoitonBoard.model.vo.PromotionBoard;
+import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
 
 public class PromotionBoardDao {
+	/*
 	
 	private Properties prop = new Properties();
 	
@@ -29,29 +30,17 @@ public class PromotionBoardDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				
 				PromotionBoard pb = new PromotionBoard();
 				
-				pb.setPromotionNumber(rset.getInt("PROMOTION_NUMBER"));
-				pb.setPromotionTitle(rset.getString("PROMOTION_TITLE"));
-				pb.setPromotionView(rset.getString("PROMOTION_VIEW"));
-				pb.setTitleImage(rset.getString("TITLEIMAGE"));
-				
-				list.add(pb);
-				
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
 		}
-		return list;
 		
 		
 		
 	}
+	*/
 	
 
 }

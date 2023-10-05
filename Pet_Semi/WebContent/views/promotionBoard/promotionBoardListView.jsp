@@ -19,29 +19,26 @@
         <br>
         <h2 align="center">홍보게시판(사진)</h2>
         <br>
-        <% if(loginUser != null) { %> <!--loginUser가 업체유저일 경우에만 게시판 작성하기 가능.. 어떻게 해야할지 약간 고민됨... ex) loginUser.AgentUser --> 
-            <div style="width:870px;" align="right">
-                <a href="#" class="btn btn-sm btn-info">게시물 작성</a>
+
+        <% if(loginUser != null) { %>
+            <div style="width: 870px;" align="right">
+                <a href="<%=contextPath %>/PromotionEnrollForm.pe" class="btn btn-sm btn-primary">게시글작성</a>
             </div>
-        <% } %>
+        <% } %> 
+
         <div class="list-area">
-            <% if(list.isEmpty()) { %> 
-             등록된 게시글이 없네요.... <br>
-             <% } else { %>
-                <% for(PromotionBoard pb : list) { %>
-            		<div class="promotion" align="center">
-                        <input type="hidden" value="<%= %>">
-	                	<img src="<%= %>">
-	                	
-                	</div>
-
-                    
-                <% } %>
-            <% } %>
+            <!-- 등록된 게시글이 없을 경우 -->
+            등록된 게시글이 없어.
+            <!-- 등록된 게시글이 존재해. -->
+            <div class="promotion" align="center">
+                <img src="https://ibb.co/wg3Ch3s" alt="노을">
+                <p>
+                    no.1 / 노을<br>
+                    조회수 : 12 
+                </p>
+            </div>
         </div>
-        </div>
-
-        } %> 
+        
     </div>
 </body>
 </html>

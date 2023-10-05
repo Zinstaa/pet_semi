@@ -1,4 +1,4 @@
-package com.kh.pet.promoitonBoard.model.service;
+package com.kh.pet.promotionBoard.model.service;
 
 import static com.kh.pet.common.JDBCTemplate.close;
 import static com.kh.pet.common.JDBCTemplate.getConnection;
@@ -6,10 +6,11 @@ import static com.kh.pet.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.pet.promoitonBoard.model.dao.PromotionBoardDao;
-import com.kh.pet.promoitonBoard.model.vo.PromotionBoard;
+import com.kh.pet.promotionBoard.model.dao.PromotionBoardDao;
+import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
 
 public class PromotionBoardService {
+	/*
 	
 	public ArrayList<PromotionBoard> selectPromotionList() {
 		
@@ -22,5 +23,6 @@ public class PromotionBoardService {
 		return list;
 		
 	}
+	*/
 
 }
