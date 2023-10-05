@@ -11,9 +11,11 @@ public class Board {
 	private int boardView;
 	private String status;
 	private String memberNo;
+	
 	public Board() {
 		super();
 	}
+	
 	public Board(int boardNo, String boardName, String boardContent, Date boardDate, int boardView, String status,
 			String memberNo) {
 		super();
@@ -25,6 +27,7 @@ public class Board {
 		this.status = status;
 		this.memberNo = memberNo;
 	}
+	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -73,7 +76,5 @@ public class Board {
 				+ ", boardDate=" + boardDate + ", boardView=" + boardView + ", status=" + status + ", memberNo="
 				+ memberNo + "]";
 	}
-	
-	
 	
 }
