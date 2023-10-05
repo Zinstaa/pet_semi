@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.kh.pet.member.model.vo.Member" %>
 <%
-   Member loginUser = (Member)session.getAttribute("loginUser");
+Member loginUser = (Member)session.getAttribute("loginUser");
 
-   String alertMsg = (String)session.getAttribute("alertMsg");
-
-   String contextPath = request.getContextPath();
+String alertMsg = (String)session.getAttribute("alertMsg");
+String contextPath = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -25,10 +24,6 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- swiper.js 라이브러리추가 -->
-<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-
 <style>
    /* 페이지 글꼴 설정 */
    body{
@@ -37,7 +32,7 @@
    }
    /* 박스 테두리 설정 */
    div {
-        box-sizing: border-box;
+      box-sizing: border-box;
       /*border: 1px solid red;*/
     }
    
@@ -80,7 +75,7 @@
    }
 
    #member_login > div {
-      height: 100%;
+      height: auto;
       float: left;
    }
    #member-info{
@@ -107,12 +102,11 @@
 
    #admin_login {
       height: 100%;
-      width: 10%;
-      float: right;
-      margin-right: 20%;
+      width: 1200px;
+      margin: auto;
    }
 
-   .header a, #admin_login a{
+   .header > a, #admin_login a{
       text-decoration : none;
       width : 100%;
       height : 100%;
@@ -151,7 +145,6 @@
       float: left;
    }
 
-
    #btn_img{
       background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
       background-size: auto;
@@ -161,15 +154,17 @@
         cursor: pointer;
       background-repeat: no-repeat;
    }
+
    /* 네비게이션 바 css*/
    .navbar {
-      margin: 0;
+      margin : 0;
       background-color : #fff5ce;
       text-align: center;
       border-top: 2px  solid lightgray;
       border-bottom: 2px  solid lightgray;
       line-height: 100%;
       height: 70px;
+      box-shadow: 1px 1px 1px 1px lightgray;
    }
 
    .navbar ul, .navbar li {
@@ -194,7 +189,7 @@
    }
 
    .menu a:hover{
-      border-bottom : 2px solid #ffce50;
+      color: #ffce50;
    } 
 
    .menu > li > ul {
@@ -223,23 +218,6 @@
       list-style: none;
       padding: 0;
    }
-   
-   .outer{
-   		width : 1200px;
-   		margin : auto;
-   		height : 600px;
-   		background-color : #fff5ce;
-   		margin-top : 5px;
-   		color : black;
-   }
-   .myouter{
-   		width : 1200px;
-   		margin : auto;
-   		height : 420px;
-   		background-color : #fff5ce;
-   		margin-top : 5px;
-   		color : black;
-   }
 
 </style>
 </head>
@@ -249,7 +227,7 @@
 		if(msg != 'null'){
 		alert(msg);
 		}
-	<% session.removeAttribute("alertMsg");%>
+	<% session.removeAttribute("alertMsg");	%>
 	</script>
 
    <br><br>
@@ -265,31 +243,34 @@
             <div id="login">
                <button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
             </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-            <div id="access">
-      <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
-                  </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-            </div> <!--id="member_login" 닫히는부분-->
-            <div id="search">
-               <input type="button" id="btn_img"></td>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             </div>
-         </div> <!-- <div class="head_login"> 닫히는부분 -->
+            <div id="access">
+               <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
+            </div>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            </div>
+         </div> <!--id="member_login" 닫히는부분-->
+         <div id="search">
+            <input type="button" id="btn_img"></td>
+         </div>
+      </div> <!-- <div class="head_login"> 닫히는부분 -->
          </form>
          <script>
             function loginPage(){
-               location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+               location.href = "<%= contextPath %>/login.mem"
             }
-            
             function enrollPage(){
-            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
+            	location.href = "<%= contextPath %>/enroll.me"
             	
             }
          </script>
          
          
-         <%} else { %>
-         <div id="login_info">
+      <%} else { %>
+      <div id="login_info">
          <b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
          <div id="login_bar" align = "left">
          <table>
@@ -302,21 +283,17 @@
          </div>
          <%} %>
       </div>
-      </div>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="#">회원관리</a></td>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
-               <td> &nbsp; | &nbsp; </td>
-               <td><a href="#">리뷰관리</a></td>
-               <td>&nbsp;&nbsp;</td>
-            </tr>
-         </table>
-      </div>
+
+   </div>
+   <div id="admin_login" align = "right">
+      <table>
+         <tr>
+            <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
+            <td> &nbsp; | &nbsp; </td>
+            <td><a href="#">리뷰관리</a></td>
+            <td>&nbsp;&nbsp;</td>
+         </tr>
+      </table>
    </div>
    <br>
    <!-- 네비게이션 바 위치 -->
@@ -324,7 +301,7 @@
       <ul>
          <div class="menu" id="ma">
             <li>
-               <a href="#">HOME</a>
+               <a href="<%= contextPath %>/">HOME</a>
             </li>
          </div>
          <div class="menu" id="pl">
@@ -336,8 +313,8 @@
             <li>
                <a href="#">커뮤니티</a>
                <ul>
-                  <li><a href="#">자유게시판</a></li>
-                  <li><a href="<%= contextPath %>/promotelist.pr">홍보게시판</a></li>
+                  <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
+                  <li><a href="#">홍보게시판</a></li>
                </ul>
             </li>
          </div>
@@ -357,7 +334,6 @@
          </div>
       </ul>
    </div>
-
    <div>
 
    </div>

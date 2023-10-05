@@ -135,7 +135,6 @@
 				console.log($(this).children().eq(0).text());
 				const mno = $(this).children().eq(0).text()
 				//회원 상세페이지 만들어주고 전달하기.
-				location.href="<%=contextPath%>/detail.me?mno="+mno;
 			});
 		});
 	

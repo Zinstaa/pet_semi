@@ -46,13 +46,5 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-	
-	public Member detailMember(int memberNo){
-		Connection conn = getConnection();
-		Member m = new MemberDao().detailMember(conn, memberNo);
-		close(conn);
-		
-		return m;
-	}
 
 }

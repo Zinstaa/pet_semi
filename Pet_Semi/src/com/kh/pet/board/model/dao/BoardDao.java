@@ -54,7 +54,7 @@ public class BoardDao {
 		
 	}
 	
-	public void selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Board> selectList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Board> list = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -77,17 +77,20 @@ public class BoardDao {
 				Board b = new Board();
 				b.setBoardNo(rset.getInt("BOARD_NO"));
 				b.setBoardName(rset.getString("BOARD_NAME"));
-				b.setMemberNo(rset.getInt("MEMBER_NO"));
+				b.setMemberNo(rset.getString("MEMBER_ID"));
 				b.setBoardView(rset.getInt("BOARD_VIEW"));
 				b.setBoardDate(rset.getDate("BOARD_DATE"));
 				
+				list.add(b);
 			}
-			
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
+		return list;
 	}
 
 }

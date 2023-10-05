@@ -10,14 +10,12 @@ public class Board {
 	private Date boardDate; 
 	private int boardView;
 	private String status;
-	private int memberNo;
-	
+	private String memberNo;
 	public Board() {
 		super();
 	}
-	
 	public Board(int boardNo, String boardName, String boardContent, Date boardDate, int boardView, String status,
-			int memberNo) {
+			String memberNo) {
 		super();
 		this.boardNo = boardNo;
 		this.boardName = boardName;
@@ -27,7 +25,6 @@ public class Board {
 		this.status = status;
 		this.memberNo = memberNo;
 	}
-	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -64,10 +61,10 @@ public class Board {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getMemberNo() {
+	public String getMemberNo() {
 		return memberNo;
 	}
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
 	@Override
@@ -76,5 +73,7 @@ public class Board {
 				+ ", boardDate=" + boardDate + ", boardView=" + boardView + ", status=" + status + ", memberNo="
 				+ memberNo + "]";
 	}
+	
+	
 	
 }
