@@ -29,15 +29,16 @@ public class PromotionBoardDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				/*
+				
 				PromotionBoard pb = new PromotionBoard();
 				
 				pb.setPromotionNumber(rset.getInt("PROMOTION_NUMBER"));
 				pb.setPromotionTitle(rset.getString("PROMOTION_TITLE"));
-				pb.setPromotionTitle(rset.getString("TITLEIMG"));
+				pb.setPromotionView(rset.getString("PROMOTION_VIEW"));
+				pb.setTitleImage(rset.getString("TITLEIMAGE"));
 				
 				list.add(pb);
-				*/
+				
 			}
 			
 		} catch (SQLException e) {

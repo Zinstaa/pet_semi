@@ -13,14 +13,14 @@ public class PromotionBoard {
 	private Date eventStartDate; //EVENT_START_DATE	DATE
 	private Date eventFinishDate; //EVENT_FINISH_DATE	DATE
 	private int agentNo; //AGENT_NO	NUMBER
+	private String titleImage; //
 	
 	public PromotionBoard() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public PromotionBoard(int promotionNumber, String promotionTitle, String promotionContent, Date promotionDate,
-			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo) {
+			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage) {
 		super();
 		this.promotionNumber = promotionNumber;
 		this.promotionTitle = promotionTitle;
@@ -31,6 +31,7 @@ public class PromotionBoard {
 		this.eventStartDate = eventStartDate;
 		this.eventFinishDate = eventFinishDate;
 		this.agentNo = agentNo;
+		this.titleImage = titleImage;
 	}
 
 	public int getPromotionNumber() {
@@ -104,17 +105,27 @@ public class PromotionBoard {
 	public void setAgentNo(int agentNo) {
 		this.agentNo = agentNo;
 	}
+	
+	public String getTitleImage() {
+		return titleImage;
+	}
+	public void setTitleImage(String titleImage) {
+		this.titleImage = titleImage;
+	}
 
 	@Override
 	public String toString() {
 		return "PromotionBoard [promotionNumber=" + promotionNumber + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
-				+ eventFinishDate + ", agentNo=" + agentNo + "]";
+				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + "]";
+	}
+
+	
 	}
 	
 	
 	
 	
 
-}
+
