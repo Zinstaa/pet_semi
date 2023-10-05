@@ -138,6 +138,11 @@
 		<div class="detail" id="inform">
 			<table>
 				<tr>
+					<th width="100">회원상태</th>
+					<td colspan="2">정상</td>
+					
+				</tr>
+				<tr>
 					<th width="100">회원번호</th>
 					<td colspan="2">1234</td>
 					

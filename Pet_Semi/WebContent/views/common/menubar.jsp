@@ -4,6 +4,8 @@
 <%
    Member loginUser = (Member)session.getAttribute("loginUser");
 
+   String alertMsg = (String)session.getAttribute("alertMsg");
+
    String contextPath = request.getContextPath();
 %>
 
@@ -19,7 +21,7 @@
 
 <!-- Bootstrap 4 추가 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -221,13 +223,35 @@
       list-style: none;
       padding: 0;
    }
-   /* swiper 라이브러리 css */
-   /* 이미지 영역 사이즈 조절 */
-    
+   
+   .outer{
+   		width : 1200px;
+   		margin : auto;
+   		height : 600px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
+   .myouter{
+   		width : 1200px;
+   		margin : auto;
+   		height : 420px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
 
 </style>
 </head>
 <body>
+<script>
+		var msg = '<%= alertMsg %>';
+		if(msg != 'null'){
+		alert(msg);
+		}
+	<% session.removeAttribute("alertMsg");%>
+	</script>
+
    <br><br>
    <!-- 로고 위치 -->
    
@@ -243,8 +267,8 @@
             </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             <div id="access">
-               <button type="button" class="btn btn-link">회원가입</button>
-            </div>
+      <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
+                  </div>
             <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
             </div> <!--id="member_login" 닫히는부분-->
             <div id="search">
@@ -255,6 +279,11 @@
          <script>
             function loginPage(){
                location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+            }
+            
+            function enrollPage(){
+            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
+            	
             }
          </script>
          
@@ -274,7 +303,7 @@
          <%} %>
       </div>
       </div>
-         <div id="admin_login" align="right" style="display: none;">
+         <div id="admin_login" align="right">
          <table>
             <tr>
                <td><a href="#">회원관리</a></td>

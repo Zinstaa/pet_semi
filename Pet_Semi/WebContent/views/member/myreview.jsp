@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>내 리뷰보기</title>
 </head>
 <body>
-
+	<%@ include file="../common/mypagebar.jsp"%> 
+	
+	
+이제 여기 스타일 넣고 리뷰 목록 받아오도록 해야된다ㅏㅏㅏ~
+	
 </body>
 </html>
