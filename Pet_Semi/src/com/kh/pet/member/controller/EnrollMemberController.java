@@ -28,7 +28,7 @@ public class EnrollMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(456);
+		System.out.println(78989);
 		RequestDispatcher view = request.getRequestDispatcher("views/member/enrollPage.jsp");
 		view.forward(request, response);
 	}
