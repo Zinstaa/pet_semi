@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PromotionBoard {
 	
-	private int promotionNo; //PROMOTION_NUMBER	NUMBER
+	private int promotionNumber; //PROMOTION_NUMBER	NUMBER
 	private String promotionTitle; //PROMOTION_TITLE	VARCHAR2(100 BYTE)
 	private String promotionContent; //PROMOTION_CONTENT	VARCHAR2(4000 BYTE)
 	private Date promotionDate; // PROMOTION_DATE	DATE
@@ -19,10 +19,10 @@ public class PromotionBoard {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PromotionBoard(int promotionNo, String promotionTitle, String promotionContent, Date promotionDate,
+	public PromotionBoard(int promotionNumber, String promotionTitle, String promotionContent, Date promotionDate,
 			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo) {
 		super();
-		this.promotionNo = promotionNo;
+		this.promotionNumber = promotionNumber;
 		this.promotionTitle = promotionTitle;
 		this.promotionContent = promotionContent;
 		this.promotionDate = promotionDate;
@@ -33,12 +33,12 @@ public class PromotionBoard {
 		this.agentNo = agentNo;
 	}
 
-	public int getPromotionNo() {
-		return promotionNo;
+	public int getPromotionNumber() {
+		return promotionNumber;
 	}
 
-	public void setPromotionNo(int promotionNo) {
-		this.promotionNo = promotionNo;
+	public void setPromotionNumber(int promotionNumber) {
+		this.promotionNumber = promotionNumber;
 	}
 
 	public String getPromotionTitle() {
@@ -107,7 +107,7 @@ public class PromotionBoard {
 
 	@Override
 	public String toString() {
-		return "PromotionBoard [promotionNo=" + promotionNo + ", promotionTitle=" + promotionTitle
+		return "PromotionBoard [promotionNumber=" + promotionNumber + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
 				+ eventFinishDate + ", agentNo=" + agentNo + "]";

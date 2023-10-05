@@ -274,17 +274,14 @@
          <%} %>
       </div>
       </div>
-<<<<<<< HEAD
          <div id="admin_login" align="right" style="display: none;">
          <table>
             <tr>
                <td><a href="#">회원관리</a></td>
-=======
          <div id="admin_login" align="right">
          <table>
             <tr>
                <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
->>>>>>> af4c4397188db24db1d8b3564fa5c3d78aa6b404
                <td> &nbsp; | &nbsp; </td>
                <td><a href="#">리뷰관리</a></td>
                <td>&nbsp;&nbsp;</td>
@@ -311,7 +308,7 @@
                <a href="#">커뮤니티</a>
                <ul>
                   <li><a href="#">자유게시판</a></li>
-                  <li><a href="#">홍보게시판</a></li>
+                  <li><a href="<%= contextPath %>/promotelist.pr">홍보게시판</a></li>
                </ul>
             </li>
          </div>
@@ -332,16 +329,8 @@
       </ul>
    </div>
 
-<<<<<<< HEAD
    <div>
 
    </div>
-   
-=======
-
-	
-	
-	
->>>>>>> af4c4397188db24db1d8b3564fa5c3d78aa6b404
 </body>
 </html>

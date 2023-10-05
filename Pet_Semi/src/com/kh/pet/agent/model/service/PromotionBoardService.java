@@ -1,5 +1,9 @@
 package com.kh.pet.agent.model.service;
 
+import static com.kh.pet.common.JDBCTemplate.close;
+import static com.kh.pet.common.JDBCTemplate.commit;
+import static com.kh.pet.common.JDBCTemplate.getConnection;
+import static com.kh.pet.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 

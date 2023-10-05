@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.board.model.service.PromotionBoardService;
-import com.kh.pet.board.model.vo.PromotionBoard;
+import com.kh.pet.agent.model.service.PromotionBoardService;
+import com.kh.pet.agent.model.vo.PromotionBoard;
 
 /**
  * Servlet implementation class PromotionBoardListController
@@ -34,7 +34,7 @@ public class PromotionBoardListController extends HttpServlet {
 		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionList();
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp");
+		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp").forward(request, response);
 	
 	
 	}

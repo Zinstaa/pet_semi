@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>홍보게시판 관련 SQL문</comment>
+	<entry key="selectThumbnailList">
+		SELECT
+        		PROMOTION_NUMBER,
+				PROMOTION_TITLE
+  		  FROM
+        		PROMOTION_BOARD
+  		  JOIN
+        		PROMOTION_FILE  ON(PROMOTION_NUMBER = PROMOTION_FILE_NO)
+		 WHERE
+        		PROMOTION_FILE_LEVEL = 1
+   		   AND
+       	 		PROMOTION_BOARD.STATUS = 'Y'
+ 		 ORDER
+            BY
+        		PROMOTION_BOARD_NUMBER DESC;
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</properties>
