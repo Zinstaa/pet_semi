@@ -262,12 +262,11 @@
 </style>
 </head>
 <body>
-<<<<<<< Updated upstream
 <script>
 		var msg = '<%= alertMsg %>';
 		if(msg != 'null'){
 		alert(msg);
-		}
+		}  
 	<% session.removeAttribute("alertMsg");%>
 	</script>
 
@@ -380,7 +379,6 @@
    <div>
 
    </div>
-=======
 	<br><br>
 	<!-- 로고 위치 -->
 	
@@ -449,6 +447,5 @@
 	</div>
 	
 	<br><br><br>
->>>>>>> Stashed changes
 </body>
 </html>
