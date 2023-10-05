@@ -65,7 +65,7 @@
 
    .head_login{
       width : 25%;
-      height: 100%;
+      height: 40%;
       float: right;
    }
    .head_login > #login-bar{
@@ -76,19 +76,13 @@
 
    .head_login > div{
       float: left;
-      height: 100%;
+      height: 40%;
    }
 
-<<<<<<< Updated upstream
-   #member_login > div {
-      height: 100%;
-      float: left;
-   }
    #member-info{
       height:25%;
       float: right;
    }
-=======
 	#member_login > div {
 		height: 100%;
 		float: left;
@@ -103,6 +97,7 @@
 		float: left;
 		
 	}
+
 	
 >>>>>>> Stashed changes
 
@@ -115,19 +110,15 @@
 
    #login > button,  #access > button {
       text-align: center;
-      line-height: 100px;
+      line-height: 20px;
       color : black;
+      font-size:  18px;
    }
 
-   #search > input{
-      margin-top: 40px;
-   }
-
-   #admin_login {
+   #member_login>#admin_login {
       height: 100%;
-      width: 10%;
+      width: 20%;
       float: right;
-      margin-right: 20%;
    }
 
    .header a, #admin_login a{
@@ -272,28 +263,40 @@
 
    <br><br>
    <!-- 로고 위치 -->
-   
-   <div class="header">
+ <div class="header">
       <div class="head_logo">
          <h1>어댕가지~?</h1>
       </div>
-      <%if(loginUser==null) {%>  
+      <%if(loginUser==null) {%>
       <div class="head_login">
          <div id="member_login">
             <div id="login">
                <button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
             </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-            <div id="access">
-      <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
-                  </div>
-            <div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-            </div> <!--id="member_login" 닫히는부분-->
-            <div id="search">
-               <input type="button" id="btn_img"></td>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             </div>
-         </div> <!-- <div class="head_login"> 닫히는부분 -->
-         </form>
+            <div id="access">
+               <button type="button" class="btn btn-link" onclick="enrollPage()">회원가입</button>
+            </div>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            </div>
+         </div> <!--id="member_login" 닫히는부분-->
+         <div id="search">
+            <input type="button" id="btn_img">
+         </div>
+         <div id="admin_login" align="right">
+         <table>
+            <tr>
+               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
+               <td> &nbsp; | &nbsp; </td>
+               <td><a href="#">리뷰관리</a></td>
+            </tr>
+         </table>
+      </div>
+         
+      </div> <!-- <div class="head_login"> 닫히는부분 -->
          <script>
             function loginPage(){
                location.href = "<%= contextPath %>/views/member/loginPage.jsp"
@@ -321,21 +324,7 @@
          <%} %>
       </div>
       </div>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="#">회원관리</a></td>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
-               <td> &nbsp; | &nbsp; </td>
-               <td><a href="#">리뷰관리</a></td>
-               <td>&nbsp;&nbsp;</td>
-            </tr>
-         </table>
-      </div>
-   </div>
+
    <br>
    <!-- 네비게이션 바 위치 -->
    <div class="navbar justify-content-center sticky-top" >
@@ -355,7 +344,7 @@
                <a href="#">커뮤니티</a>
                <ul>
                   <li><a href="#">자유게시판</a></li>
-                  <li><a href="<%= contextPath %>/promotelist.pr">홍보게시판</a></li>
+                  <li><a href="#">홍보게시판</a></li>
                </ul>
             </li>
          </div>
@@ -375,76 +364,6 @@
          </div>
       </ul>
    </div>
-
-   <div>
-
-   </div>
-	<br><br>
-	<!-- 로고 위치 -->
-	
-	<div class="header">
-		<div class="head_logo">
-			<h1>어댕가지~?</h1>
-		</div>
-		<%if(loginUser==null) {%>
-		<div class="head_login">
-			<div id="member_login">
-				<div id="login">
-					<button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
-				</div>
-				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-				<div id="access">
-					<button type="button" class="btn btn-link">회원가입</button>
-				</div>
-				<div id="bar">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
-				</div> <!--id="member_login" 닫히는부분-->
-				<div id="search">
-					<input type="button" id="btn_img"></td>
-				</div>
-			</div> <!-- <div class="head_login"> 닫히는부분 -->
-			</form>
-			<script>
-			function loginPage(){
-				location.href = "<%= contextPath %>/views/member/loginPage.jsp"
-				}
-			</script>
-			
-			
-			<%} else { %>
-			<div id="member-info">
-			<b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br><br><br>
-			</div>
-			<div align="right">
-				<a href="<%= contextPath %>/mypage.me">마이페이지 </a>
-				
-				<a href="<%=contextPath %>/logout.me">로그아웃</a>
-			</div>
-			<%} %>
-		</div>
-			
-			
-			
-		</div>
-			<div id="admin_login" align="right" style="display: none;">
-			<table>
-				<tr>
-					<td><a href="#">회원관리</a></td>
-					<td> &nbsp; | &nbsp; </td>
-					<td><a href="#">리뷰관리</a></td>
-					<td>&nbsp;&nbsp;</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	<br>
-	<!-- 네비게이션 바 위치 -->
-	<div class="navbar navbar-expand-sm justify-content-center sticky-top" >
-		<div class="menu"><a href="#">HOME</a></div>
-		<div class="menu"><a href="#">플레이스</a></div>
-		<div class="menu"><a href="#">커뮤니티</a></div>
-		<div class="menu"><a href="#">알림 / 소식</a></div>
-		<div class="menu"><a href="#">고객센터</a></div>
-	</div>
 	
 	<br><br><br>
 </body>
