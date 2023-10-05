@@ -1,15 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.pet.board.model.vo.Board, com.kh.pet.common.model.PageInfo" %>
-<%
-	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,30 +190,16 @@ window.onclick = function(event) {
 				</tr>
 			</thead>
 			<tbody>
-			
-				<% if(list.isEmpty()) { %>
 				<tr>
 					<td colspan="5">조회된 게시글이 없습니다.</td>
 				</tr>
-				<% } else { %>
-				
-					<% for(Board b : list) { %>
-					<tr>
-						<td><%= b.getBoardNo() %></td>
-						<td><%= b.getBoardName() %></td>
-						<td><%= b.getMemberNo() %></td>
-						<td><%= b.getBoardView() %></td>
-						<td><%= b.getBoardDate() %></td>
-					</tr>
-					<% } %>
-				<!-- <tr>
+				<tr>
 					<td>1</td>
 					<td>게시글테스트</td>
 					<td>홍길동</td>
 					<td>50</td>
 					<td>2023-09-27</td>
-				</tr> -->
-				<% } %>
+				</tr>
 			</tbody>
 		</table>
 		<br><br>

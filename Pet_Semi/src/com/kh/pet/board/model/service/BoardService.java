@@ -2,10 +2,8 @@ package com.kh.pet.board.model.service;
 import static com.kh.pet.common.JDBCTemplate.*;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import com.kh.pet.board.model.dao.BoardDao;
-import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.common.model.PageInfo;
 
 public class BoardService {
@@ -21,15 +19,11 @@ public class BoardService {
 		return listCount;
 	}
 	
-	public ArrayList<Board> selectList(PageInfo pi) {
+	public void selectList(PageInfo pi) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Board> list = new BoardDao().selectList(conn, pi);
-		
-		close(conn);
-		
-		return list;
+		new BoardDao().selectList(conn, pi);
 	}
 	
 }

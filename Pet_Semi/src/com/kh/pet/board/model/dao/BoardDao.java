@@ -54,7 +54,7 @@ public class BoardDao {
 		
 	}
 	
-	public ArrayList<Board> selectList(Connection conn, PageInfo pi) {
+	public void selectList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Board> list = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -81,16 +81,13 @@ public class BoardDao {
 				b.setBoardView(rset.getInt("BOARD_VIEW"));
 				b.setBoardDate(rset.getDate("BOARD_DATE"));
 				
-				list.add(b);
 			}
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
 		}
-		return list;
 	}
 
 }
