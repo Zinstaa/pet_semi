@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.pet.promoitonBoard.model.vo.PromotionBoard;
+
 public class PromotionBoardDao {
 	
 	private Properties prop = new Properties();

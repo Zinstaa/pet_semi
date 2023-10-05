@@ -1,4 +1,4 @@
-package com.kh.pet.agent.model.vo;
+package com.kh.pet.promotionBoard.model.vo;
 
 import java.sql.Date;
 

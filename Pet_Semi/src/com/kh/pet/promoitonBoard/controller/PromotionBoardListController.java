@@ -35,8 +35,6 @@ public class PromotionBoardListController extends HttpServlet {
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp").forward(request, response);
-	
-		System.out.println("result");
 	}
 
 	/**
