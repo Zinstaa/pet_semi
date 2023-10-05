@@ -21,6 +21,11 @@
         margin: auto;
     }
 
+    #place_Main a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
     #place_search {
         width: 25%;
         float: left;
@@ -48,6 +53,14 @@
         text-align: center;
         color: #ffffff;
         margin-top: 10px;
+    }
+
+    #place-search-symbol {
+        float: left;
+    }
+
+    .symbol {
+
     }
 
     #place_category {
@@ -95,7 +108,19 @@
             <div id="place_input">
                 <h1>어댕가지 검색</h1>
                 <form id="place-search-form" action="<%=contextPath%>/place.pl" method="get">
-
+                    <div id="place-search-input">
+                        <input type="text" name="placeName" id="form-control" required>
+                        <input type="button" name="" id="">
+                    </div>
+                    <div id="place-search-symbol">
+                        <a id="food" class="symbol" href="#">
+                            <img src="https://svgsilh.com/svg/305344-ffffff.svg" alt="식당"><br>
+                            식당
+                        </a>
+                        <a id="coffee" class="symbol" href="#">
+                            <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="커피"><br>
+                            커피
+                    </div>
                 </form>
             </div>
             <div id="place_category">
