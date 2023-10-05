@@ -259,7 +259,7 @@
       <div class="head_logo">
          <h1>어댕가지~?</h1>
       </div>
-      <%if(loginUser==null) {%>
+      <%if(loginUser==null) {%>  
       <div class="head_login">
          <div id="member_login">
             <div id="login">
