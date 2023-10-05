@@ -1,6 +1,8 @@
 package com.kh.pet.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginCheckController
+ * Servlet implementation class LoginServletContoller
  */
-@WebServlet("/loginpage.me")
-public class LoginCheckController extends HttpServlet {
+@WebServlet("/login.mem")
+public class LoginServletContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginCheckController() {
+    public LoginServletContoller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +29,8 @@ public class LoginCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/member/loginPage.jsp");
+		view.forward(request, response);
 	}
 
 	/**

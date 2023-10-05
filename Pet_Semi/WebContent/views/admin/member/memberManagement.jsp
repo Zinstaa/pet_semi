@@ -11,9 +11,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+
 <style>
+	#memberlist>tbody>tr:hover{
+	cursor : pointer;
+	background-color : yellow;
 	
+	}
 </style>
 </head>
 <body>
@@ -26,12 +30,12 @@
 					<th>검색조건</th>
 					<td>
 						<select id="member-condition" name="search-list">
-							<option value="memberNo">회원번호</option>
-							<option value="memberId">아이디</option>
-							<option value="memberName">회원이름</option>
-							<option value="email">이메일</option>
-							<option value="phone">휴대폰번호</option>
-							<option value="nickName">닉네임</option>
+							<option value="MEMBER_NO">회원번호</option>
+							<option value="MEMBER_ID">아이디</option>
+							<option value="MEMBER_NAME">회원이름</option>
+							<option value="EMAIL">이메일</option>
+							<option value="PHONE">휴대폰번호</option>
+							<option value="NICKNAME">닉네임</option>
 
 						</select>
 					</td>
@@ -96,9 +100,11 @@
 				},
 					
 				success : function(result){
+					console.log(result);
 					let resultList = '';
+					if(result.length > 0){
 					for(let i =0; i < result.length; i++){
-						resultStr += '<tr>'
+						resultList += '<tr>'
 								+ '<td>' + result[i].memberNo + '</td>'
 								+ '<td>' + result[i].memberId + '</td>'
 								+ '<td>' + result[i].memberName + '</td>'
@@ -109,7 +115,10 @@
 								+ '<td>' + result[i].status + '</td>'
 								+ '</tr>'
 					}
-					$('#memberlist tbody').html(resultStr);
+					}else{
+						resultList = '<tr><td colspan="8">검색 결과가 없습니다.</td></tr>';
+					}
+					$('#memberlist tbody').html(resultList);
 				},
 				error : function(){
 					console.log('AJAX실패')
@@ -117,7 +126,19 @@
 				}
 			})
 		}
-	</script>
+		
+		$(function(){
+			$('#memberlist>tbody').on('click','tr',function(){
+				console.log(this);
+				console.log(location.href);
+				//http://localhost:9999/pet/member.me
+				console.log($(this).children().eq(0).text());
+				const mno = $(this).children().eq(0).text()
+				//회원 상세페이지 만들어주고 전달하기.
+			});
+		});
 	
+	</script>
+
 </body>
 </html>

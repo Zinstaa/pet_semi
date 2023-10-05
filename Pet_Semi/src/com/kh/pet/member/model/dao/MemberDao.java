@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.pet.member.model.vo.Member;
+import com.kh.pet.common.JDBCTemplate.*;
 
 public class MemberDao {
 	
@@ -51,7 +52,7 @@ private Properties prop = new Properties();
 							   rset.getString("PHONE"),
 							   rset.getString("NICKNAME"),
 							   rset.getString("ADDRESS"),
-							   rset.getInt("AGE"),
+							   rset.getString("AGE"),
 							   rset.getString("GENDER"),
 							   rset.getDate("ENROLL_DATE"),
 							   rset.getString("STATUS"));
@@ -66,19 +67,45 @@ private Properties prop = new Properties();
 	}
 	
 	public ArrayList<Member> searchMember(Connection conn, String memberCondition, String memberSearch) {
+		System.out.println(456);
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList();
-		
-		String sql = prop.getProperty("searchMember");
-		
+		//System.out.println(memberCondition.substring(1,memberCondition.length()-1));
+		String sql = "SELECT "
+						+ "MEMBER_NO,"
+						+ "MEMBER_ID,"
+						+ "MEMBER_PWD,"
+						+ "MEMBER_NAME,"
+						+ "EMAIL,"
+						+ "PHONE,"
+						+ "NICKNAME,"
+						+ "ADDRESS,"
+						+ "AGE,"
+						+ "GENDER,"
+						+ "ENROLL_DATE,"
+						+ "STATUS "
+					+ "FROM"
+						+ " MEMBER"
+					+ " WHERE "
+						+ memberCondition
+						+ " LIKE "
+						//+ "?"
+						+ "'%'||?||'%'"
+					+ " ORDER BY "
+						+ "MEMBER_NO";
+		//sql = sql.replaceAll("'","");
+		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberCondition);
-			pstmt.setString(2, memberSearch);
+			
+			pstmt.setString(1, memberSearch);
+			
+			//System.out.println(memberCondition);
+			System.out.println(memberSearch);
 			
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			while(rset.next()) {
 				Member m = new Member(rset.getInt("MEMBER_NO"),
 						   rset.getString("MEMBER_ID"),
 						   rset.getString("MEMBER_PWD"),
@@ -87,12 +114,13 @@ private Properties prop = new Properties();
 						   rset.getString("PHONE"),
 						   rset.getString("NICKNAME"),
 						   rset.getString("ADDRESS"),
-						   rset.getInt("AGE"),
+						   rset.getString("AGE"),
 						   rset.getString("GENDER"),
 						   rset.getDate("ENROLL_DATE"),
 						   rset.getString("STATUS"));
 				list.add(m);
 			}
+			System.out.println(list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,4 +130,33 @@ private Properties prop = new Properties();
 		}
 		return list;
 	}
+	
+	public int insertMember(Connection conn, Member m ) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMember");
+		
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, m.getMemberId());
+				pstmt.setString(2, m.getMemberPwd());
+				pstmt.setString(3, m.getMemberName());
+				pstmt.setString(4, m.getEmail());
+				pstmt.setString(5, m.getPhone());
+				pstmt.setString(6, m.getNickName());
+				pstmt.setString(7, m.getAddress());
+				pstmt.setString(8, m.getAge());
+				pstmt.setString(9, m.getGender());
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			return result;
+	}
 }
+		

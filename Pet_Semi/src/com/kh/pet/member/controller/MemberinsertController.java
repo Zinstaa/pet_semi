@@ -2,7 +2,6 @@ package com.kh.pet.member.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +13,16 @@ import com.kh.pet.member.model.service.MemberService;
 import com.kh.pet.member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class MemberinsertController
  */
-@WebServlet("/login.me")
-public class LoginController extends HttpServlet {
+@WebServlet("/insert.me")
+public class MemberinsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public MemberinsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,23 +32,43 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		//<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
 		
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
+		String memberName = request.getParameter("memberName");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		
-		Member loginUser = new MemberService().loginMember(memberId,memberPwd);
-		 
-		if(loginUser==null) {
-			request.setAttribute("errorMsg", "로그인에 실패했습니다!" );
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		} else { 
+		String nickName = request.getParameter("nickName");
+		String address = request.getParameter("address");
+		String age = request.getParameter("age");
+		String gender = request.getParameter("gender");
+		
+		
+		Member m = new Member();
+		m.setMemberId(memberId);
+		m.setMemberPwd(memberPwd);
+		m.setMemberName(memberName);
+		m.setEmail(email);
+		m.setPhone(phone);
+		m.setNickName(nickName);
+		m.setAddress(address);
+		m.setAge(age);
+		m.setGender(gender);
+		
+		int result = new MemberService().insertMember(m);
+
+		if(result > 0) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("alertMsg","회원가입성공~!");
 			response.sendRedirect(request.getContextPath());
 			
+		}else {
+			request.setAttribute("alertMsg", "회원가입에 실패 했습니다....");
+			
 		}
-	
+		
 	}
 
 	/**
