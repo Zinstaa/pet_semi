@@ -274,7 +274,7 @@
          <%} %>
       </div>
       </div>
-         <div id="admin_login" align="right" style="display: none;">
+         <div id="admin_login" align="right">
          <table>
             <tr>
                <td><a href="#">회원관리</a></td>
