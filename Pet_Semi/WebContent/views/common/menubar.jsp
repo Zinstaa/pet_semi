@@ -228,6 +228,23 @@ String contextPath = request.getContextPath();
       list-style: none;
       padding: 0;
    }
+   
+      .outer{
+   		width : 1200px;
+   		margin : auto;
+   		height : 600px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
+   .myouter{
+   		width : 1200px;
+   		margin : auto;
+   		height : 420px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
 
 </style>
 </head>
@@ -342,7 +359,6 @@ String contextPath = request.getContextPath();
          </div>
       </ul>
    </div>
-	
-	<br><br><br>
+
 </body>
 </html>
