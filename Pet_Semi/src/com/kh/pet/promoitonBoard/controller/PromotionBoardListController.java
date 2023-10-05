@@ -1,4 +1,4 @@
-package com.kh.pet.agent.controller;
+package com.kh.pet.promoitonBoard.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.agent.model.service.PromotionBoardService;
-import com.kh.pet.agent.model.vo.PromotionBoard;
+import com.kh.pet.promoitonBoard.model.service.PromotionBoardService;
+import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
 
 /**
  * Servlet implementation class PromotionBoardListController
@@ -36,7 +36,7 @@ public class PromotionBoardListController extends HttpServlet {
 		
 		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp").forward(request, response);
 	
-	
+		System.out.println("result");
 	}
 
 	/**

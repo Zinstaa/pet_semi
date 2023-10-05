@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.pet.agent.model.vo.PromotionBoard" %>
+<%@ page import="java.util.ArrayList, com.kh.pet.promotionBoard.model.vo.PromotionBoard" %>
 <%
 	ArrayList<PromotionBoard> list = (ArrayList<PromotionBoard>)request.getAttribute("list");
 %>
@@ -9,27 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>홍보게시판(사진)리스트 뷰에요~</title>
-<style>
-    .list-area{
-        text-align: center;
-        border : 1px solid yellowgreen;
-    }
-    .promotion{
-        border : 1px solid yellowgreen;
-        width : 300px;
-        display : inline-block;
-        margin: 7px;
-        background-color: lightyellow;
-    }
-    .promotion > img{
-        width: 250px;
-        height: 200px;
-        padding: 10px;
-    }
-    .promotion:hover{
-        cursor: pointer;
-        opacity: 0.9;
-    }
+
 </style>
 </head>
 <body>
@@ -50,20 +30,12 @@
              <% } else { %>
                 <% for(PromotionBoard pb : list) { %>
             		<div class="promotion" align="center">
-                        <input type="hidden" value="<%= pb.getPromotionBoardNumber() %>">
-	                	<img src="<%= pb.getPromotionTitleImg() %>">
+                        <input type="hidden" value="<%= %>">
+	                	<img src="<%= %>">
 	                	
                 	</div>
 
-                    <script>
-                        $(function(){
-                            $('.promotion').click(function(){
-                                // 클릭할 때마다 url요청 => location.href
-                                const bno = $(this).children().eq(0).val();
-                                location.href = '<%=contextPath%>/detail.th?bno=' + bno;
-                            })
-                        })
-                    </script>
+                    
                 <% } %>
             <% } %>
         </div>

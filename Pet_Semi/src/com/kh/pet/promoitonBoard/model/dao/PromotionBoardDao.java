@@ -1,14 +1,13 @@
-package com.kh.pet.agent.model.dao;
+package com.kh.pet.promoitonBoard.model.dao;
 
 import static com.kh.pet.common.JDBCTemplate.close;
-import java.util.Properties;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import com.kh.pet.agent.model.vo.PromotionBoard;
+import java.util.Properties;
 
 public class PromotionBoardDao {
 	
@@ -28,16 +27,15 @@ public class PromotionBoardDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				
+				/*
 				PromotionBoard pb = new PromotionBoard();
 				
 				pb.setPromotionNumber(rset.getInt("PROMOTION_NUMBER"));
 				pb.setPromotionTitle(rset.getString("PROMOTION_TITLE"));
-				// 번호, 제목, 조회수, 저장경로, 바뀐이름
-				// String img = rset.getString("FILE_PATH") + "/" + rset.getString("CHANGE_NAME");
 				pb.setPromotionTitle(rset.getString("TITLEIMG"));
 				
 				list.add(pb);
+				*/
 			}
 			
 		} catch (SQLException e) {

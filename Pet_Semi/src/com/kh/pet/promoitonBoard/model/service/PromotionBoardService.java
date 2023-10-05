@@ -1,14 +1,13 @@
-package com.kh.pet.agent.model.service;
+package com.kh.pet.promoitonBoard.model.service;
 
 import static com.kh.pet.common.JDBCTemplate.close;
-import static com.kh.pet.common.JDBCTemplate.commit;
 import static com.kh.pet.common.JDBCTemplate.getConnection;
-import static com.kh.pet.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.kh.pet.agent.model.dao.PromotionBoardDao;
-import com.kh.pet.agent.model.vo.PromotionBoard;
+import com.kh.pet.promoitonBoard.model.dao.PromotionBoardDao;
+import com.kh.pet.promoitonBoard.model.vo.PromotionBoard;
 
 public class PromotionBoardService {
 	
