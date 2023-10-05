@@ -221,13 +221,35 @@
       list-style: none;
       padding: 0;
    }
-   /* swiper 라이브러리 css */
-   /* 이미지 영역 사이즈 조절 */
-    
+   
+   .outer{
+   		width : 1200px;
+   		margin : auto;
+   		height : 600px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
+   .myouter{
+   		width : 1200px;
+   		margin : auto;
+   		height : 420px;
+   		background-color : #fff5ce;
+   		margin-top : 5px;
+   		color : black;
+   }
 
 </style>
 </head>
 <body>
+<script>
+		var msg = '<%= alertMsg %>';
+		if(msg != 'null'){
+		alert(msg);
+		}
+	<% session.removeAttribute("alertMsg");%>
+	</script>
+
    <br><br>
    <!-- 로고 위치 -->
    
