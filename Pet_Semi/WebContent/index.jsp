@@ -10,9 +10,7 @@
 	
 	<%@ include file = "views/common/menubar.jsp" %>
   </html>
-	
-	
-	
+
 	<!-- 
 	홍보 >> 독립 >> 혼자아예 만들어야됨
 

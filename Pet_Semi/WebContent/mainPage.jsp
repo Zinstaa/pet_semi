@@ -55,7 +55,7 @@
         color: black;
         text-decoration: none;
         position: fixed;   /* 포지션 고정 */
-        bottom: 175px;     /* 밑에서 100px */
+        bottom: 175px;     /* 밑에서 175px */
         display: none;     /* 보여지지 없음 - 기본적으로  안보여지게 */
         z-index: 9999;     /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
     }
