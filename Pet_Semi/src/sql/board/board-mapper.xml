@@ -12,6 +12,27 @@
 			STATUS = 'Y'
 
 	</entry>
+	
+	<entry key="selectList">
+	SELECT *
+    FROM (SELECT ROWNUM RNUM, A.*
+            FROM(SELECT
+                        BOARD_NO,
+                        BOARD_NAME,
+                        MEMBER_ID,
+                        BOARD_VIEW,
+                        BOARD_DATE
+                    FROM
+                        BOARD B
+                    JOIN 
+                        MEMBER M ON(B.MEMBER_NO = M.MEMBER_NO)
+                    WHERE
+                        B.STATUS = 'Y'
+                    ORDER
+                        BY BOARD_DATE DESC) A)
+        		WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
 
 
 </properties>
