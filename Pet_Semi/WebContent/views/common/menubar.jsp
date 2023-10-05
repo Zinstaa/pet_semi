@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.kh.pet.member.model.vo.Member" %>
 <%
-   Member loginUser = (Member)session.getAttribute("loginUser");
+Member loginUser = (Member)session.getAttribute("loginUser");
 
-   String contextPath = request.getContextPath();
+String alertMsg = (String)session.getAttribute("alertMsg");
+String contextPath = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -74,7 +75,7 @@
    }
 
    #member_login > div {
-      height: 100%;
+      height: auto;
       float: left;
    }
    #member-info{
@@ -144,7 +145,6 @@
       float: left;
    }
 
-
    #btn_img{
       background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
       background-size: auto;
@@ -154,6 +154,7 @@
         cursor: pointer;
       background-repeat: no-repeat;
    }
+
    /* 네비게이션 바 css*/
    .navbar {
       margin : 0;
@@ -163,6 +164,7 @@
       border-bottom: 2px  solid lightgray;
       line-height: 100%;
       height: 70px;
+      box-shadow: 1px 1px 1px 1px lightgray;
    }
 
    .navbar ul, .navbar li {
@@ -220,6 +222,14 @@
 </style>
 </head>
 <body>
+<script>
+		var msg = '<%= alertMsg %>';
+		if(msg != 'null'){
+		alert(msg);
+		}
+	<% session.removeAttribute("alertMsg");	%>
+	</script>
+
    <br><br>
    <!-- 로고 위치 -->
    
@@ -250,10 +260,11 @@
          </form>
          <script>
             function loginPage(){
-               location.href = "<%= contextPath %>/views/member/loginPage.jsp"
+               location.href = "<%= contextPath %>/login.mem"
             }
             function enrollPage(){
-            	location.href = "<%= contextPath %>/views/member/enrollPage.jsp"
+            	location.href = "<%= contextPath %>/enroll.me"
+            	
             }
          </script>
          

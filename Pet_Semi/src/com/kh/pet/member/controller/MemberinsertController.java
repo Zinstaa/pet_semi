@@ -1,6 +1,7 @@
 package com.kh.pet.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,15 +57,16 @@ public class MemberinsertController extends HttpServlet {
 		m.setAge(age);
 		m.setGender(gender);
 		
-		
 		int result = new MemberService().insertMember(m);
-		
+
 		if(result > 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg","회원가입성공~!");
 			response.sendRedirect(request.getContextPath());
+			
 		}else {
 			request.setAttribute("alertMsg", "회원가입에 실패 했습니다....");
+			
 		}
 		
 	}

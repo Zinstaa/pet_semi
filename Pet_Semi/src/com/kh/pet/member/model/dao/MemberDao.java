@@ -148,14 +148,15 @@ private Properties prop = new Properties();
 				pstmt.setString(7, m.getAddress());
 				pstmt.setString(8, m.getAge());
 				pstmt.setString(9, m.getGender());
+				
+				result = pstmt.executeUpdate();
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				close(pstmt);
 			}
 			return result;
-	
-		
 	}
 }
 		

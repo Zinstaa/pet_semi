@@ -68,7 +68,7 @@
 		)
 		VALUES
 		(
-		SEQ_UNO.NEXTVAL,
+		MEMBER_SEQ.NEXTVAL,
 		?,
 		?,
 		?,
