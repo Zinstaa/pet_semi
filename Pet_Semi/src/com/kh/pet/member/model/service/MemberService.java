@@ -55,9 +55,16 @@ public class MemberService {
 		return m;
 	}
 	
-	public void memberStatus(String us) {
+	public int memberStatus(int no, String us) {
 		Connection conn = getConnection();
-		new MemberDao().memberStatus(conn, us);
+		int result = new MemberDao().memberStatus(conn, no, us);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 }

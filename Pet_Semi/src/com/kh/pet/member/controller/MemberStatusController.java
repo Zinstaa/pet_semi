@@ -41,8 +41,9 @@ public class MemberStatusController extends HttpServlet {
 		}
 		System.out.println(us);
 		
-		//new MemberService().memberStatus(us);
-	
+		int result = new MemberService().memberStatus(no, us);
+		
+		
 	}
 
 	/**

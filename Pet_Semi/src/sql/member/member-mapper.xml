@@ -84,6 +84,8 @@
 			MEMBER
 		SET
 			STATUS = ?
+		WHERE
+			MEMBER_NO = ?
 	</entry>
 	
 	

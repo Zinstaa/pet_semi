@@ -144,7 +144,7 @@
 			<div id="btn">
 				
 					<div class="btn-btn" id="toggle-btn">
-						<input type="hidden" name="memberNo" value="<%=m.getMemberNo() %>">
+						<input type="hidden" id="no" name="memberNo" value="<%=m.getMemberNo() %>">
 						<label class="switch">
 						<input type="checkbox" onclick="toggle(this)" id="memStatus">
 						<span class="slider round"></span>
@@ -160,7 +160,7 @@
 									console.log(status.checked);
 									console.log(status.value);
 									const no = document.getElementsByName('memberNo');
-									console.log(no);
+									console.log(no[0].value);
 								}
 								 
 								
@@ -170,7 +170,7 @@
 											url : 'status.me',
 											data : {
 												//status : $('#memStatus').val()
-												//no : $('#memberNo').val(),
+												no : $('#no').val(),
 												status : $('#memStatus').is(':checked')
 											},
 											success : function(result){

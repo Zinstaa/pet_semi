@@ -199,7 +199,7 @@ private Properties prop = new Properties();
 		return m;
 	}
 	
-	public void memberStatus(Connection conn, String us) {
+	public int memberStatus(Connection conn, int no, String us) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("memberStatus");
@@ -207,6 +207,7 @@ private Properties prop = new Properties();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, us);
+			pstmt.setInt(2, no);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -215,7 +216,7 @@ private Properties prop = new Properties();
 		}finally {
 			close(pstmt);
 		}
-		
+		return result;
 	}
 }
 		
