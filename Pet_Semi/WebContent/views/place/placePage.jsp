@@ -30,7 +30,7 @@
     #place_search {
         width: 25%;
         float: left;
-        height: 75%;
+        height: 85%;
         margin-top: 100px;
     }
     
