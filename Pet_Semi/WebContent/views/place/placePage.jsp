@@ -8,7 +8,7 @@
 <style>
     div {
         box-sizing: border-box;
-        /*border: 1px solid red;*/
+        border: 1px solid red;
     }
     h2 {
         text-align: center;
@@ -103,6 +103,7 @@
 
     #place_category {
         height: 70%;
+        background-color: #ffea97;
     }
 
 

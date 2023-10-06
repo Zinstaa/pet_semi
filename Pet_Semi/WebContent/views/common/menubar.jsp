@@ -59,7 +59,7 @@ String contextPath = request.getContextPath();
    }
 
    .head_login{
-      margin-top: 30px;
+      margin-top: 40px;
       width : 25%;
       height: 20%;
       float: right;
@@ -105,7 +105,6 @@ String contextPath = request.getContextPath();
       line-height: 20px;
       color : black;
       font-size:  18px;
-      text-decoration : none;
    }
 
    #admin_login {
@@ -143,13 +142,12 @@ String contextPath = request.getContextPath();
       height: 75%;
       float: right;
    }
-
    #login_info a{
       display: block;
       color : black;
       font-weight : bold;
       font-size:  18px;
-      width : 100%;
+      width : 32%;
       height: 75%;
       float: left;
    }
@@ -281,7 +279,7 @@ String contextPath = request.getContextPath();
          <div id="search">
             <input type="button" id="btn_img">
          </div>
-         <div id="admin_login"> <!--style="display: none;"-->
+         <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
                   <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
@@ -338,7 +336,7 @@ String contextPath = request.getContextPath();
                <a href="#">커뮤니티</a>
                <ul>
                   <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
-                  <li><a href="<%= contextPath %>/promotionList.pr">홍보게시판</a></li>
+                  <li><a href="#">홍보게시판</a></li>
                </ul>
             </li>
          </div>
