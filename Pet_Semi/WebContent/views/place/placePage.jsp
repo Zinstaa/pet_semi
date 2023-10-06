@@ -195,7 +195,7 @@
 
 
 
-    <br><br><br><br><br><br><br<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div id="top">
         <a id="toTop" href="#">
            <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
@@ -209,7 +209,7 @@
             $(window).scroll(function() {
             if ($(this).scrollTop() > 500) { //250 넘으면 버튼이 보여짐니다.
                     $('#toTop').fadeIn();
-                    $('#toTop').css('left', $('#sidebar').offset().left);  // #sidebar left:0 죄표
+                    $('#toTop').css('left', $('#sidebar').offset());  // #sidebar left:0 죄표
                     } else {
                     $('#toTop').fadeOut();
             }
