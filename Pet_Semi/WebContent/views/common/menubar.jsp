@@ -105,6 +105,7 @@ String contextPath = request.getContextPath();
       line-height: 20px;
       color : black;
       font-size:  18px;
+      text-decoration : none;
    }
 
    #admin_login {
@@ -142,6 +143,7 @@ String contextPath = request.getContextPath();
       height: 75%;
       float: right;
    }
+
    #login_info a{
       display: block;
       color : black;

@@ -55,6 +55,13 @@
         margin-top: 10px;
     }
 
+    input#place-search {
+        background:url('https://svgsilh.com/svg/1093183.svg');
+        background-repeat: no-repeat;
+        width:40px;
+        height:40px;
+    }
+
     #place-search-symbol {
         float: left;
     }
@@ -66,6 +73,8 @@
     #place_category {
         height: 70%;
     }
+
+
 
 
 
@@ -109,8 +118,8 @@
                 <h1>어댕가지 검색</h1>
                 <form id="place-search-form" action="<%=contextPath%>/place.pl" method="get">
                     <div id="place-search-input">
-                        <input type="text" name="placeName" id="form-control" required>
-                        <input type="button" name="" id="">
+                        <input type="text" name="place-name" id="place-name" required>
+                        <input type="submit" name="place-search" id="place-search" value="">
                     </div>
                     <div id="place-search-symbol">
                         <a id="food" class="symbol" href="#">
