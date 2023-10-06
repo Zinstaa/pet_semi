@@ -40,6 +40,9 @@ public class MemberSearchListController extends HttpServlet {
 		String memberCondition = request.getParameter("memberCondition");
 		String memberSearch = request.getParameter("memberSearch");
 		
+		//System.out.println(memberCondition);
+		//System.out.println(memberSearch);
+		
 		//값이 두개이기 떄문에 굳이 가공없이 넘기자
 		ArrayList<Member> list = new MemberService().searchMember(memberCondition, memberSearch);
 		
