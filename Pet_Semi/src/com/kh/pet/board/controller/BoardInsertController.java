@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -48,7 +49,18 @@ public class BoardInsertController extends HttpServlet {
 			MultipartRequest multiRequest =
 					new MultipartRequest(request, savePath, maxSize, "UTF-8",
 										 new MyFileRenamePolicy());
+			
+			String name = multiRequest.getParameter("name");
+			String content = multiRequest.getParameter("content");
+			String memberNo = multiRequest.getParameter("userNo");
+			
+			Board b = new Board();
+			b.setBoardName(name);
+			b.setBoardContent(content);
+			b.setMemberNo(memberNo);
 		}
+		
+		
 		
 		
 	}

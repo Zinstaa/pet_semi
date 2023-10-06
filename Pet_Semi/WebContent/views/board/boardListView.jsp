@@ -258,6 +258,6 @@ window.onclick = function(event) {
 		<br><br><br><br>
 	</div>
 
-	
+	<%@ include file = "../common/footer.jsp" %>
 </body>
 </html>
