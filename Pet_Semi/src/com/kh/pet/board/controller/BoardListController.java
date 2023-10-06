@@ -1,6 +1,7 @@
 package com.kh.pet.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.board.model.service.BoardService;
+import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.common.model.PageInfo;
 
 /**
@@ -67,7 +69,11 @@ public class BoardListController extends HttpServlet {
 		
 		//System.out.println(pi);
 		
-		new BoardService().selectList(pi);
+		ArrayList<Board> list = new BoardService().selectList(pi);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
+		
 		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 		

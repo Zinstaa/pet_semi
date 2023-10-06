@@ -3,24 +3,7 @@
 <properties>
 	<comment>홍보게시판 관련 SQL문</comment>
 	<entry key="selectThumbnailList">
-		SELECT
-			  PROMOTION_BOARD_NUMBER,
-			  PROMOTION_BOARD_TITLE,
-			  PROMOTION_VIEW,
-			  FILE_PATH||'/'||CHANGE_NAME TITLEIMG
-		 FROM
-		 	  BOARD
-		 JOIN
-		 	  ATTACHMENT ON(BOARD_NO = REF_BNO)
-		WHERE
-			  BOARD_TYPE = 2
-		  AND
-		  	  FILE_LEVEL = 1
-		  AND
-		  	  BOARD.STATUS = 'Y'
-		ORDER
-		   BY
-		   	  BOARD_NO DESC
+		
 	</entry>
 
 

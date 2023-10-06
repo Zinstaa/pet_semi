@@ -26,12 +26,13 @@
             </div>
         <% } %> 
 
+
         <div class="list-area">
             <!-- 등록된 게시글이 없을 경우 -->
             등록된 게시글이 없어.
             <!-- 등록된 게시글이 존재해. -->
             <div class="promotion" align="center">
-                <img src="https://ibb.co/wg3Ch3s" alt="노을">
+                <img src="https://url.kr/url.png" alt="노을">
                 <p>
                     no.1 / 노을<br>
                     조회수 : 12 
