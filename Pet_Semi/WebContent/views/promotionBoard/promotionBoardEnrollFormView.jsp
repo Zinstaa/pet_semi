@@ -8,6 +8,8 @@
 <style>
     #enroll-form > table{
         border: 1px solid gray;
+        width: 400px;
+        height: 600px;
     }
 
     #enroll-form input, #enroll-form textarea {
