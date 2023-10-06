@@ -59,7 +59,7 @@ String contextPath = request.getContextPath();
    }
 
    .head_login{
-      margin-top: 40px;
+      margin-top: 30px;
       width : 25%;
       height: 20%;
       float: right;
