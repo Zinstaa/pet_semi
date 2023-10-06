@@ -23,7 +23,7 @@ public class MemberService {
 	}
 	
 	public ArrayList<Member> searchMember(String memberCondition, String memberSearch) {
-		System.out.println(123);
+		//System.out.println(123);
 		Connection conn = getConnection();
 		
 		ArrayList<Member> list = new MemberDao().searchMember(conn, memberCondition, memberSearch);
