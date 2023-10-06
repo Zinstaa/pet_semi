@@ -80,7 +80,7 @@
 				 </tr>
 			</table>
 			<div id=insertmembercheck>
-				<button type="submit" disabled >회원가입</button>
+				<button type="submit" disabled  onclick = "return validate();">회원가입</button>
 				<button type="reset">취소</button>
 			</div>
 		</form>
@@ -114,9 +114,15 @@
 		}
 	</script>
 	<script>
-		if(memberPwd1 != memberPwd2){
-			$("#pwdcheck2").show();
-		}
+	 function validate(){
+         // 유효성 검사 : 아이디, 비밀번호, 비밀번호 일치, 이름
+         let memberPwd1 = document.getElementById('memberPwd1');
+         let memberPwd2 = document.getElementById('memberPwd2');
+	
+	if(memberPwd1.value != memberPwd2.value){
+        alert('비밀번호가달라요~');
+        return false;
+    }
 	</script>
 
 </body>
