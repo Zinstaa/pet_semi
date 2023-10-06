@@ -226,7 +226,7 @@ String contextPath = request.getContextPath();
       padding: 0;
    }
    
-      .outer{
+   .outer{
    		width : 1200px;
    		margin : auto;
    		height : 600px;
@@ -234,6 +234,7 @@ String contextPath = request.getContextPath();
    		margin-top : 5px;
    		color : black;
    }
+   
    .myouter{
    		width : 1200px;
    		margin : auto;
