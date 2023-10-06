@@ -229,16 +229,12 @@ window.onclick = function(event) {
 		<br><br>
 
 		<div class="paging-area" align="center">
-			<button class="btn btn-outline-secondary">[1]</button>
-			<button class="btn btn-outline-secondary">[2]</button>
-			<button class="btn btn-outline-secondary">[3]</button>
-			<button class="btn btn-outline-secondary">[4]</button>
-			<button class="btn btn-outline-secondary">[5]</button>
-			<button class="btn btn-outline-secondary">[6]</button>
-			<button class="btn btn-outline-secondary">[7]</button>
-			<button class="btn btn-outline-secondary">[8]</button>
-			<button class="btn btn-outline-secondary">[9]</button>
-			<button class="btn btn-outline-secondary">[10]</button>
+			
+			<% for(int i = startPage; i <= endPage; i++) { %>
+			
+				<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%=i %>'" class="btn btn-outline-secondary"><%= i %></button>
+			
+			<% } %>
 		</div>
 
 		<br><br>
