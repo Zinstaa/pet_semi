@@ -29,13 +29,16 @@
 
         <div class="list-area">
             <!-- 등록된 게시글이 없을 경우 -->
-            등록된 게시글이 없어.
+            <!-- 등록된 게시글이 없어. -->
             <!-- 등록된 게시글이 존재해. -->
             <div class="promotion" align="center">
-                <img src="https://url.kr/url.png" width="400" alt="노을">
+                <img src="https://url.kr/url.png" width="300" alt="노을">
                 <p>
                     no.1 / 노을<br>
-                    조회수 : 12 
+                    조회수 : 12 <br>
+                    업체회원만 게시글 등록하게끔 하는 방법 고민중... 일단 로그인하면 무조건 게시글 등록 가능하게끔 만들기 <br>
+                    현재 공부중... <br>
+                    천천히라도 일단 개념부터 다시 공부해보기... <br>
                 </p>
             </div>
         </div>
