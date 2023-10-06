@@ -46,7 +46,7 @@ String contextPath = request.getContextPath();
 
    .header > div{
       float: left;
-      height: 100%
+      height: 50%
    }
 
    .head_logo{
@@ -59,10 +59,12 @@ String contextPath = request.getContextPath();
    }
 
    .head_login{
+      margin-top: 40px;
       width : 25%;
-      height: 40%;
+      height: 20%;
       float: right;
    }
+   
    .head_login > #login-bar{
       width : 30%;
       height: 40%;
@@ -71,7 +73,6 @@ String contextPath = request.getContextPath();
 
    .head_login > div{
       float: left;
-      height: 40%;
    }
 
    #member-info{
@@ -93,14 +94,10 @@ String contextPath = request.getContextPath();
 		
 	}
 
-	
-<!-->>>>>>> Stashed changes-->
-
    #bar {
       text-align: center;
-      line-height: 100px;
+      line-height: 35px;
       color : black;
-      margin-top: 5px;
    }
 
    #login > button,  #access > button {
@@ -110,10 +107,10 @@ String contextPath = request.getContextPath();
       font-size:  18px;
    }
 
-   #member_login>#admin_login {
+   #admin_login {
       height: 100%;
       width: 1200px;
-      margin: auto;
+      padding-left: 100px;
    }
 
    .header > a, #admin_login a{
@@ -145,7 +142,7 @@ String contextPath = request.getContextPath();
       height: 75%;
       float: right;
    }
-   #login_info>#login_bar>tr>a{
+   #login_info a{
       display: block;
       color : black;
       font-weight : bold;
@@ -282,15 +279,15 @@ String contextPath = request.getContextPath();
          <div id="search">
             <input type="button" id="btn_img">
          </div>
-         <div id="admin_login" align="right">
-         <table>
-            <tr>
-               <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
-               <td> &nbsp; | &nbsp; </td>
-               <td><a href="#">리뷰관리</a></td>
-            </tr>
-         </table>
-      </div>
+         <div id="admin_login"> <!--style="display: none;"-->
+            <table>
+               <tr>
+                  <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
+                  <td> &nbsp; | &nbsp; </td>
+                  <td><a href="#">리뷰관리</a></td>
+               </tr>
+            </table>
+         </div>
          
       </div> <!-- <div class="head_login"> 닫히는부분 -->
          <script>
@@ -318,7 +315,7 @@ String contextPath = request.getContextPath();
          </div>
          <%} %>
       </div>
-      </div>
+   </div>
 
    <br>
    <!-- 네비게이션 바 위치 -->
