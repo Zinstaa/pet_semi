@@ -30,15 +30,18 @@ public class MemberStatusController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String checked = request.getParameter("status");
+		int no = Integer.parseInt(request.getParameter("no"));
 		System.out.println(checked);
+		System.out.println(no);
 		String us = "";
 		if(checked.equals("true")) {
-			us = "U";
-		}else {
 			us = "S";
+		}else {
+			us = "U";
 		}
 		System.out.println(us);
 		
+		//new MemberService().memberStatus(us);
 	
 	}
 

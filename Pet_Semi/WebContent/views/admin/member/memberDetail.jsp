@@ -142,60 +142,63 @@
 				<img src="https://svgsilh.com/svg/2098873-795548.svg" width="150" height="150" alt="">
 			</div>
 			<div id="btn">
-				<form action="<%=contextPath%>/status.me?mno=<%=m.getMemberNo()%>">
+				
 					<div class="btn-btn" id="toggle-btn">
-					<label class="switch">
-					  <input type="checkbox" onclick="toggle(this)" id="memStatus">
-					  <span class="slider round"></span>
-					</label>
-					<p>정상</p><p style="display:none;">정지</p>
-					<script>
-						var check = $("input[type='checkbox']");
-						check.click(function(){
-							$("p").toggle();
-						});
-						
-						function toggle(status){
-							console.log(status.checked);
-							console.log(status.value);
-							console.log();
-							
-						}
-						
-						$(function(){
-							$('#memStatus').click(function(){
-								$.ajax({
-									url : 'status.me',
-									data : {
-										//status : $('#memStatus').val()
-										status : $('#memStatus').is(':checked')
-									},
-									success : function(result){
-										console.log('AJAX성공');
-										alert('회원상태를 정상적으로 변경하였습니다.');
-									},
-									error : function(e){
-										alert('회원상태를 정상적으로 변경하지 못했습니다.');
-									}
-									
-								})
-								
-							})
-						})
-					</script>
-					<!--  
-						<span>정지</span>
-						<input type="checkbox" id="switch" name= "status" value="S">
-						<label for="switch" class="switch_label">
-							<span class="onf_btn"></span>
+						<input type="hidden" name="memberNo" value="<%=m.getMemberNo() %>">
+						<label class="switch">
+						<input type="checkbox" onclick="toggle(this)" id="memStatus">
+						<span class="slider round"></span>
 						</label>
+						<p>정상</p><p style="display:none;">정지</p>
+							<script>
+								var check = $("input[type='checkbox']");
+								check.click(function(){
+									$("p").toggle();
+								});
+								
+								function toggle(status){
+									console.log(status.checked);
+									console.log(status.value);
+									const no = document.getElementsByName('memberNo');
+									console.log(no);
+								}
+								 
+								
+								$(function(){
+									$('#memStatus').click(function(){
+										$.ajax({
+											url : 'status.me',
+											data : {
+												//status : $('#memStatus').val()
+												//no : $('#memberNo').val(),
+												status : $('#memStatus').is(':checked')
+											},
+											success : function(result){
+												console.log('AJAX성공');
+												alert('회원상태를 정상적으로 변경하였습니다.');
+											},
+											error : function(e){
+												alert('회원상태를 정상적으로 변경하지 못했습니다.');
+											}
+											
+										})
+										
+									})
+								})
+							</script>
+							<!--  
+								<span>정지</span>
+								<input type="checkbox" id="switch" name= "status" value="S">
+								<label for="switch" class="switch_label">
+									<span class="onf_btn"></span>
+								</label>
+								-->
+					</div>
+					<!--
+						<div class="btn-btn" id="submit-btn">
+							<input type="submit" value="적용">
+						</div>
 						-->
-					</div>
-					<div class="btn-btn" id="submit-btn">
-					<input type="submit" value="적용">
-					</div>
-					
-				</form>
 			</div>
 		</div>
 		<div class="detail" id="inform">

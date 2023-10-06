@@ -198,5 +198,24 @@ private Properties prop = new Properties();
 		}
 		return m;
 	}
+	
+	public void memberStatus(Connection conn, String us) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("memberStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, us);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+	}
 }
 		

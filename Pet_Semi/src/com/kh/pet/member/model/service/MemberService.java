@@ -54,5 +54,10 @@ public class MemberService {
 		
 		return m;
 	}
+	
+	public void memberStatus(String us) {
+		Connection conn = getConnection();
+		new MemberDao().memberStatus(conn, us);
+	}
 
 }

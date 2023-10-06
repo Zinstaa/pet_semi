@@ -79,5 +79,12 @@
 		)
 	</entry>
 	
+	<entry key="memberStatus">
+		UPDATE
+			MEMBER
+		SET
+			STATUS = ?
+	</entry>
+	
 	
 </properties>
