@@ -5,7 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가이이입~</title>
-
+<style>
+ #enroll-form{
+ 	margin-left : 370px;
+ }
+ #insertmembercheck{
+ 	margin-left : 150px;
+ }
+</style>
 </head>
 
 <body>
@@ -15,21 +22,23 @@
 		<h2 align="center">회원가입</h2>
 		<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
 		<form id="enroll-form" action="<%=contextPath %>/insert.me">
-			<table align="center">
+			<table>
 				<tr>
 					<td>*아이디 </td>
 					<td><input type="text" name ="memberId" maxlength="20" required placeholder="20자리이하로입력"></td>
-					<!-- <td>중복체크</td> -->
+					<th><button type="button" onclick="idCheck();">중복체크</button></th> 
 				</tr>
 				
 				<tr>
 					<td>*비밀번호 </td>
-					<td><input type="password" name ="memberPwd" maxlength="15" required ></td>
+					<td><input type="password" id="memberPwd1" name ="memberPwd" maxlength="15" required ></td>
 				</tr>
 				
 				<tr>
 					<td>*비밀번호 확인 </td>
-					<td><input type="password" maxlength="15" required></td>
+					<td><input type="password" id="memberPwd2" maxlength="15" required></td>
+					<th hidden id=pwdcheck1>비밀번호가 일치합니다</th>
+					<th hidden id=pwdcheck2>비밀번호가 일치하지 않습니다</th>
 				</tr>
 				
 				<tr>
@@ -70,14 +79,51 @@
 					 </td>
 				 </tr>
 			</table>
-			<div align="center">
-				<button type="submit">회원가입</button>
+			<div id=insertmembercheck>
+				<button type="submit" disabled  onclick = "return validate();">회원가입</button>
 				<button type="reset">취소</button>
 			</div>
-			
-		
 		</form>
 	</div>
+	
+	<script>
+		function idCheck(){
+			const $memberId = $('#enroll-form input[name=memberId]');
+			
+			$.ajax({
+				url : 'idcheck.me',
+				data : {checkId : $memberId.val()},
+				success : function(result){
+					if(result == 'US'){
+						alert('사용이 불가능한 아이디입니다');
+						$memberId.val('').focus();
+					}else{
+						if(confirm('사용이 가능한 아이디입니다 (확인을누르면 아이디수정 불가능)')){
+							$memberId.attr('readonly',true);
+							
+							$('#enroll-form button[type=submit]').removeAttr('disabled');
+						} else {
+							$memberId.focus();
+						};
+					}
+				},
+				eorror : function() {
+					console.log('아이디 중복체크 AJAX통신 실패');
+				}
+			});
+		}
+	</script>
+	<script>
+	 function validate(){
+         // 유효성 검사 : 아이디, 비밀번호, 비밀번호 일치, 이름
+         let memberPwd1 = document.getElementById('memberPwd1');
+         let memberPwd2 = document.getElementById('memberPwd2');
+	
+	if(memberPwd1.value != memberPwd2.value){
+        alert('비밀번호가달라요~');
+        return false;
+    }
+	</script>
 
 </body>
 </html>

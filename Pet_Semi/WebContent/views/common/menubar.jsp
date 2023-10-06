@@ -105,7 +105,6 @@ String contextPath = request.getContextPath();
       line-height: 20px;
       color : black;
       font-size:  18px;
-      text-decoration : none;
    }
 
    #admin_login {
@@ -143,13 +142,12 @@ String contextPath = request.getContextPath();
       height: 75%;
       float: right;
    }
-
    #login_info a{
       display: block;
       color : black;
       font-weight : bold;
       font-size:  18px;
-      width : 100%;
+      width : 32%;
       height: 75%;
       float: left;
    }
@@ -201,6 +199,10 @@ String contextPath = request.getContextPath();
       color: #ffce50;
    } 
 
+   .nav_sub:hover{
+      color: #ffce50;
+      cursor: pointer;
+   } 
    .menu > li > ul {
       z-index: 1;
       position: relative;
@@ -228,7 +230,7 @@ String contextPath = request.getContextPath();
       padding: 0;
    }
    
-      .outer{
+   .outer{
    		width : 1200px;
    		margin : auto;
    		height : 600px;
@@ -236,6 +238,7 @@ String contextPath = request.getContextPath();
    		margin-top : 5px;
    		color : black;
    }
+   
    .myouter{
    		width : 1200px;
    		margin : auto;
@@ -281,7 +284,7 @@ String contextPath = request.getContextPath();
          <div id="search">
             <input type="button" id="btn_img">
          </div>
-         <div id="admin_login"> <!--style="display: none;"-->
+         <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
                   <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
@@ -330,15 +333,15 @@ String contextPath = request.getContextPath();
          </div>
          <div class="menu" id="pl">
             <li>
-               <a href="#">플레이스</a>
+               <a href="<%= contextPath %>/place.pl">플레이스</a>
             </li>
          </div>
          <div class="menu" id="co">
             <li>
-               <a href="#">커뮤니티</a>
+               <a class="nav_sub">커뮤니티</a>
                <ul>
                   <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
-                  <li><a href="#">홍보게시판</a></li>
+                  <li><a href="<%= contextPath %>/promotionList.pr">홍보게시판</a></li>
                </ul>
             </li>
          </div>
@@ -349,7 +352,7 @@ String contextPath = request.getContextPath();
          </div>
          <div class="menu" id="me">
             <li>
-               <a href="#">고객센터</a>
+               <a class="nav_sub">고객센터</a>
                <ul>
                   <li><a href="#">공지사항</a></li>
                   <li><a href="#">Q&A</a></li>

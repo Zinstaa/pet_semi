@@ -66,5 +66,13 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+	
+	public int idCheck(String checkId) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int count = new MemberDao().idCheck(conn, checkId);
+		close(conn);
+		return count;
+	}
 
 }

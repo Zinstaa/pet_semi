@@ -5,24 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+    #place-content {
+        width: 250px;
+        height: 200px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background-color: #FFF8DB;
+    }
+</style>
 </head>
 <body>
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
-    <br>asd
+    <div id="place-content">
+
+    </div>
 </body>
 </html>

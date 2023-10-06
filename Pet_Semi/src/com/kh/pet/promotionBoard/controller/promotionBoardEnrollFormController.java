@@ -1,44 +1,35 @@
 package com.kh.pet.promotionBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.promotionBoard.model.service.PromotionBoardService;
-import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
-
 /**
- * Servlet implementation class promotionBoardListController
+ * Servlet implementation class promotionBoardEnrollFormController
  */
-@WebServlet("/promotionList.pr")
-public class promotionBoardListController extends HttpServlet {
+@WebServlet("/promotionEnroll.pr")
+public class promotionBoardEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @return 
      * @see HttpServlet#HttpServlet()
      */
-    public promotionBoardListController() {
+    public promotionBoardEnrollFormController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 화면 띄우기전 => 테이블로부터 조회 
 		
-		
-		request.getRequestDispatcher("views/promotionBoard/promotionBoardListView.jsp").forward(request, response);
-		
+		// 포워딩 해줄건데 아직 없으니까 미리 적어줍시다~
+		request.getRequestDispatcher("views/promotionBoard/promotionBoardEnrollFormView.jsp").forward(request, response);
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,5 +40,3 @@ public class promotionBoardListController extends HttpServlet {
 	}
 
 }
-
-

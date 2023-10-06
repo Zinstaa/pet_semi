@@ -17,8 +17,9 @@
 <title>자유게시판 목록</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    .outer{
+    .outer1{
         width: 1200px;
+		height: 750px;
         margin : auto;
         background-color: #fff5ce;
         margin-top: 5px;
@@ -41,6 +42,7 @@
 		color: balck;
 		padding: 16px;
 		font-size: 16px;
+		margin-left: 100px;
 		border: 1px solid lightgray;
 		cursor: pointer;
 		text-align: left;
@@ -55,7 +57,7 @@
 		position: relative;
 		display: inline-block;
 	}
-
+	
 	.dropdown-content {
 		display: none;
 		position: absolute;
@@ -64,6 +66,7 @@
 		overflow: auto;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 1;
+		margin-left: 100px;
 	}
 
 	.dropdown-content a {
@@ -101,7 +104,7 @@
 
 	.topnav input[type=text] {
 	padding: 15px;
-	margin-left: 645px;
+	margin-left: 470px;
 	font-size: 17px;
 	border: 1px solid gray;
 	}
@@ -140,10 +143,12 @@
 	
 	<%@ include file="../common/menubar.jsp" %>
 	
-	<div class="outer">
-		<br>
+	<div class="outer1">
+		<br><br><br><br><br>
 		<h2 align="center">커뮤니티</h2>
 		<br>
+		
+		
 		
 <span class="dropdown">
   <button onclick="myFunction()" class="dropbtn">커뮤니티 ▽</button>
@@ -188,15 +193,16 @@ window.onclick = function(event) {
 
 <hr>
 
+	
 
 		<table class="list-area" align="center">
 			<thead>
 				<tr>
 					<th width="100">글번호</th>
-					<th width="300">제목</th>
+					<th width="500">제목</th>
 					<th width="100">작성자</th>
 					<th width="100">조회수</th>
-					<th width="100">작성일</th>
+					<th width="200">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -216,17 +222,20 @@ window.onclick = function(event) {
 						<td><%= b.getBoardDate() %></td>
 					</tr>
 					<% } %>
-				<!-- <tr>
-					<td>1</td>
-					<td>게시글테스트</td>
-					<td>홍길동</td>
-					<td>50</td>
-					<td>2023-09-27</td>
-				</tr> -->
 				<% } %>
 			</tbody>
 		</table>
-		<br><br>
+		<br>
+		
+		<div align="right" style="width:1100px;">
+		
+			<% if(loginUser != null) { %>
+				<a href="<%= contextPath %>/enrollForm.bo" class="btn btn-sm btn-primary">글작성</a>
+				<br><br>
+			<% } %>
+		</div>
+		
+		
 
 		<div class="paging-area" align="center">
 			<%if(currentPage != 1) { %>
@@ -247,7 +256,7 @@ window.onclick = function(event) {
 			
 		</div>
 
-		<br><br>
+		<br><br><br><br>
 	</div>
 
 	

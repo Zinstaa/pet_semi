@@ -1,44 +1,45 @@
-package com.kh.pet.promotionBoard.controller;
+package com.kh.pet.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.promotionBoard.model.service.PromotionBoardService;
-import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
+import com.kh.pet.member.model.service.MemberService;
 
 /**
- * Servlet implementation class promotionBoardListController
+ * Servlet implementation class MemberIdCheckController
  */
-@WebServlet("/promotionList.pr")
-public class promotionBoardListController extends HttpServlet {
+@WebServlet("/idcheck.me")
+public class MemberidCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @return 
      * @see HttpServlet#HttpServlet()
      */
-    public promotionBoardListController() {
+    public MemberidCheckController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 화면 띄우기전 => 테이블로부터 조회 
+		String checkId = request.getParameter("checkId");
 		
+		int count = new MemberService().idCheck(checkId);
+		response.setContentType("text/html; charset=UTF-8");
 		
-		request.getRequestDispatcher("views/promotionBoard/promotionBoardListView.jsp").forward(request, response);
+		if(count > 0) {
+			response.getWriter().print("US");
+		} else {
+			response.getWriter().print("UU");
+		}
 		
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,5 +50,3 @@ public class promotionBoardListController extends HttpServlet {
 	}
 
 }
-
-
