@@ -147,7 +147,7 @@ String contextPath = request.getContextPath();
       color : black;
       font-weight : bold;
       font-size:  18px;
-      width : 32%;
+      width : 100%;
       height: 75%;
       float: left;
    }
