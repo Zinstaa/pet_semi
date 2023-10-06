@@ -158,5 +158,45 @@ private Properties prop = new Properties();
 			}
 			return result;
 	}
+	
+	public Member detailMember(Connection conn, int memberNo){
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		//ArrayList<Member> list = new ArrayList();
+		Member m = new Member();
+		
+		
+		String sql = prop.getProperty("detailMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				m = new Member(rset.getInt("MEMBER_NO"),
+						   rset.getString("MEMBER_ID"),
+						   rset.getString("MEMBER_PWD"),
+						   rset.getString("MEMBER_NAME"),
+						   rset.getString("EMAIL"),
+						   rset.getString("PHONE"),
+						   rset.getString("NICKNAME"),
+						   rset.getString("ADDRESS"),
+						   rset.getString("AGE"),
+						   rset.getString("GENDER"),
+						   rset.getDate("ENROLL_DATE"),
+						   rset.getString("STATUS"));
+				//list.add(m);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
 }
 		
