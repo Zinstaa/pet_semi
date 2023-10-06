@@ -19,6 +19,7 @@
         width: 1200px;
         height: 1000px;
         margin: auto;
+        padding-top: 125px;
     }
 
     #place_Main a {
@@ -165,7 +166,7 @@
 </head>
 <body>
     <%@ include file = "../common/menubar.jsp" %>
-    <br><br><br><br><br>
+    
     <div id="place_Main">
         <h2> 플레이스 </h2>
 

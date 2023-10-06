@@ -21,8 +21,8 @@
         width: 1200px;
 		height: 750px;
         margin : auto;
+		padding-top: 125px;
         background-color: #fff5ce;
-        margin-top: 5px;
         color: black;
     }
     
@@ -144,7 +144,6 @@
 	<%@ include file="../common/menubar.jsp" %>
 	
 	<div class="outer1">
-		<br><br><br><br><br>
 		<h2 align="center">커뮤니티</h2>
 		<br>
 		

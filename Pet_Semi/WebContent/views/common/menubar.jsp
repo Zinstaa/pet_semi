@@ -186,16 +186,15 @@ String contextPath = request.getContextPath();
    		margin : auto;
    		height : 600px;
    		background-color : #fff5ce;
-   		margin-top : 5px;
    		color : black;
    }
    
    .myouter{
    		width : 1200px;
-   		margin : auto;
-   		height : 420px;
+   		margin: auto;
+         padding-top: 125px;
+   		height : 750px;
    		background-color : #fff5ce;
-   		margin-top : 5px;
    		color : black;
    }
 
@@ -205,10 +204,10 @@ String contextPath = request.getContextPath();
 <script>
 		var msg = '<%= alertMsg %>';
 		if(msg != 'null'){
-		alert(msg);
+		   alert(msg);
 		}  
 	<% session.removeAttribute("alertMsg");%>
-	</script>
+</script>
 
    <br><br>
    <!-- 로고 위치 -->
@@ -217,7 +216,7 @@ String contextPath = request.getContextPath();
          <h1>어댕가지~?</h1>
       </div>
       <div class="head_login">
-         <%if(loginUser==null) {%>
+         <% if(loginUser==null) {%>
          <div id="member_login"style="margin-top: 30px;">
             <div id="login">
                <button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
