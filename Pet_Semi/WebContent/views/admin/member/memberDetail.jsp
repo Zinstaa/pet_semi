@@ -156,6 +156,23 @@
 									$("p").toggle();
 								});
 								
+								let status = '<%=m.getStatus()%>'
+								console.log($(check).val());
+								console.log(status);
+								if(status == "S"){
+									$('#memStatus').attr('checked',true);
+								}
+									/*
+									$(check).filter(function(){
+										
+										if(!status.search($(this).val())){
+											$(this).attr('checked',true);
+											
+										}
+										
+									});
+									*/
+							
 								function toggle(status){
 									console.log(status.checked);
 									console.log(status.value);
