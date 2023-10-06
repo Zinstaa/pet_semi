@@ -1,11 +1,19 @@
 package com.kh.pet.board.controller;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.kh.pet.common.MyFileRenamePolicy;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class BoardInsertController
@@ -29,26 +37,18 @@ public class BoardInsertController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String memberNo = request.getParameter("memberNo");
-		System.out.println(memberNo);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		if(ServletFileUpload.isMultipartContent(request)) {
+			
+			int maxSize = 1024 * 1024 * 10;
+			
+			HttpSession session = request.getSession();
+			ServletContext application = session.getServletContext();
+			String savePath= application.getRealPath("/resources/board_upfiles/");
+			
+			MultipartRequest multiRequest =
+					new MultipartRequest(request, savePath, maxSize, "UTF-8",
+										 new MyFileRenamePolicy());
+		}
 		
 		
 	}

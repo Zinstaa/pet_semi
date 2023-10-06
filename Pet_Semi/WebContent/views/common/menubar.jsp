@@ -59,40 +59,19 @@ String contextPath = request.getContextPath();
    }
 
    .head_login{
-      margin-top: 30px;
       width : 25%;
       height: 20%;
       float: right;
    }
    
-   .head_login > #login-bar{
-      width : 30%;
-      height: 40%;
-      float: right;
-   }
-
    .head_login > div{
       float: left;
    }
 
-   #member-info{
-      height:25%;
-      float: right;
-   }
-	#member_login > div {
+	#member_login > div, #login_info > div{
 		height: 100%;
 		float: left;
-	}
-	#member_login > #member-name {
-		height: 50%;
-		float: left;
-	}
-	
-	#member_login > #member-bar {
-		height: 50%;
-		float: left;
-		
-	}
+	}	
 
    #bar {
       text-align: center;
@@ -109,11 +88,11 @@ String contextPath = request.getContextPath();
 
    #admin_login {
       height: 100%;
-      width: 1200px;
+      width: 300px;
       padding-left: 100px;
    }
 
-   .header > a, #admin_login a{
+   .header > a, #admin_login a, #login_info  a{
       text-decoration : none;
       width : 100%;
       height : 100%;
@@ -122,34 +101,6 @@ String contextPath = request.getContextPath();
       color : black;
       font-weight : bold;
       font-size:  18px;
-   }
-   
-   #login_info  {
-      display: block;
-      color : black;
-      font-weight : bold;
-      font-size:  18px;
-      width : 25%;
-      height: 100%;
-      float: right;
-   }
-   #login_info>#login_bar{
-      display: block;
-      color : black;
-      font-weight : bold;
-      font-size:  18px;
-      width : 100%;
-      height: 75%;
-      float: right;
-   }
-   #login_info a{
-      display: block;
-      color : black;
-      font-weight : bold;
-      font-size:  18px;
-      width : 32%;
-      height: 75%;
-      float: left;
    }
 
    #btn_img{
@@ -235,16 +186,15 @@ String contextPath = request.getContextPath();
    		margin : auto;
    		height : 600px;
    		background-color : #fff5ce;
-   		margin-top : 5px;
    		color : black;
    }
    
    .myouter{
    		width : 1200px;
-   		margin : auto;
-   		height : 420px;
+   		margin: auto;
+         padding-top: 125px;
+   		height : 750px;
    		background-color : #fff5ce;
-   		margin-top : 5px;
    		color : black;
    }
 
@@ -254,10 +204,10 @@ String contextPath = request.getContextPath();
 <script>
 		var msg = '<%= alertMsg %>';
 		if(msg != 'null'){
-		alert(msg);
+		   alert(msg);
 		}  
 	<% session.removeAttribute("alertMsg");%>
-	</script>
+</script>
 
    <br><br>
    <!-- 로고 위치 -->
@@ -265,9 +215,9 @@ String contextPath = request.getContextPath();
       <div class="head_logo">
          <h1>어댕가지~?</h1>
       </div>
-      <%if(loginUser==null) {%>
       <div class="head_login">
-         <div id="member_login">
+         <% if(loginUser==null) {%>
+         <div id="member_login"style="margin-top: 30px;">
             <div id="login">
                <button type="button" class="btn btn-link" onclick="loginPage();">로그인</button>
             </div>
@@ -281,9 +231,30 @@ String contextPath = request.getContextPath();
                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             </div>
          </div> <!--id="member_login" 닫히는부분-->
+         <div id="search" style="margin-top: 30px;">
+            <input type="button" id="btn_img">
+         </div>
+         <%} else { %>
+         <b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
+         <div id="login_info">
+            <div id="mypage">
+               <a href="<%= contextPath %>/mypage.me">마이페이지 </a>
+            </div>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            </div>
+            <div id="logout">
+               <a href="<%=contextPath %>/logout.me">&nbsp;로그아웃</a>
+            </div>
+            <div id="bar">
+               &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            </div>
+         </div>
          <div id="search">
             <input type="button" id="btn_img">
          </div>
+         <%} %>
+         
          <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
@@ -306,19 +277,6 @@ String contextPath = request.getContextPath();
          </script>
          
          
-      <%} else { %>
-      <div id="login_info">
-         <b><%= loginUser.getMemberName() %></b>님 환영합니다~~! <br>
-         <div id="login_bar" align = "left">
-         <table>
-            <tr>
-               <td><a href="<%= contextPath %>/mypage.me">마이페이지 </a></td>
-               <td> &nbsp; | &nbsp; </td>
-               <td><a href="<%=contextPath %>/logout.me">&nbsp;로그아웃</a></td>
-            </tr>
-         </table>
-         </div>
-         <%} %>
       </div>
    </div>
 

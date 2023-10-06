@@ -46,7 +46,6 @@
 	String memberName = loginUser.getMemberName();
 	%>
 	<div class="myouter">
-	<br><br><br><br>
 	<h2 align="center">마이페이지</h2>
 	
 	<div id="mypagebox">

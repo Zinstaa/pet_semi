@@ -8,7 +8,7 @@
 <style>
     div {
         box-sizing: border-box;
-        border: 1px solid red;
+        /*border: 1px solid red;*/
     }
     h2 {
         text-align: center;
@@ -19,6 +19,7 @@
         width: 1200px;
         height: 1000px;
         margin: auto;
+        padding-top: 125px;
     }
 
     #place_Main a {
@@ -29,7 +30,7 @@
     #place_search {
         width: 25%;
         float: left;
-        height: 75%;
+        height: 85%;
         margin-top: 100px;
     }
     
@@ -106,8 +107,32 @@
         background-color: #ffea97;
     }
 
+    #place-category-form {
+        height: 100%;
+    }
 
+    .form {
+        width: 90%;
+        display: block;
+        padding: 6px 12px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid lightgray;  
+        border-radius: 4px;
+        margin: 0px 0px 150px 15px;
 
+    }
+
+    #btn-info {
+        float: right;
+        background-color: #ffce50;
+        color: #ffffff;
+        border: 1px solid lightgray;  
+        border-radius: 4px;
+    }
 
 
     /* 맨위로 이동 키 */
@@ -141,14 +166,14 @@
 </head>
 <body>
     <%@ include file = "../common/menubar.jsp" %>
-    <br><br><br><br><br>
+    
     <div id="place_Main">
         <h2> 플레이스 </h2>
 
         <div id="place_search">
             <div id="place_input">
                 <h2 id="left-search-name">어댕가지 검색</h2>
-                <form id="place-search-form" action="<%=contextPath%>/place.pl" method="get">
+                <form id="place-search-form" action="<%=contextPath%>/search.pl" method="get">
                     <div id="place-search-input">
                         <input type="text" name="place-name" id="place-name" required>
                         <input type="image" src="https://svgsilh.com/svg/1093183-ffffff.svg" name="place-search" id="place-search" value="">
@@ -160,7 +185,7 @@
                         식당
                     </a>
                     <a id="coffee" class="symbol" href="#">
-                        <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="커피"><br>
+                        <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="카페"><br>
                         카페
                     </a>
                     <a id="food" class="symbol" href="#">
@@ -178,8 +203,34 @@
                 </div>
             </div>
             <div id="place_category">
-
+                <form id="place-category-form" action="<%=contextPath%>/category.pl" style="padding-top: 40px;">
+                    <select name="category" class="form" required>
+                        <option value="">카테고리</option>
+                        <option value="fo">식당</option>
+                        <option value="ca">카페</option>
+                        <option value="pa">공원</option>
+                        <option value="sh">쇼핑</option>
+                        <option value="ho">병원</option>
+                    </select>
+                    <select name="place" class="form" required style="margin-bottom: 220px;">
+                        <option value="">지역</option>
+                        <option value="se">서울</option>
+                        <option value="gy">경기</option>
+                        <option value="ga">강원</option>
+                        <option value="cb">충북</option>
+                        <option value="cn">충남</option>
+                        <option value="kb">경북</option>
+                        <option value="kn">경남</option>
+                        <option value="jb">전북</option>
+                        <option value="jn">전남</option>
+                    </select>
+                    <div id="btn-zone">
+                        <input type="submit" id="btn-info" value="검색">
+                    </div>
+                </form>
             </div>
+
+       
         </div>
         <div id="place_content">
             <%@ include file = "placeContent.jsp" %>

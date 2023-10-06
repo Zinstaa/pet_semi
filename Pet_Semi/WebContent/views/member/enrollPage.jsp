@@ -18,7 +18,7 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 	<div class ="outer">
-		<br><br>
+		<br><br><br><br><br>
 		<h2 align="center">회원가입</h2>
 		<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
 		<form id="enroll-form" action="<%=contextPath %>/insert.me">
@@ -115,15 +115,16 @@
 	</script>
 	<script>
 	 function validate(){
-         // 유효성 검사 : 아이디, 비밀번호, 비밀번호 일치, 이름
-         let memberPwd1 = document.getElementById('memberPwd1');
-         let memberPwd2 = document.getElementById('memberPwd2');
+		// 유효성 검사 : 아이디, 비밀번호, 비밀번호 일치, 이름
+		let memberPwd1 = document.getElementById('memberPwd1');
+		let memberPwd2 = document.getElementById('memberPwd2');
 	
-	if(memberPwd1.value != memberPwd2.value){
-        alert('비밀번호가달라요~');
-        return false;
-    }
+		if(memberPwd1.value != memberPwd2.value){
+			alert('비밀번호가달라요~');
+			return false;
+		}
+	}
 	</script>
 
-</body>
+	</body>
 </html>
