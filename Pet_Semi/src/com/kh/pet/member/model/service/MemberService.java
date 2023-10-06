@@ -23,7 +23,7 @@ public class MemberService {
 	}
 	
 	public ArrayList<Member> searchMember(String memberCondition, String memberSearch) {
-		System.out.println(123);
+		//System.out.println(123);
 		Connection conn = getConnection();
 		
 		ArrayList<Member> list = new MemberDao().searchMember(conn, memberCondition, memberSearch);
@@ -53,6 +53,18 @@ public class MemberService {
 		close(conn);
 		
 		return m;
+	}
+	
+	public int memberStatus(int no, String us) {
+		Connection conn = getConnection();
+		int result = new MemberDao().memberStatus(conn, no, us);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 	
 	public int idCheck(String checkId) {

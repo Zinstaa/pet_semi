@@ -198,6 +198,27 @@ private Properties prop = new Properties();
 		}
 		return m;
 	}
+	
+	public int memberStatus(Connection conn, int no, String us) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("memberStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, us);
+			pstmt.setInt(2, no);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	public int idCheck(Connection conn, String checkId) {
 		int count = 0;
 		PreparedStatement pstmt = null;

@@ -79,6 +79,15 @@
 		)
 	</entry>
 	
+	<entry key="memberStatus">
+		UPDATE
+			MEMBER
+		SET
+			STATUS = ?
+		WHERE
+			MEMBER_NO = ?
+	</entry>
+	
 	<entry key="idCheck">
 	SELECT	COUNT(*)
 	FROM MEMBER

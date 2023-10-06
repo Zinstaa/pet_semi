@@ -61,59 +61,74 @@
 	}
 
 	/*=============== toggle ===============*/
-	.wrapper { position: relative; }
-	#switch {
-		position: absolute;
-		/* hidden */
-		appearance: none;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-	}
-	.switch_label {
-		
-		position: relative;
-		cursor: pointer;
-		display: inline-block;
-		width: 58px;
-		height: 28px;
-		background: #fff;
-		border: 2px solid #daa;
-		border-radius: 20px;
-		transition: 0.2s;
+	/* The switch - the box around the slider */
+	.switch {
+	  position: relative;
+	  display: inline-block;
+	  width: 60px;
+	  height: 34px;
+	  vertical-align:middle;
 	}
 	
-	.switch_label:hover {
-		background: #efefef;
-	}
-	.onf_btn {
-		position: absolute;
-		top: 5px;
-		left: 5px;
-		display: inline-block;
-		width: 19px;
-		height: 19px;
-		border-radius: 20px;
-		background: #daa;
-		transition: 0.2s;
-	}
-		
-	/* checking style */
-	#switch:checked+.switch_label {
-		background: #c44;
-		border: 2px solid #c44;
+	/* Hide default HTML checkbox */
+	.switch input {display:none;}
+	
+	/* The slider */
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ccc;
+	  -webkit-transition: .4s;
+	  transition: .4s;
 	}
 	
-	#switch:checked+.switch_label:hover {
-		background: #e55;
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
 	}
 	
-	/* move */
-	#switch:checked+.switch_label .onf_btn {
-		left: 33px;
-		background: #fff;
-		box-shadow: 1px 2px 3px #00000020;
+	input:checked + .slider {
+	  background-color: #2196F3;
+	}
+	
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+	
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+	
+	/* Rounded sliders */
+	.slider.round {
+	  border-radius: 34px;
+	}
+	
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+	
+	p {
+		margin:0px;
+		display:inline-block;
+		font-size:15px;
+		font-weight:bold;
 	}
 	/*=============== toggle 끝 ===============*/
+	
 
 </style>
 </head>
@@ -127,18 +142,63 @@
 				<img src="https://svgsilh.com/svg/2098873-795548.svg" width="150" height="150" alt="">
 			</div>
 			<div id="btn">
-				<form action="#">
+				
 					<div class="btn-btn" id="toggle-btn">
-						<span>정지</span>
-						<input type="checkbox" id="switch" name= "status" value="S">
-						<label for="switch" class="switch_label">
-							<span class="onf_btn"></span>
+						<input type="hidden" id="no" name="memberNo" value="<%=m.getMemberNo() %>">
+						<label class="switch">
+						<input type="checkbox" onclick="toggle(this)" id="memStatus">
+						<span class="slider round"></span>
 						</label>
+						<p>정상</p><p style="display:none;">정지</p>
+							<script>
+								var check = $("input[type='checkbox']");
+								check.click(function(){
+									$("p").toggle();
+								});
+								
+								function toggle(status){
+									console.log(status.checked);
+									console.log(status.value);
+									const no = document.getElementsByName('memberNo');
+									console.log(no[0].value);
+								}
+								 
+								
+								$(function(){
+									$('#memStatus').click(function(){
+										$.ajax({
+											url : 'status.me',
+											data : {
+												//status : $('#memStatus').val()
+												no : $('#no').val(),
+												status : $('#memStatus').is(':checked')
+											},
+											success : function(result){
+												console.log('AJAX성공');
+												alert('회원상태를 정상적으로 변경하였습니다.');
+											},
+											error : function(e){
+												alert('회원상태를 정상적으로 변경하지 못했습니다.');
+											}
+											
+										})
+										
+									})
+								})
+							</script>
+							<!--  
+								<span>정지</span>
+								<input type="checkbox" id="switch" name= "status" value="S">
+								<label for="switch" class="switch_label">
+									<span class="onf_btn"></span>
+								</label>
+								-->
 					</div>
-					<div class="btn-btn" id="submit-btn">
-					<input type="submit" value="적용">
-					</div>
-				</form>
+					<!--
+						<div class="btn-btn" id="submit-btn">
+							<input type="submit" value="적용">
+						</div>
+						-->
 			</div>
 		</div>
 		<div class="detail" id="inform">
