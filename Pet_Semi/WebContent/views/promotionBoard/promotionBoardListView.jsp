@@ -22,7 +22,7 @@
 
         <% if(loginUser != null) { %>
             <div style="width: 870px;" align="right">
-                <a href="<%=contextPath %>/PromotionEnrollForm.pe" class="btn btn-sm btn-primary">게시글작성</a>
+                <a href="<%=contextPath%>/promotionEnroll.pr" class="btn btn-sm btn-primary">게시글작성</a>
             </div>
         <% } %> 
 
