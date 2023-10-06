@@ -229,12 +229,22 @@ window.onclick = function(event) {
 		<br><br>
 
 		<div class="paging-area" align="center">
+			<%if(currentPage != 1) { %>
+			<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage - 1 %>'" class="btn btn-outline-secondary">&lt;</button>
+			<% } %>
 			
 			<% for(int i = startPage; i <= endPage; i++) { %>
-			
+				<%if(currentPage != i) { %>
 				<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%=i %>'" class="btn btn-outline-secondary"><%= i %></button>
-			
+				<% } else { %>
+					<button disabled class="btn btn-outline-secondary"><%= i %></button>
+				<% } %>
 			<% } %>
+			<%if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage + 1 %>'" class="btn btn-outline-secondary">&gt;</button>
+			<% } %>
+			
+			
 		</div>
 
 		<br><br>
