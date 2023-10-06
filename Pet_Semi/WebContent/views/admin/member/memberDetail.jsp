@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	page import="com.kh.pet.member.model.vo.Member"
+ %>
+ <%
+ 	Member m = (Member)request.getAttribute("m");
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,28 +145,32 @@
 			<table>
 				<tr>
 					<th width="100">회원번호</th>
-					<td colspan="2">1234</td>
+					<td colspan="2"><%=m.getMemberNo() %></td>
 					
 				</tr>
 				<tr>
 					<th>아이디</th>
-					<td colspan="2">admin</td>
+					<td colspan="2"><%=m.getMemberId() %></td>
 				</tr>
 				<tr>
 					<th>패스워드</th>
-					<td colspan="2">1234</td>
+					<td colspan="2"><%=m.getMemberPwd() %></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td colspan="2"><%=m.getMemberName() %></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td colspan="2">zzang@gmail.com</td>
+					<td colspan="2"><%=m.getEmail() %></td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td colspan="2">010-5555-5555</td>
+					<td colspan="2"><%=m.getPhone() %></td>
 				</tr>
 				<tr>
 					<th>가입일</th>
-					<td colspan="2">2023.03.03</td>
+					<td colspan="2"><%=m.getEnrollDate() %></td>
 					
 				</tr>
 				<tr>

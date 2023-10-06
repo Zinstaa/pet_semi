@@ -141,9 +141,18 @@
 	<%@ include file="../common/menubar.jsp" %>
 	
 	<div class="outer">
-		<br>
+		<br><br><br><br><br>
 		<h2 align="center">커뮤니티</h2>
 		<br>
+		
+		<div align="right" style="width:870px;">
+			
+			<% if(loginUser != null) { %>
+				<a href="<%= contextPath %>/enrollForm.bo" class="btn btn-outline-info">글작성</a>
+				<br><br>
+			<% } %>
+			
+		</div>
 		
 <span class="dropdown">
   <button onclick="myFunction()" class="dropbtn">커뮤니티 ▽</button>
@@ -188,6 +197,7 @@ window.onclick = function(event) {
 
 <hr>
 
+	
 
 		<table class="list-area" align="center">
 			<thead>
@@ -216,29 +226,28 @@ window.onclick = function(event) {
 						<td><%= b.getBoardDate() %></td>
 					</tr>
 					<% } %>
-				<!-- <tr>
-					<td>1</td>
-					<td>게시글테스트</td>
-					<td>홍길동</td>
-					<td>50</td>
-					<td>2023-09-27</td>
-				</tr> -->
 				<% } %>
 			</tbody>
 		</table>
 		<br><br>
 
 		<div class="paging-area" align="center">
-			<button class="btn btn-outline-secondary">[1]</button>
-			<button class="btn btn-outline-secondary">[2]</button>
-			<button class="btn btn-outline-secondary">[3]</button>
-			<button class="btn btn-outline-secondary">[4]</button>
-			<button class="btn btn-outline-secondary">[5]</button>
-			<button class="btn btn-outline-secondary">[6]</button>
-			<button class="btn btn-outline-secondary">[7]</button>
-			<button class="btn btn-outline-secondary">[8]</button>
-			<button class="btn btn-outline-secondary">[9]</button>
-			<button class="btn btn-outline-secondary">[10]</button>
+			<%if(currentPage != 1) { %>
+			<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage - 1 %>'" class="btn btn-outline-secondary">&lt;</button>
+			<% } %>
+			
+			<% for(int i = startPage; i <= endPage; i++) { %>
+				<%if(currentPage != i) { %>
+				<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%=i %>'" class="btn btn-outline-secondary"><%= i %></button>
+				<% } else { %>
+					<button disabled class="btn btn-outline-secondary"><%= i %></button>
+				<% } %>
+			<% } %>
+			<%if(currentPage != maxPage) { %>
+				<button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage + 1 %>'" class="btn btn-outline-secondary">&gt;</button>
+			<% } %>
+			
+			
 		</div>
 
 		<br><br>

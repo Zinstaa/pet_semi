@@ -22,7 +22,7 @@
 
         <% if(loginUser != null) { %>
             <div style="width: 870px;" align="right">
-                <a href="<%=contextPath %>/PromotionEnrollForm.pe" class="btn btn-sm btn-primary">게시글작성</a>
+                <a href="<%=contextPath%>/promotionEnroll.pr" class="btn btn-sm btn-primary">게시글작성</a>
             </div>
         <% } %> 
 
@@ -32,7 +32,7 @@
             등록된 게시글이 없어.
             <!-- 등록된 게시글이 존재해. -->
             <div class="promotion" align="center">
-                <img src="https://url.kr/url.png" alt="노을">
+                <img src="https://url.kr/url.png" width="400" alt="노을">
                 <p>
                     no.1 / 노을<br>
                     조회수 : 12 

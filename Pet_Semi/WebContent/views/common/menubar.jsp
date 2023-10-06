@@ -59,7 +59,7 @@ String contextPath = request.getContextPath();
    }
 
    .head_login{
-      margin-top: 40px;
+      margin-top: 30px;
       width : 25%;
       height: 20%;
       float: right;
@@ -147,7 +147,7 @@ String contextPath = request.getContextPath();
       color : black;
       font-weight : bold;
       font-size:  18px;
-      width : 100%;
+      width : 32%;
       height: 75%;
       float: left;
    }
@@ -226,7 +226,7 @@ String contextPath = request.getContextPath();
       padding: 0;
    }
    
-      .outer{
+   .outer{
    		width : 1200px;
    		margin : auto;
    		height : 600px;
@@ -234,6 +234,7 @@ String contextPath = request.getContextPath();
    		margin-top : 5px;
    		color : black;
    }
+   
    .myouter{
    		width : 1200px;
    		margin : auto;
@@ -279,7 +280,7 @@ String contextPath = request.getContextPath();
          <div id="search">
             <input type="button" id="btn_img">
          </div>
-         <div id="admin_login"> <!--style="display: none;"-->
+         <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
                   <td><a href="<%=contextPath%>/member.me">회원관리</a></td>
