@@ -152,17 +152,21 @@
 						<p>정상</p><p style="display:none;">정지</p>
 							<script>
 								var check = $("input[type='checkbox']");
+								
 								check.click(function(){
 									$("p").toggle();
 								});
+								
 								
 								let status = '<%=m.getStatus()%>'
 								console.log($(check).val());
 								console.log(status);
 								if(status == "S"){
 									$('#memStatus').attr('checked',true);
-								}
-									/*
+									$("p").toggle();
+								};
+								
+								/*
 									$(check).filter(function(){
 										
 										if(!status.search($(this).val())){
@@ -177,7 +181,7 @@
 									console.log(status.checked);
 									console.log(status.value);
 									const no = document.getElementsByName('memberNo');
-									console.log(no[0].value);
+									
 								}
 								 
 								
