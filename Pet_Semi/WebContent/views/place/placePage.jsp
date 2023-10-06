@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>플레이스</title>
 <style>
     div {
         box-sizing: border-box;
@@ -38,6 +38,11 @@
         float: left;
         height: 90%;
         margin-top: 55px;
+    }
+
+    #left-search-name {
+        padding-top: 20px;
+        color: #ffffff;
     }
     
     #place_search > div {
@@ -84,6 +89,13 @@
         float: left;
     }
 
+    .symbol {
+        float: left;
+        height: 70px;
+        margin-left: 25px;
+        margin-top: 30px;
+    }
+
     .symbol > img{
         width: 30px;
         height: 30px;
@@ -91,6 +103,7 @@
 
     #place_category {
         height: 70%;
+        background-color: #ffea97;
     }
 
 
@@ -134,35 +147,35 @@
 
         <div id="place_search">
             <div id="place_input">
-                <h1>어댕가지 검색</h1>
+                <h2 id="left-search-name">어댕가지 검색</h2>
                 <form id="place-search-form" action="<%=contextPath%>/place.pl" method="get">
                     <div id="place-search-input">
                         <input type="text" name="place-name" id="place-name" required>
                         <input type="image" src="https://svgsilh.com/svg/1093183-ffffff.svg" name="place-search" id="place-search" value="">
                     </div>
-                    <div id="place-search-symbol">
-                        <a id="food" class="symbol" href="#">
-                            <img src="https://svgsilh.com/svg/305344-ffffff.svg" alt="식당"><br>
-                            식당
-                        </a>
-                        <a id="coffee" class="symbol" href="#">
-                            <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="커피"><br>
-                            카페
-                        </a>
-                        <a id="food" class="symbol" href="#">
-                            <img src="https://svgsilh.com/svg/305344-ffffff.svg" alt="식당"><br>
-                            공원
-                        </a>
-                        <a id="coffee" class="symbol" href="#">
-                            <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="커피"><br>
-                            쇼핑
-                        </a>
-                        <a id="food" class="symbol" href="#">
-                            <img src="https://svgsilh.com/svg/305344-ffffff.svg" alt="식당"><br>
-                            병원
-                        </a>
-                    </div>
                 </form>
+                <div id="place-search-symbol">
+                    <a id="food" class="symbol" href="#">
+                        <img src="https://svgsilh.com/svg/305344-ffffff.svg" alt="식당"><br>
+                        식당
+                    </a>
+                    <a id="coffee" class="symbol" href="#">
+                        <img src="https://svgsilh.com/svg/547490-ffffff.svg" alt="커피"><br>
+                        카페
+                    </a>
+                    <a id="food" class="symbol" href="#">
+                        <img src="https://svgsilh.com/svg/2133196-ffffff.svg" alt="공원"><br>
+                        공원
+                    </a>
+                    <a id="coffee" class="symbol" href="#">
+                        <img src="https://svgsilh.com/svg/304843-ffffff.svg" alt="쇼핑"><br>
+                        쇼핑
+                    </a>
+                    <a id="food" class="symbol" href="#">
+                        <img src="https://svgsilh.com/svg/2831364-ffffff.svg" alt="병원"><br>
+                        병원
+                    </a>
+                </div>
             </div>
             <div id="place_category">
 
