@@ -199,6 +199,10 @@ String contextPath = request.getContextPath();
       color: #ffce50;
    } 
 
+   .nav_sub:hover{
+      color: #ffce50;
+      cursor: pointer;
+   } 
    .menu > li > ul {
       z-index: 1;
       position: relative;
@@ -329,12 +333,12 @@ String contextPath = request.getContextPath();
          </div>
          <div class="menu" id="pl">
             <li>
-               <a href="#">플레이스</a>
+               <a href="<%= contextPath %>/place.pl">플레이스</a>
             </li>
          </div>
          <div class="menu" id="co">
             <li>
-               <a href="#">커뮤니티</a>
+               <a class="nav_sub">커뮤니티</a>
                <ul>
                   <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
                   <li><a href="#">홍보게시판</a></li>
@@ -348,7 +352,7 @@ String contextPath = request.getContextPath();
          </div>
          <div class="menu" id="me">
             <li>
-               <a href="#">고객센터</a>
+               <a class="nav_sub">고객센터</a>
                <ul>
                   <li><a href="#">공지사항</a></li>
                   <li><a href="#">Q&A</a></li>
