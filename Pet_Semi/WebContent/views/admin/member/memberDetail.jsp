@@ -142,7 +142,7 @@
 				<img src="https://svgsilh.com/svg/2098873-795548.svg" width="150" height="150" alt="">
 			</div>
 			<div id="btn">
-				
+			<!-- 회원 상태값 변경을 위한 토글버튼 모양 -->
 					<div class="btn-btn" id="toggle-btn">
 						<input type="hidden" id="no" name="memberNo" value="<%=m.getMemberNo() %>">
 						<label class="switch">
@@ -152,12 +152,12 @@
 						<p>정상</p><p style="display:none;">정지</p>
 							<script>
 								var check = $("input[type='checkbox']");
-								
+								//토글 기능
 								check.click(function(){
 									$("p").toggle();
 								});
 								
-								
+								//상태값을 가지고 정지된 고객 페이지에 들어가면 checked된 상태로 만든다.
 								let status = '<%=m.getStatus()%>'
 								console.log($(check).val());
 								console.log(status);
@@ -176,15 +176,16 @@
 										
 									});
 									*/
-							
+							/*
 								function toggle(status){
 									console.log(status.checked);
 									console.log(status.value);
 									const no = document.getElementsByName('memberNo');
 									
 								}
+									*/
 								 
-								
+								//회원 상태를 실제 DB에서 변경하는 작업 (U -> S / S -> U)
 								$(function(){
 									$('#memStatus').click(function(){
 										$.ajax({

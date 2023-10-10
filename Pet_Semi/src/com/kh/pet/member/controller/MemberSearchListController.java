@@ -37,6 +37,7 @@ public class MemberSearchListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("gggg");
 		//memberManagement에서 보내준 값을 뽑자
+		//회원 검색을 하기 위한 필요값(검색조건, 검색어)
 		String memberCondition = request.getParameter("memberCondition");
 		String memberSearch = request.getParameter("memberSearch");
 		
