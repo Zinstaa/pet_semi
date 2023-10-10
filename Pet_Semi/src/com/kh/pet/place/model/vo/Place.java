@@ -84,12 +84,12 @@ public class Place {
 		this.placePhone = placePhone;
 	}
 	
-	public String getPlacrTimes() {
+	public String getPlaceTimes() {
 		return placeTimes;
 	}
 	
-	public void setPlacrTimes(String placrTimes) {
-		this.placeTimes = placrTimes;
+	public void setPlaceTimes(String placeTimes) {
+		this.placeTimes = placeTimes;
 	}
 	
 	public String getPlaceUrl() {
