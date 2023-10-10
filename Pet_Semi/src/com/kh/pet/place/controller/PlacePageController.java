@@ -27,7 +27,7 @@ public class PlacePageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
+		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
 		request.getRequestDispatcher("views/place/placePage.jsp").forward(request, response);
 	}
 
