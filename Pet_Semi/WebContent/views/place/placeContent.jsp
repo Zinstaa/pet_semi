@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
     div {
-        border: 1px solid red;
+        /*border: 1px solid red;*/
         box-sizing: border-box;
     }
 
@@ -26,15 +26,16 @@
         margin: 7px;
     }
 
+    
     .place-content > #img-place, .place-content > #btn-place {
         float: left;
         height: 75%;
     }
-
+    
     #img-place {
         width: 65%;
     }
-
+    
     #img-place > img {
         width: 125px;
         height: 125px;
@@ -43,7 +44,12 @@
         margin-top: 15px;
         margin-left: 10px;
     }
-
+    
+    #img-place:hover ,#name-place:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+    
     #btn-place {
         width: 35%;
     }

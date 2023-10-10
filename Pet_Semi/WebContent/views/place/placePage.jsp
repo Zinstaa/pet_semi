@@ -68,6 +68,7 @@
     input#place-name {
         height: 30px;
         margin-bottom: 10px;
+        margin-top: 15px;
         border: 1px solid lightgrey;
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
