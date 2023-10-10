@@ -7,9 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.pet.common.model.PageInfo;
+import com.kh.pet.notice.vo.Notice;
 
 public class NoticeDao {
 	private Properties prop = new Properties();
@@ -46,7 +48,39 @@ public class NoticeDao {
 		return listCount;
 	}
 	
-	public void selectList(Connection conn, PageInfo pi) {
+	public ArrayList<Notice> selectList(Connection conn, PageInfo pi) {
 		ArrayList<Notice> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() +1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Notice n = new Notice();
+				n.setNoticeNo(rset.getInt("NOTICE_NO"));
+				n.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				n.setNoticeDate(rset.getDate("NOTICE_DATE"));
+				n.setMemberNo(rset.getString("MEMBER_ID"));
+				
+				list.add(n);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }

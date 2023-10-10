@@ -13,4 +13,17 @@
 			
 	</entry>
 	
+	<entry key="selectList">
+	select notice_no, notice_title, notice_date, member_id from (
+	    select rownum rnum, A.notice_no, A.notice_title, A.notice_date, A.member_id 
+	    from
+	        (select notice_no, notice_title, notice_date, member_id
+	        from notice
+	        join member using (member_no)
+	        where notice.status = 'Y'
+	        order by notice_date desc) A
+	    )
+	where rnum between ? and ?
+	</entry>
+	
 </properties>

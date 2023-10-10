@@ -8,12 +8,12 @@ public class Notice {
 	private String noticeContent;	
 	private Date noticeDate;	
 	private String status;	
-	private int memberNo;
+	private String memberNo;
 	public Notice() {
 		super();
 	}
 	public Notice(int noticeNo, String noticeTitle, String noticeContent, Date noticeDate, String status,
-			int memberNo) {
+			String memberNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
@@ -52,10 +52,10 @@ public class Notice {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getMemberNo() {
+	public String getMemberNo() {
 		return memberNo;
 	}
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
 	@Override

@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .outer1{
         width: 1200px;
@@ -40,26 +40,24 @@
 					<th width="100">글번호</th>
 					<th width="500">제목</th>
 					<th width="100">작성자</th>
-					<th width="100">조회수</th>
 					<th width="200">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-              
+              <%if(list.isEmpty()) {%>
 				<tr>
-					<td colspan="5">공지사항이 없습니다.</td>
+					<td colspan="4">공지사항이 없습니다.</td>
 				</tr>
-               
-				
-				
+               	<%} else { %>
+					<%for(Notice n : list) { %>
 					<tr>
-						<td>1</td>
-						<td>공지사항 제목</td>
-						<td>작성자</td>
-						<td>조회수</td>
-						<td>작성일</td>
+						<td><%=n.getNoticeNo() %></td>
+						<td><%=n.getNoticeTitle() %></td>
+						<td><%=n.getMemberNo() %></td>
+						<td><%=n.getNoticeDate() %></td>
 					</tr>
-                 
+                 	<%} %>
+                 <%} %>
 			</tbody>
 		</table>
 		<br>
@@ -74,7 +72,7 @@
 		<!--페이징바-->
 		<div class="paging-area" align="center">
 			<%if(currentPage != 1) { %>
-			<button onclick="location.href='<%= contextPath %>/list.no?cpage=<%= currentPage - 1 %>'" class="btn btn-outline-secondary">&lt;</button>
+			<button onclick="location.href='<%= contextPath %>/list.no?cpage=<%= currentPage -1 %>'" class="btn btn-outline-secondary">&lt;</button>
 			<% } %>
 			
 			<% for(int i = startPage; i <= endPage; i++) { %>
@@ -85,12 +83,12 @@
 				<% } %>
 			<% } %>
 			<%if(currentPage != maxPage) { %>
-				<button onclick="location.href='<%= contextPath %>/list.no?cpage=<%= currentPage + 1 %>'" class="btn btn-outline-secondary">&gt;</button>
+				<button onclick="location.href='<%= contextPath %>/list.no?cpage=<%= currentPage +1 %>'" class="btn btn-outline-secondary">&gt;</button>
 			<% } %>
 			
 			
 		</div>
-
+		
 
     </div>
 

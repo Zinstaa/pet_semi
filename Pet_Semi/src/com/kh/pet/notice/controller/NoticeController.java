@@ -1,6 +1,7 @@
 package com.kh.pet.notice.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.common.model.PageInfo;
 import com.kh.pet.notice.service.NoticeService;
+import com.kh.pet.notice.vo.Notice;
 
 /**
  * Servlet implementation class NoticeController
@@ -49,7 +51,7 @@ public class NoticeController extends HttpServlet {
 		// pageLimit : 페이징바 최대갯수
 		pageLimit = 5;
 		// boardLimit : 한 페이지에 보여질 게시글의 최대 갯수
-		boardLimit = 5;
+		boardLimit = 10;
 		// maxPage : 가장 마지막 페이지가 몇번 페이지인지 (총 페이지 갯수) 
 		maxPage = (int)Math.ceil((double)listCount/boardLimit);
 		// startPage : 페이지 하단에 보여질 페이징바의 시작수
@@ -63,6 +65,14 @@ public class NoticeController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		// 공지사항 리스트 받아오기
+		ArrayList<Notice> list = new NoticeService().selectList(pi);
+		
+		//화면에 보여주게 보내주자
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
+		
+		request.getRequestDispatcher("views/notice/noticeListView.jsp").forward(request, response);
 		
 	}
 
