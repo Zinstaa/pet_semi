@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 <style>
     div {
         /*border: 1px solid red;*/
@@ -49,7 +49,7 @@
         cursor: pointer;
         opacity: 0.75;
     }
-    
+
     #btn-place {
         width: 35%;
     }
