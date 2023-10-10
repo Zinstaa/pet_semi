@@ -67,7 +67,7 @@
 		  		)
 		  VALUES
 		  		(
-		  		BOARD_FILE.NEXTVAL,
+		  		BOARD_FILE_SEQ.NEXTVAL,
 		  		?,
 		  		?,
 		  		?,
