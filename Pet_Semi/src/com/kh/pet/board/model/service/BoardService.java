@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.kh.pet.board.model.dao.BoardDao;
 import com.kh.pet.board.model.vo.Board;
+import com.kh.pet.board.model.vo.BoardFile;
 import com.kh.pet.common.model.PageInfo;
 
 public class BoardService {
@@ -30,6 +31,29 @@ public class BoardService {
 		close(conn);
 		
 		return list;
+	}
+	
+	public int insertBoard(Board b, BoardFile bf) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().insertBoard(conn, b);
+		int result2 = 1;
+		
+		if(bf != null) {
+			result2 = new BoardDao().insertBoardFile(conn, bf);
+		}
+		
+		if(result1 * result2 > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return (result1 * result2);
+		
 	}
 	
 }

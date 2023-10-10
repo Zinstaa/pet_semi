@@ -33,6 +33,47 @@
         		WHERE RNUM BETWEEN ? AND ?
 	
 	</entry>
+	
+	<entry key="insertBoard">
+		INSERT
+		  INTO
+		  		BOARD
+		  		(
+		  		BOARD_NO,
+		  		BOARD_NAME,
+		  		BOARD_CONTENT,
+		  		MEMBER_NO
+		  		)
+		  VALUES
+		  		(
+		  		BOARD_SEQ.NEXTVAL,
+		  		?,
+		  		?,
+		  		?
+		  		)
+	
+	</entry>
+	
+	<entry key="insertBoardFile">
+		INSERT
+		  INTO
+		  		BOARD_FILE
+		  		(
+		  		BOARD_FILE_NO,
+		  		BOARD_FILE_ORIGIN_NAME,
+		  		BOARD_FILE_CHANGE_NAME,
+		  		BOARD_FILE_PATH,
+		  		BOARD_NO
+		  		)
+		  VALUES
+		  		(
+		  		BOARD_FILE.NEXTVAL,
+		  		?,
+		  		?,
+		  		?,
+		  		BOARD_SEQ.CURRVAL
+		  		)
+	</entry>
 
 
 </properties>
