@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>공지사항</comment>
+	
+	<entry key="selectListCount">
+		SELECT
+			COUNT(*)
+		FROM
+			NOTICE
+		WHERE
+			STATUS = 'Y'
+			
+	</entry>
+	
+</properties>
