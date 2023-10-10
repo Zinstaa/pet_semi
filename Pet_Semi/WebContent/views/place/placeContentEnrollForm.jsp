@@ -20,7 +20,7 @@
     #place-enroll-form {
 		text-align: center;
         width: 1200px;
-        height: 1200px;
+        height: 1500px;
         margin: auto;
         padding-top: 125px;
 		background-color: #fff5ce;
@@ -103,6 +103,30 @@
 						</td>
 					</tr>
 					<tr>
+						<th>플레이스 주소</th>
+						<td colspan="4">
+							<input type="text" name="pl-address" required>
+						</td>
+					</tr>
+					<tr>
+						<th>플레이스 문의처</th>
+						<td colspan="4">
+							<input type="text" name="pl-phone" required>
+						</td>
+					</tr>
+					<tr>
+						<th>플레이스 이용시간</th>
+						<td colspan="4">
+							<input type="text" name="pl-time" required>
+						</td>
+					</tr>
+					<tr>
+						<th>플레이스 홈페이지</th>
+						<td colspan="4">
+							<input type="text" name="pl-url" required>
+						</td>
+					</tr>
+					<tr>
 						<th>플레이스 소개</th>
 						<td colspan="4">
 							<textarea name="pl-context" style="resize: none;" rows="10"></textarea>
@@ -111,25 +135,25 @@
 					<tr>
 						<th>플레이스 주요시설</th>
 						<td colspan="4"> 
-							<input type="text" name="pl-name" required>
+							<input type="text" name="pl-around" required>
 						</td>
 					</tr>
 					<tr>
 						<th>플레이스 이용비용</th>
 						<td colspan="4">
-							<input type="text" name="pl-name" required>
+							<input type="text" name="pl-price" required>
 						</td>
 					</tr>
 					<tr>
 						<th>플레이스 주의사항</th>
 						<td colspan="4">
-							<input type="text" name="pl-name" required>
+							<input type="text" name="pl-caution" required>
 						</td>
 					</tr>
 					<tr>
 						<th>플레이스 지도 (url)</th>
 						<td colspan="4">
-							<input type="text" name="pl-name" required>
+							<input type="text" name="pl-map" required>
 						</td>
 					</tr>
 					<!-- 썸네일 미리보기 -->
@@ -176,20 +200,20 @@
 						reader.onload = function(e) {
 							switch(num) {
 								case 1: $('#titleImg').attr('src', e.target.result); break;
-								case 2: $('contentImg1').attr('src', e.target.result); break;
-								case 3: $('contentImg2').attr('src', e.target.result); break;
-								case 4: $('contentImg3').attr('src', e.target.result); break;
-								case 5: $('contentImg4').attr('src', e.target.result); break;
+								case 2: $('#contentImg1').attr('src', e.target.result); break;
+								case 3: $('#contentImg2').attr('src', e.target.result); break;
+								case 4: $('#contentImg3').attr('src', e.target.result); break;
+								case 5: $('#contentImg4').attr('src', e.target.result); break;
 							}
 						}
 					} else {
 						const str = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png";
 						switch(num) {
 							case 1: $('#titleImg').attr('src', str); break;
-							case 2: $('contentImg1').attr('src', str); break;
-							case 3: $('contentImg2').attr('src', str); break;
-							case 4: $('contentImg3').attr('src', str); break;
-							case 5: $('contentImg4').attr('src', str); break;
+							case 2: $('#contentImg1').attr('src', str); break;
+							case 3: $('#contentImg2').attr('src', str); break;
+							case 4: $('#contentImg3').attr('src', str); break;
+							case 5: $('#contentImg4').attr('src', str); break;
 						}
 					}
 				};
