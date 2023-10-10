@@ -132,6 +132,7 @@
         color: #ffffff;
         border: 1px solid lightgray;  
         border-radius: 4px;
+	    margin-right: 10px;
     }
 
 
@@ -212,7 +213,7 @@
                         <option value="sh">쇼핑</option>
                         <option value="ho">병원</option>
                     </select>
-                    <select name="place" class="form" required style="margin-bottom: 220px;">
+                    <select name="place" class="form" required style="margin-bottom: 215px;">
                         <option value="">지역</option>
                         <option value="se">서울</option>
                         <option value="gy">경기</option>
