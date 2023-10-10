@@ -241,5 +241,34 @@ private Properties prop = new Properties();
 		}
 		return count;
 	}
+	
+	public ArrayList<Member> findId (Connection conn, String email, String phone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList();
+		String sql = prop.getProperty("findId");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, phone);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Member m = new Member(rset.getString("EMAIL"),
+									  rset.getString("PHONE"));
+				list.add(m);
+				   
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
 		

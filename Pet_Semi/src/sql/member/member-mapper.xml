@@ -94,4 +94,15 @@
 	WHERE MEMBER_ID = ?
 	</entry>
 	
+	<entry key="findId">
+SELECT 
+		MEMBER_ID
+	FROM
+		MEMBER
+	WHERE 
+		EMAIL = ?
+	AND
+		PHONE =?
+	</entry>
+	
 </properties>

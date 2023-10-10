@@ -35,18 +35,12 @@
 		<br><br>
 		<div align="center">
 		<button type="submit">로그인</button>
-		</div>
-
-<!-- 		
-		<div align="center">
-		<button type="submit">아이디 찾기</button>
+		&nbsp/&nbsp 
+		<a href="<%=contextPath%>/findid.mem">아이디찾기</a>
+		&nbsp/&nbsp
+		 <a href="<%=contextPath%>/findpwd.me">비밀번호찾기</a>
 		</div>
 		
-		<div align="center">
-		<button type="submit">비밀번호 찾기</button>
-		</div>
--->	
-			
 	</form>
 	</div>
 
