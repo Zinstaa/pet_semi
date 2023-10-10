@@ -12,6 +12,10 @@
  #insertmembercheck{
  	margin-left : 150px;
  }
+ #pwdcheck2 {
+ 	color : red;
+ 	font-size : 10px;
+ }
 </style>
 </head>
 
@@ -25,30 +29,29 @@
 			<table>
 				<tr>
 					<td>*아이디 </td>
-					<td><input type="text" name ="memberId" maxlength="20" required placeholder="20자리이하로입력"></td>
-					<th><button type="button" onclick="idCheck();">중복체크</button></th> 
+					<td><input type="text" name ="memberId" maxlength="20" required placeholder="3~20자리이하로영어나숫자입력"></td>
+					<th><button type="button" onclick="idCheck();">중복체크</button></th>
 				</tr>
-				
+								
 				<tr>
 					<td>*비밀번호 </td>
-					<td><input type="password" id="memberPwd1" name ="memberPwd" maxlength="15" required ></td>
+					<td><input type="password" id="memberPwd1" name ="memberPwd" maxlength="15" required placeholder="영문자,숫자로만4~15자리입력"></td>
 				</tr>
 				
 				<tr>
 					<td>*비밀번호 확인 </td>
 					<td><input type="password" id="memberPwd2" maxlength="15" required></td>
-					<th hidden id=pwdcheck1>비밀번호가 일치합니다</th>
-					<th hidden id=pwdcheck2>비밀번호가 일치하지 않습니다</th>
+					<th style="display:none" id=pwdcheck2 >비밀번호가 일치하지 않습니다</th>
 				</tr>
 				
 				<tr>
 					<td>*이름 </td>
-					<td><input type="text" name="memberName" maxlength="15" required></td>
+					<td><input type="text" id="memberName" name="memberName" maxlength="15" required placeholder="2~5자리이름입력"></td>
 				</tr>
 				
 				<tr>
 					<td>*이메일 </td>
-					<td><input type="text" name="email" maxlength="30" required placeholder="@포함하여입력"></td>
+					<td><input type="text" name="email" maxlength="30" required placeholder="@포함 이메일 형식 입력"></td>
 				</tr>
 				
 				<tr>
@@ -89,6 +92,7 @@
 	<script>
 		function idCheck(){
 			const $memberId = $('#enroll-form input[name=memberId]');
+			let memberId = document.getElementById("memberId");
 			
 			$.ajax({
 				url : 'idcheck.me',
@@ -98,31 +102,59 @@
 						alert('사용이 불가능한 아이디입니다');
 						$memberId.val('').focus();
 					}else{
+						regExp = /^[a-zA-Z][a-zA-Z0-9]{3,20}$/;
+						if(!regExp.test($memberId.val())){
+						alert('유효하지않은 아이디 형식입니다');
+						$memberId.val('').focus();
+						 } else{
 						if(confirm('사용이 가능한 아이디입니다 (확인을누르면 아이디수정 불가능)')){
 							$memberId.attr('readonly',true);
-							
 							$('#enroll-form button[type=submit]').removeAttr('disabled');
 						} else {
 							$memberId.focus();
 						};
 					}
-				},
+				}
+			},
 				eorror : function() {
 					console.log('아이디 중복체크 AJAX통신 실패');
 				}
 			});
+			
 		}
 	</script>
 	<script>
 	 function validate(){
 		// 유효성 검사 : 아이디, 비밀번호, 비밀번호 일치, 이름
+		
 		let memberPwd1 = document.getElementById('memberPwd1');
 		let memberPwd2 = document.getElementById('memberPwd2');
+		let memberName = document.getElementById('memberName');
 	
 		if(memberPwd1.value != memberPwd2.value){
-			alert('비밀번호가달라요~');
+			$("#pwdcheck2").show();
+			alert('비밀번호가 다릅니다');
 			return false;
-		}
+		} 
+
+		// 정규 표현식 입니다~!~!~!~!~!
+		
+		 regExp = /^[a-zA-Z0-9]{4,15}$/;
+         if(!regExp.test(memberPwd1.value)){
+             alert('비밀번호 양식에맞게 입력해주세요');
+             return false;
+         }         
+
+         regExp = /^[가-힣]{2,5}$/;
+         if(!regExp.test(memberName.value)){
+        	 alert('이름을 확인해주세요');
+        	 memberName.select();
+        	 memberName.value = '';
+             return false;
+         }
+		 
+		 return true;
+		
 	}
 	</script>
 
