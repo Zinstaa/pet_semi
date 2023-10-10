@@ -38,8 +38,10 @@
     #img-place > img {
         width: 125px;
         height: 125px;
-        border: 1px solid black;
-        margin-top: 10px;
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 10px;
     }
 
     #btn-place {
@@ -58,7 +60,8 @@
         width: 50px;
         height: 50px;
         border-radius: 25px;
-        margin-top: 15px;
+        margin-top: 20px;
+        margin-right: 10px;
         line-height: 40px;
     }
 
@@ -84,7 +87,7 @@
         <!-- 등록된 장소가 있을 때-->
         <div class="place-content" align="center">
             <div id="img-place">
-                <img src="" alt="">
+                <img src="https://dangdangmap.net/upload/mapdata/C0070/thumb/content/C0070_F20210828164617001.jpg" alt="">
             </div>
             <div id="btn-place">
                 <div class="pl-btn" id="star">
@@ -99,12 +102,12 @@
                 </div>
             </div>
             <div id="name-place">
-                <p>No.1 | [카테고리] - [지역] 장소명</p>
+                <p>[카페] - [강원] 쿠키멍스터</p>
             </div>
         </div>
         <div class="place-content" align="center">
             <div id="img-place">
-                <img src="" alt="">
+                <img src="https://dangdangmap.net/upload/mapdata/C0017/thumb/content/C0017_F20210818170734001.jpg" alt="">
             </div>
             <div id="btn-place">
                 <div class="pl-btn" id="star">
@@ -119,12 +122,12 @@
                 </div>
             </div>
             <div id="name-place">
-                <p>No.2 | [카테고리] - [지역] 장소명</p>
+                <p>[공원] - [강원] 휘바핀란드</p>
             </div>
         </div>
         <div class="place-content" align="center">
             <div id="img-place">
-                <img src="" alt="">
+                <img src="https://dangdangmap.net/upload/mapdata/C0200/thumb/content/C0200_F20210831192731002.jpg" alt="">
             </div>
             <div id="btn-place">
                 <div class="pl-btn" id="star">
@@ -139,7 +142,7 @@
                 </div>
             </div>
             <div id="name-place">
-                <p>No.3 | [카테고리] - [지역] 장소명</p>
+                <p>[공원] - [강원] 청초호 호수공원</p>
             </div>
         </div>
     </div>
