@@ -90,7 +90,7 @@
 	
 	<script>
 		function search(){
-			
+			//회원 조회 기능 (검색)
 			$.ajax({
 				
 				url : 'search.me',
@@ -127,6 +127,7 @@
 			})
 		}
 		
+		//회원 상세정보 보기 기능
 		$(function(){
 			$('#memberlist>tbody').on('click','tr',function(){
 				console.log(this);
