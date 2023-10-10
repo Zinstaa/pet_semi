@@ -94,7 +94,7 @@
 		border-radius: 25px;
 	}
 
-	a > img {
+	.ft > img {
 		width: 24px;
 		height: 24px;
 		padding: 0;
