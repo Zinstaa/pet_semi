@@ -39,7 +39,7 @@
             <table align="center">
                 <tr>
                     <th width="200">제목</th>
-                    <td width="800"><input type="text" name="title" required></td>
+                    <td width="800"><input type="text" name="name" required></td>
                 </tr>
                 <tr>
                     <th>내용</th>

@@ -74,5 +74,15 @@ public class MemberService {
 		close(conn);
 		return count;
 	}
+	
+	public ArrayList<Member> findId(String email, String phone) {
+		Connection conn = getConnection();
+		
+		ArrayList<Member> list = new MemberDao().findId(conn, email, phone);
+		close(conn);
+		
+		return list;
+		
+	}
 
 }

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PlacePageController
+ * Servlet implementation class PlaceContentEnrollFormController
  */
-@WebServlet("/place.pl")
-public class PlacePageController extends HttpServlet {
+@WebServlet("/enrollForm.pl")
+public class PlaceContentEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlacePageController() {
+    public PlaceContentEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,9 @@ public class PlacePageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
-		request.getRequestDispatcher("views/place/placePage.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("views/place/placeContentEnrollForm.jsp").forward(request, response);
+	
 	}
 
 	/**

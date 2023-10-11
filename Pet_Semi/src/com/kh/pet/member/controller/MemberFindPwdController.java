@@ -1,4 +1,4 @@
-package com.kh.pet.place.controller;
+package com.kh.pet.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PlacePageController
+ * Servlet implementation class MemberFindPwdController
  */
-@WebServlet("/place.pl")
-public class PlacePageController extends HttpServlet {
+@WebServlet("/findpwd.me")
+public class MemberFindPwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlacePageController() {
+    public MemberFindPwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,8 @@ public class PlacePageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
-		request.getRequestDispatcher("views/place/placePage.jsp").forward(request, response);
+		
+		
 	}
 
 	/**

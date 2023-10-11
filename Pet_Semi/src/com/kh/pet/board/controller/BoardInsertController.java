@@ -1,5 +1,6 @@
 package com.kh.pet.board.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.kh.pet.board.model.service.BoardService;
 import com.kh.pet.board.model.vo.Board;
+import com.kh.pet.board.model.vo.BoardFile;
 import com.kh.pet.common.MyFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -52,12 +55,41 @@ public class BoardInsertController extends HttpServlet {
 			
 			String name = multiRequest.getParameter("name");
 			String content = multiRequest.getParameter("content");
-			String memberNo = multiRequest.getParameter("userNo");
+			String memberNo = multiRequest.getParameter("memberNo");
 			
 			Board b = new Board();
 			b.setBoardName(name);
 			b.setBoardContent(content);
 			b.setMemberNo(memberNo);
+			
+			BoardFile bf = null;
+			
+			if(multiRequest.getOriginalFileName("upfile") != null) {
+				
+				bf = new BoardFile();
+				
+				bf.setBoardFileOriginName(multiRequest.getOriginalFileName("upfile"));
+				
+				bf.setBoardfilePath("resources/board_upfiles");
+				
+				bf.setBoardFileChangeName(multiRequest.getFilesystemName("upfile"));
+			}
+			
+			int result = new BoardService().insertBoard(b, bf);
+			
+			
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 등록에 성공했습니다.");
+				response.sendRedirect(request.getContextPath() + "/list.bo?cpage=1");
+			} else {
+				
+				if(bf != null) {
+					new File(savePath + bf.getBoardFileChangeName()).delete();
+				}
+				
+				request.setAttribute("errorMsg", "게시글 작성에 실패했습니다.");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			}
 		}
 		
 		

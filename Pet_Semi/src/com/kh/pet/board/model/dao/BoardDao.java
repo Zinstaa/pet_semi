@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.kh.pet.board.model.vo.Board;
+import com.kh.pet.board.model.vo.BoardFile;
 import com.kh.pet.common.model.PageInfo;
 public class BoardDao {
 	
@@ -91,6 +92,56 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	public int insertBoard(Connection conn, Board b) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertBoard");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getBoardName());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setInt(3, Integer.parseInt(b.getMemberNo()));
+			
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertBoardFile(Connection conn, BoardFile bf) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bf.getBoardFileOriginName());
+			pstmt.setString(2, bf.getBoardFileChangeName());
+			pstmt.setString(3, bf.getBoardfilePath());
+			
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
 	}
 
 }

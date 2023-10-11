@@ -6,14 +6,14 @@ public class Place {
 	private String placeName; // PLACE_NAME	VARCHAR2(20 BYTE)
 	private String placeAddress; // PLACE_ADDRESS	VARCHAR2(100 BYTE)
 	private String placePhone; // PLACE_PHONE	VARCHAR2(13 BYTE)
-	private String placrTimes; // PLACE_TIMES	VARCHAR2(30 BYTE)
+	private String placeTimes; // PLACE_TIMES	VARCHAR2(30 BYTE)
 	private String placeUrl; // PLACE_URL	VARCHAR2(100 BYTE)
 	private String placeInfo; // PLACE_INFO	VARCHAR2(2000 BYTE)
 	private String placeAround; // PLACE_AROUND	VARCHAR2(200 BYTE)
 	private String placePrice; // PLACE_PRICE	VARCHAR2(30 BYTE)
 	private String placeCaution; // PLACE_CAUTION	VARCHAR2(100 BYTE)
 	private String placeMap; // PLACE_MAP	VARCHAR2(500 BYTE)
-	private String placAtatus; // PLACE_STATUS	CHAR(1 BYTE)
+	private String placeAtatus; // PLACE_STATUS	CHAR(1 BYTE)
 	private int memberNo; // MEMBER_NO	NUMBER
 	private int placeCategoryNo; // PLACE_CATEGORY_NO	NUMBER
 	private int localCategoryNo; // LOCAL_CATEGORY_NO	NUMBER
@@ -22,8 +22,8 @@ public class Place {
 	}
 	
 	public Place(int placeNo, String placePhoto, String placeName, String placeAddress, String placePhone,
-			String placrTimes, String placeUrl, String placeInfo, String placeAround, String placePrice,
-			String placeCaution, String placeMap, String placAtatus, int memberNo, int placeCategoryNo,
+			String placeTimes, String placeUrl, String placeInfo, String placeAround, String placePrice,
+			String placeCaution, String placeMap, String placeAtatus, int memberNo, int placeCategoryNo,
 			int localCategoryNo) {
 		super();
 		this.placeNo = placeNo;
@@ -31,14 +31,14 @@ public class Place {
 		this.placeName = placeName;
 		this.placeAddress = placeAddress;
 		this.placePhone = placePhone;
-		this.placrTimes = placrTimes;
+		this.placeTimes = placeTimes;
 		this.placeUrl = placeUrl;
 		this.placeInfo = placeInfo;
 		this.placeAround = placeAround;
 		this.placePrice = placePrice;
 		this.placeCaution = placeCaution;
 		this.placeMap = placeMap;
-		this.placAtatus = placAtatus;
+		this.placeAtatus = placeAtatus;
 		this.memberNo = memberNo;
 		this.placeCategoryNo = placeCategoryNo;
 		this.localCategoryNo = localCategoryNo;
@@ -84,12 +84,12 @@ public class Place {
 		this.placePhone = placePhone;
 	}
 	
-	public String getPlacrTimes() {
-		return placrTimes;
+	public String getPlaceTimes() {
+		return placeTimes;
 	}
 	
-	public void setPlacrTimes(String placrTimes) {
-		this.placrTimes = placrTimes;
+	public void setPlaceTimes(String placeTimes) {
+		this.placeTimes = placeTimes;
 	}
 	
 	public String getPlaceUrl() {
@@ -141,11 +141,11 @@ public class Place {
 	}
 	
 	public String getPlacAtatus() {
-		return placAtatus;
+		return placeAtatus;
 	}
 	
 	public void setPlacAtatus(String placAtatus) {
-		this.placAtatus = placAtatus;
+		this.placeAtatus = placAtatus;
 	}
 	
 	public int getMemberNo() {
@@ -174,10 +174,10 @@ public class Place {
 	
 	public String toString() {
 		return "Place [placeNo=" + placeNo + ", placePhoto=" + placePhoto + ", placeName=" + placeName
-				+ ", placeAddress=" + placeAddress + ", placePhone=" + placePhone + ", placrTimes=" + placrTimes
+				+ ", placeAddress=" + placeAddress + ", placePhone=" + placePhone + ", placeTimes=" + placeTimes
 				+ ", placeUrl=" + placeUrl + ", placeInfo=" + placeInfo + ", placeAround=" + placeAround
 				+ ", placePrice=" + placePrice + ", placeCaution=" + placeCaution + ", placeMap=" + placeMap
-				+ ", placAtatus=" + placAtatus + ", memberNo=" + memberNo + ", placeCategoryNo=" + placeCategoryNo
+				+ ", placeAtatus=" + placeAtatus + ", memberNo=" + memberNo + ", placeCategoryNo=" + placeCategoryNo
 				+ ", localCategoryNo=" + localCategoryNo + "]";
 	}
 }

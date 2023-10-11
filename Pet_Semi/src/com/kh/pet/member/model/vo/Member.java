@@ -144,6 +144,27 @@ public class Member {
 	}
 
 	
+	public Member(int memberNo, String email, String phone) {
+		super();
+		this.memberNo = memberNo;
+		this.email = email;
+		this.phone = phone;
+	}
+
+	public Member(int memberNo, String memberId, String email, String phone) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.email = email;
+		this.phone = phone;
+	}
+
+	public Member(String email, String phone) {
+		super();
+		this.email = email;
+		this.phone = phone;
+	}
+
 	public Member() {
 		super();
 	}

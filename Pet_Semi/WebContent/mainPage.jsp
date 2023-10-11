@@ -143,7 +143,7 @@
         $(function() {
             // 보이기 | 숨기기
             $(window).scroll(function() {
-            if ($(this).scrollTop() > 500) { //250 넘으면 버튼이 보여짐니다.
+            if ($(this).scrollTop() > 500) { // 500 넘으면 버튼이 보여짐니다.
                     $('#toTop').fadeIn();
                     $('#toTop').css('left', $('#sidebar').offset());  // #sidebar left:0 죄표
                     } else {

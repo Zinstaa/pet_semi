@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>플레이스 관련 SQL</comment>
+	
+	<entry key="insertPlaceContent">
+		INSERT 
+		  INTO 
+		  	   PLACE 
+		  	   	 ( 
+		  	   	 	PLACE_NO, 
+		  	   	 	PLACE_CATEGORY_NO, 
+		  	   	 	LOCAL_CATEGORY_NO, 
+		  	   	 	PLACE_NAME, 
+		  	   	 	PLACE_ADDRESS, 
+		  	   	 	PLACE_PHONE, 
+		  	   	 	PLACE_TIMES, 
+		  	   	 	PLACE_URL, 
+		  	   	 	PLACE_INFO, 
+		  	   	 	PLACE_AROUND, 
+		  	   	 	PLACE_PRICE, 
+		  	   	 	PLCAE_CAUTION, 
+		  	   	 	PLACE_MAP, 
+		  	   	 	MEMBER_NO 
+		  	   	 ) 
+		VALUES 
+		 	   	 ( 
+		 	   	 	PLACE_SEQ.NEXTVAL, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	?, 
+		 	   	 	? 
+		 	   	 ) 
+		 
+	</entry>
+	
+	<entry key="insertPlaceFileList">
+		INSERT 
+		  INTO 
+		  	   PLACE_FILE 
+		  	   	 ( 
+		  	   	 	PLACE_FILE_NO, 
+		  	   	 	PLACE_NO, 
+		  	   	 	PLACE_FILE_ORIGIN_NAME, 
+		  	   	 	PLACE_FILE_CHANGE_NAME, 
+		  	   	 	PLACE_FIKE_PATH, 
+		  	   	 	PLACE_FILE_LEVEL, 
+		  	   	 	PLACE_FILE_UPLOAD_DATE
+		  	   	 ) 
+		VALUES 
+			   	 ( 
+			   	 	PLACE_FILE_SEQ.NEXTVAL, 
+			   	 	PLACE_SEQ.CURRVAL, 
+			   	 	?, 
+			   	 	?, 
+			   	 	?, 
+			   	 	?, 
+			   	 	SYSDATE 
+			   	 ) 
+	</entry>
+</properties>
