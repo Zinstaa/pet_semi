@@ -57,7 +57,7 @@
                 <th>첨부파일</th>
                 <td colspan="5">
                 	<%if(bf ==  null) { %>
-                    <!-- 첨부파일이 존재하지 않습니다. -->.
+                    <!-- 첨부파일이 존재하지 않습니다. -->
 						첨부파일이 존재하지 않습니다.
 					<% } else { %>
                     <!-- 첨부파일 다운로드 -->
@@ -70,9 +70,12 @@
         <br>
 
         <div align="center">
-            <a href="">목록으로 돌아가기</a>
-            <a href="">수정</a>
-            <a href="">삭제</a>
+            <a href="<%= contextPath%>/list.bo?cpage=1" class="btn btn-primary">목록으로 돌아가기</a>
+            
+            <% if(loginUser != null && loginUser.getMemberId().equals(b.getMemberNo())) { %>
+            <a href="<%= contextPath %>/updateForm.bo?bno=<%= b.getBoardNo() %>" class="btn btn-warning">수정</a>
+            <a href="" class="btn btn-danger">삭제</a>
+            <% } %>
         </div>
 
     </div>
