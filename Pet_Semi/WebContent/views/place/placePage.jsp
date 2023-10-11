@@ -330,9 +330,10 @@
             <% } else { %>
             <!-- 등록된 장소가 있을 때-->
                 <% for(Place p : list) { %>
-                    <div class="place-content" >
+                    <div class="place-content">
+                        <input type="hidden" value="<%= p.getPlaceNo() %>">
                         <div id="img-place">
-                            <img src="<%= p.getTitleImg() %>>" alt="">
+                            <img src="<%= p.getTitleImg() %>" alt="">
                         </div>
                         <div id="btn-place" align="center">
                             <div class="pl-btn" id="star">
@@ -355,6 +356,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function(){
+            $('.place-content').click(function(){
+
+                const pno = $(this).children().eq(0).val();
+
+                location.href = '<%= contextPath%>/detail.pl?pno=' + pno;
+
+            })
+        })
+
+    </script>
+
     <div id="top">
         <a id="toTop" href="#">
            <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
