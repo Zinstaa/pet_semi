@@ -80,7 +80,7 @@
 		  JOIN  
 		       PLACE_FILE USING (PLACE_NO) 
 		  JOIN
-		       PLACE_CATEGORY USING(PLACE_CATEGORY_NO)
+		       PLACE_CATEGORY USING (PLACE_CATEGORY_NO)
 		  JOIN
 		       LOCAL_CATEGORY USING (LOCAL_CATEGORY_NO)
 		 WHERE 
@@ -90,5 +90,47 @@
 		 ORDER 
 		    BY 
 		       PLACE_NO DESC
+	</entry>
+	
+	<entry key="selectPlace">
+		SELECT 
+			   PLACE_NO, 
+			   PLACE_NAME, 
+			   PLACE_ADDRESS,  
+			   PLACE_PHONE,  
+			   PLACE_TIMES,  
+			   PLACE_URL,  
+			   PLACE_INFO,  
+			   PLACE_AROUND,  
+			   PLACE_PRICE,  
+			   PLACE_CAUTION,   
+			   PLACE_MAP,  
+			   PLACE_CATEGORY_NAME, 
+			   LOCAL_CATEGORY_NAME 
+		  FROM 
+		  	   PLACE 
+   		  JOIN
+		       PLACE_CATEGORY USING (PLACE_CATEGORY_NO)
+		  JOIN
+		       LOCAL_CATEGORY USING (LOCAL_CATEGORY_NO)
+		 WHERE 
+		 	   PLACE_NO = ? 
+		   AND 
+		   	   PLACE_STATUS = 'Y' 
+	</entry>
+	
+	<entry key="selectPlaceFileList">
+		SELECT
+			   PLACE_FILE_NO, 
+			   PLACE_FILE_ORIGIN_NAME, 
+			   PLACE_FILE_CHANGE_NAME, 
+			   PLACE_FILE_PATH
+		  FROM
+		  	   PLACE_FILE
+		 WHERE
+		 	   PLACE_NO = ?
+		 ORDER
+		 	BY
+		 	   PLACE_FILE_NO ASC
 	</entry>
 </properties>
