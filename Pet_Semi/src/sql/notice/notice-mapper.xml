@@ -26,4 +26,18 @@
 	where rnum between ? and ?
 	</entry>
 	
+	<entry key="selectNotice">
+	SELECT 
+		NOTICE_NO,
+		NOTICE_TITLE,
+		NOTICE_DATE,
+		MEMBER_ID,
+		NOTICE_CONTENT
+	FROM
+		NOTICE
+	JOIN MEMBER USING (MEMBER_NO)
+	WHERE 
+		NOTICE_NO = ?
+	</entry>
+	
 </properties>

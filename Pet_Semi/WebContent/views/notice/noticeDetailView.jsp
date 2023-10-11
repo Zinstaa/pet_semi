@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@
+	page import="com.kh.pet.notice.vo.*"
+ %>
+ 
+<%
+	//공지사항 글을 가지고 온다.
+	Notice n = (Notice)request.getAttribute("n");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +53,18 @@
     #inform{
         text-align: right;
     }
-
+	#content-area{
+		width : 100%;
+		height: 80%;
+		
+	}
+	#button-area{
+		text-align : right;
+		
+	}
+	#button-area>button{
+		margin-right : 1%;
+	}
     
 </style>
 </head>
@@ -56,15 +76,15 @@
             <div id="title-area">
                 <table>
                     <tr>
-                        <td id="title">일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십삼십삼</td>
+                        <td id="title"><%=n.getNoticeTitle() %></td>
                         <td id="inform">
                             <p class="title-area-inform">
                                 <span>작성일</span>                            
-                                2023-10-10
+                                <%=n.getNoticeDate() %>
                             </p>
                             <p class="title-area-inform">
                                 <span>작성자</span>
-                                admin
+                                <%=n.getMemberNo() %>
                             </p>
                         </td>
                     </tr>
@@ -72,19 +92,22 @@
             </div>
             <div id="content-area">
                
-                10일 국회 과학기술정보방송통신위원회(위원장 장제원) 국정감사에서 박완주 무소속 의원은 이동관 방통위원장에게 “가짜뉴스는 독일 나치당이 자신들에 맞지 않는 정보를 가리키며 쓴 신조어”라며 “오보와 가짜뉴스는 어떤 차이가 있나”라고 물었다.
-
-                이 위원장이 “고의성 여부”라고 답하자 박 의원은 “누가 판단하나”라고 다시 물었다. 
-                이 위원장은 “심의기관, 최종적으로 법원이 판단하겠습니다만”이라고 하자 박 의원은 “그게 위험하다”며 “20대 국회에서 가짜뉴스 정의와 판단에 대한 논의를 했다. 많은 논의가 필요해 신중하게 검토하고 있는데 최근에 굉장히 빠르게 논의되고 있다”고 했다. 
-                문재인 정부 당시 규제 시도가 있었으나 표
-                
-                출처 : 미디어오늘(http://www.mediatoday.co.kr)
+                <%=n.getNoticeContent() %>
 
                 
             </div>
             <div id="button-area">
-                <button>목록으로</button>
+            	<button id="pre">◀이전글</button>
+            	<button id="next">다음글▶</button>
+                <button id="list">목록≡</button>
             </div>
+            <script>
+			$(function(){
+				$('#pre').click(function(){
+					location.href = '<%=contextPath%>/detail.no?nno=<%=n.getNoticeNo() -1 %>';
+				})
+			})
+			</script>
         
     </div>
     
