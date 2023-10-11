@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.*" %>
+<%
+	Place p = (Place)request.getAttribute("p");
+	ArrayList<PlaceFile> list = (ArrayList<PlaceFile>)request.getAttribute("list"); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +32,29 @@
         padding-top: 125px;
     }
 
+    /* place_nav_bar 부분 */
+    #place_nav_bar {
+        margin-top: 20px;
+        background-color: #ffce50;
+        height: 50px;
+        margin: auto;
+        border-radius: 33px;
+    }
+
+    #place_nav_bar > a > img {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
     /* place_detail_content 부분 */
     #place_detail_content {
         width: 80%;
         height: 90%;
         margin: auto;
+        border: 1px solid lightgray;
+        border-radius: 30px;
     }
 
     #place_detail_content > div{
@@ -76,6 +99,8 @@
 
     #toTop > img {
         position: absolute;
+        width: 24px;
+        height: 24px;
         top: 3px;
         left: 13px;
     }
@@ -88,7 +113,13 @@
     <div id="place_detail_main">
         <h2> 플레이스 </h2>
 
-        <h3> [지역] - [카테고리] </h3>
+        <div id="place_nav_bar">
+            <a href="<%= contextPath %>/place.pl">
+                <img src="https://svgsilh.com/svg/97591-ffffff.svg" alt="목록으로">
+            </a>
+        </div>
+
+        <h3> [<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] </h3>
 
         <div id="place_detail_content">
             <div id="place_detail_image_info">
