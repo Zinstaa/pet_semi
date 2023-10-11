@@ -25,6 +25,10 @@
         background-color: #fff5ce;
         color: black;
     }
+    .list-area>tbody>tr:hover{
+    	cursor : pointer;
+        background-color: yellow;
+    }
 </style>
 </head>
 <body>
@@ -61,6 +65,15 @@
 			</tbody>
 		</table>
 		<br>
+		
+		<!-- 글 목록을 누르면 상세 페이지로 이동 -->
+		<script>
+			$(function(){
+				$('.list-area>tbody>tr').click(function(){
+					location.href = '<%=contextPath%>/detail.no?nno='+ $(this).children().eq(0).text();
+				})
+			})
+		</script>
 		
 		<div align="right" style="width:1100px;">
 		

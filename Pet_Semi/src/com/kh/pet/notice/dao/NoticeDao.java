@@ -83,4 +83,35 @@ public class NoticeDao {
 		}
 		return list;
 	}
+	
+	public Notice selectNotice(Connection conn, int noticeNo) {
+		Notice n = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				n = new Notice();
+				n.setNoticeNo(rset.getInt("NOTICE_NO"));
+				n.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				n.setMemberNo(rset.getString("MEMBER_ID"));
+				n.setNoticeContent(rset.getString("NOTICE_CONTENT"));
+				n.setNoticeDate(rset.getDate("NOTICE_DATE"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return n;
+		
+	}
 }
