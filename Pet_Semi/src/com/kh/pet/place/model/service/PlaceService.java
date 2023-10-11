@@ -1,6 +1,9 @@
 package com.kh.pet.place.model.service;
 
-import static com.kh.pet.common.JDBCTemplate.*;
+import static com.kh.pet.common.JDBCTemplate.close;
+import static com.kh.pet.common.JDBCTemplate.commit;
+import static com.kh.pet.common.JDBCTemplate.getConnection;
+import static com.kh.pet.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -28,6 +31,17 @@ public class PlaceService {
 		close(conn);
 		
 		return (result1 * result2);
+	}
+
+	public ArrayList<Place> selectPlaceContentList() {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Place> list = new PlaceDao().selectPlaceContentList(conn);
+		
+		close(conn);
+		
+		return list;
 	}
 
 }
