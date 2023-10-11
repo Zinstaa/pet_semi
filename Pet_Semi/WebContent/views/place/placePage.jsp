@@ -22,7 +22,7 @@
     /* place_Main 부분 */
     #place_Main {
         width: 1200px;
-        height: 1000px;
+        height: 1200px;
         margin: auto;
         padding-top: 125px;
     }
@@ -32,20 +32,18 @@
         color: #ffffff;
     }
 
-	#place_Main > div{
-		float: left;
-	}
-	
     #place_search {
         width: 25%;
-        height: 85%;
+        height: 70%;
         margin-top: 100px;
+        float: left;
     }
     
     #place_content {
         width: 75%;
         height: 90%;
         margin-top: 55px;
+        float: left;
     }
 
     #left-search-name {
@@ -319,54 +317,44 @@
         </div>
         <div id="place_content">
             <% if(loginUser != null) { %>
-        <div style="width: 900px;" align="right">
-            <a href="<%= contextPath %>/enrollForm.pl" class="btn btn-sm btn-primary">글작성</a>
-        </div>
-    <% } %>
-    <div id="list-area">
-		<% if(list.isEmpty()) {%>
-        
-        <!-- 등록된 장소가 없을 때-->
-        등록된 장소가 없습니다... <br>
-        
-        <% } else { %>
-        <!-- 등록된 장소가 있을 때-->
-        	<% for(Place p : list) { %>
-		        <div class="place-content" align="center">
-		            <div id="img-place">
-		                <img src="<%= p.getTitleImg() %>>" alt="">
-		            </div>
-		            <div id="btn-place">
-		                <div class="pl-btn" id="star">
-		                    <a href="https://kko.to/G2wEv1yqMf">
-		                        <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
-		                    </a>
-		                </div>
-		                <div class="pl-btn" id="map">
-		                    <a href="https://kko.to/G2wEv1yqMf">
-		                        <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
-		                    </a>
-		                </div>
-		            </div>
-		            <div id="name-place">
-		                <p>[<%= p.getPlaceCategoryNo() %>] - [<%= p.getLocalCategoryNo() %>] <%= p.getPlaceName() %></p>
-		            </div>
-		        </div>
-        	<% } %>
-        <% } %>
+            <div style="width: 900px;" align="right">
+                <a href="<%= contextPath %>/enrollForm.pl" class="btn btn-sm btn-primary">글작성</a>
+            </div>
+             <% } %>
+            <div id="list-area">
+            <% if(list.isEmpty()) {%>
+            
+            <!-- 등록된 장소가 없을 때-->
+            등록된 장소가 없습니다... <br>
+            
+            <% } else { %>
+            <!-- 등록된 장소가 있을 때-->
+                <% for(Place p : list) { %>
+                    <div class="place-content" align="center">
+                        <div id="img-place">
+                            <img src="<%= p.getTitleImg() %>>" alt="">
+                        </div>
+                        <div id="btn-place">
+                            <div class="pl-btn" id="star">
+                                <a href="https://kko.to/G2wEv1yqMf">
+                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+                                </a>
+                            </div>
+                            <div class="pl-btn" id="map">
+                                <a href="https://kko.to/G2wEv1yqMf">
+                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+                                </a>
+                            </div>
+                        </div>
+                        <div id="name-place">
+                            <p>[<%= p.getPlaceCategoryNo() %>] - [<%= p.getLocalCategoryNo() %>] <%= p.getPlaceName() %></p>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+            </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-    
     <div id="top">
         <a id="toTop" href="#">
            <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
