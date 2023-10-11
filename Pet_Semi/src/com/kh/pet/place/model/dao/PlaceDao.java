@@ -52,7 +52,7 @@ public class PlaceDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getPlaceName());
-			pstmt.setString(2, p.getPlaceInfo());
+			pstmt.setString(2, p.getPlaceAddress());
 			pstmt.setString(3, p.getPlacePhone());
 			pstmt.setString(4, p.getPlaceTimes());
 			pstmt.setString(5, p.getPlaceUrl());
