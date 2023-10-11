@@ -93,6 +93,10 @@
                                 <%=n.getMemberNo() %>
                             </p>
                         </td>
+                        <td>
+                        
+                        </td>
+                        
                     </tr>
                 </table>
             </div>
@@ -123,7 +127,11 @@
             <div id="button-area">
             	<button id="pre">◀이전글</button>
             	<button id="next">다음글▶</button>
-                <button id="list">목록≡</button>
+                <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-sm btn-info">목록≡</a>
+                 <%if(loginUser !=null && loginUser.getMemberId().equals(n.getMemberNo())){ %>
+		            <a href="<%=contextPath%>/updateForm.no?bno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
+		            <a href="<%=contextPath%>/deleteForm.no?bno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제하기</a>
+		           <%} %>
             </div>
             <script>
 			$(function(){
