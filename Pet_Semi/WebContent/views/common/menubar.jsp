@@ -127,6 +127,7 @@ String contextPath = request.getContextPath();
 
    .navbar ul, .navbar li {
       list-style: none;
+      padding-left: 0;
    }
 
    .menu{

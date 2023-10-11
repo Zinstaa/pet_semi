@@ -66,33 +66,35 @@
 		<h2> 플레이스 작성 </h2>
 
 		<form action="<%= contextPath %>/insert.pl" id="enroll-form" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>">
 			<div id="place-enroll-form-table">
 				<table align="center">
 					<tr>
 						<th>카테고리</th>
 						<td colspan="2">
-							<select name="category" class="form" required>
-								<option value="">카테고리</option>
-								<option value="fo">식당</option>
-								<option value="ca">카페</option>
-								<option value="pa">공원</option>
-								<option value="sh">쇼핑</option>
-								<option value="ho">병원</option>
+							<select name="pl-category" class="place-form" required>
+								<option>카테고리</option>
+								<option>식당</option>
+								<option>카페</option>
+								<option>공원</option>
+								<option>쇼핑</option>
+								<option>병원</option>
 							</select>
 						</td>
 						<th>지역</th>
 						<td>
-							<select name="place" class="form" required>
-								<option value="">지역</option>
-								<option value="se">서울</option>
-								<option value="gy">경기</option>
-								<option value="ga">강원</option>
-								<option value="cb">충북</option>
-								<option value="cn">충남</option>
-								<option value="kb">경북</option>
-								<option value="kn">경남</option>
-								<option value="jb">전북</option>
-								<option value="jn">전남</option>
+							<select name="pl-place" class="place-form" required>
+								<option>지역</option>
+								<option>서울</option>
+								<option>경기</option>
+								<option>강원</option>
+								<option>충북</option>
+								<option>충남</option>
+								<option>경북</option>
+								<option>경남</option>
+								<option>전북</option>
+								<option>전남</option>
+								<option>제주</option>
 							</select>
 						</td>
 					</tr>
@@ -129,7 +131,7 @@
 					<tr>
 						<th>플레이스 소개</th>
 						<td colspan="4">
-							<textarea name="pl-context" style="resize: none;" rows="10"></textarea>
+							<textarea name="pl-info" style="resize: none;" rows="10"></textarea>
 						</td>
 					</tr>
 					<tr>

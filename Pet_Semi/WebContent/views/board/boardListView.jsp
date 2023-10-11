@@ -224,6 +224,23 @@ window.onclick = function(event) {
 				<% } %>
 			</tbody>
 		</table>
+
+		<script>
+
+			$(function() {
+
+				$('.list-area > tbody > tr').click(function(){
+
+					location.href = '<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text();
+
+				});
+
+			})
+
+		</script>
+
+
+
 		<br>
 		
 		<div align="right" style="width:1100px;">

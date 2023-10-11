@@ -2,7 +2,6 @@ package com.kh.pet.place.model.vo;
 
 public class Place {
 	private int placeNo; // PLACE_NO	NUMBER
-	private String placePhoto; // PLACE_PHOTO	VARCHAR2(500 BYTE)
 	private String placeName; // PLACE_NAME	VARCHAR2(20 BYTE)
 	private String placeAddress; // PLACE_ADDRESS	VARCHAR2(100 BYTE)
 	private String placePhone; // PLACE_PHONE	VARCHAR2(13 BYTE)
@@ -13,21 +12,48 @@ public class Place {
 	private String placePrice; // PLACE_PRICE	VARCHAR2(30 BYTE)
 	private String placeCaution; // PLACE_CAUTION	VARCHAR2(100 BYTE)
 	private String placeMap; // PLACE_MAP	VARCHAR2(500 BYTE)
-	private String placeAtatus; // PLACE_STATUS	CHAR(1 BYTE)
-	private int memberNo; // MEMBER_NO	NUMBER
+	private String placeStatus; // PLACE_STATUS	CHAR(1 BYTE)
+	private String memberNo; // MEMBER_NO	NUMBER
 	private int placeCategoryNo; // PLACE_CATEGORY_NO	NUMBER
 	private int localCategoryNo; // LOCAL_CATEGORY_NO	NUMBER
+	private String titleImg;
+	private String placeCategoryName;
+	private String localCategoryName;
+	
+	public String getPlaceCategoryName() {
+		return placeCategoryName;
+	}
+
+	public void setPlaceCategoryName(String placeCategoryName) {
+		this.placeCategoryName = placeCategoryName;
+	}
+
+	public String getLocalCategoryName() {
+		return localCategoryName;
+	}
+
+	public void setLocalCategoryName(String localCategoryName) {
+		this.localCategoryName = localCategoryName;
+	}
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
 	public Place() {
 		super();
 	}
 	
-	public Place(int placeNo, String placePhoto, String placeName, String placeAddress, String placePhone,
+	public Place(int placeNo, String placeName, String placeAddress, String placePhone,
 			String placeTimes, String placeUrl, String placeInfo, String placeAround, String placePrice,
-			String placeCaution, String placeMap, String placeAtatus, int memberNo, int placeCategoryNo,
+			String placeCaution, String placeMap, String placeStatus, String memberNo, int placeCategoryNo,
 			int localCategoryNo) {
 		super();
 		this.placeNo = placeNo;
-		this.placePhoto = placePhoto;
 		this.placeName = placeName;
 		this.placeAddress = placeAddress;
 		this.placePhone = placePhone;
@@ -38,7 +64,7 @@ public class Place {
 		this.placePrice = placePrice;
 		this.placeCaution = placeCaution;
 		this.placeMap = placeMap;
-		this.placeAtatus = placeAtatus;
+		this.placeStatus = placeStatus;
 		this.memberNo = memberNo;
 		this.placeCategoryNo = placeCategoryNo;
 		this.localCategoryNo = localCategoryNo;
@@ -50,14 +76,6 @@ public class Place {
 	
 	public void setPlaceNo(int placeNo) {
 		this.placeNo = placeNo;
-	}
-	
-	public String getPlacePhoto() {
-		return placePhoto;
-	}
-
-	public void setPlacePhoto(String placePhoto) {
-		this.placePhoto = placePhoto;
 	}
 	
 	public String getPlaceName() {
@@ -140,19 +158,19 @@ public class Place {
 		this.placeMap = placeMap;
 	}
 	
-	public String getPlacAtatus() {
-		return placeAtatus;
+	public String getPlaceStatus() {
+		return placeStatus;
 	}
 	
-	public void setPlacAtatus(String placAtatus) {
-		this.placeAtatus = placAtatus;
+	public void setPlaceStatus(String placeStatus) {
+		this.placeStatus = placeStatus;
 	}
 	
-	public int getMemberNo() {
+	public String getMemberNo() {
 		return memberNo;
 	}
 	
-	public void setMemberNo(int memberNo) {
+	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
 	
@@ -173,11 +191,11 @@ public class Place {
 	}
 	
 	public String toString() {
-		return "Place [placeNo=" + placeNo + ", placePhoto=" + placePhoto + ", placeName=" + placeName
+		return "Place [placeNo=" + placeNo + ", placeName=" + placeName
 				+ ", placeAddress=" + placeAddress + ", placePhone=" + placePhone + ", placeTimes=" + placeTimes
 				+ ", placeUrl=" + placeUrl + ", placeInfo=" + placeInfo + ", placeAround=" + placeAround
 				+ ", placePrice=" + placePrice + ", placeCaution=" + placeCaution + ", placeMap=" + placeMap
-				+ ", placeAtatus=" + placeAtatus + ", memberNo=" + memberNo + ", placeCategoryNo=" + placeCategoryNo
+				+ ", placeStatus=" + placeStatus + ", memberNo=" + memberNo + ", placeCategoryNo=" + placeCategoryNo
 				+ ", localCategoryNo=" + localCategoryNo + "]";
 	}
 }
