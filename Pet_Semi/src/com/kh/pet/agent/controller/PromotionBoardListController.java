@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.board.model.service.PromotionBoardService;
-import com.kh.pet.board.model.vo.PromotionBoard;
-
 /**
  * Servlet implementation class PromotionBoardListController
  */
