@@ -149,7 +149,7 @@
 					<tr>
 						<th>플레이스 주의사항</th>
 						<td colspan="4">
-							<input type="text" name="pl-caution" required>
+							<textarea name="pl-caution" style="resize: none;" rows="4" required></textarea>
 						</td>
 					</tr>
 					<tr>
