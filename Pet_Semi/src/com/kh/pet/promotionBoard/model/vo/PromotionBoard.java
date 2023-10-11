@@ -14,13 +14,15 @@ public class PromotionBoard {
 	private Date eventFinishDate; //EVENT_FINISH_DATE	DATE
 	private int agentNo; //AGENT_NO	NUMBER
 	private String titleImage; //
+	private String PromotionWriter; //
 	
 	public PromotionBoard() {
 		super();
 	}
 
 	public PromotionBoard(int promotionNumber, String promotionTitle, String promotionContent, Date promotionDate,
-			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage) {
+			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage,
+			String promotionWriter) {
 		super();
 		this.promotionNumber = promotionNumber;
 		this.promotionTitle = promotionTitle;
@@ -32,6 +34,7 @@ public class PromotionBoard {
 		this.eventFinishDate = eventFinishDate;
 		this.agentNo = agentNo;
 		this.titleImage = titleImage;
+		PromotionWriter = promotionWriter;
 	}
 
 	public int getPromotionNumber() {
@@ -105,12 +108,21 @@ public class PromotionBoard {
 	public void setAgentNo(int agentNo) {
 		this.agentNo = agentNo;
 	}
-	
+
 	public String getTitleImage() {
 		return titleImage;
 	}
+
 	public void setTitleImage(String titleImage) {
 		this.titleImage = titleImage;
+	}
+
+	public String getPromotionWriter() {
+		return PromotionWriter;
+	}
+
+	public void setPromotionWriter(String promotionWriter) {
+		PromotionWriter = promotionWriter;
 	}
 
 	@Override
@@ -118,8 +130,13 @@ public class PromotionBoard {
 		return "PromotionBoard [promotionNumber=" + promotionNumber + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
-				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + "]";
+				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + ", PromotionWriter="
+				+ PromotionWriter + "]";
 	}
+	
+	
+
+	
 
 	
 	}
