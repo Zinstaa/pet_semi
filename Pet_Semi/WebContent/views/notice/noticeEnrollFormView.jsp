@@ -22,7 +22,7 @@
 		padding-top: 125px;
         background-color: #fff5ce;
         color: black;
-        border : 2px solid red;
+
     }
     
     #title-area{
@@ -62,7 +62,7 @@
 	
     #content-area{
 		width : 100%;
-		height: 80%;
+		height: 440px;
 		
 	}
     #content{
@@ -79,6 +79,11 @@
 	#button-area>button{
 		margin-right : 1%;
 	}
+
+    #upfile{
+        border: 1px solid black;
+        padding-right: 10%;
+    }
     
 </style>
 </head>
@@ -86,12 +91,14 @@
     <%@ include file = "../common/menubar.jsp" %>
 
     <div class="outer1"> 
-        
-            <form action="">
+        <h2 align="center">공지사항</h2>
+		<br>
+            <form enctype="multipart/form-data" action="<%=contextPath%>/insert.no" id="enroll-form" method="post">
+            	<input type="hidden" name="memberNo" value="<%=loginUser.getMemberNo()%>">
                 <div id="title-area">
                         <table>
                             <tr>
-                                <td id="title">제목 <input type="text"></td>
+                                <td id="title">제목 <input type="text" name="title"></td>
                                 <td id="inform">
                                     <p class="title-area-inform">
                                         <span>작성일</span>                            
@@ -99,7 +106,7 @@
                                     </p>
                                     <p class="title-area-inform">
                                         <span>작성자</span>
-                                    
+                                    	<%=loginUser.getMemberId()%>
                                     </p>
                                 </td>
                             </tr>
@@ -108,10 +115,14 @@
                 <div id="content-area">
                     <textarea name="content" id="content"></textarea>
                 </div>
+                <div>
+                    <input type="file" name="upfile" id="upfile">
+                </div>
                 <div id="button-area">
                     <button type="submit">작성</button>
                     <button>목록으로</button>
                 </div>
+                
             </form>
             
     </div>

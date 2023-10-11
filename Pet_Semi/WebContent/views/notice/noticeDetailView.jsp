@@ -72,7 +72,8 @@
 	<%@ include file = "../common/menubar.jsp" %>
 
     <div class="outer1">
-        
+        <h2 align="center">공지사항</h2>
+		<br>
             <div id="title-area">
                 <table>
                     <tr>
