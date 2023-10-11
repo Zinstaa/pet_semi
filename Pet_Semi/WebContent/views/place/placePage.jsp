@@ -330,11 +330,11 @@
             <% } else { %>
             <!-- 등록된 장소가 있을 때-->
                 <% for(Place p : list) { %>
-                    <div class="place-content" align="center">
+                    <div class="place-content" >
                         <div id="img-place">
                             <img src="<%= p.getTitleImg() %>>" alt="">
                         </div>
-                        <div id="btn-place">
+                        <div id="btn-place" align="center">
                             <div class="pl-btn" id="star">
                                 <a href="https://kko.to/G2wEv1yqMf">
                                     <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
@@ -347,7 +347,7 @@
                             </div>
                         </div>
                         <div id="name-place">
-                            <p>[<%= p.getPlaceCategoryNo() %>] - [<%= p.getLocalCategoryNo() %>] <%= p.getPlaceName() %></p>
+                            <p>[<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] <%= p.getPlaceName() %></p>
                         </div>
                     </div>
                 <% } %>
