@@ -39,5 +39,54 @@
 	WHERE 
 		NOTICE_NO = ?
 	</entry>
+	<entry key="selectNoticeFile">
+	SELECT
+		NOTICE_FILE_NO,
+		NOTICE_FILE_ORIGIN_NAME,
+		NOTICE_FILE_CHANGE_NAME,
+		NOTICE_FILE_PATH
+	FROM
+		NOTICE_FILE
+	WHERE
+		NOTICE_NO = ?
+	ORDER BY
+		NOTICE_FILE_NO ASC
+	</entry>
 	
+	<entry key="insertNotice">
+	INSERT INTO
+		NOTICE (
+			NOTICE_NO,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			MEMBER_NO
+		)
+		VALUES(
+			NOTICE_SQL.NEXTVAL,
+			?,
+			?,
+			?
+		)
+		
+	</entry>
+	<entry key="insertNoticeFile">
+	INSERT INTO
+		NOTICE_FILE (
+			NOTICE_FILE_NO,
+			NOTICE_FILE_ORIGIN_NAME,
+			NOTICE_FILE_CHANGE_NAME,
+			NOTICE_FILE_PATH,
+			NOTICE_FILE_UPLOAD_DATE,
+			NOTICE_NO
+		)
+		VALUES(
+			NOTICE_FILE_SQL.NEXTVAL,
+			?,
+			?,
+			?,
+			SYSDATE,
+			NOTICE_SQL.CURRVAL
+		)
+		
+	</entry>
 </properties>

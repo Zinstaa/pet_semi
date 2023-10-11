@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.kh.pet.common.model.PageInfo;
 import com.kh.pet.notice.vo.Notice;
+import com.kh.pet.notice.vo.NoticeFile;
 
 public class NoticeDao {
 	private Properties prop = new Properties();
@@ -113,5 +114,74 @@ public class NoticeDao {
 		}
 		return n;
 		
+	}
+	
+	public NoticeFile selectNoticeFile(Connection conn, int noticeNo) {
+		NoticeFile nf = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectNoticeFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				nf = new NoticeFile();
+				nf.setNoticeFileNo(rset.getInt("NOTICE_FILE_NO"));
+				nf.setNoticeFileOriginName(rset.getString("NOTICE_FILE_ORIGIN_NAME"));
+				nf.setNoticeFileChangeName(rset.getString("NOTICE_FILE_CHANGE_NAME"));
+				nf.setNoticeFilePath(rset.getString("NOTICE_FILE_PATH"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return nf;
+		
+	}
+	
+	public int insertNotice(Connection conn, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			pstmt.setString(3, n.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertNoticeFile(Connection conn, NoticeFile nf) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNoticeFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nf.getNoticeFileOriginName());
+			pstmt.setString(2, nf.getNoticeFileChangeName());
+			pstmt.setString(3, nf.getNoticeFilePath());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

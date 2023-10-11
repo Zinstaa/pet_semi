@@ -7,6 +7,7 @@
 <%
 	//공지사항 글을 가지고 온다.
 	Notice n = (Notice)request.getAttribute("n");
+	NoticeFile nf = (NoticeFile)request.getAttribute("nf");
 
 %>
 <!DOCTYPE html>
@@ -65,6 +66,10 @@
 	#button-area>button{
 		margin-right : 1%;
 	}
+
+    #file-area>table>tr>th{
+        margin-right : 30%;
+    }
     
 </style>
 </head>
@@ -97,6 +102,24 @@
 
                 
             </div>
+            <div id="file-area">
+            	<table>
+                    <tr>
+                        <th>첨부파일</th>
+                        <td>|</td>
+                        <td>
+                            <%if(nf == null) { %>
+                            첨부파일 없어요
+                            <%}else{ %>
+                                <a href="<%=contextPath %>/<%=nf.getNoticeFilePath() %>/<%=nf.getNoticeFileChangeName() %>" download="<%=nf.getNoticeFileChangeName()%>"><%=nf.getNoticeFileChangeName()%></a>
+                               
+                            <%} %>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
             <div id="button-area">
             	<button id="pre">◀이전글</button>
             	<button id="next">다음글▶</button>
