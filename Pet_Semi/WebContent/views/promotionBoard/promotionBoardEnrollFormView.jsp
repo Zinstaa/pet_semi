@@ -31,7 +31,7 @@
 
     <form action="<%=contextPath %>/promotionInsert.pr" id="enroll-form" method="post" enctype="multipart/form-data">
         
-        <input type="hidden" name="userNo" value="<%=loginUser.getMemberNo() %>">
+        <input type="hidden" name="memberNo" value="<%=loginUser.getMemberNo() %>">
         <table align="center" border="1">
             <tr>
                 <th width="70">제목</th>

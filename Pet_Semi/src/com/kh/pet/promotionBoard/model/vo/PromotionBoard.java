@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PromotionBoard {
 	
-	private int promotionNumber; //PROMOTION_NUMBER	NUMBER
+	private int promotionNo; //PROMOTION_NUMBER	NUMBER
 	private String promotionTitle; //PROMOTION_TITLE	VARCHAR2(100 BYTE)
 	private String promotionContent; //PROMOTION_CONTENT	VARCHAR2(4000 BYTE)
 	private Date promotionDate; // PROMOTION_DATE	DATE
@@ -20,11 +20,11 @@ public class PromotionBoard {
 		super();
 	}
 
-	public PromotionBoard(int promotionNumber, String promotionTitle, String promotionContent, Date promotionDate,
+	public PromotionBoard(int promotionNo, String promotionTitle, String promotionContent, Date promotionDate,
 			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage,
 			String promotionWriter) {
 		super();
-		this.promotionNumber = promotionNumber;
+		this.promotionNo = promotionNo;
 		this.promotionTitle = promotionTitle;
 		this.promotionContent = promotionContent;
 		this.promotionDate = promotionDate;
@@ -37,12 +37,12 @@ public class PromotionBoard {
 		PromotionWriter = promotionWriter;
 	}
 
-	public int getPromotionNumber() {
-		return promotionNumber;
+	public int getPromotionNo() {
+		return promotionNo;
 	}
 
-	public void setPromotionNumber(int promotionNumber) {
-		this.promotionNumber = promotionNumber;
+	public void setPromotionNo(int promotionNo) {
+		this.promotionNo = promotionNo;
 	}
 
 	public String getPromotionTitle() {
@@ -127,14 +127,12 @@ public class PromotionBoard {
 
 	@Override
 	public String toString() {
-		return "PromotionBoard [promotionNumber=" + promotionNumber + ", promotionTitle=" + promotionTitle
+		return "PromotionBoard [promotionNo=" + promotionNo + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
 				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + ", PromotionWriter="
 				+ PromotionWriter + "]";
 	}
-	
-	
 
 	
 

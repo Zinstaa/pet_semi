@@ -14,17 +14,7 @@ import com.kh.pet.promotionBoard.model.vo.PromotionFile;
 
 public class PromotionBoardService {
 	
-	public ArrayList<PromotionBoard> selectPromotionList() {
-		
-		Connection conn = getConnection();
-		
-		ArrayList<PromotionBoard> list = new PromotionBoardDao().selectPromotionList(conn);
-		
-		close(conn);
-		
-		return list;
-	}
-
+	
 	public int insertPromotionBoard(PromotionBoard pb, ArrayList<PromotionFile> list){
 
 		Connection conn = getConnection();
@@ -32,9 +22,9 @@ public class PromotionBoardService {
 		// 1개의 트랜젝션에서 최소 2개 최대 5개의 INSERT가 필요
 		int result1 = new PromotionBoardDao().insertPromotionBoard(conn, pb);
 
-		int result2 = new PromotionBoardDao().insertPromotionBoardList(conn, list);
+		int result2 = new PromotionBoardDao().insertPromotionFileList(conn, list);
 		
-		// 둘 다 성공했을 경우에만 commit 
+		// 트랜잭션 처리
 		if((result1 * result2) > 0) {
 			commit(conn);
 		} else {

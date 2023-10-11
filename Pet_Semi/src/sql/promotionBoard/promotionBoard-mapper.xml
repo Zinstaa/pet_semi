@@ -3,52 +3,90 @@
 <properties>
 	<comment>홍보게시판 관련 SQL문</comment>
 	
-	<entry key="selectPromotionListCount">
-		SELECT
-				COUNT(*)
-		  FROM
-		  		BOARD
-		 WHERE
-		 		STATUS ='Y'
-	</entry>
 	
-	<entry key="selectPromotionList">
-		SELECT *
-  		  FROM (SELECT ROWNUM RNUM, A.*
-		          FROM (SELECT
-		                       PROMOTION_NO,
-		                       PROMOTION_TITLE,
-		                       MEMBER_ID,
-		                       COUNT,
-		                       PROMOTION_DATE
-		                  FROM
-		                       PROMOTION_BOARD PB
-		                  JOIN
-		                       MEMBER ON(PROMOTION_WRITER = MEMBER_NO)
-		                 WHERE
-		                       PB.STATUS = 'Y'
-		                 ORDER
-		                    BY PROMOTION_DATE DESC) A)
-		         WHERE RNUM BETWEEN ? AND ?
-		  		
-	</entry>
 	<entry key="insertPromotionFile">
-	
+		INSERT
+		  INTO
+		  		PROMOTION_FILE
+		  		(
+		  		PROMTOION_FILE_NO,
+		  		PROMOTION_ORIGIN_NAME,
+		  		PROMOTION_CHAGNE_NAME,
+		  		PROMOTION_FILE_PATH,
+		  		PROMOTION_NO
+		  		)
+		VALUES
+				(
+				PROMOTION_FILE_SEQ.NEXTVAL,
+				?,
+				?,
+				?,
+				PROMOTION_SEQ.CURRVAL
+				)
 	</entry>
-	
-	
 	
 	<entry key="updatePromotionFile">
 		UPDATE
 				PROMOTION_FILE
 		   SET 
-		   		PROMOTION_ORIGIN_NAME = ?,
-				PROMOTION_CHANGE_NAME = ?,
-				PROMOTION_FILE_PATHVB = ?,
-				PROMOTION_UPLOAD_DATE = SYSDATE
-		 WHERE 
+		   		PROMOTION_FILE_ORIGIN_NAME = ?,
+		   		PROMOTION_FILE_CHANGE_NAME = ?,
+				PROMOTION_FILE_PATH = ?,
+				PROMOTION_FILE_UPLOAD_DATE = SYSDATE
+		 WHERE
 		 		PROMOTION_FILE_NO = ?
 	</entry>
+	
+	<entry key="selectPromotionFile">
+		SELECT 
+				PROMOTION_FILE_NO,
+				PROMOTION_FILE_ORIGIN_NAME,
+				PROMOTION_FILE_CHANGE_NAME,
+				PROMOTION_FILE_PATH
+		  FROM
+		  		PROMOTION_FILE
+	</entry>
+	
+	<entry key="insertNewPromotionFile">
+		INSERT
+		  INTO
+		  		PROMOTION_FILE
+		  		(
+		  		PROMOTION_FILE_NO,
+		  		PROMOTION_ORIGIN_NAME,
+		  		PROMOTION_CHANGE_NAME,
+		  		PROMOTION_FILE_PATH,
+		  		PROMOTION_NO
+		  		)
+		VALUES
+				(
+				PROMOTION_FILE_SEQ.NEXTVAL,
+				?,
+				?,
+				?,
+				PROMOTION_SEQ.CURRVAL
+				)
+	</entry>
+	
+	<entry key="insertPromotionBoard">
+		INSERT
+		  INTO
+		  		PROMOTION_BOARD
+		  		(
+		  		PROMOTION_NO,
+		  		PROMOTION_TITLE,
+		  		PROMOTION_CONTENT,
+		  		PROMPTION_WRITER
+		  		)
+		VALUES
+				(
+				PROMOTION_SEQ.NEXTVAL,
+				?,
+				?,
+				?
+				)
+	</entry>
+	
 	<entry key="insertPromotionBoard">
 		INSERT 
 		  INTO
@@ -61,57 +99,36 @@
 				)
 		VALUES
 		 		(
-				SEQ_PNO.NEXTVAL,
+				PROMOTION_SEQ.NEXTVAL,
 				?,
 				?,
 				?
 				)
 	</entry>
 	
-	<entry key="insertNewPromotionFileList">
+	<entry key="insertPromotionFileList">
 		INSERT
 		  INTO
 		  		PROMOTION_FILE
 		  		(
 		  		PROMOTION_FILE_NO,
-		  		PROMOTION_ORIGIN_NAME,
-		  		PROMOTION_CHANGE_NAME,
-		  		PROMOTION_FILE_PATH,
-		  		PROMOTION_FILE_LEVEL
+		  		PROMOTION_FILE_ORIGIN_NAME,
+				PROMOTION_FILE_CHANGE_NAME,
+				PROMOTION_FILE_PATH,
+				PROMOTION_NO
 		  		)
 		VALUES
 				(
-				SEQ_PFNO.NEXTVAL,
+				PROMOTION_FILE_SEQ.NEXTVAL,
 				?,
 				?,
 				?,
-				?
+				PROMOTION_SEQ.CULLVAL
 				)
 	</entry>
-	<entry key="selectPromotionFile">
-		SELECT 
-				PROMOTION_FILE_NO,
-				PROMOTION_FILE_ORIGIN_NAME,
-				PROMOTION_FILE_CHANGE_NAME,
-				PROMOTION_FILE_PATH
-		  FROM 
-		  		PROMOTION_FILE
-		 WHERE
-		 		
-	</entry>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	
+	
+	
 
 </properties>

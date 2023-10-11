@@ -27,32 +27,6 @@ public class PromotionBoardDao {
 	}
 }
 	
-	public int selectrPromotionListCount(Connection conn) {
-		
-		int listCount = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectPromotionListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt("COUNT(*)");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return listCount;
-	}
-	
 	public int insertPromotionFile(Connection conn, PromotionFile pf) {
 		
 		int result = 0;
@@ -63,7 +37,7 @@ public class PromotionBoardDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, pf.getPromotionFileOriginName());
-			pstmt.setString(1, pf.getPromotionFileChangeName());
+			pstmt.setString(2, pf.getPromotionFileChangeName());
 			pstmt.setString(3, pf.getPromotionFilePath());
 			
 			result = pstmt.executeUpdate();
@@ -75,38 +49,61 @@ public class PromotionBoardDao {
 		return result;
 	}
 	
-	
-	
-	
-	public ArrayList<PromotionBoard> selectPromotionList(Connection conn) {
+	public int updatePromotionFile(Connection conn, PromotionFile pf) {
 		
-		ArrayList<PromotionBoard> list = new ArrayList();
+		int result = 0;
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectPromotionList");
+		String sql = prop.getProperty("updatePromotionFile");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			rset = pstmt.executeQuery();
+			pstmt.setString(1,  pf.getPromotionFileOriginName());
+			pstmt.setString(2, pf.getPromotionFileChangeName());
+			pstmt.setString(3, pf.getPromotionFilePath());
+			pstmt.setInt(4, pf.getPromotionFileNo());
 			
-			while(rset.next()) {
-				PromotionBoard pb = new PromotionBoard();
-				
-			}
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
-		return list;
+		return result;
 	}
-
-	public int insertPromotionBoard(Connection conn, PromotionBoard pb) {
-
+	
+	public int insertNewPromotionFile(Connection conn, PromotionFile pf) {
+		
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertNewPromotionBoard"); 
-
+		String sql = prop.getProperty("insertNewPromotionFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,  pf.getPromotionFileOriginName());
+			pstmt.setString(2, pf.getPromotionFileChangeName());
+			pstmt.setString(3, pf.getPromotionFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+	}
+	
+	public int insertPromotionBoard(Connection conn, PromotionBoard pb) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertPromotionBoard"); 
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -119,11 +116,11 @@ public class PromotionBoardDao {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
-	}
+		}
 		return result;
-}
+	}
 	
-	public int insertPromotionBoardList(Connection conn, ArrayList<PromotionFile> list) {
+	public int insertPromotionFileList(Connection conn, ArrayList<PromotionFile> list) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -139,7 +136,7 @@ public class PromotionBoardDao {
 				pstmt.setString(1, pf.getPromotionFileOriginName());
 				pstmt.setString(2, pf.getPromotionFileChangeName());
 				pstmt.setString(3, pf.getPromotionFilePath());
-				pstmt.setInt(4, pf.getPromotionFileLevel());
+				pstmt.setInt(4, pf.getPromotionNo());
 				
 				// 실행
 				result += pstmt.executeUpdate(); 
@@ -155,6 +152,11 @@ public class PromotionBoardDao {
 		}
 		return list.size() == result ? 1 : 0;
 	}
+	
+	
+
+
+	
 	
 	
 

@@ -2,40 +2,42 @@ package com.kh.pet.promotionBoard.model.vo;
 
 public class PromotionFile {
 	
-	private int promotionFile; // PROMOTION_FILE_NO	NUMBER
+	private int promotionFileNo; // PROMOTION_FILE_NO	NUMBER
 	private String promotionFileOriginName; //PROMOTION_FILE_ORIGIN_NAME	VARCHAR2(100 BYTE)
 	private String promotionFileChangeName; //PROMOTION_FILE_CHANGE_NAME	VARCHAR2(100 BYTE)
 	private String promotionFilePath; //PROMOTION_FILE_PATH	VARCHAR2(100 BYTE)
 	private String promotionFileUploadDate; //PROMOTION_FILE_UPLOAD_DATE	DATE
 	private int promotionFileLevel; //PROMOTION_FILE_LEVEL	NUMBER
 	private String status; //STATUS	VARCHAR2(1 BYTE)
-	private int promotionNumber; //PROMOTION_NUMBER	NUMBER
+	private int promotionNo; //PROMOTION_NUMBER	NUMBER
 	
 	public PromotionFile() {
 		super();
 		// TODO Auto-generated constructor stub
+		
+		
 	}
 
-	public PromotionFile(int promotionFile, String promotionFileOriginName, String promotionFileChangeName,
+	public PromotionFile(int promotionFileNo, String promotionFileOriginName, String promotionFileChangeName,
 			String promotionFilePath, String promotionFileUploadDate, int promotionFileLevel, String status,
-			int promotionNumber) {
+			int promotionNo) {
 		super();
-		this.promotionFile = promotionFile;
+		this.promotionFileNo = promotionFileNo;
 		this.promotionFileOriginName = promotionFileOriginName;
 		this.promotionFileChangeName = promotionFileChangeName;
 		this.promotionFilePath = promotionFilePath;
 		this.promotionFileUploadDate = promotionFileUploadDate;
 		this.promotionFileLevel = promotionFileLevel;
 		this.status = status;
-		this.promotionNumber = promotionNumber;
+		this.promotionNo = promotionNo;
 	}
 
-	public int getPromotionFile() {
-		return promotionFile;
+	public int getPromotionFileNo() {
+		return promotionFileNo;
 	}
 
-	public void setPromotionFile(int promotionFile) {
-		this.promotionFile = promotionFile;
+	public void setPromotionFileNo(int promotionFileNo) {
+		this.promotionFileNo = promotionFileNo;
 	}
 
 	public String getPromotionFileOriginName() {
@@ -86,26 +88,24 @@ public class PromotionFile {
 		this.status = status;
 	}
 
-	public int getPromotionNumber() {
-		return promotionNumber;
+	public int getPromotionNo() {
+		return promotionNo;
 	}
 
-	public void setPromotionNumber(int promotionNumber) {
-		this.promotionNumber = promotionNumber;
+	public void setPromotionNo(int promotionNo) {
+		this.promotionNo = promotionNo;
 	}
 
 	@Override
 	public String toString() {
-		return "PromotionFile [promotionFile=" + promotionFile + ", promotionFileOriginName=" + promotionFileOriginName
-				+ ", promotionFileChangeName=" + promotionFileChangeName + ", promotionFilePath=" + promotionFilePath
-				+ ", promotionFileUploadDate=" + promotionFileUploadDate + ", promotionFileLevel=" + promotionFileLevel
-				+ ", status=" + status + ", promotionNumber=" + promotionNumber + "]";
+		return "PromotionFile [promotionFileNo=" + promotionFileNo + ", promotionFileOriginName="
+				+ promotionFileOriginName + ", promotionFileChangeName=" + promotionFileChangeName
+				+ ", promotionFilePath=" + promotionFilePath + ", promotionFileUploadDate=" + promotionFileUploadDate
+				+ ", promotionFileLevel=" + promotionFileLevel + ", status=" + status + ", promotionNo=" + promotionNo
+				+ "]";
 	}
-	
-	
 
 	
-
 	}
 	
 	
