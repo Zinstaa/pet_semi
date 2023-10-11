@@ -136,7 +136,7 @@ public class PromotionBoardDao {
 				pstmt.setString(1, pf.getPromotionFileOriginName());
 				pstmt.setString(2, pf.getPromotionFileChangeName());
 				pstmt.setString(3, pf.getPromotionFilePath());
-				pstmt.setInt(4, pf.getPromotionNo());
+				pstmt.setInt(4, pf.getPromotionFileLevel());
 				
 				// 실행
 				result += pstmt.executeUpdate(); 

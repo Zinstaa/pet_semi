@@ -115,6 +115,7 @@
 		  		PROMOTION_FILE_ORIGIN_NAME,
 				PROMOTION_FILE_CHANGE_NAME,
 				PROMOTION_FILE_PATH,
+				PROMOTION_FILE_LEVEL,
 				PROMOTION_NO
 		  		)
 		VALUES
@@ -123,7 +124,8 @@
 				?,
 				?,
 				?,
-				PROMOTION_SEQ.CULLVAL
+				?,
+				PROMOTION_SEQ.CURRVAL
 				)
 	</entry>
 	
