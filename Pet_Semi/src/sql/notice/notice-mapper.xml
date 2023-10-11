@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>공지사항</comment>
+	
+	<entry key="selectListCount">
+		SELECT
+			COUNT(*)
+		FROM
+			NOTICE
+		WHERE
+			STATUS = 'Y'
+			
+	</entry>
+	
+	<entry key="selectList">
+	select notice_no, notice_title, notice_date, member_id from (
+	    select rownum rnum, A.notice_no, A.notice_title, A.notice_date, A.member_id 
+	    from
+	        (select notice_no, notice_title, notice_date, member_id
+	        from notice
+	        join member using (member_no)
+	        where notice.status = 'Y'
+	        order by notice_date desc) A
+	    )
+	where rnum between ? and ?
+	</entry>
+	
+</properties>
