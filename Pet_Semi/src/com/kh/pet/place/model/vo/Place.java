@@ -17,7 +17,25 @@ public class Place {
 	private int placeCategoryNo; // PLACE_CATEGORY_NO	NUMBER
 	private int localCategoryNo; // LOCAL_CATEGORY_NO	NUMBER
 	private String titleImg;
+	private String placeCategoryName;
+	private String localCategoryName;
 	
+	public String getPlaceCategoryName() {
+		return placeCategoryName;
+	}
+
+	public void setPlaceCategoryName(String placeCategoryName) {
+		this.placeCategoryName = placeCategoryName;
+	}
+
+	public String getLocalCategoryName() {
+		return localCategoryName;
+	}
+
+	public void setLocalCategoryName(String localCategoryName) {
+		this.localCategoryName = localCategoryName;
+	}
+
 	public String getTitleImg() {
 		return titleImg;
 	}
