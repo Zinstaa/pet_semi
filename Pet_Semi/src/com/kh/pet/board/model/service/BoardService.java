@@ -1,5 +1,8 @@
 package com.kh.pet.board.model.service;
-import static com.kh.pet.common.JDBCTemplate.*;
+import static com.kh.pet.common.JDBCTemplate.close;
+import static com.kh.pet.common.JDBCTemplate.commit;
+import static com.kh.pet.common.JDBCTemplate.getConnection;
+import static com.kh.pet.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -54,6 +57,41 @@ public class BoardService {
 		
 		return (result1 * result2);
 		
+	}
+	
+	public int increaseCount(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().increaseCount(conn, boardNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		
+		return result;
+	}
+	
+	public Board selectBoard(int boardNo) {
+		
+		Connection conn =getConnection();
+		
+		Board b = new BoardDao().selectBoard(conn, boardNo);
+		
+		close(conn);
+		
+		return b;
+	}
+	
+	public BoardFile selectBoardFile(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		BoardFile bf = new BoardDao().selectBoardFile(conn, boardNo);
+		
+		close(conn);
+		
+		return bf;
 	}
 	
 }

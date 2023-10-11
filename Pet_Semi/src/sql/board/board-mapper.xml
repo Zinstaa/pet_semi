@@ -74,6 +74,48 @@
 		  		BOARD_SEQ.CURRVAL
 		  		)
 	</entry>
-
+	
+	<entry key="increaseCount">
+		UPDATE
+			  BOARD
+		   SET
+		   		BOARD_VIEW = BOARD_VIEW +1
+		   	WHERE
+		   		BOARD_NO = ?
+		   	AND
+		   		STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectBoard">
+		SELECT
+			  BOARD_NO,
+			  BOARD_NAME,
+			  BOARD_CONTENT,
+			  MEMBER_ID,
+			  BOARD_DATE,
+			  BOARD_VIEW
+		FROM
+			BOARD B
+		JOIN
+			MEMBER M ON(B.MEMBER_NO = M.MEMBER_NO)
+		WHERE
+			BOARD_NO = ?
+		AND
+			B.STATUS = 'Y'
+		
+	</entry>
+	
+	<entry key="selectBoardFile">
+		SELECT
+			  BOARD_FILE_NO,
+			  BOARD_FILE_ORIGIN_NAME,
+			  BOARD_FILE_CHANGE_NAME,
+			  BOARD_FILE_PATH
+		  FROM
+		  	  BOARD_FILE
+		  WHERE
+		  		BOARD_NO = ?	
+		
+	</entry>
 
 </properties>
