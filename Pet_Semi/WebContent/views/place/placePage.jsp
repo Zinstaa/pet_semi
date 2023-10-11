@@ -13,7 +13,7 @@
 <style>
     div {
         box-sizing: border-box;
-        border: 1px solid red;
+        /*border: 1px solid red;*/
     }
     h2 {
         text-align: center;
