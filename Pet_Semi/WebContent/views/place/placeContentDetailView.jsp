@@ -30,7 +30,26 @@
     /* place_detail_content 부분 */
     #place_detail_content {
         width: 80%;
+        height: 90%;
         margin: auto;
+    }
+
+    #place_detail_content > div{
+        width: 100%;
+    }
+    
+    /* place_detail_image_info 부분 */
+    #place_detail_image_info {
+        height: 25%;
+    }
+    
+    /* place_detail_info 부분 */
+    #place_detail_info {
+        height: 55%;
+    }
+    /* place_detail_review 부분 */
+    #place_detail_review {
+        height: 20%;
     }
 
     /* 맨위로 이동 키 */
@@ -69,7 +88,7 @@
     <div id="place_detail_main">
         <h2> 플레이스 </h2>
 
-        <h3> [카테고리] </h3>
+        <h3> [지역] - [카테고리] </h3>
 
         <div id="place_detail_content">
             <div id="place_detail_image_info">
