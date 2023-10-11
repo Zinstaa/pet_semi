@@ -55,14 +55,16 @@ public class promotionBoardInsertController extends HttpServlet {
 			// 2) multiRequest로부터 값 봅기 => getParameter 메소드 이용
 			String promotionTitle = multiRequest.getParameter("title");
 			String promotionContent = multiRequest.getParameter("content");
-			String agentNo = multiRequest.getParameter("agentNo");
+			String memberNo = multiRequest.getParameter("memberNo");
+			
+			// System.out.println(memberNo);
 
 			// 3) VO로 가공
 			// PROMOTIONBOARD
 			PromotionBoard pb = new PromotionBoard();
 			pb.setPromotionTitle(promotionTitle);
 			pb.setPromotionContent(promotionContent);
-			pb.setPromotionWriter(agentNo);
+			pb.setPromotionWriter(memberNo);
 
 			// => 최소한 게시글 한개당 한개의 첨부파일 존재! 무조건!
 			// 여러개의 VO를 묶어서 ... -> ArrayList를 쓰면 어떨까? 

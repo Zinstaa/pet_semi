@@ -1,7 +1,6 @@
-package com.kh.pet.agent.controller;
+package com.kh.pet.board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,17 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.pet.board.model.service.BoardService;
+import com.kh.pet.board.model.vo.Board;
+import com.kh.pet.board.model.vo.BoardFile;
+
 /**
- * Servlet implementation class PromotionBoardListController
+ * Servlet implementation class BoardUpdateFormController
  */
-@WebServlet("/promotelist.pr")
-public class PromotionBoardListController extends HttpServlet {
+@WebServlet("/updateForm.bo")
+public class BoardUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PromotionBoardListController() {
+    public BoardUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +31,18 @@ public class PromotionBoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionList();
-		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp");
-	
-	
+		int boardNo = Integer.parseInt(request.getParameter("bno"));
+		
+		Board b = new BoardService().selectBoard(boardNo);
+		
+		BoardFile bf = new BoardService().selectBoardFile(boardNo);
+		
+		request.setAttribute("bf", bf);
+		request.setAttribute("b", b);
+		
+		request.getRequestDispatcher("views/board/boardUpdateForm.jsp").forward(request, response);
+		
 	}
 
 	/**

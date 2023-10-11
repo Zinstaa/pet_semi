@@ -1,4 +1,4 @@
-package com.kh.pet.agent.controller;
+package com.kh.pet.place.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,17 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.pet.place.model.service.PlaceService;
+import com.kh.pet.place.model.vo.Place;
+import com.kh.pet.place.model.vo.PlaceFile;
+
 /**
- * Servlet implementation class PromotionBoardListController
+ * Servlet implementation class PlaceContentDetailController
  */
-@WebServlet("/promotelist.pr")
-public class PromotionBoardListController extends HttpServlet {
+@WebServlet("/detail.pl")
+public class PlaceContentDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PromotionBoardListController() {
+    public PlaceContentDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +32,17 @@ public class PromotionBoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionList();
+		
+		int placeNo = Integer.parseInt(request.getParameter("pno"));
+		
+		Place p = new PlaceService().selectPlace(placeNo);
+		
+		ArrayList<PlaceFile> list = new PlaceService().selectPlaceFileList(placeNo);
+		
+		request.setAttribute("p", p);
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("views/agentBoard/promotionBoardListView.jsp");
-	
+		request.getRequestDispatcher("views/place/placeContentDetailView.jsp").forward(request, response);
 	
 	}
 

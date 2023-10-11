@@ -52,7 +52,7 @@ public class PlaceDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getPlaceName());
-			pstmt.setString(2, p.getPlaceInfo());
+			pstmt.setString(2, p.getPlaceAddress());
 			pstmt.setString(3, p.getPlacePhone());
 			pstmt.setString(4, p.getPlaceTimes());
 			pstmt.setString(5, p.getPlaceUrl());
@@ -119,6 +119,7 @@ public class PlaceDao {
 				p.setPlaceCategoryName(rset.getString("PLACE_CATEGORY_NAME"));
 				p.setLocalCategoryName(rset.getString("LOCAL_CATEGORY_NAME"));
 				p.setPlaceName(rset.getString("PLACE_NAME"));
+				p.setPlaceNo(rset.getInt("PLACE_NO"));
 				
 				p.setTitleImg(rset.getString("TITLEIMG"));
 				
@@ -133,5 +134,77 @@ public class PlaceDao {
 		return list;
 	}
 
+	public Place selectPlace(Connection conn, int placeNo) {
+		Place p = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				p = new Place();
+				p.setPlaceNo(rset.getInt("PLACE_NO"));
+				p.setPlaceName(rset.getString("PLACE_NAME"));
+				p.setPlaceAddress(rset.getString("PLACE_ADDRESS"));
+				p.setPlacePhone(rset.getString("PLACE_PHONE"));
+				p.setPlaceTimes(rset.getString("PLACE_TIMES"));
+				p.setPlaceUrl(rset.getString("PLACE_URL"));
+				p.setPlaceInfo(rset.getString("PLACE_INFO"));
+				p.setPlaceAround(rset.getString("PLACE_AROUND"));
+				p.setPlacePrice(rset.getString("PLACE_PRICE"));
+				p.setPlaceCaution(rset.getString("PLACE_CAUTION"));
+				p.setPlaceMap(rset.getString("PLACE_MAP"));
+				p.setPlaceCategoryName(rset.getString("PLACE_CATEGORY_NAME"));
+				p.setLocalCategoryName(rset.getString("LOCAL_CATEGORY_NAME"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return p;
+	}
+
+	public ArrayList<PlaceFile> selectPlaceFileList(Connection conn, int placeNo) {
+		
+		ArrayList<PlaceFile> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPlaceFileList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PlaceFile pl = new PlaceFile();
+				pl.setPlaceFileNo(rset.getInt("PLACE_FILE_NO"));
+				pl.setPlaceFileOriginName(rset.getString("PLACE_FILE_ORIGIN_NAME"));
+				pl.setPlaceFileChangeName(rset.getString("PLACE_FILE_CHANGE_NAME"));
+				pl.setPlaceFilePath(rset.getString("PLACE_FILE_PATH"));
+				list.add(pl);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
 }
+
 
