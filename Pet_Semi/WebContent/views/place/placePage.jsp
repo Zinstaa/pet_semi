@@ -166,6 +166,8 @@
 
     #toTop > img {
         position: absolute;
+        width: 24px;
+        height: 24px;
         top: 3px;
         left: 13px;
     }
