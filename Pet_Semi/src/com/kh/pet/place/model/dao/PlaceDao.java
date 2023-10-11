@@ -116,8 +116,8 @@ public class PlaceDao {
 			while(rset.next()) {
 				
 				Place p = new Place();
-				p.setPlaceCategoryNo(rset.getInt("PLACE_CATEGORY_NO"));
-				p.setLocalCategoryNo(rset.getInt("LOCAL_CATEGORY_NO"));
+				p.setPlaceCategoryName(rset.getString("PLACE_CATEGORY_NAME"));
+				p.setLocalCategoryName(rset.getString("LOCAL_CATEGORY_NAME"));
 				p.setPlaceName(rset.getString("PLACE_NAME"));
 				
 				p.setTitleImg(rset.getString("TITLEIMG"));
