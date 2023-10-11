@@ -9,8 +9,6 @@
 		  	   PLACE 
 		  	   	 ( 
 		  	   	 	PLACE_NO, 
-		  	   	 	PLACE_CATEGORY_NO, 
-		  	   	 	LOCAL_CATEGORY_NO, 
 		  	   	 	PLACE_NAME, 
 		  	   	 	PLACE_ADDRESS, 
 		  	   	 	PLACE_PHONE, 
@@ -19,9 +17,11 @@
 		  	   	 	PLACE_INFO, 
 		  	   	 	PLACE_AROUND, 
 		  	   	 	PLACE_PRICE, 
-		  	   	 	PLCAE_CAUTION, 
+		  	   	 	PLACE_CAUTION, 
 		  	   	 	PLACE_MAP, 
-		  	   	 	MEMBER_NO 
+		  	   	 	MEMBER_NO, 
+		  	   	 	PLACE_CATEGORY_NO, 
+		  	   	 	LOCAL_CATEGORY_NO
 		  	   	 ) 
 		VALUES 
 		 	   	 ( 
@@ -49,22 +49,44 @@
 		  	   PLACE_FILE 
 		  	   	 ( 
 		  	   	 	PLACE_FILE_NO, 
-		  	   	 	PLACE_NO, 
 		  	   	 	PLACE_FILE_ORIGIN_NAME, 
 		  	   	 	PLACE_FILE_CHANGE_NAME, 
-		  	   	 	PLACE_FIKE_PATH, 
+		  	   	 	PLACE_FILE_PATH, 
+		  	   	 	PLACE_FILE_UPLOAD_DATE, 
 		  	   	 	PLACE_FILE_LEVEL, 
-		  	   	 	PLACE_FILE_UPLOAD_DATE
+		  	   	 	STATUS, 
+		  	   	 	PLACE_NO 
 		  	   	 ) 
 		VALUES 
 			   	 ( 
 			   	 	PLACE_FILE_SEQ.NEXTVAL, 
-			   	 	PLACE_SEQ.CURRVAL, 
 			   	 	?, 
 			   	 	?, 
 			   	 	?, 
+			   	 	SYSDATE, 
 			   	 	?, 
-			   	 	SYSDATE 
+			   	 	'Y', 
+			   	 	PLACE_SEQ.CURRVAL 
 			   	 ) 
+	</entry>
+	
+	<entry key="selectPlaceContentList">
+		SELECT 
+		       PLACE_NO, 
+		       PLACE_CATEGORY_NO, 
+		       LOCAL_CATEGORY_NO, 
+		       PLACE_NAME, 
+		       PLACE_FILE_PATH || '/' || PLACE_FILE_CHANGE_NAME TITLEIMG
+		  FROM 
+		       PLACE 
+		  JOIN  
+		       PLACE_FILE USING (PLACE_NO) 
+		 WHERE 
+		       PLACE_FILE_LEVEL = 1  
+		   AND 
+		       PLACE_STATUS = 'Y' 
+		 ORDER 
+		    BY 
+		       PLACE_NO DESC
 	</entry>
 </properties>
