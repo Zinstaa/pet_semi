@@ -108,7 +108,7 @@ public class PlaceContentInsertController extends HttpServlet {
 				placeLocalNo = 59;
 			}
 			
-			System.out.println(placeCategory);
+			/*System.out.println(placeCategory);
 			System.out.println(placeLocal);
 			System.out.println(placeName);
 			System.out.println(placeCategoryNo);
@@ -122,7 +122,7 @@ public class PlaceContentInsertController extends HttpServlet {
 			System.out.println(placePrice);
 			System.out.println(placeCaution);
 			System.out.println(placeMap);
-			System.out.println(userNo);
+			System.out.println(userNo);*/
 			
 			
 			Place p = new Place();
