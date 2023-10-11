@@ -45,24 +45,89 @@ public class PlaceContentInsertController extends HttpServlet {
 			String savePath = request.getServletContext().getRealPath("resources/place_upfiles/");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			String placeCategory = multiRequest.getParameter("pl-category");
+			String placeLocal = multiRequest.getParameter("pl-place");
+			String placeName = multiRequest.getParameter("pl-name");
+			String placeAddress = multiRequest.getParameter("pl-address");
+			String placePhone = multiRequest.getParameter("pl-phone");
+			String placeTimes = multiRequest.getParameter("pl-time");
+			String placeUrl = multiRequest.getParameter("pl-url");
+			String placeInfo = multiRequest.getParameter("pl-info");
+			String placeAround = multiRequest.getParameter("pl-around");
+			String placePrice = multiRequest.getParameter("pl-price");
+			String placeCaution = multiRequest.getParameter("pl-caution");
+			String placeMap = multiRequest.getParameter("pl-map");
+			String userNo = multiRequest.getParameter("memberNo");
 			
-			int placeCategory = Integer.parseInt(multiRequest.getParameter("placeCategoryNo"));
-			int placeLocal = Integer.parseInt(multiRequest.getParameter("localCategoryNo"));
-			String placeName = multiRequest.getParameter("placeName");
-			String placeAddress = multiRequest.getParameter("placeAddress");
-			String placePhone = multiRequest.getParameter("placePhone");
-			String placeTimes = multiRequest.getParameter("placeTimes");
-			String placeUrl = multiRequest.getParameter("placeUrl");
-			String placeInfo = multiRequest.getParameter("placeInfo");
-			String placeAround = multiRequest.getParameter("placeAround");
-			String placePrice = multiRequest.getParameter("placePrice");
-			String placeCaution = multiRequest.getParameter("placeCaution");
-			String placeMap = multiRequest.getParameter("placeMap");
-			int userNo = Integer.parseInt(multiRequest.getParameter("memberNo"));
+			int placeCategoryNo = 0;
+			int placeLocalNo = 0;
+			if(placeCategory.equals("식당")) {
+				placeCategoryNo = 10;
+			} 
+			else if(placeCategory.equals("카페")) {
+				placeCategoryNo = 11;
+			}
+			else if(placeCategory.equals("공원")) {
+				placeCategoryNo = 12;
+			}
+			else if(placeCategory.equals("쇼핑")) {
+				placeCategoryNo = 13;
+			}
+			else if(placeCategory.equals("병원")) {
+				placeCategoryNo = 14;
+			}
+			
+			if(placeLocal.equals("서울")) {
+				placeLocalNo = 50;
+			}
+			else if(placeLocal.equals("경기")) {
+				placeLocalNo = 51;
+			}
+			else if(placeLocal.equals("강원")) {
+				placeLocalNo = 52;
+			}
+			else if(placeLocal.equals("충북")) {
+				placeLocalNo = 53;
+			}
+			else if(placeLocal.equals("충남")) {
+				placeLocalNo = 54;
+			}
+			else if(placeLocal.equals("경북")) {
+				placeLocalNo = 55;
+			}
+			else if(placeLocal.equals("경남")) {
+				placeLocalNo = 56;
+			}
+			else if(placeLocal.equals("전북")) {
+				placeLocalNo = 57;
+			}
+			else if(placeLocal.equals("전남")) {
+				placeLocalNo = 58;
+			}
+			else if(placeLocal.equals("제주")) {
+				placeLocalNo = 59;
+			}
+			
+			System.out.println(placeCategory);
+			System.out.println(placeLocal);
+			System.out.println(placeName);
+			System.out.println(placeCategoryNo);
+			System.out.println(placeLocalNo);
+			System.out.println(placeAddress);
+			System.out.println(placePhone);
+			System.out.println(placeTimes);
+			System.out.println(placeUrl);
+			System.out.println(placeInfo);
+			System.out.println(placeAround);
+			System.out.println(placePrice);
+			System.out.println(placeCaution);
+			System.out.println(placeMap);
+			System.out.println(userNo);
+			
 			
 			Place p = new Place();
-			p.setPlaceCategoryNo(placeCategory);
-			p.setLocalCategoryNo(placeLocal);
+			p.setPlaceCategoryNo(placeCategoryNo);
+			p.setLocalCategoryNo(placeLocalNo);
 			p.setPlaceName(placeName);
 			p.setPlaceAddress(placeAddress);
 			p.setPlacePhone(placePhone);
@@ -101,7 +166,7 @@ public class PlaceContentInsertController extends HttpServlet {
 			
 			if(result > 0) {
 				request.getSession().setAttribute("alertMsg", "게시글 작성 성공 ~ !");
-				
+				response.sendRedirect(request.getContextPath() + "/place.pl");
 			}
 		
 		}
