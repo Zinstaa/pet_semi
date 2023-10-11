@@ -34,7 +34,7 @@ public class PlaceDao {
 		int result = 0; 
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertPlaceContent");
-		System.out.println(sql);
+		/*System.out.println(sql);
 		System.out.println(p.getPlaceName());
 		System.out.println(p.getPlaceInfo());
 		System.out.println(p.getPlacePhone());
@@ -47,7 +47,7 @@ public class PlaceDao {
 		System.out.println(p.getPlaceMap());
 		System.out.println(Integer.parseInt(p.getMemberNo()));
 		System.out.println(p.getPlaceCategoryNo());
-		System.out.println(p.getLocalCategoryNo());
+		System.out.println(p.getLocalCategoryNo());*/
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -119,7 +119,6 @@ public class PlaceDao {
 				p.setPlaceCategoryNo(rset.getInt("PLACE_CATEGORY_NO"));
 				p.setLocalCategoryNo(rset.getInt("LOCAL_CATEGORY_NO"));
 				p.setPlaceName(rset.getString("PLACE_NAME"));
-				
 				
 				p.setTitleImg(rset.getString("TITLEIMG"));
 				
