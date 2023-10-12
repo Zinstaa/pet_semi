@@ -241,8 +241,8 @@
 			</script>
 
 			<div align="center">
-				<button type="submit">작성하기</button>
-				<button type="reset">다시쓰기</button>
+				<button type="submit" class="btn btn-sm btn-info">작성하기</button>
+				<button type="reset" class="btn btn-sm btn-success">다시쓰기</button>
 			</div>
 
 		</form>
