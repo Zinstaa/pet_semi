@@ -193,7 +193,6 @@ public class PromotionBoardDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("list");
 		return list;
 	}
 }

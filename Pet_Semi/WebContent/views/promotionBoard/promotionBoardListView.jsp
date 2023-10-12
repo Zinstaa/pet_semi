@@ -10,8 +10,29 @@
 <head>
 <meta charset="UTF-8">
 <title>홍보게시판(사진)리스트 뷰에요~</title>
+<style>
+	.list-area{
+	text-align:center;
+	border:1px solid gray;
+	}
+	.promtion{
+	border:1px solid gray;
+	width:300px;
+	display: inline-block;
+	margin:7px;
+	}
+	.promotion > img {
+	width:300px;
+	height:auto;
+	padding:10px;
+	}
+	.promotion:hover{
+	cursor:pointer;
+	opacity:0.9;
+	}
 
 </style>
+
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
@@ -47,8 +68,8 @@
         	</div>
         	<% } %>
         <% } %>
-        
         </div>
+        <br><br>
     </div>
 </body>
 </html>

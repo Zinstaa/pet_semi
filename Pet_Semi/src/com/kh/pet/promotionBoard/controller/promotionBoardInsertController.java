@@ -18,7 +18,7 @@ import com.oreilly.servlet.MultipartRequest;
 /**
  * Servlet implementation class promotionBoardInsertController
  */
-@WebServlet("/promotionisnert.pr")
+@WebServlet("/promotionInsert.pr")
 public class promotionBoardInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class promotionBoardInsertController extends HttpServlet {
 			int maxSize = 1024 * 1024 * 10;
 
 			// 1_2. 저장경로 구해야함
-			String savePath = request.getServletContext().getRealPath("/resources/promotion)_upfiles/");
+			String savePath = request.getServletContext().getRealPath("/resources/promotion_upfiles/");
 
 			// 2 . MultipartRequest 생성하면서 파일이름을 수정하면서 업로드! 
 			MultipartRequest multiRequest =
@@ -100,7 +100,13 @@ public class promotionBoardInsertController extends HttpServlet {
 			// 4) 서비스요청 
 			int result = new PromotionBoardService().insertPromotionBoard(pb, list);
 			
-			// 
+			// 5) 결과에 따른 요청 받기
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 작성 성공이네요");
+				response.sendRedirect(request.getContextPath() + "/promotionList.pr");
+			} else {
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			}
 
 
 		}
