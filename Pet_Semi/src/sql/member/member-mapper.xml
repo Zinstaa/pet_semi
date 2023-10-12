@@ -123,4 +123,14 @@
 		PHONE = ?
 	</entry>
 	
+	<entry key="pwdCheck">
+	SELECT
+		MEMBER_NO
+	FROM
+		MEMBER
+	WHERE
+		MEMBER_PWD = ?
+	</entry>
+
+	
 </properties>

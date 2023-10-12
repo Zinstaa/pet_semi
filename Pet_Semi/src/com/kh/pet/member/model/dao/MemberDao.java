@@ -229,6 +229,7 @@ private Properties prop = new Properties();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, checkId);
 			rset = pstmt.executeQuery();
+			
 			if(rset.next()) {
 				count = rset.getInt("COUNT(*)");
 			}
@@ -301,5 +302,27 @@ private Properties prop = new Properties();
 		return pwd;
 	}
 
+	public int pwdCheck(Connection conn, int memberNo, String memberPwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("pwdCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberPwd);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("MEMBER_NO");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				} finally {
+					close(rset);
+					close(pstmt);
+					}
+		return result;
+		}
 }
 		

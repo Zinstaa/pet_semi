@@ -86,6 +86,7 @@ public class MemberService {
 		
 		return id;
 	}
+	
 	public FindPwd findPwd(String MemberId, String email, String phone) {
 		Connection conn = getConnection();
 		FindPwd pwd = new MemberDao().findPwd(conn, MemberId, email, phone);
@@ -93,5 +94,13 @@ public class MemberService {
 		close(conn);
 		return pwd;
 	}
-
+	
+	public int pwdCheck(int memberNo, String memberPwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().pwdCheck(conn, memberNo, memberPwd);
+		
+		close(conn);
+		return result;
+	}
+	
 }

@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.pet.member.model.service.MemberService;
-import com.kh.pet.member.model.vo.FindPwd;
+import com.kh.pet.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberFindPwdController
+ * Servlet implementation class MemberPwdCheckController
  */
-@WebServlet("/findpwd.me")
-public class MemberFindPwdController extends HttpServlet {
+@WebServlet("/pwdCheck.me")
+public class MemberPwdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberFindPwdController() {
+    public MemberPwdCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +32,25 @@ public class MemberFindPwdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//비밀번호 맞는지 확인
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		
-		String MemberId = request.getParameter("memberId");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
+		Member loginUser = ((Member)session.getAttribute("loginUser"));
 		
-		FindPwd pwd = new MemberService().findPwd(MemberId, email, phone);
+		int memberNo = loginUser.getMemberNo();
 		
-		if(pwd==null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg","일치하는 비밀번호가없습니다");
-			RequestDispatcher view = request.getRequestDispatcher("views/member/loginPage.jsp");
-			view.forward(request, response);
+		String memberPwd = request.getParameter("memberPwd");
+		
+		int result = new MemberService().pwdCheck(memberNo, memberPwd);
+		System.out.println(memberPwd); // <-- this is null
+		System.out.println(result);
+		if(result != 0) {
+			response.sendRedirect(request.getContextPath() + "/update.me");
 		} else {
-			HttpSession seccion = request.getSession();
-			seccion.setAttribute("alertMsg","비밀번호는 <"+ pwd +">입니다");
-			RequestDispatcher view = request.getRequestDispatcher("views/member/loginPage.jsp");
-			view.forward(request, response);
+			session.setAttribute("alertMsg", "비밀번호가 다릅니다");
+			response.sendRedirect(request.getContextPath() + "/mypage.me");
 		}
 		
 	}
