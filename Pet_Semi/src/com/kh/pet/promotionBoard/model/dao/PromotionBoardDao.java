@@ -159,9 +159,7 @@ public class PromotionBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		System.out.println("list");
-		
-		String sql = prop.getProperty("selectPromotionList");
+		String sql = prop.getProperty("selectPromotionBoardList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -178,7 +176,7 @@ public class PromotionBoardDao {
 				// 그럼 이걸 어떻게 해야되지? -> 나중에 생각해보니 조인해야되네.. 근데 조인해야되는데 이미 테이블은 건들수 없어...선택지가 뭐밖에 없냐 
 				// 선택지는 VO를 수정하는것뿐
 				// 테이블이 달라, 두개를 합쳐서 가져갈건데 나눠가져갈 필요가 있냐 라는거지 
-				String img = rset.getString("PROMOTION_FILE_PATH") + "/" + rset.getString("PROMOTION_FILE_CHANGE_NAME");
+				// String img = rset.getString("PROMOTION_FILE_PATH") + "/" + rset.getString("PROMOTION_FILE_CHANGE_NAME");
 				// 위에처럼 스트링 이미지에 담아서 프로모션보드에 객체를 하나 만들어서 거기에 담으면 되지 않을까? 라고 확장 사고 할수 있음
 				// VO 수정하기 titleImg 만들어서 해주기
 				pb.setTitleImg(rset.getString("TITLEIMG"));
@@ -187,6 +185,7 @@ public class PromotionBoardDao {
 				// 내가 앞에서 뭘 배웠지 생각하는게 좋음 
 				list.add(pb);
 				
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -194,6 +193,7 @@ public class PromotionBoardDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("list");
 		return list;
 	}
 }

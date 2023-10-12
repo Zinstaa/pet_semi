@@ -38,6 +38,7 @@
         	<!--  조회된 개수만큼 보여줄거니까 반복문 사용하기 -->
         	<% for(PromotionBoard pb : list) { %>
         	<div class="promotion" align="center">
+        		<input type="hidden" value="<%= pb.getPromotionNo() %>">
 				<img src="<%=pb.getTitleImg() %>" >
 				<p>
 					No. <%= pb.getPromotionNo() %> / <%= pb.getPromotionTitle() %> <br>
