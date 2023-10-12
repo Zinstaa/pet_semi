@@ -153,11 +153,55 @@ public class PromotionBoardDao {
 		return list.size() == result ? 1 : 0;
 	}
 	
-	
-
-
-	
-	
-	
-
+	public ArrayList<PromotionBoard> selectPromotionBoardList(Connection conn){ // 이번엔 전체조회니까 위치조회가 따로 불필요
+		
+		ArrayList<PromotionBoard> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		System.out.println("list");
+		
+		String sql = prop.getProperty("selectPromotionList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				PromotionBoard pb = new PromotionBoard();
+				pb.setPromotionNo(rset.getInt("PROMOTION_NO"));
+				pb.setPromotionTitle(rset.getString("PROMOTION_TITLE"));
+				pb.setPromotionView(rset.getInt("PROMOTION_VIEW"));
+				// 홍보게시물번호, 제목, 조회수 저장경로, 조회수 조회할건데 promotionBoard에는 저장경로나 바뀐이름 담을만한 항목 없음
+				// 그럼 이걸 어떻게 해야되지? -> 나중에 생각해보니 조인해야되네.. 근데 조인해야되는데 이미 테이블은 건들수 없어...선택지가 뭐밖에 없냐 
+				// 선택지는 VO를 수정하는것뿐
+				// 테이블이 달라, 두개를 합쳐서 가져갈건데 나눠가져갈 필요가 있냐 라는거지 
+				String img = rset.getString("PROMOTION_FILE_PATH") + "/" + rset.getString("PROMOTION_FILE_CHANGE_NAME");
+				// 위에처럼 스트링 이미지에 담아서 프로모션보드에 객체를 하나 만들어서 거기에 담으면 되지 않을까? 라고 확장 사고 할수 있음
+				// VO 수정하기 titleImg 만들어서 해주기
+				pb.setTitleImg(rset.getString("TITLEIMG"));
+				// 자바는 스트링클래스 특징이 뭐지? 주소값을 갖는다, 불변객체다, 스트에다가 더하기를 하면 어떻게 되지? -> 새로 생겨서 거기에 들어 -> 더하기를 두번이나 하네? -> 새로 생기고 또 새로 생기겠네
+				// 그래서 mapper, oracle에 연산자 기호를 사용해서 써서 나타낼 수 있잖아..
+				// 내가 앞에서 뭘 배웠지 생각하는게 좋음 
+				list.add(pb);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
+	
+
+
+	
+	
+	
+
+

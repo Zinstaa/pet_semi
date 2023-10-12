@@ -13,9 +13,6 @@ public class PromotionFile {
 	
 	public PromotionFile() {
 		super();
-		// TODO Auto-generated constructor stub
-		
-		
 	}
 
 	public PromotionFile(int promotionFileNo, String promotionFileOriginName, String promotionFileChangeName,
@@ -104,6 +101,12 @@ public class PromotionFile {
 				+ ", promotionFileLevel=" + promotionFileLevel + ", status=" + status + ", promotionNo=" + promotionNo
 				+ "]";
 	}
+	
+	
+	
+	
+	
+	
 
 	
 	}

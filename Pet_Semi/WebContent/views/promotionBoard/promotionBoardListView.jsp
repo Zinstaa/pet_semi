@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.pet.promotionBoard.model.vo.PromotionBoard" %>
 <%
 	ArrayList<PromotionBoard> list = (ArrayList<PromotionBoard>)request.getAttribute("list");
 %>
+<%@ page import="java.util.ArrayList, com.kh.pet.promotionBoard.model.vo.PromotionBoard" %>
+<!-- 화면 맨 상단에 스크립트를 써서 이 안에서 화면에 있는 내용 뿌릴거야 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,33 +17,37 @@
 	<%@ include file="../common/menubar.jsp" %>
 
     <div class="outer">
+    
         <br>
         <h2 align="center">홍보게시판(사진)</h2>
         <br>
 
         <% if(loginUser != null) { %>
             <div style="width: 870px;" align="right">
-                <a href="<%=contextPath%>/promotionEnroll.pr" class="btn btn-sm btn-primary">게시글작성</a>
+                <a href="<%=contextPath%>/promotionEnroll.pr" class="btn btn-sm btn-primary">게시글작성하기</a>
             </div>
         <% } %> 
-
-
-        <div class="list-area">
-            <!-- 등록된 게시글이 없을 경우 -->
-            <!-- 등록된 게시글이 없어. -->
-            <!-- 등록된 게시글이 존재해. -->
-            <div class="promotion" align="center">
-                <img src="https://url.kr/url.png" width="300" alt="노을">
-                <p>
-                    no.1 / 노을<br>
-                    조회수 : 12 <br>
-                    업체회원만 게시글 등록하게끔 하는 방법 고민중... 일단 로그인하면 무조건 게시글 등록 가능하게끔 만들기 <br>
-                    현재 공부중... <br>
-                    천천히라도 일단 개념부터 다시 공부해보기... <br>
-                </p>
-            </div>
-        </div>
         
+        <div class="list-area">
+        
+        	<% if(list.isEmpty()) { %>
+        	<!-- 등록된 게시글이 없을경우 -->
+        	등록된 게시글이 없습니다. <br> 
+        	<% } else { %>
+        	<!-- 게시글이 존재할 경우  -->
+        	<!--  조회된 개수만큼 보여줄거니까 반복문 사용하기 -->
+        	<% for(PromotionBoard pb : list) { %>
+        	<div class="promotion" align="center">
+				<img src="<%=pb.getTitleImg() %>" >
+				<p>
+					No. <%= pb.getPromotionNo() %> / <%= pb.getPromotionTitle() %> <br>
+					조회수 : <%= pb.getPromotionView() %>
+				</p>
+        	</div>
+        	<% } %>
+        <% } %>
+        
+        </div>
     </div>
 </body>
 </html>
