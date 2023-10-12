@@ -54,7 +54,7 @@
 				</tr>
                	<%} else { %>
 					<%for(Notice n : list) { %>
-					<tr>
+					<tr class="list">
 						<td><%=n.getNoticeNo() %></td>
 						<td><%=n.getNoticeTitle() %></td>
 						<td><%=n.getMemberNo() %></td>
@@ -69,7 +69,7 @@
 		<!-- 글 목록을 누르면 상세 페이지로 이동 -->
 		<script>
 			$(function(){
-				$('.list-area>tbody>tr').click(function(){
+				$('.list').click(function(){
 					location.href = '<%=contextPath%>/detail.no?nno='+ $(this).children().eq(0).text();
 				})
 			})
