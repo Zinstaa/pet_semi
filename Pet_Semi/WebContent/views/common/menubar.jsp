@@ -207,7 +207,7 @@ String contextPath = request.getContextPath();
 		if(msg != 'null'){
 		   alert(msg);
 		}  
-	<% session.removeAttribute("alertMsg");%>
+	<% session.removeAttribute("alertMsg"); %>
 </script>
 
    <br><br>
