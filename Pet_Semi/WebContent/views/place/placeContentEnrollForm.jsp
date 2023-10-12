@@ -131,13 +131,13 @@
 					<tr>
 						<th>플레이스 소개</th>
 						<td colspan="4">
-							<textarea name="pl-info" style="resize: none;" rows="10" onkeydown='onTestChange();'></textarea>
+							<textarea name="pl-info" style="resize: none;" rows="10"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<th>플레이스 주요시설</th>
 						<td colspan="4"> 
-							<textarea name="pl-around" style="resize: none;" rows="4" onkeydown='onTestChange();' required ></textarea>					
+							<textarea name="pl-around" style="resize: none;" rows="4" required ></textarea>					
 						</td>
 					</tr>
 					<tr>
@@ -149,7 +149,7 @@
 					<tr>
 						<th>플레이스 주의사항</th>
 						<td colspan="4">
-							<textarea name="pl-caution" style="resize: none;" rows="4" onkeydown='onTestChange();' required></textarea>
+							<textarea name="pl-caution" style="resize: none;" rows="4"  required></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -238,23 +238,10 @@
 						$('#file5').click();
 					});
 				});
-
-				function onTestChange() {
-					var key = window.event.keyCode;
-
-					// If the user has pressed enter
-					if (key === 13) {
-						document.getElementsByTagName("textarea").value = document.getElementsByTagName("textarea").value + "\n*";
-						return false;
-					}
-					else {
-						return true;
-					}
-				}	
 			</script>
 
 			<div align="center">
-				<button onclick="textarea();" type="submit">작성하기</button>
+				<button type="submit">작성하기</button>
 				<button type="reset">다시쓰기</button>
 			</div>
 
