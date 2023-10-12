@@ -22,7 +22,7 @@ public class BoardFile {
 		this.boardFileOriginName = boardFileOriginName;
 		this.boardFileChangeName = boardFileChangeName;
 		this.boardfilePath = boardfilePath;
-		BoardFileUploadDate = boardFileUploadDate;
+		this.BoardFileUploadDate = boardFileUploadDate;
 		this.boardFileLevel = boardFileLevel;
 		this.boardStatus = boardStatus;
 		this.boardNo = boardNo;
@@ -55,7 +55,7 @@ public class BoardFile {
 		return BoardFileUploadDate;
 	}
 	public void setBoardFileUploadDate(Date boardFileUploadDate) {
-		BoardFileUploadDate = boardFileUploadDate;
+		this.BoardFileUploadDate = boardFileUploadDate;
 	}
 	public int getBoardFileLevel() {
 		return boardFileLevel;

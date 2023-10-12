@@ -94,7 +94,7 @@
 		border-radius: 25px;
 	}
 
-	a > img {
+	#site > a > img, #sns > a > img, #map > a > img {
 		width: 24px;
 		height: 24px;
 		padding: 0;
@@ -124,17 +124,17 @@
 			</div>
 			<div id="footer_btn">
 				<div class="ft">
-					<div>
+					<div id="site">
 						<a href="https://bemypet.kr/">
 							<img src="https://svgsilh.com/svg/309113.svg" alt="사이트">
 						</a>
 					</div>
-					<div>
+					<div id="sns">
 						<a href="https://www.instagram.com/kh_iei">
 							<img src="https://svgsilh.com/svg/1562139.svg" alt="sns">
 						</a>
 					</div>
-					<div>
+					<div id="map">
 						<a href="https://kko.to/G2wEv1yqMf">
 							<img src="https://svgsilh.com/svg/1093169.svg" alt="지도">
 						</a>

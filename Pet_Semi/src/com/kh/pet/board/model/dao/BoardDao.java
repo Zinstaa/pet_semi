@@ -143,5 +143,83 @@ public class BoardDao {
 		
 		
 	}
+	
+	public int increaseCount(Connection conn, int boardNo) {
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("increaseCount");
+		
+		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return result;
+	}
+	
+	public Board selectBoard(Connection conn, int boardNo) {
+		
+		Board b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Board();
+				b.setBoardNo(rset.getInt("BOARD_NO"));
+				b.setBoardName(rset.getString("BOARD_NAME"));
+				b.setBoardContent(rset.getString("BOARD_CONTENT"));
+				b.setMemberNo(rset.getString("MEMBER_ID"));
+				b.setBoardDate(rset.getDate("BOARD_DATE"));
+				b.setBoardView(rset.getInt("BOARD_VIEW"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return b;
+	}
+	
+	public BoardFile selectBoardFile(Connection conn, int boardNo) {
+		
+		BoardFile bf = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				bf = new BoardFile();
+				bf.setBoardFileNo(rset.getInt("BOARD_FILE_NO"));
+				bf.setBoardFileOriginName(rset.getString("BOARD_FILE_ORIGIN_NAME"));
+				bf.setBoardFileChangeName(rset.getString("BOARD_FILE_CHANGE_NAME"));
+				bf.setBoardfilePath(rset.getString("BOARD_FILE_PATH"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return bf;
+			
+		
+	}
 
 }

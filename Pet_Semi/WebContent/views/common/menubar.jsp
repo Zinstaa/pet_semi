@@ -127,6 +127,7 @@ String contextPath = request.getContextPath();
 
    .navbar ul, .navbar li {
       list-style: none;
+      padding-left: 0;
    }
 
    .menu{
@@ -312,7 +313,7 @@ String contextPath = request.getContextPath();
             <li>
                <a class="nav_sub">고객센터</a>
                <ul>
-                  <li><a href="#">공지사항</a></li>
+                  <li><a href="<%=contextPath%>/list.no?cpage=1">공지사항</a></li>
                   <li><a href="#">Q & A</a></li>
                   <li><a href="#">1 : 1 문의</a></li>
                </ul>

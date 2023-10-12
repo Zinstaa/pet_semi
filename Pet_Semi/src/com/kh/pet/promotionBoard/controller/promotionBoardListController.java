@@ -32,9 +32,6 @@ public class promotionBoardListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 화면 띄우기전 => 테이블로부터 조회 
-		
-		
 		request.getRequestDispatcher("views/promotionBoard/promotionBoardListView.jsp").forward(request, response);
 		
 	}

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PromotionBoard {
 	
-	private int promotionNumber; //PROMOTION_NUMBER	NUMBER
+	private int promotionNo; //PROMOTION_NUMBER	NUMBER
 	private String promotionTitle; //PROMOTION_TITLE	VARCHAR2(100 BYTE)
 	private String promotionContent; //PROMOTION_CONTENT	VARCHAR2(4000 BYTE)
 	private Date promotionDate; // PROMOTION_DATE	DATE
@@ -14,15 +14,17 @@ public class PromotionBoard {
 	private Date eventFinishDate; //EVENT_FINISH_DATE	DATE
 	private int agentNo; //AGENT_NO	NUMBER
 	private String titleImage; //
+	private String PromotionWriter; //
 	
 	public PromotionBoard() {
 		super();
 	}
 
-	public PromotionBoard(int promotionNumber, String promotionTitle, String promotionContent, Date promotionDate,
-			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage) {
+	public PromotionBoard(int promotionNo, String promotionTitle, String promotionContent, Date promotionDate,
+			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage,
+			String promotionWriter) {
 		super();
-		this.promotionNumber = promotionNumber;
+		this.promotionNo = promotionNo;
 		this.promotionTitle = promotionTitle;
 		this.promotionContent = promotionContent;
 		this.promotionDate = promotionDate;
@@ -32,14 +34,15 @@ public class PromotionBoard {
 		this.eventFinishDate = eventFinishDate;
 		this.agentNo = agentNo;
 		this.titleImage = titleImage;
+		PromotionWriter = promotionWriter;
 	}
 
-	public int getPromotionNumber() {
-		return promotionNumber;
+	public int getPromotionNo() {
+		return promotionNo;
 	}
 
-	public void setPromotionNumber(int promotionNumber) {
-		this.promotionNumber = promotionNumber;
+	public void setPromotionNo(int promotionNo) {
+		this.promotionNo = promotionNo;
 	}
 
 	public String getPromotionTitle() {
@@ -105,21 +108,33 @@ public class PromotionBoard {
 	public void setAgentNo(int agentNo) {
 		this.agentNo = agentNo;
 	}
-	
+
 	public String getTitleImage() {
 		return titleImage;
 	}
+
 	public void setTitleImage(String titleImage) {
 		this.titleImage = titleImage;
 	}
 
+	public String getPromotionWriter() {
+		return PromotionWriter;
+	}
+
+	public void setPromotionWriter(String promotionWriter) {
+		PromotionWriter = promotionWriter;
+	}
+
 	@Override
 	public String toString() {
-		return "PromotionBoard [promotionNumber=" + promotionNumber + ", promotionTitle=" + promotionTitle
+		return "PromotionBoard [promotionNo=" + promotionNo + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
-				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + "]";
+				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + ", PromotionWriter="
+				+ PromotionWriter + "]";
 	}
+
+	
 
 	
 	}

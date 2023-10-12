@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.Place" %>
+
+<%
+	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +22,7 @@
     /* place_Main 부분 */
     #place_Main {
         width: 1200px;
-        height: 1000px;
+        height: 1200px;
         margin: auto;
         padding-top: 125px;
     }
@@ -29,16 +34,16 @@
 
     #place_search {
         width: 25%;
-        float: left;
-        height: 85%;
+        height: 70%;
         margin-top: 100px;
+        float: left;
     }
     
     #place_content {
         width: 75%;
-        float: left;
         height: 90%;
         margin-top: 55px;
+        float: left;
     }
 
     #left-search-name {
@@ -161,9 +166,86 @@
 
     #toTop > img {
         position: absolute;
+        width: 24px;
+        height: 24px;
         top: 3px;
         left: 13px;
     }
+    
+    /* placeContent 부분 */
+    #list-area {
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .place-content {
+        width: 250px;
+        height: 200px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background-color: #FFF8DB;
+        display: inline-block;
+        margin: 7px;
+    }
+
+    
+    .place-content > #img-place, .place-content > #btn-place {
+        float: left;
+        height: 75%;
+    }
+    
+    #img-place {
+        width: 65%;
+    }
+    
+    #img-place > img {
+        width: 125px;
+        height: 125px;
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    
+    #img-place:hover ,#name-place:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+
+    #btn-place {
+        width: 35%;
+    }
+
+    #name-place {
+        float: left;
+        width: 100%;
+        height: 25%;
+        line-height: 49px;
+    }
+
+    .pl-btn {
+        background-color: #ffce50;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        margin-top: 20px;
+        margin-right: 10px;
+        line-height: 40px;
+    }
+
+    #star > a > img {
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		margin: 0;
+	}
+
+    #map > a > img {
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		margin: 0;
+	}
 </style>
 </head>
 <body>
@@ -207,24 +289,25 @@
             <div id="place_category">
                 <form id="place-category-form" action="<%=contextPath%>/category.pl" style="padding-top: 40px;">
                     <select name="category" class="form" required>
-                        <option value="">카테고리</option>
-                        <option value="fo">식당</option>
-                        <option value="ca">카페</option>
-                        <option value="pa">공원</option>
-                        <option value="sh">쇼핑</option>
-                        <option value="ho">병원</option>
+                        <option>카테고리</option>
+                        <option>식당</option>
+                        <option>카페</option>
+                        <option>공원</option>
+                        <option>쇼핑</option>
+                        <option>병원</option>
                     </select>
                     <select name="place" class="form" required style="margin-bottom: 215px;">
-                        <option value="">지역</option>
-                        <option value="se">서울</option>
-                        <option value="gy">경기</option>
-                        <option value="ga">강원</option>
-                        <option value="cb">충북</option>
-                        <option value="cn">충남</option>
-                        <option value="kb">경북</option>
-                        <option value="kn">경남</option>
-                        <option value="jb">전북</option>
-                        <option value="jn">전남</option>
+                        <option>지역</option>
+                        <option>서울</option>
+                        <option>경기</option>
+                        <option>강원</option>
+                        <option>충북</option>
+                        <option>충남</option>
+                        <option>경북</option>
+                        <option>경남</option>
+                        <option>전북</option>
+                        <option>전남</option>
+                        <option>제주</option>
                     </select>
                     <div id="btn-zone">
                         <input type="submit" id="btn-info" value="검색">
@@ -235,20 +318,60 @@
        
         </div>
         <div id="place_content">
-            <%@ include file = "placeContent.jsp" %>
+            <% if(loginUser != null) { %>
+            <div style="width: 900px;" align="right">
+                <a href="<%= contextPath %>/enrollForm.pl" class="btn btn-sm btn-primary">글작성</a>
+            </div>
+             <% } %>
+            <div id="list-area">
+            <% if(list.isEmpty()) {%>
+            
+            <!-- 등록된 장소가 없을 때-->
+            등록된 장소가 없습니다... <br>
+            
+            <% } else { %>
+            <!-- 등록된 장소가 있을 때-->
+                <% for(Place p : list) { %>
+                    <div class="place-content">
+                        <input type="hidden" value="<%= p.getPlaceNo() %>">
+                        <div id="img-place">
+                            <img src="<%= p.getTitleImg() %>" alt="">
+                        </div>
+                        <div id="btn-place" align="center">
+                            <div class="pl-btn" id="star">
+                                <a href="https://kko.to/G2wEv1yqMf">
+                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+                                </a>
+                            </div>
+                            <div class="pl-btn" id="map">
+                                <a href="https://kko.to/G2wEv1yqMf">
+                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+                                </a>
+                            </div>
+                        </div>
+                        <div id="name-place">
+                            <p>[<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] <%= p.getPlaceName() %></p>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+            </div>
         </div>
     </div>
 
+    <script>
+        $(function(){
+            $('.place-content').click(function(){
 
+                const pno = $(this).children().eq(0).val();
 
+                location.href = '<%= contextPath%>/detail.pl?pno=' + pno;
 
+            })
+        })
 
+    </script>
 
-
-
-
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div id="top">
         <a id="toTop" href="#">
            <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>

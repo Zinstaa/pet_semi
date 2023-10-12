@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>공지사항</comment>
+	
+	<entry key="selectListCount">
+		SELECT
+			COUNT(*)
+		FROM
+			NOTICE
+		WHERE
+			STATUS = 'Y'
+			
+	</entry>
+	
+	<entry key="selectList">
+	select notice_no, notice_title, notice_date, member_id from (
+	    select rownum rnum, A.notice_no, A.notice_title, A.notice_date, A.member_id 
+	    from
+	        (select notice_no, notice_title, notice_date, member_id
+	        from notice
+	        join member using (member_no)
+	        where notice.status = 'Y'
+	        order by notice_date desc) A
+	    )
+	where rnum between ? and ?
+	</entry>
+	
+	<entry key="selectNotice">
+	SELECT 
+		NOTICE_NO,
+		NOTICE_TITLE,
+		NOTICE_DATE,
+		MEMBER_ID,
+		NOTICE_CONTENT
+	FROM
+		NOTICE
+	JOIN MEMBER USING (MEMBER_NO)
+	WHERE 
+		NOTICE_NO = ?
+	</entry>
+	<entry key="selectNoticeFile">
+	SELECT
+		NOTICE_FILE_NO,
+		NOTICE_FILE_ORIGIN_NAME,
+		NOTICE_FILE_CHANGE_NAME,
+		NOTICE_FILE_PATH
+	FROM
+		NOTICE_FILE
+	WHERE
+		NOTICE_NO = ?
+	ORDER BY
+		NOTICE_FILE_NO ASC
+	</entry>
+	
+	<entry key="insertNotice">
+	INSERT INTO
+		NOTICE (
+			NOTICE_NO,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			MEMBER_NO
+		)
+		VALUES(
+			NOTICE_SQL.NEXTVAL,
+			?,
+			?,
+			?
+		)
+		
+	</entry>
+	<entry key="insertNoticeFile">
+	INSERT INTO
+		NOTICE_FILE (
+			NOTICE_FILE_NO,
+			NOTICE_FILE_ORIGIN_NAME,
+			NOTICE_FILE_CHANGE_NAME,
+			NOTICE_FILE_PATH,
+			NOTICE_FILE_UPLOAD_DATE,
+			NOTICE_NO
+		)
+		VALUES(
+			NOTICE_FILE_SQL.NEXTVAL,
+			?,
+			?,
+			?,
+			SYSDATE,
+			NOTICE_SQL.CURRVAL
+		)
+		
+	</entry>
+</properties>
