@@ -74,7 +74,7 @@
             
             <% if(loginUser != null && loginUser.getMemberId().equals(b.getMemberNo())) { %>
             <a href="<%= contextPath %>/updateForm.bo?bno=<%= b.getBoardNo() %>" class="btn btn-warning">수정</a>
-            <a href="" class="btn btn-danger">삭제</a>
+            <a href="<%= contextPath %>/delete.bo?bno=<%= b.getBoardNo() %>" class="btn btn-danger">삭제</a>
             <% } %>
         </div>
 
