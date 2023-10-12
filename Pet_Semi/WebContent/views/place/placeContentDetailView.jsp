@@ -18,14 +18,14 @@
 <style>
     div {
         box-sizing: border-box;
-        border: 1px solid black;
+        /*border: 1px solid black;*/
     }
     h2 {
         text-align: center;
     }
 
-    h3 {
-        padding-top: 20px;
+    #place_category {
+        margin-top: 10px;
         text-align: center;
     }
 
@@ -117,7 +117,7 @@
         height: 80%;
         width: 90%;
         margin: auto;
-        margin-top: 45px;
+        margin-top: 40px;
         margin-left: 5px;
         border: 1px solid lightgray;
         border-radius: 20px;
@@ -136,8 +136,47 @@
     }
 
 
+    /* .place_detail_content 부분 */
 
+    .place_detail_content {
+        width: 95%;
+        margin: auto;
+    }
+    .place_main_text {
+        border-bottom: 2px solid lightgray;
+        margin-top: 5px;
+    }
 
+    .place_symbol {
+        width: 30px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 33px;
+
+        position: absolute;
+    }
+    .place_symbol > img {
+        width: 25px;
+        height: 25px;
+        margin-left: 1px;
+    }
+
+    .place_main_text > h3{
+        padding-left: 35px;
+        margin-bottom: 5px;
+    }
+
+    .place_content_text {
+        white-space : pre-line;
+    }
+
+    .main {
+        margin-top: 20px;
+    }
+
+    .sub {
+        margin-top: 40px;
+    }
 
 
     /* place_detail_caution 부분 */
@@ -224,7 +263,7 @@
             </a>
         </div>
 
-        <h3> [<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] </h3>
+        <h3 id="place_category"> [<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] </h3>
 
         <div id="place_detail_content">
             <div id="place_detail_image_info">
@@ -232,11 +271,10 @@
                     <div id="content_1">
                         <div class="swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="<%= contextPath %>/<%= list.get(0).getPlaceFilePath()%>/<%= list.get(0).getPlaceFileChangeName() %> "></div>
-                                <div class="swiper-slide"><img src="https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1"></div>
-                                <div class="swiper-slide"><img src="https://i.namu.wiki/i/L6iuHgsPod0cHQLXQ3jfyCFcJ1OSIG6MuE7ChjDTVqVJeBkfdQsJeNOhmuqu4_ESrYCLxDaN8xREnufFD_9LUw.gif"></div>
-                                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/09/01/19/53/pocket-watch-1637396__480.jpg"></div>
-                                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275__480.jpg"></div>
+                                <div class="swiper-slide"><img src="<%= contextPath %>/<%= list.get(0).getPlaceFilePath()%>/<%= list.get(0).getPlaceFileChangeName() %> " alt="대표이미지"></div>
+                                <% for(int i = 1; i < list.size(); i++) { %>
+                                    <div class="swiper-slide"><img src="<%= contextPath %>/<%= list.get(i).getPlaceFilePath()%>/<%= list.get(i).getPlaceFileChangeName() %> " alt="상세이미지<%= i %>"></div>
+                                <% } %>
                             </div>
                         
                             <div class="swiper-pagination"></div>
@@ -251,29 +289,108 @@
                     <div id="place_detail_place_info">
                         <div id="place_info">
                             <h2><%= p.getPlaceName() %></h2>
-                            <h6>주소 : <%= p.getPlaceAddress() %></h6>
-                            <h6>문의처 : <%= p.getPlacePhone() %></h6>
-                            <h6>이용시간 : <%= p.getPlaceTimes() %></h6>
-                            <h6>홈페이지 : <%= p.getPlaceUrl() %></h6>
+                            <table>
+                                <tr>
+                                    <th width="75">주소  </th>
+                                    <td><%= p.getPlaceAddress() %></td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        문의처  
+                                    </th>
+                                    <td>
+                                        <%= p.getPlacePhone() %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        이용시간  
+                                    </th>
+                                    <td>
+                                        <%= p.getPlaceTimes() %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        홈페이지  
+                                    </th>
+                                    <td>
+                                        <%= p.getPlaceUrl() %>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div id="place_detail_caution">
 						<h2 style="margin-top: 20px;">※ 주의사항 ※</h2>
-						<%= p.getPlaceCaution() %>
+						<!-- <%= p.getPlaceCaution() %> -->
                     </div>
                 </div>
             </div>
 
             <div id="place_detail_info">
-
+                <div class="place_detail_content main" id="pl-info">
+                    <div class="place_main_text">
+                        <div class="place_symbol">
+                            <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                        </div>
+                        <h3>소개</h3>
+                    </div>
+                    <div class="place_content_text">
+                        <%= p.getPlaceInfo() %>
+                    </div>
+                </div>
+                <div class="place_detail_content sub" id="pl-around">
+                    <div class="place_main_text">
+                        <div class="place_symbol">
+                            <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                        </div>
+                        <h3>주요시설</h3>
+                    </div>
+                    <div class="place_content_text">
+                        <%= p.getPlaceAround() %>
+                    </div>
+                </div>
+                <div class="place_detail_content sub" id="pl-price">
+                    <div class="place_main_text">
+                        <div class="place_symbol">
+                            <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                        </div>
+                        <h3>이용비용</h3>
+                    </div>
+                    <div class="place_content_text">
+                        <%= p.getPlacePrice() %>
+                    </div>
+                </div>
+                <div class="place_detail_content sub" id="pl-caution">
+                    <div class="place_main_text">
+                        <div class="place_symbol">
+                            <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                        </div>
+                        <h3>애견 정책 및 주의사항</h3>
+                    </div>
+                    <div class="place_content_text">
+                        <%= p.getPlaceCaution() %>
+                    </div>
+                </div>
+                <div class="place_detail_content sub" id="pl-map">
+                    <div class="place_main_text">
+                        <div class="place_symbol">
+                            <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                        </div>
+                        <h3>지도</h3>
+                    </div>
+                    <div class="place_content_text">
+                        <%= p.getPlaceAddress() %>
+                        <iframe src="<%= p.getPlaceMap() %>" 
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
             </div>
             <div id="place_detail_review">
 
             </div>
         </div>
-
-
-
     </div>
 
     <script>
