@@ -173,5 +173,25 @@
 		   AND
 		   	  STATUS = 'Y'
 	</entry>
+	
+	<entry key="selectBoardReviewList">
+		SELECT
+			BOARD_REVIEW_NO,
+			BOARD_REVIEW_CONTENT,
+			MEMBER_ID,
+			TO_CHAR(BOARD_REVIEW_DATE, 'YY/MM/DD HH:MI:SS') BOARD_REVIEW_DATE
+		FROM
+			BOARD_REVIEW 
+		JOIN
+			MEMBER ON(BOARD_REVIEW_WRITER = MEMBER_NO)
+		WHERE
+			BOARD_NO = ?
+		AND
+			BOARD_REVIEW.BOARD_REVIEW_STATUS = 'Y'
+		ORDER
+		   BY
+		   	 BOARD_REVIEW_DATE DESC
+		
+	</entry>
 
 </properties>

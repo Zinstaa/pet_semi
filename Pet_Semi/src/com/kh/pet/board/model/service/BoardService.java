@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.kh.pet.board.model.dao.BoardDao;
 import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.board.model.vo.BoardFile;
+import com.kh.pet.board.model.vo.BoardReview;
 import com.kh.pet.common.model.PageInfo;
 
 public class BoardService {
@@ -134,6 +135,17 @@ public class BoardService {
 		close(conn);
 		
 		return result;
+	}
+	
+	public ArrayList<BoardReview> selectReivewBoard(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<BoardReview> list = new BoardDao().selectReviewBoard(conn, boardNo);
+		
+		close(conn);
+		
+		return list;
 	}
 	
 }

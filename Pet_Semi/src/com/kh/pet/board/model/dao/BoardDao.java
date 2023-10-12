@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.board.model.vo.BoardFile;
+import com.kh.pet.board.model.vo.BoardReview;
 import com.kh.pet.common.model.PageInfo;
 public class BoardDao {
 	
@@ -308,6 +309,23 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public ArrayList<BoardReview> selectBoardReviewList(Connection conn, int boardNo) {
+		
+		ArrayList<BoardReview> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectBoardReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
