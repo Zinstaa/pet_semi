@@ -26,7 +26,7 @@
     }
 
     #place_category {
-        margin-top: 10px;
+        margin-top: 50px;
         text-align: center;
     }
 
@@ -317,7 +317,6 @@
                                     </th>
                                     <td id="place_url">
                                         <a href="http://<%= p.getPlaceUrl() %>" target="_blank"><%= p.getPlaceUrl() %></a>
-                                        <% System.out.println(p.getPlaceUrl()); %>
                                     </td>
                                 </tr>
                             </table>
@@ -400,8 +399,8 @@
                     </a>
                 </div>
                 <div id="work_btn">
-                    <% if(loginUser != null) { %>
-                            <a href="<%= contextPath %>/updateForm.pl" class="btn btn-sm btn-info">수정하기</a>
+                    <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
+                            <a href="<%= contextPath %>/updateForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-info">수정하기</a>
                             <a href="<%= contextPath %>/deleteForm.pl" class="btn btn-sm btn-danger">삭제하기</a>
                     <% } %>
                     
