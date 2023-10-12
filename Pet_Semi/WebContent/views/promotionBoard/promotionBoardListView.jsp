@@ -11,21 +11,28 @@
 <meta charset="UTF-8">
 <title>홍보게시판(사진)리스트 뷰에요~</title>
 <style>
+	.outer9{
+	background-color:white;
+	}
 	.list-area{
 	text-align:center;
 	border:1px solid gray;
 	}
-	.promtion{
+	
+	.promotion{
 	border:1px solid gray;
 	width:300px;
 	display: inline-block;
 	margin:7px;
+	background-color:lightgray;
 	}
+	
 	.promotion > img {
 	width:300px;
-	height:auto;
+	height:300px;
 	padding:10px;
 	}
+	
 	.promotion:hover{
 	cursor:pointer;
 	opacity:0.9;
@@ -37,7 +44,7 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-    <div class="outer">
+    <div class="outer9">
     
         <br>
         <h2 align="center">홍보게시판(사진)</h2>
@@ -71,5 +78,6 @@
         </div>
         <br><br>
     </div>
+   
 </body>
 </html>
