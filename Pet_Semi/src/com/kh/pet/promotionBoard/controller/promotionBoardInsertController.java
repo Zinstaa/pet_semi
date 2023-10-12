@@ -53,8 +53,8 @@ public class promotionBoardInsertController extends HttpServlet {
 			new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 
 			// 2) multiRequest로부터 값 봅기 => getParameter 메소드 이용
-			String promotionTItle = multiRequest.getParameter("title");
-			String boardContent = multiRequest.getParameter("content");
+			String promotionTitle = multiRequest.getParameter("title");
+			String promotionContent = multiRequest.getParameter("content");
 			String memberNo = multiRequest.getParameter("memberNo");
 
 			// 3) VO로 가공
@@ -70,7 +70,7 @@ public class promotionBoardInsertController extends HttpServlet {
 
 			// 키값 : file1 ~ file4 
 
-			for(int = 1; i <= 4; i++) {
+			for(int i = 1; i <= 4; i++) {
 				// 키값만 미리 변수로 빼놓는 작업
 				String key = "file" + i;
 
@@ -80,8 +80,8 @@ public class promotionBoardInsertController extends HttpServlet {
 					// 첨부파일이 존재 => PromotionFile 객체 생성 
 					// 필드 : 원본명, 수정명, 파일경로
 					PromotionFile pf = new PromotionFile();
-					pf.setPromotionFileOriginName(multiRequest.getOriginalName(key)); // 원본명
-					pf.setPromotionFileChangeName(multiRequest.getFileSystemName(key)); // 수정명
+					pf.setPromotionFileOriginName(multiRequest.getOriginalFileName(key)); // 원본명
+					pf.setPromotionFileChangeName(multiRequest.getFilesystemName(key)); // 수정명
 					pf.setPromotionFilePath("resources/promotion_upfiles");
 
 					// 파일레벨 
