@@ -18,8 +18,9 @@
 <style>
     div {
         box-sizing: border-box;
-        /*border: 1px solid black;*/
+        border: 1px solid black;
     }
+
     h2 {
         text-align: center;
     }
@@ -46,11 +47,25 @@
         border-radius: 33px;
     }
 
-    #place_nav_bar > a > img {
+    #place_nav_bar > #back_btn > a > img {
         margin-top: 10px;
         margin-left: 10px;
         width: 40px;
         height: 40px;
+    }
+
+    #back_btn {
+        float: left;
+    }
+
+    #work_btn {
+        float: right;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+
+    #work_btn > a {
+        margin-right: 5px;
     }
 
     /* place_detail_content 부분 */
@@ -67,8 +82,6 @@
         width: 100%;
     }
     
-
-
     /* place_detail_image_info 부분 */
     #place_detail_image_info {
         height: 25%;
@@ -89,10 +102,6 @@
         height: 15%;
     }
 
-
-
-
-
     /* place_detail_image 부분 */
     #place_detail_image {
         width: 60%;
@@ -110,6 +119,12 @@
     /* place_detail_place_info 부분 */
     #place_detail_place_info {
         height: 60%;
+    }
+
+    /* place_url 부분 */
+    #place_url > a {
+        text-decoration : none; 
+        color: #212529;
     }
 
     /* place_info 부분 */
@@ -178,17 +193,10 @@
         margin-top: 40px;
     }
 
-
     /* place_detail_caution 부분 */
     #place_detail_caution {
         height: 40%;
     }
-
-
-
-
-
-    
 
     /* swiper 라이브러리 css */
     /* 이미지 영역 사이즈 조절 */
@@ -248,7 +256,6 @@
         top: 3px;
         left: 13px;
     }
-    
 
 </style>
 </head>
@@ -256,15 +263,9 @@
 	<%@ include file = "../common/menubar.jsp" %>
     <div id="place_detail_main">
         <h2> 플레이스 </h2>
-
-        <div id="place_nav_bar">
-            <a href="<%= contextPath %>/place.pl">
-                <img src="https://svgsilh.com/svg/97591-ffffff.svg" alt="목록으로">
-            </a>
-        </div>
-
+        
         <h3 id="place_category"> [<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] </h3>
-
+        
         <div id="place_detail_content">
             <div id="place_detail_image_info">
                 <div id="place_detail_image">
@@ -274,14 +275,14 @@
                                 <div class="swiper-slide"><img src="<%= contextPath %>/<%= list.get(0).getPlaceFilePath()%>/<%= list.get(0).getPlaceFileChangeName() %> " alt="대표이미지"></div>
                                 <% for(int i = 1; i < list.size(); i++) { %>
                                     <div class="swiper-slide"><img src="<%= contextPath %>/<%= list.get(i).getPlaceFilePath()%>/<%= list.get(i).getPlaceFileChangeName() %> " alt="상세이미지<%= i %>"></div>
-                                <% } %>
-                            </div>
+                                    <% } %>
+                                </div>
                         
                             <div class="swiper-pagination"></div>
-                        
+                            
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                        
+                            
                         </div>
                     </div>
                 </div>
@@ -314,20 +315,21 @@
                                     <th>
                                         홈페이지  
                                     </th>
-                                    <td>
-                                        <%= p.getPlaceUrl() %>
+                                    <td id="place_url">
+                                        <a href="http://<%= p.getPlaceUrl() %>" target="_blank"><%= p.getPlaceUrl() %></a>
+                                        <% System.out.println(p.getPlaceUrl()); %>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div id="place_detail_caution">
-						<h2 style="margin-top: 20px;">※ 주의사항 ※</h2>
+                        <h2 style="margin-top: 20px;">※ 주의사항 ※</h2>
 						<!-- <%= p.getPlaceCaution() %> -->
                     </div>
                 </div>
             </div>
-
+            
             <div id="place_detail_info">
                 <div class="place_detail_content main" id="pl-info">
                     <div class="place_main_text">
@@ -383,72 +385,75 @@
                     <div class="place_content_text">
                         <%= p.getPlaceAddress() %>
                         <iframe src="<%= p.getPlaceMap() %>" 
-                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
+                <div id="place_detail_review">
+                    
+                </div>
             </div>
-            <div id="place_detail_review">
-
+            <div id="place_nav_bar">
+                <div id="back_btn">
+                    <a href="<%= contextPath %>/place.pl">
+                        <img src="https://svgsilh.com/svg/97591-ffffff.svg" alt="목록으로">
+                    </a>
+                </div>
+                <div id="work_btn">
+                    <% if(loginUser != null) { %>
+                            <a href="<%= contextPath %>/updateForm.pl" class="btn btn-sm btn-info">수정하기</a>
+                            <a href="<%= contextPath %>/deleteForm.pl" class="btn btn-sm btn-danger">삭제하기</a>
+                    <% } %>
+                    
+                    <a href="#" class="btn btn-sm btn-secondary">문의하기</a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <script>
-        // 슬라이더 동작 정의
-        const swiper = new Swiper('.swiper', {
-            autoplay : {
-                delay : 4000 // 4초마다 이미지 변경
-            },
-            loop : true, //반복 재생 여부
-            slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
-            pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next'
-            }
-        }); 
+        
+        <script>
+            // 슬라이더 동작 정의
+            const swiper = new Swiper('.swiper', {
+                autoplay : {
+                    delay : 4000 // 4초마다 이미지 변경
+                },
+                loop : true, //반복 재생 여부
+                slidesPerView : 1, // 이전, 이후 사진 미리보기 갯수
+                pagination: { // 페이징 버튼 클릭 시 이미지 이동 가능
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                navigation: { // 화살표 버튼 클릭 시 이미지 이동 가능
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                }
+            }); 
 
         $(".swiper-pagination").on("click", function(){
             swiper.autoplay.start();
         })
-
+        
         $(".swiper-button-prev").on("click", function(){
             swiper.autoplay.start();
         })
-
+        
         $(".swiper-button-next").on("click", function(){
             swiper.autoplay.start();
         })
-    </script>
+        </script>
 
+<div id="top">
+    <a id="toTop" href="#">
+        <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
+        &nbsp;&nbsp;TOP
+    </a>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-	
-	<div id="top">
-        <a id="toTop" href="#">
-           <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
-           &nbsp;&nbsp;TOP
-        </a>
-    </div>
-
-    <script>
-        $(function() {
-            // 보이기 | 숨기기
-            $(window).scroll(function() {
+<script>
+    $(function() {
+        // 보이기 | 숨기기
+        $(window).scroll(function() {
             if ($(this).scrollTop() > 500) { //250 넘으면 버튼이 보여짐니다.
-                    $('#toTop').fadeIn();
+                $('#toTop').fadeIn();
                     $('#toTop').css('left', $('#sidebar').offset());  // #sidebar left:0 죄표
                     } else {
                     $('#toTop').fadeOut();
