@@ -39,7 +39,9 @@
         <br>
 
         <form enctype="multipart/form-data" action="<%=contextPath%>/update.bo" id="enroll-form" method="post">
-
+			
+			
+			<input type="hidden" name="boardNo" value="<%= b.getBoardNo() %>">
 
             <table align="center">
                 <tr>
@@ -56,6 +58,8 @@
 						<td>
 							<%= bf.getBoardFileOriginName() %>
 						</td>
+						<input type="hidden" name="originBoardFileNo" value="<%= bf.getBoardFileNo() %>">
+						<input type="hidden" name="originBoardFileName" value="<%= bf.getBoardFileChangeName() %>">
 					<% } %>
                     <td><input type="file" name="reUpfile"></td>
                 </tr>

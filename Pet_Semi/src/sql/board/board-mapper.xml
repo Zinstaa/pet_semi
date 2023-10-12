@@ -117,5 +117,50 @@
 		  		BOARD_NO = ?	
 		
 	</entry>
+	
+	<entry key="updateBoard">
+		UPDATE
+			  BOARD
+		  SET
+		  	 BOARD_NAME = ?,
+		  	 BOARD_CONTENT = ?
+		WHERE
+			  BOARD_NO = ?		
+		
+	</entry>
+	
+	<entry key="updateBoardFile">
+		UPDATE
+			  BOARD_FILE
+		  SET
+		  	 BOARD_FILE_ORIGIN_NAME = ?,
+			 BOARD_FILE_CHANGE_NAME =?,
+			 BOARD_FILE_PATH = ?,
+			 BOARD_FILE_UPLOAD_DATE = SYSDATE
+		WHERE
+			 BOARD_FILE_NO = ?
+		  	 
+	</entry>
+	
+	<entry key="insertNewBoardFile">
+		INSERT
+		  INTO
+		  	  BOARD_FILE
+		  		(
+		  		BOARD_FILE_NO,
+		  		BOARD_FILE_ORIGIN_NAME,
+		  		BOARD_FILE_CHANGE_NAME,
+		  		BOARD_FILE_PATH,
+		  		BOARD_NO
+		  		)
+		  VALUES
+		  		(
+		  		BOARD_FILE_SEQ.NEXTVAL,
+		  		?,
+		  		?,
+		  		?,
+		  		?
+		  		)
+	</entry>
 
 </properties>

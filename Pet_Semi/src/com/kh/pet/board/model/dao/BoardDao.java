@@ -218,8 +218,77 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return bf;
-			
+	}
+	
+	public int updateBoard(Connection conn, Board b) {
 		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, b.getBoardName());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setInt(3, b.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateBoardFile(Connection conn, BoardFile bf) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bf.getBoardFileOriginName());
+			pstmt.setString(2, bf.getBoardFileChangeName());
+			pstmt.setString(3, bf.getBoardfilePath());
+			pstmt.setInt(4, bf.getBoardFileNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewBoardFile(Connection conn, BoardFile bf) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bf.getBoardFileOriginName());
+			pstmt.setString(2, bf.getBoardFileChangeName());
+			pstmt.setString(3, bf.getBoardfilePath());
+			pstmt.setInt(4, bf.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }
