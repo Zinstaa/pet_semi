@@ -18,7 +18,7 @@
 <style>
     div {
         box-sizing: border-box;
-        border: 1px solid black;
+        /*border: 1px solid black;*/
     }
     h2 {
         text-align: center;
