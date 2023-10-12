@@ -1,7 +1,6 @@
 package com.kh.pet.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.kh.pet.member.model.service.MemberService;
-import com.kh.pet.member.model.vo.Member;
+import com.kh.pet.member.model.vo.FindId;
 
 /**
  * Servlet implementation class MemberFindIdController
@@ -33,31 +32,25 @@ public class MemberFindIdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
-
-				String email = request.getParameter("email");
-				String phone = request.getParameter("phone");
-				
-				System.out.println(email);
-				System.out.println(phone);
-				
-				ArrayList<Member> list = new MemberService().findId(email, phone);
-				
-				
-				// GSON : Google JSON 라이브러리
-				// 형식, 인코딩 지정
-				response.setContentType("application/json; charset=UTF-8");
-				//gson객체 생성 응답 보내기
-				new Gson().toJson(list,response.getWriter());
-				//-> list라는 객체를 response.getWriter()라는 통로로 응답하겠다.
-				
-				RequestDispatcher view = request.getRequestDispatcher("views/member/findid.jsp");
-				view.forward(request, response);
-				
-				
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		
+		FindId id = new MemberService().findId(email,phone);
+		if(id==null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg","일치하는 아이디가 없습니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/loginPage.jsp");
+			view.forward(request, response);
+		} else { 
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg","아이디는 <"+ id +"> 입니다");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/loginPage.jsp");
+			view.forward(request, response);
+		}
+	
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

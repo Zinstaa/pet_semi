@@ -51,7 +51,7 @@
 	<div id="mypagebox">
 			 &nbsp;&nbsp;&nbsp; "<%=memberName%>"님 반갑습니다!!
 			<div id="mypagebtn">
-			<button type="submit" class="btn btn-secondary btn-sm">정보수정</button>
+			<button type="submit" onclick="memberUpdate();"  class="btn btn-secondary btn-sm">정보수정</button>
 			</div>
 	</div>
 	<br><br><br>
@@ -61,12 +61,17 @@
 		<div class="mymenubar"><a href="#" >내 게시글 보기</a></div>
 	</div>
 	
+	 <script>
+            function memberUpdate(){
+               location.href = "<%= contextPath %>/update.me"
+            }
+         </script>
+	
 	</div>
 
 	<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
 	
 	
-	</div>
 
 
 </body>

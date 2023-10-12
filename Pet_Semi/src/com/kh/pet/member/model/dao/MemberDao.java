@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.pet.member.model.vo.FindId;
+import com.kh.pet.member.model.vo.FindPwd;
 import com.kh.pet.member.model.vo.Member;
 import com.kh.pet.common.JDBCTemplate.*;
 
@@ -190,7 +192,6 @@ private Properties prop = new Properties();
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(rset);
@@ -211,7 +212,6 @@ private Properties prop = new Properties();
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
@@ -242,10 +242,12 @@ private Properties prop = new Properties();
 		return count;
 	}
 	
-	public ArrayList<Member> findId (Connection conn, String email, String phone) {
+	public FindId findId(Connection conn, String email, String phone) {
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<Member> list = new ArrayList();
+		FindId id = null;
+		
 		String sql = prop.getProperty("findId");
 		
 		try {
@@ -255,20 +257,49 @@ private Properties prop = new Properties();
 			
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) {
-				Member m = new Member(rset.getString("EMAIL"),
-									  rset.getString("PHONE"));
-				list.add(m);
-				   
+			if(rset.next()) {
+				id = new FindId(rset.getString("MEMBER_ID"),
+							   rset.getString("EMAIL"),
+							   rset.getString("PHONE"));
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 			}
+		return id;
+		}
+	public FindPwd findPwd(Connection conn, String MemberId, String email, String phone) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		FindPwd pwd = null;
+		
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, MemberId);
+			pstmt.setString(2, email);
+			pstmt.setString(3, phone);
 			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pwd = new FindPwd(rset.getString("MEMBER_ID"),
+								  rset.getString("MEMBER_PWD"),
+								  rset.getString("EMAIL"),
+								  rset.getString("PHONE"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		return list;
+		return pwd;
 	}
+
 }
 		
