@@ -292,7 +292,7 @@ String contextPath = request.getContextPath();
          </div>
          <div class="menu" id="pl">
             <li>
-               <a href="<%= contextPath %>/place.pl">플레이스</a>
+               <a href="<%= contextPath %>/place.pl?ppage=1">플레이스</a>
             </li>
          </div>
          <div class="menu" id="co">
