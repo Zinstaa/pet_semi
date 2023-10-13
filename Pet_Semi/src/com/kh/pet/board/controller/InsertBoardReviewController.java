@@ -1,29 +1,23 @@
 package com.kh.pet.board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.kh.pet.board.model.service.BoardService;
-import com.kh.pet.board.model.vo.BoardReview;
-
 /**
- * Servlet implementation class BoardViewListController
+ * Servlet implementation class InsertBoardReviewController
  */
-@WebServlet("/rlist.do")
-public class BoardViewListController extends HttpServlet {
+@WebServlet("/rinsert.do")
+public class InsertBoardReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardViewListController() {
+    public InsertBoardReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +27,6 @@ public class BoardViewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int boardNo = Integer.parseInt(request.getParameter("bno"));
-		
-		ArrayList<BoardReview> list = new BoardService().selectBoardReviewList(boardNo);
-		
-		response.setContentType("application/json; charset=UTF-8");
-		
-		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**
