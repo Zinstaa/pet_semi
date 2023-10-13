@@ -48,7 +48,7 @@ public class PlacePageController extends HttpServlet {
 		
 		pageLimit = 10;
 	      
-        placeLimit = 9;
+        placeLimit = 12;
         
         maxPage = (int)Math.ceil((double)listCount / placeLimit);
         
