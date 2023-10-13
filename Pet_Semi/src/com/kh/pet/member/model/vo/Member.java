@@ -177,6 +177,15 @@ public class Member {
 		this.phone = phone;
 	}
 
+	public Member(String memberId, String memberName, String nickName, String address, String age) {
+		super();
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.nickName = nickName;
+		this.address = address;
+		this.age = age;
+	}
+
 	public Member() {
 		super();
 	}

@@ -1,8 +1,6 @@
 package com.kh.pet.member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +12,16 @@ import com.kh.pet.member.model.service.MemberService;
 import com.kh.pet.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberPwdCheckController
+ * Servlet implementation class MemberUpdateCheckController
  */
-@WebServlet("/pwdCheck.me")
-public class MemberPwdCheckController extends HttpServlet {
+@WebServlet("/update.mem")
+public class MemberUpdateCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberPwdCheckController() {
+    public MemberUpdateCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,27 +30,43 @@ public class MemberPwdCheckController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//비밀번호 맞는지 확인
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+		//아이디 이름 닉네임 주소 나이
 		
-		Member loginUser = ((Member)session.getAttribute("loginUser"));
+		String memberName = request.getParameter("memberName");
+		String nickName = request.getParameter("nickName");
+		String address = request.getParameter("address");
+		String age = request.getParameter("age");
+		String memberId = request.getParameter("memberId");
 		
-		int memberNo = loginUser.getMemberNo();
+		Member m = new Member();
 		
-		String memberPwd = request.getParameter("memberPwd");
+		m.setMemberName(memberName);
+		m.setNickName(nickName);
+		m.setAddress(address);
+		m.setAge(age);
+		m.setMemberId(memberId);
 		
-		int result = new MemberService().pwdCheck(memberNo, memberPwd);
+		int result = new MemberService().updateMember(m);
 
-		if(result != 0) {
-			response.sendRedirect(request.getContextPath() + "/update.me");
+		if(result > 0) {
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "정보수정을 완료했습니다");
+			String memberPwd = ((Member)session.getAttribute("loginUser")).getMemberPwd();
+			
+			Member updateMem = new MemberService().loginMember(memberId, memberPwd);
+			
+			session.setAttribute("loginUser", updateMem);
+			response.sendRedirect(request.getContextPath() + "/mypage.me");
+			
 		} else {
-			session.setAttribute("alertMsg", "비밀번호가 다릅니다");
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "정보 수정 실패");
 			response.sendRedirect(request.getContextPath() + "/mypage.me");
 		}
-		
 	}
+	
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

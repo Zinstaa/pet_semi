@@ -103,4 +103,49 @@ public class MemberService {
 		return result;
 	}
 	
+	public int updateMember(Member m) {
+		Connection conn =JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().updateMember(conn, m);
+		if(result >0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	public Member selectMember(String memberId) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Member updateMem = new MemberDao().selectMember(conn,memberId);
+		
+		close(conn);
+		return updateMem;
+	}
+	public int updatePwdMember(int memberNo, String memberPwd, String updatePwd) {
+		Connection conn = JDBCTemplate.getConnection();
+
+		int result = new MemberDao().updatePwdMember(conn, memberNo, memberPwd, updatePwd);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	public int deleteMember(int memberNo, String memberPwd) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, memberNo, memberPwd);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+			} 
+		close(conn);
+		return result;
+	}
 }
