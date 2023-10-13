@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@
-	page import="com.kh.pet.notice.vo.*"
+	page import="com.kh.pet.notice.vo.*, java.util.HashMap"
  %>
  
 <%
 	//공지사항 글을 가지고 온다.
+	//조회를 해올 때 앞글 뒷글 번호도 같이 조회 해온다.(이전글, 다음글 하기위해서)l
 	Notice n = (Notice)request.getAttribute("n");
 	NoticeFile nf = (NoticeFile)request.getAttribute("nf");
+	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
+	
 
 %>
 <!DOCTYPE html>
@@ -101,10 +104,11 @@
                 </table>
             </div>
             <div id="content-area">
-               
                 <%=n.getNoticeContent() %>
-
-                
+                <br>
+            	<%if(nf != null) {%>
+                	<img src="<%=contextPath %>/<%=nf.getNoticeFilePath() %>/<%=nf.getNoticeFileChangeName() %>" id="img" width="250" height="180">
+            	<%} %>
             </div>
             <div id="file-area">
             	<table>
@@ -125,8 +129,10 @@
             </div>
             
             <div id="button-area">
+            	
             	<button id="pre">◀이전글</button>
             	<button id="next">다음글▶</button>
+            	
                 <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-sm btn-info">목록≡</a>
                  <%if(loginUser !=null && loginUser.getMemberId().equals(n.getMemberNo())){ %>
 		            <a href="<%=contextPath%>/updateForm.no?bno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
@@ -134,9 +140,24 @@
 		           <%} %>
             </div>
             <script>
+           
+            
 			$(function(){
+				if(<%=map.get("nextNo")%> == "-1"){
+					$('#next').hide();
+				}
+            	
+            	if(<%=map.get("preNo")%> == "0"){
+					$('#pre').hide();
+				}
+				
+				
 				$('#pre').click(function(){
-					location.href = '<%=contextPath%>/detail.no?nno=<%=n.getNoticeNo() -1 %>';
+					
+					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("preNo") %>';
+				})
+				$('#next').click(function(){
+					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("nextNo") %>';
 				})
 			})
 			</script>

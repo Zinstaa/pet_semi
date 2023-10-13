@@ -4,6 +4,7 @@ import static com.kh.pet.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.pet.common.model.PageInfo;
 import com.kh.pet.notice.dao.NoticeDao;
@@ -24,11 +25,11 @@ public class NoticeService {
 		return list;
 	}
 	
-	public Notice selectNotice(int noticeNo) {
+	public  HashMap<String, Object> selectNotice(int noticeNo) {
 		Connection conn = getConnection();
-		Notice n = new NoticeDao().selectNotice(conn, noticeNo);
+		 HashMap<String, Object> map = new NoticeDao().selectNotice(conn, noticeNo);
 		close(conn);
-		return n;
+		return map;
 	}
 	public NoticeFile selectNoticeFile(int noticeNo) {
 		Connection conn = getConnection();

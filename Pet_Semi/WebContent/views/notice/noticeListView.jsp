@@ -25,7 +25,7 @@
         background-color: #fff5ce;
         color: black;
     }
-    .list-area>tbody>tr:hover{
+    .list:hover{
     	cursor : pointer;
         background-color: yellow;
     }

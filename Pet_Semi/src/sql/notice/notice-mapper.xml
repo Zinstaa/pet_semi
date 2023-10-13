@@ -28,16 +28,27 @@
 	
 	<entry key="selectNotice">
 	SELECT 
-		NOTICE_NO,
-		NOTICE_TITLE,
-		NOTICE_DATE,
-		MEMBER_ID,
-		NOTICE_CONTENT
-	FROM
-		NOTICE
-	JOIN MEMBER USING (MEMBER_NO)
+	    NOTICE_NO,
+	    NOTICE_TITLE,
+	    NOTICE_DATE,
+	    MEMBER_ID,
+	    NOTICE_CONTENT,
+	    PRE_NO,
+	    NEXT_NO
+	FROM (
+	    SELECT
+	        NOTICE_NO,
+	        NOTICE_TITLE,
+	        NOTICE_DATE,
+	        NOTICE_CONTENT,
+	        MEMBER_ID,
+	        LAG(NOTICE_NO,1,0) OVER(ORDER BY NOTICE_NO) PRE_NO,
+	        LEAD(NOTICE_NO,1,-1) OVER(ORDER BY NOTICE_NO) NEXT_NO
+	    FROM
+	        NOTICE
+	    JOIN MEMBER USING (MEMBER_NO))   
 	WHERE 
-		NOTICE_NO = ?
+	    NOTICE_NO = ?
 	</entry>
 	<entry key="selectNoticeFile">
 	SELECT
