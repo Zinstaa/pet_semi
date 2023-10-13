@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.board.model.vo.BoardFile;
+import com.kh.pet.board.model.vo.BoardReview;
 import com.kh.pet.common.model.PageInfo;
 public class BoardDao {
 	
@@ -218,7 +219,112 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return bf;
+	}
+	
+	public int updateBoard(Connection conn, Board b) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setString(1, b.getBoardName());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setInt(3, b.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateBoardFile(Connection conn, BoardFile bf) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bf.getBoardFileOriginName());
+			pstmt.setString(2, bf.getBoardFileChangeName());
+			pstmt.setString(3, bf.getBoardfilePath());
+			pstmt.setInt(4, bf.getBoardFileNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int insertNewBoardFile(Connection conn, BoardFile bf) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewBoardFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, bf.getBoardFileOriginName());
+			pstmt.setString(2, bf.getBoardFileChangeName());
+			pstmt.setString(3, bf.getBoardfilePath());
+			pstmt.setInt(4, bf.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteBoard(Connection conn, int boardNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public ArrayList<BoardReview> selectBoardReviewList(Connection conn, int boardNo) {
+		
+		ArrayList<BoardReview> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectBoardReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 

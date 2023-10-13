@@ -54,6 +54,17 @@ public class PlaceService {
 		
 		return p;
 	}
+	
+	public PlaceFile selectPlaceFile(int placeNo) {
+		
+		Connection conn = getConnection();
+		
+		PlaceFile pl = new PlaceDao().selectPlaceFile(conn, placeNo);
+		
+		close(conn);
+		
+		return pl;
+	}
 
 	public ArrayList<PlaceFile> selectPlaceFileList(int placeNo) {
 			
@@ -62,6 +73,7 @@ public class PlaceService {
 		ArrayList<PlaceFile> list = new PlaceDao().selectPlaceFileList(conn, placeNo);
 		return list;
 	}
+
 
 
 
