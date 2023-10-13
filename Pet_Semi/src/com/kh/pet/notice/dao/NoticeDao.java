@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Properties;
 
 import com.kh.pet.common.model.PageInfo;
@@ -85,8 +87,9 @@ public class NoticeDao {
 		return list;
 	}
 	
-	public Notice selectNotice(Connection conn, int noticeNo) {
+	public HashMap<String, Object> selectNotice(Connection conn, int noticeNo) {
 		Notice n = null;
+		HashMap<String, Object> map = new HashMap();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("selectNotice");
@@ -102,6 +105,20 @@ public class NoticeDao {
 				n.setMemberNo(rset.getString("MEMBER_ID"));
 				n.setNoticeContent(rset.getString("NOTICE_CONTENT"));
 				n.setNoticeDate(rset.getDate("NOTICE_DATE"));
+				int preNo = rset.getInt("PRE_NO");
+				int nextNo = rset.getInt("NEXT_NO");
+				
+				map.put("n",n);
+				//map.put("noticeNo",n.getNoticeNo());
+				//map.put("noticeTitle",n.getNoticeTitle());
+				//map.put("memberNo",n.getMemberNo());
+				//map.put("noticeContent",n.getNoticeContent());
+				//map.put("noticeDate",n.getNoticeDate());
+				
+				map.put("preNo",preNo);
+				map.put("nextNo",nextNo);
+				//System.out.println(map);
+				
 			}
 			
 			
@@ -112,7 +129,7 @@ public class NoticeDao {
 			close(rset);
 			close(pstmt);
 		}
-		return n;
+		return map;
 		
 	}
 	

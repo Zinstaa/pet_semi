@@ -31,7 +31,11 @@ public class promotionBoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		// promotionBoard 따로 promotionFile 따로 들고 간다 
+		// 화면을 띄우기 전에 => 테이블로부터 조회
+		ArrayList<PromotionBoard> list = new PromotionBoardService().selectPromotionBoardList(); // 바로 서비스로 넘어가자~
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/promotionBoard/promotionBoardListView.jsp").forward(request, response);
 		
 	}

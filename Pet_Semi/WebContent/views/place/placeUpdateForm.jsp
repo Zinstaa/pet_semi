@@ -3,8 +3,9 @@
 <%@ page import="com.kh.pet.place.model.vo.*, java.util.ArrayList" %>
 <%
 	Place p = (Place)request.getAttribute("p");
-	PlaceFile pl = (PlaceFile)request.getAttribute("pl");
 	ArrayList<PlaceFile> list = (ArrayList<PlaceFile>)request.getAttribute("list");
+	ArrayList<PlaceCategory> pllist = (ArrayList<PlaceCategory>)request.getAttribute("pllist");
+	ArrayList<LocalCategory> lolist = (ArrayList<LocalCategory>)request.getAttribute("lolist");
 %>
 <!DOCTYPE html>
 <html>
@@ -73,7 +74,7 @@
 		<form action="<%= contextPath %>/update.pl" id="update-form" method="post" enctype="multipart/form-data">
 
 			<input type="hidden" name="pno" value="<%= p.getPlaceNo() %>">
-
+			<% System.out.println(p.getPlaceNo()); %>
 			<div id="place-update-form-table">
 				<table align="center">
 					<tr>
@@ -81,37 +82,32 @@
 						<td colspan="2">
 							<select name="pl-category" id="pl-category" class="place-form" required>
 								<option value="" selected disabled>카테고리</option>
-								<option>식당</option>
-								<option>카페</option>
-								<option>공원</option>
-								<option>쇼핑</option>
-								<option>병원</option>
+								<% for(PlaceCategory plc : pllist) { %>
+									<option value="<%= plc.getPlaceCategoryNo() %>">
+										<%= plc.getPlaceCategoryName() %>
+									</option>
+								<% } %>
 							</select>
 						</td>
 						<th>지역</th>
 						<td>
 							<select name="pl-place" id="pl-place" class="place-form" required >
 								<option value="" selected disabled>지역</option>
-								<option>서울</option>
-								<option>경기</option>
-								<option>강원</option>
-								<option>충북</option>
-								<option>충남</option>
-								<option>경북</option>
-								<option>경남</option>
-								<option>전북</option>
-								<option>전남</option>
-								<option>제주</option>
+								<% for(LocalCategory loc : lolist) { %>
+									<option value="<%= loc.getLocalCategoryNo() %>">
+										<%= loc.getLocalCategoryName() %>
+									</option>
+								<% } %>
 							</select>
 							<script>
 								$(function(){
 									$('#update-form option').each(function(){
 
-										if($(this).text().trim() == '<%= p.getPlaceCategoryName() %>'){
+										if($(this).text().trim() == '<%= p.getPlaceCategory() %>'){
 											$(this).attr('selected', 'true');
 										}
 
-										if($(this).text().trim() == '<%= p.getLocalCategoryName() %>'){
+										if($(this).text().trim() == '<%= p.getLocalCategory() %>'){
 											$(this).attr('selected', 'true');
 										}
 
@@ -192,14 +188,21 @@
                         <% } %>
 					</tr>
 					<tr>
-						<th>상세이미지</th>
-						<% if(list.size() > 0){%>
+						<th>상세이미지</th>					
+						
+						<% if((list.size() - 1) > 0) {%>
 							<% for(int i = 1; i < list.size(); i++) { %>
 							<td>
-	                            <img src="<%= contextPath %>/<%= list.get(i).getPlaceFilePath()%>/<%= list.get(i).getPlaceFileChangeName() %> " alt="상세이미지<%= i %>" width="150" height="105">
+	                            <img src="<%= contextPath %>/<%= list.get(i).getPlaceFilePath()%>/<%= list.get(i).getPlaceFileChangeName() %> " alt="상세이미지<%= i %>" id="contentImg<%= i %>" width="150" height="105">
 							</td>
 							<input type="hidden" name="originalFileName<%= i %>" value="<%= list.get(i).getPlaceFileChangeName() %>">
-	                        <% } %>
+							<% } %>
+						<% } else { %>
+							<% for(int i = 1; i <= (5-list.size()); i++) { %>
+							<td>
+								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png" alt="상세이미지<%= i %>" id="contentImg<%= i %>" width="150" height="105">
+							</td>
+							<% } %>
                         <% } %>
 					</tr>
 				</table>
@@ -273,18 +276,6 @@
 		</form>
 	</div>
 	<%@ include file = "../common/footer.jsp" %>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-	        var selectedValue = '<%= p.getLocalCategoryName() %>'; 
-	        var selectElement = document.getElementById('pl-category');
-	        
-	        for (var i = 0; i < selectElement.options.length; i++) {
-	            if (selectElement.options[i].value === selectedValue) {
-	                selectElement.options[i].selected = true;
-	                break;
-	            }
-	        }
-		});
-	</script>
+	
 </body>
 </html>

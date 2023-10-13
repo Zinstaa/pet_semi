@@ -315,16 +315,31 @@ public class BoardDao {
 		
 		ArrayList<BoardReview> list = new ArrayList();
 		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectBoardReviewList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new BoardReview(rset.getInt("BOARD_REVIEW_NO"),
+										 rset.getString("BOARD_REVIEW_CONTENT"),
+										 rset.getString("MEMBER_ID"),
+										 rset.getString("BOARD_REVIEW_DATE")));
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
-		
+		return list;
 		
 	}
 

@@ -8,13 +8,25 @@ public class BoardReview {
 	private String boardReviewContent;
 	private int boardNo;
 	private String boardReviewWriter;
-	private Date boardReviewDate;
+	private String boardReviewDate;
 	private String boardReviewStatus;
+	
 	public BoardReview() {
 		super();
 	}
+	
+	public BoardReview(int boardReviewNo, String boardReviewContent, String boardReviewWriter, String boardReviewDate) {
+		super();
+		this.boardReviewNo = boardReviewNo;
+		this.boardReviewContent = boardReviewContent;
+		this.boardReviewWriter = boardReviewWriter;
+		this.boardReviewDate = boardReviewDate;
+	}
+
+
+
 	public BoardReview(int boardReviewNo, String boardReviewContent, int boardNo, String boardReviewWriter,
-			Date boardReviewDate, String boardReviewStatus) {
+			String boardReviewDate, String boardReviewStatus) {
 		super();
 		this.boardReviewNo = boardReviewNo;
 		this.boardReviewContent = boardReviewContent;
@@ -35,7 +47,7 @@ public class BoardReview {
 	public String getBoardReviewWriter() {
 		return boardReviewWriter;
 	}
-	public Date getBoardReviewDate() {
+	public String getBoardReviewDate() {
 		return boardReviewDate;
 	}
 	public String getBoardReviewStatus() {

@@ -60,7 +60,7 @@
             <tr>
                 <th>내용</th>
                 <td colspan="3">
-                    <textarea name="content" style="resize:none;" rows="10"></textarea>
+                    <textarea name="content" style="resize:none;" rows="10" required></textarea>
                 </td>
             </tr>
         </table>

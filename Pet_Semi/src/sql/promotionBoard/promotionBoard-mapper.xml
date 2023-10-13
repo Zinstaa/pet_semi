@@ -129,6 +129,25 @@
 				)
 	</entry>
 	
+	<entry key="selectPromotionBoardList">
+		SELECT 
+				PROMOTION_NO,
+				PROMOTION_TITLE,
+				PROMOTION_VIEW,
+				PROMOTION_FILE_PATH ||'/'||PROMOTION_FILE_CHANGE_NAME TITLEIMG
+		  FROM
+		  		PROMOTION_BOARD
+		  JOIN
+		  		PROMOTION_FILE USING(PROMOTION_NO) 
+		 WHERE 
+		 		PROMOTION_FILE_LEVEL = 1
+		   AND
+		   		PROMOTION_BOARD.STATUS = 'Y'
+		 ORDER
+		 	BY
+		 		PROMOTION_NO DESC
+	</entry>
+	
 	
 	
 	

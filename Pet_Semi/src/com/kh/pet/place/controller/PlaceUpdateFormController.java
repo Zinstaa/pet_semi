@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.place.model.service.PlaceService;
+import com.kh.pet.place.model.vo.LocalCategory;
 import com.kh.pet.place.model.vo.Place;
+import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlaceFile;
 
 /**
@@ -36,14 +38,14 @@ public class PlaceUpdateFormController extends HttpServlet {
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
 		
 		Place p = new PlaceService().selectPlace(placeNo);
-		
-		PlaceFile pl = new PlaceService().selectPlaceFile(placeNo);
-		
 		ArrayList<PlaceFile> list = new PlaceService().selectPlaceFileList(placeNo);
-	
+		ArrayList<PlaceCategory> pllist = new PlaceService().selectPlaceCategoryList();
+		ArrayList<LocalCategory> lolist = new PlaceService().selectLoaclCategoryList();
+		
 		request.setAttribute("p", p);
-		request.setAttribute("pl", pl);
 		request.setAttribute("list", list);
+		request.setAttribute("pllist", pllist);
+		request.setAttribute("lolist", lolist);
 		
 		request.getRequestDispatcher("views/place/placeUpdateForm.jsp").forward(request, response);
 	

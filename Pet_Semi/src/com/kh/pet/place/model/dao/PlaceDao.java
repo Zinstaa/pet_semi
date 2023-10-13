@@ -11,8 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.pet.place.model.vo.LocalCategory;
 import com.kh.pet.place.model.vo.Place;
+import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlaceFile;
+import com.kh.pet.place.model.vo.PlacePageInfo;
 
 public class PlaceDao {
 	
@@ -29,25 +32,131 @@ public class PlaceDao {
 		}
 	}
 
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT(*)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		} return listCount;
+	}
+	
+	public ArrayList<Place> selectPlaceContentList(Connection conn, PlacePageInfo ppi) {
+
+		ArrayList<Place> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceContentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (ppi.getCurrentPage()-1) * ppi.getPlaceLimit()+1;
+			int endRow = startRow + ppi.getPlaceLimit()-1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Place p = new Place();
+				p.setPlaceCategory(rset.getString("PLACE_CATEGORY_NAME"));
+				p.setLocalCategory(rset.getString("LOCAL_CATEGORY_NAME"));
+				p.setPlaceName(rset.getString("PLACE_NAME"));
+				p.setPlaceNo(rset.getInt("PLACE_NO"));
+				
+				p.setTitleImg(rset.getString("TITLEIMG"));
+				
+				list.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public ArrayList<PlaceCategory> selectPlaceCategoryList(Connection conn) {
+		ArrayList<PlaceCategory> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceCategoryList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(
+						new PlaceCategory(
+								rset.getInt("PLACE_CATEGORY_NO"), 
+								rset.getString("PLACE_CATEGORY_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+
+	public ArrayList<LocalCategory> selectLoaclCategoryList(Connection conn) {
+		ArrayList<LocalCategory> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectLoaclCategoryList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(
+						new LocalCategory(
+								rset.getInt("LOCAL_CATEGORY_NO"),
+								rset.getString("LOCAL_CATEGORY_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+		
+	}
+	
 	public int insertPlaceContent(Connection conn, Place p) {
 
 		int result = 0; 
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertPlaceContent");
-		/*System.out.println(sql);
-		System.out.println(p.getPlaceName());
-		System.out.println(p.getPlaceInfo());
-		System.out.println(p.getPlacePhone());
-		System.out.println(p.getPlaceTimes());
-		System.out.println(p.getPlaceUrl());
-		System.out.println(p.getPlaceInfo());
-		System.out.println(p.getPlaceAround());
-		System.out.println(p.getPlacePrice());
-		System.out.println(p.getPlaceCaution());
-		System.out.println(p.getPlaceMap());
-		System.out.println(Integer.parseInt(p.getMemberNo()));
-		System.out.println(p.getPlaceCategoryNo());
-		System.out.println(p.getLocalCategoryNo());*/
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -62,8 +171,8 @@ public class PlaceDao {
 			pstmt.setString(9, p.getPlaceCaution());
 			pstmt.setString(10, p.getPlaceMap());
 			pstmt.setInt(11, Integer.parseInt(p.getMemberNo()));
-			pstmt.setInt(12, p.getPlaceCategoryNo());
-			pstmt.setInt(13, p.getLocalCategoryNo());
+			pstmt.setInt(12, Integer.parseInt(p.getPlaceCategory()));
+			pstmt.setInt(13, Integer.parseInt(p.getLocalCategory()));
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -99,40 +208,35 @@ public class PlaceDao {
 		}
 		return list.size() == result ? 1 : 0;
 	}
-
-	public ArrayList<Place> selectPlaceContentList(Connection conn) {
-
-		ArrayList<Place> list = new ArrayList();
+	
+	public int insertNewPlaceFileList(Connection conn, ArrayList<PlaceFile> list) {
+		int result = 0; 
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectPlaceContentList");
+		String sql = prop.getProperty("insertNewPlaceFileList");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
+			for(PlaceFile pl : list) {
+				pstmt = conn.prepareStatement(sql);
 				
-				Place p = new Place();
-				p.setPlaceCategoryName(rset.getString("PLACE_CATEGORY_NAME"));
-				p.setLocalCategoryName(rset.getString("LOCAL_CATEGORY_NAME"));
-				p.setPlaceName(rset.getString("PLACE_NAME"));
-				p.setPlaceNo(rset.getInt("PLACE_NO"));
+				pstmt.setString(1, pl.getPlaceFileOriginName());
+				pstmt.setString(2, pl.getPlaceFileChangeName());
+				pstmt.setString(3, pl.getPlaceFilePath());
+				pstmt.setInt(4, pl.getPlaceFileLevel());
+				pstmt.setInt(5, pl.getPlaceNo());
 				
-				p.setTitleImg(rset.getString("TITLEIMG"));
-				
-				list.add(p);
+				result += pstmt.executeUpdate();
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rset);
 			close(pstmt);
 		}
-		return list;
+		return list.size() == result ? 1 : 0;
 	}
+
+	
 
 	public Place selectPlace(Connection conn, int placeNo) {
 		Place p = null;
@@ -160,8 +264,8 @@ public class PlaceDao {
 				p.setPlacePrice(rset.getString("PLACE_PRICE"));
 				p.setPlaceCaution(rset.getString("PLACE_CAUTION"));
 				p.setPlaceMap(rset.getString("PLACE_MAP"));
-				p.setPlaceCategoryName(rset.getString("PLACE_CATEGORY_NAME"));
-				p.setLocalCategoryName(rset.getString("LOCAL_CATEGORY_NAME"));
+				p.setPlaceCategory(rset.getString("PLACE_CATEGORY_NAME"));
+				p.setLocalCategory(rset.getString("LOCAL_CATEGORY_NAME"));
 			}
 			
 		} catch (SQLException e) {
@@ -236,7 +340,67 @@ public class PlaceDao {
 		return list;
 	}
 
+	public int upadtePlace(Connection conn, Place p) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, p.getPlaceName());
+			pstmt.setString(2, p.getPlaceAddress());
+			pstmt.setString(3, p.getPlacePhone());
+			pstmt.setString(4, p.getPlaceTimes());
+			pstmt.setString(5, p.getPlaceUrl());
+			pstmt.setString(6, p.getPlaceInfo());
+			pstmt.setString(7, p.getPlaceAround());
+			pstmt.setString(8, p.getPlacePrice());
+			pstmt.setString(9, p.getPlaceCaution());
+			pstmt.setString(10, p.getPlaceMap());
+			pstmt.setInt(11, Integer.parseInt(p.getPlaceCategory()));
+			pstmt.setInt(12, Integer.parseInt(p.getLocalCategory()));
+			pstmt.setInt(13, p.getPlaceNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	public int updatePlaceFile(Connection conn, ArrayList<PlaceFile> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePlaceFile");
+		
+		try {
+			for(PlaceFile pl : list) {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, pl.getPlaceFileOriginName());
+				pstmt.setString(2, pl.getPlaceFileChangeName());
+				pstmt.setString(3, pl.getPlaceFilePath());
+				pstmt.setInt(4, pl.getPlaceFileNo());
+				
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return list.size() == result ? 1 : 0;
+	}
+
+	
+
 
 }
-
 
