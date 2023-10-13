@@ -1,6 +1,7 @@
 package com.kh.pet.notice.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.notice.service.NoticeService;
 import com.kh.pet.notice.vo.Notice;
+import com.kh.pet.notice.vo.NoticeFile;
 
 /**
  * Servlet implementation class NotcieDetailController
@@ -33,11 +35,20 @@ public class NotcieDetailController extends HttpServlet {
 		
 		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		
-		Notice n = new NoticeService().selectNotice(noticeNo);
+		 HashMap<String, Object> map = new NoticeService().selectNotice(noticeNo);
+		NoticeFile nf = new NoticeService().selectNoticeFile(noticeNo);
 		
+		
+		
+		Notice n = (Notice)map.get("n");
+		
+		
+		System.out.println(map.get("nextNo"));
+		request.setAttribute("map", map);
 		request.setAttribute("n", n);
+		request.setAttribute("nf", nf);
 		request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
-		System.out.println(n.getNoticeDate());
+		//System.out.println(n.getNoticeDate());
 	}
 
 	/**

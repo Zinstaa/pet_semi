@@ -38,7 +38,6 @@ public class LoginController extends HttpServlet {
 		String memberPwd = request.getParameter("memberPwd");
 		
 		Member loginUser = new MemberService().loginMember(memberId,memberPwd);
-		 
 		if(loginUser==null) {
 			request.setAttribute("errorMsg", "로그인에 실패했습니다!" );
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");

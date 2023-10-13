@@ -44,6 +44,7 @@
 	<%@ include file="menubar.jsp" %>
 	<%
 	String memberName = loginUser.getMemberName();
+	String memberId = loginUser.getMemberId();
 	%>
 	<div class="myouter">
 	<h2 align="center">마이페이지</h2>
@@ -51,7 +52,7 @@
 	<div id="mypagebox">
 			 &nbsp;&nbsp;&nbsp; "<%=memberName%>"님 반갑습니다!!
 			<div id="mypagebtn">
-			<button type="submit" class="btn btn-secondary btn-sm">정보수정</button>
+			<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#checkPwdForm">정보수정</button>
 			</div>
 	</div>
 	<br><br><br>
@@ -60,14 +61,38 @@
 		<div class="mymenubar"><a href="#" >내 찜리스트 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 게시글 보기</a></div>
 	</div>
+</div>
 	
-	</div>
+	
+<div class="container">
+  <!-- Button to Open the Modal -->
 
-	<!-- 아이디 비번 이름 이메일 폰 닉네임 주소 나이 성별-->
-	
-	
-	</div>
-
+  <!-- The Modal -->
+  <div class="modal" id="checkPwdForm">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">정보 수정하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+			<div class="modal-body">
+			 <form method="post" action="<%=contextPath%>/pwdCheck.me">
+				<div class="form-group">
+					<label for="memberPwd">비밀번호 </label>
+					<input type="password" class="form-control" placeholder="비밀번호를 입력해주세요" id="memberPwd" name="memberPwd" required>
+				</div>
+				<button type="submit" class="btn btn-info">확인</button>
+				<input type="hidden" name="memberNo" value="<%= loginUser.getMemberNo() %>">
+				</form>
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -166,6 +166,8 @@
 
     #toTop > img {
         position: absolute;
+        width: 24px;
+        height: 24px;
         top: 3px;
         left: 13px;
     }
@@ -316,7 +318,7 @@
        
         </div>
         <div id="place_content">
-            <% if(loginUser != null) { %>
+            <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
             <div style="width: 900px;" align="right">
                 <a href="<%= contextPath %>/enrollForm.pl" class="btn btn-sm btn-primary">글작성</a>
             </div>
@@ -342,7 +344,7 @@
                                 </a>
                             </div>
                             <div class="pl-btn" id="map">
-                                <a href="https://kko.to/G2wEv1yqMf">
+                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
                                     <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
                                 </a>
                             </div>

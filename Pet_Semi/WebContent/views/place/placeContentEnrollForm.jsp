@@ -73,28 +73,28 @@
 						<th>카테고리</th>
 						<td colspan="2">
 							<select name="pl-category" class="place-form" required>
-								<option>카테고리</option>
-								<option>식당</option>
-								<option>카페</option>
-								<option>공원</option>
-								<option>쇼핑</option>
-								<option>병원</option>
+								<option value="" selected disabled>카테고리</option>
+								<option value="식당">식당</option>
+								<option value="카페">카페</option>
+								<option value="공원">공원</option>
+								<option value="쇼핑">쇼핑</option>
+								<option value="병원">병원</option>
 							</select>
 						</td>
 						<th>지역</th>
 						<td>
 							<select name="pl-place" class="place-form" required>
-								<option>지역</option>
-								<option>서울</option>
-								<option>경기</option>
-								<option>강원</option>
-								<option>충북</option>
-								<option>충남</option>
-								<option>경북</option>
-								<option>경남</option>
-								<option>전북</option>
-								<option>전남</option>
-								<option>제주</option>
+								<option value="" selected disabled>지역</option>
+								<option value="서울">서울</option>
+								<option value="경기">경기</option>
+								<option value="강원">강원</option>
+								<option value="충북">충북</option>
+								<option value="충남">충남</option>
+								<option value="경북">경북</option>
+								<option value="경남">경남</option>
+								<option value="전북">전북</option>
+								<option value="전남">전남</option>
+								<option value="제주">제주</option>
 							</select>
 						</td>
 					</tr>
@@ -137,7 +137,7 @@
 					<tr>
 						<th>플레이스 주요시설</th>
 						<td colspan="4"> 
-							<input type="text" name="pl-around" required>
+							<textarea name="pl-around" style="resize: none;" rows="4" required ></textarea>					
 						</td>
 					</tr>
 					<tr>
@@ -149,7 +149,7 @@
 					<tr>
 						<th>플레이스 주의사항</th>
 						<td colspan="4">
-							<input type="text" name="pl-caution" required>
+							<textarea name="pl-caution" style="resize: none;" rows="4"  required></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -238,12 +238,11 @@
 						$('#file5').click();
 					});
 				});
-
 			</script>
 
 			<div align="center">
-				<button type="submit">작성하기</button>
-				<button type="reset">다시쓰기</button>
+				<button type="submit" class="btn btn-sm btn-info">작성하기</button>
+				<button type="reset" class="btn btn-sm btn-success">다시쓰기</button>
 			</div>
 
 		</form>

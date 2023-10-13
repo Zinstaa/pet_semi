@@ -38,7 +38,7 @@
 		&nbsp/&nbsp 
 		<a href="<%=contextPath%>/findid.mem">아이디찾기</a>
 		&nbsp/&nbsp
-		 <a href="<%=contextPath%>/findpwd.me">비밀번호찾기</a>
+		 <a href="<%=contextPath%>/findpwd.mem">비밀번호찾기</a>
 		</div>
 		
 	</form>

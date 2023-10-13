@@ -125,7 +125,7 @@
 			<div id="footer_btn">
 				<div class="ft">
 					<div id="site">
-						<a href="https://bemypet.kr/">
+						<a href="https://www.iei.or.kr/main/main.kh">
 							<img src="https://svgsilh.com/svg/309113.svg" alt="사이트">
 						</a>
 					</div>

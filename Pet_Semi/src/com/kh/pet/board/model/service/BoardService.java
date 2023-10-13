@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.kh.pet.board.model.dao.BoardDao;
 import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.board.model.vo.BoardFile;
+import com.kh.pet.board.model.vo.BoardReview;
 import com.kh.pet.common.model.PageInfo;
 
 public class BoardService {
@@ -92,6 +93,59 @@ public class BoardService {
 		close(conn);
 		
 		return bf;
+	}
+	
+	public int updateBoard(Board b, BoardFile bf) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().updateBoard(conn, b);
+		
+		int result2 = 1;
+		
+		if(bf != null) {
+			
+			if(bf.getBoardFileNo() != 0) {
+				
+				result2 = new BoardDao().updateBoardFile(conn, bf);
+			} else {
+				result2 = new BoardDao().insertNewBoardFile(conn, bf);
+			}
+		}
+		
+		if((result1 * result2) > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return (result1 * result2);
+	}
+	
+	public int deleteBoard(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().deleteBoard(conn, boardNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public ArrayList<BoardReview> selectReivewBoard(int boardNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<BoardReview> list = new BoardDao().selectReviewBoard(conn, boardNo);
+		
+		close(conn);
+		
+		return list;
 	}
 	
 }

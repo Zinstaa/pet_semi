@@ -95,14 +95,42 @@
 	</entry>
 	
 	<entry key="findId">
-SELECT 
-		MEMBER_ID
+	SELECT
+		MEMBER_ID,
+		EMAIL,
+		PHONE
 	FROM
 		MEMBER
 	WHERE 
 		EMAIL = ?
 	AND
-		PHONE =?
+		PHONE = ?
 	</entry>
+	
+	<entry key="findPwd">
+	SELECT
+		MEMBER_ID,
+		MEMBER_PWD,
+		EMAIL,
+		PHONE
+	FROM
+		MEMBER
+	WHERE
+		MEMBER_ID = ?
+	AND
+		EMAIL = ?
+	AND
+		PHONE = ?
+	</entry>
+	
+	<entry key="pwdCheck">
+	SELECT
+		MEMBER_NO
+	FROM
+		MEMBER
+	WHERE
+		MEMBER_PWD = ?
+	</entry>
+
 	
 </properties>

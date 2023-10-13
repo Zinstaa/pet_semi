@@ -52,7 +52,7 @@ public class PlaceDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getPlaceName());
-			pstmt.setString(2, p.getPlaceInfo());
+			pstmt.setString(2, p.getPlaceAddress());
 			pstmt.setString(3, p.getPlacePhone());
 			pstmt.setString(4, p.getPlaceTimes());
 			pstmt.setString(5, p.getPlaceUrl());
@@ -174,6 +174,37 @@ public class PlaceDao {
 		return p;
 	}
 
+	public PlaceFile selectPlaceFile(Connection conn, int placeNo) {
+		PlaceFile pl = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pl = new PlaceFile();
+				pl.setPlaceFileNo(rset.getInt("PLACE_FILE_NO"));
+				pl.setPlaceFileOriginName(rset.getString("PLACE_FILE_ORIGIN_NAME"));
+				pl.setPlaceFileChangeName(rset.getString("PLACE_FILE_CHANGE_NAME"));
+				pl.setPlaceFilePath(rset.getString("PLACE_FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return pl;
+	}
+	
 	public ArrayList<PlaceFile> selectPlaceFileList(Connection conn, int placeNo) {
 		
 		ArrayList<PlaceFile> list = new ArrayList();
@@ -204,6 +235,7 @@ public class PlaceDao {
 		
 		return list;
 	}
+
 
 }
 

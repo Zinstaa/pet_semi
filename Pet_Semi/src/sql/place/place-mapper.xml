@@ -119,6 +119,20 @@
 		   	   PLACE_STATUS = 'Y' 
 	</entry>
 	
+	<entry key="selectPlaceFile">
+		SELECT 
+			   PLACE_FILE_NO, 
+			   PLACE_FILE_ORIGIN_NAME, 
+			   PLACE_FILE_CHANGE_NAME, 
+			   PLACE_FILE_PATH 
+		  FROM 
+		 	   PLACE_FILE   
+		 WHERE	 
+			   PLACE_NO = ? 
+		 ORDER BY 
+		 	   PLACE_FILE_NO ASC 
+	</entry>
+	
 	<entry key="selectPlaceFileList">
 		SELECT
 			   PLACE_FILE_NO, 

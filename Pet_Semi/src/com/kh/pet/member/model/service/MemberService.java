@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import com.kh.pet.common.JDBCTemplate;
 import com.kh.pet.member.model.dao.MemberDao;
+import com.kh.pet.member.model.vo.FindId;
+import com.kh.pet.member.model.vo.FindPwd;
 import com.kh.pet.member.model.vo.Member;
 
 
@@ -75,14 +77,30 @@ public class MemberService {
 		return count;
 	}
 	
-	public ArrayList<Member> findId(String email, String phone) {
-		Connection conn = getConnection();
+	public FindId findId(String email, String phone) {
 		
-		ArrayList<Member> list = new MemberDao().findId(conn, email, phone);
+		Connection conn = getConnection();
+		FindId id = new MemberDao().findId(conn, email, phone);
+		
 		close(conn);
 		
-		return list;
-		
+		return id;
 	}
-
+	
+	public FindPwd findPwd(String MemberId, String email, String phone) {
+		Connection conn = getConnection();
+		FindPwd pwd = new MemberDao().findPwd(conn, MemberId, email, phone);
+		
+		close(conn);
+		return pwd;
+	}
+	
+	public int pwdCheck(int memberNo, String memberPwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().pwdCheck(conn, memberNo, memberPwd);
+		
+		close(conn);
+		return result;
+	}
+	
 }
