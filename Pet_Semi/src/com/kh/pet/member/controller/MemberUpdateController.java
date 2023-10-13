@@ -31,6 +31,7 @@ public class MemberUpdateController extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/member/memberUpdate.jsp");
 		view.forward(request, response);
+		
 	}
 
 	/**

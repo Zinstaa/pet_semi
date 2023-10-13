@@ -1,8 +1,6 @@
 package com.kh.pet.member.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +12,16 @@ import com.kh.pet.member.model.service.MemberService;
 import com.kh.pet.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberPwdCheckController
+ * Servlet implementation class MemberDeleteController
  */
-@WebServlet("/pwdCheck.me")
-public class MemberPwdCheckController extends HttpServlet {
+@WebServlet("/delete.me")
+public class MemberDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberPwdCheckController() {
+    public MemberDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,18 @@ public class MemberPwdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//비밀번호 맞는지 확인
-		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		
-		Member loginUser = ((Member)session.getAttribute("loginUser"));
-		
-		int memberNo = loginUser.getMemberNo();
-		
+		request.setCharacterEncoding("UTF-8");
 		String memberPwd = request.getParameter("memberPwd");
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
 		
-		int result = new MemberService().pwdCheck(memberNo, memberPwd);
-
-		if(result != 0) {
-			response.sendRedirect(request.getContextPath() + "/update.me");
+		int result = new MemberService().deleteMember(memberNo,memberPwd);
+		if(result >0) {
+			session.removeAttribute("loginUser");
+			response.sendRedirect(request.getContextPath());
 		} else {
-			session.setAttribute("alertMsg", "비밀번호가 다릅니다");
+			session.setAttribute("alertMsg", "회원 탈퇴 실패 비밀번호를 제대로 입력해주세요");
 			response.sendRedirect(request.getContextPath() + "/mypage.me");
 		}
 		
