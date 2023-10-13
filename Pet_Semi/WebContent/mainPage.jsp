@@ -39,6 +39,7 @@
         width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
     }
 
+ 	/* 맨위로 이동 키 */
     #top {
         float: right;
         height: 50px;
@@ -62,6 +63,8 @@
 
     #toTop > img {
         position: absolute;
+        width: 24px;
+        height: 24px;
         top: 3px;
         left: 13px;
     }
