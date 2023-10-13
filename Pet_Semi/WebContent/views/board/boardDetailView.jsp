@@ -81,13 +81,15 @@
     </div>
     <div id="boardReview-area">
     
-		<table border="1" align="center">
+		<table align="center">
 			<thead>
-				<tr>
-					<th>댓글 작성</th>
+					<tr>
+					<th>댓글</th>			
+					</tr>
+					<tr>
 					<%if(loginUser != null) { %>
-						<td>
-							<textarea id="boardReivewContent" cols="50" rows="3" style="resize:none;"></textarea>
+						<td colspan="2">
+							<textarea id="boardReviewContent" cols="50" rows="2" style="resize:none;"></textarea>
 						</td>
 						<td><button onclick="insertBoardReview();">댓글작성</button></td>
 						<% } else { %>
@@ -134,10 +136,12 @@
     		
     		})
     		
-    	}
+    	};
     	
     	$(function(){
     		selectBoardReviewList();
+    		
+    		setInterval(selectBoardReviewList, 1000);
     	});
     	
     	function insertBoardReview(){
@@ -149,7 +153,12 @@
     				content : $('#boardReviewContent').val()
     			},
     			success : function(result){
-    				console.log(result);
+    				
+    				if(result > 0) {
+    					$('BoardReviewContent').val('');
+    					
+    					selectBoardReviewList();
+    				};
     			},
     			error : function(){
     				console.log('실패');

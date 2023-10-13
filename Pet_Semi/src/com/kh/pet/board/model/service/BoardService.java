@@ -148,4 +148,18 @@ public class BoardService {
 		return list;
 	}
 	
+	public int insertBoardReview(BoardReview b) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertBoardReview(conn, b);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+	
 }
