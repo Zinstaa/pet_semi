@@ -4,8 +4,14 @@
 
 <%
 
-	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
-
+	ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("list");
+	String placeName = (String)session.getAttribute("placeName");
+	PlacePageInfo ppi = (PlacePageInfo)request.getAttribute("ppi");
+	
+	int currentPage = ppi.getCurrentPage(); 
+	int startPage = ppi.getStartPage();
+	int endPage = ppi.getEndPage();
+	int maxPage = ppi.getMaxPage(); 
 
 %>
 <!DOCTYPE html>
@@ -18,132 +24,21 @@
         box-sizing: border-box;
         /*border: 1px solid red;*/
     }
-    h2 {
-        text-align: center;
-    }
 
-    /* place_Main 부분 */
-    #place_Main {
+    /* place_content 부분 */
+    #place_content {
+        padding-top: 125px;
         width: 1200px;
         height: 1200px;
         margin: auto;
-        padding-top: 125px;
-    }
-
-    #place_Main a {
-        text-decoration: none;
-        color: #ffffff;
-    }
-
-    #place_search {
-        width: 25%;
-        height: 70%;
-        margin-top: 100px;
-        float: left;
     }
     
-    #place_content {
-        width: 75%;
-        height: 90%;
-        margin-top: 55px;
-        float: left;
-    }
-
-    #left-search-name {
-        padding-top: 20px;
-        color: #ffffff;
-    }
-    
-    #place_search > div {
-        width: 100%;
-    }
-    
-    #place_input {
-        height: 30%;
-        background-color: #ffce50;
-    }
-    
-    #place_input > h1 {
-        text-align: center;
-        color: #ffffff;
-        margin-top: 10px;
-    }
-
-    #place-search-input {
+    #search_answer {
+        margin-bottom: 55px;
+        color: #000000;
         text-align: center;
     }
 
-    input#place-name {
-        height: 40px;
-        margin-bottom: 10px;
-        margin-top: 15px;
-        border: 1px solid lightgrey;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-        margin-left: 10px;
-    }
-    input#place-search {
-        position: relative;
-        background-color: #a5765a;
-        background-repeat: no-repeat;
-        width: 35px;
-        height: 40px;
-        padding: 3px;
-        top: 12px;
-        right: 5px;
-        border: 1px solid lightgrey;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
-
-    #place-search-symbol {
-        float: left;
-    }
-
-    .symbol {
-        float: left;
-        height: 70px;
-        margin-left: 25px;
-        margin-top: 30px;
-    }
-
-    .symbol > img{
-        width: 30px;
-        height: 30px;
-    }
-
-    #place_category {
-        height: 70%;
-        background-color: #ffea97;
-    }
-
-    #place-category-form {
-        height: 100%;
-    }
-
-    .form {
-        width: 90%;
-        display: block;
-        padding: 6px 12px;
-        font-size: 16px;
-        font-weight: 400;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid lightgray;  
-        border-radius: 4px;
-        margin: 0px 0px 150px 15px;
-
-    }
-
-    #btn-info {
-        float: right;
-        background-color: #ffce50;
-        color: #ffffff;
-        border: 1px solid lightgray;  
-        border-radius: 4px;
-	    margin-right: 10px;
-    }
     
     /* 맨위로 이동 키 */
     #top {
@@ -254,31 +149,92 @@
 <body>
     <%@ include file = "../common/menubar.jsp" %>
     
-    <div id="place_Main">
-        <% for(Place p : list) { %>
-            <div class="place-content">
-                <input type="hidden" value="<%= p.getPlaceNo() %>">
-                <div id="img-place">
-                    <img src="<%= p.getTitleImg() %>" alt="">
-                </div>
-                <div id="btn-place" align="center">
-                    <div class="pl-btn" id="star">
-                        <a href="https://kko.to/G2wEv1yqMf">
-                            <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
-                        </a>
+    
+    <div id="place_content">
+        <h2 id="search_answer">'<%= placeName %>' 검색결과 </h2>
+       
+            <div id="list-area">
+            <% if(list.isEmpty()) {%>
+            
+            <!-- 등록된 장소가 없을 때-->
+            등록된 장소가 없습니다... <br>
+            
+            <% } else { %>
+            <!-- 등록된 장소가 있을 때-->
+
+                <% for(Place p : list) { %>
+                    <div class="place-content">
+                        <input type="hidden" value="<%= p.getPlaceNo() %>">
+                        <div id="img-place">
+                            <img src="<%= p.getTitleImg() %>" alt="">
+                        </div>
+                        <div id="btn-place" align="center">
+                            <div class="pl-btn" id="star">
+                                <a href="https://kko.to/G2wEv1yqMf">
+                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+                                </a>
+                            </div>
+                            <div class="pl-btn" id="map">
+                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+                                </a>
+                            </div>
+                        </div>
+                        <div id="name-place">
+                            <p>[<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] <%= p.getPlaceName() %></p>
+                        </div>
                     </div>
-                    <div class="pl-btn" id="map">
-                        <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
-                            <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
-                        </a>
-                    </div>
-                </div>
-                <div id="name-place">
-                    <p>[<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] <%= p.getPlaceName() %></p>
-                </div>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="paging-area" align="center">
+	            <%if(currentPage != 1) { %>
+	        	<button onclick="location.href='<%=contextPath %>/search.pl?ppage=<%=currentPage-1 %>'" class="btn btn-sm btn-warning">&lt;</button>
+	        	<%} %>
+	        
+	        
+	        	<% for(int i = startPage; i<= endPage; i++){ %>
+	        		<%if(currentPage != i) {%>
+	        			<button onclick ="location.href='<%=contextPath%>/search.pl?ppage=<%=i%>'" class="btn btn-sm btn-warning"><%=i%></button>
+	        		<%} else { %>
+	        			<button disabled class="btn btn-sm btn-light"><%= i %></button>
+	        		<%} %>
+	        	<%} %>
+	        	
+	        	<%if(currentPage != maxPage) { %>
+	        	<button onclick="location.href='<%=contextPath %>/search.pl?ppage=<%=currentPage+1 %>'" class="btn btn-sm btn-warning">&gt;</button>
+	        	<%} %>
             </div>
-        <% } %>
     </div>
+    
+    <div id="top">
+        <a id="toTop" href="#">
+           <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>
+           &nbsp;&nbsp;TOP
+        </a>
+    </div>
+
+    <script>
+        $(function() {
+            // 보이기 | 숨기기
+            $(window).scroll(function() {
+            if ($(this).scrollTop() > 500) { //250 넘으면 버튼이 보여짐니다.
+                    $('#toTop').fadeIn();
+                    $('#toTop').css('left', $('#sidebar').offset());  // #sidebar left:0 죄표
+                    } else {
+                    $('#toTop').fadeOut();
+            }
+            });
+            // 버튼 클릭시
+            $("#toTop").click(function() {   
+            $('html, body').animate({
+            scrollTop : 0    // 0 까지 animation 이동합니다.
+            }, 400);          // 속도 400
+            return false;
+            });
+        });
+    </script>
+    
     <%@ include file = "../common/footer.jsp" %>
 </body>
 </html>
