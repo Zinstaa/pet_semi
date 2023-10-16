@@ -1,17 +1,18 @@
 package com.kh.pet.promotionBoard.controller;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import com.kh.pet.promotionBoard.model.service.PromotionBoardService;
-import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
-import com.kh.pet.promotionBoard.model.vo.PromotionFile;
+import com.kh.pet.board.model.service.BoardService;
 import com.kh.pet.common.MyFileRenamePolicy;
+import com.kh.pet.promotionBoard.model.service.PromotionBoardService;
+import com.kh.pet.promotionBoard.model.vo.PromotionFile;
+import com.kh.pet.promotionBoard.model.vo.PromotionBoard;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -20,15 +21,14 @@ import com.oreilly.servlet.MultipartRequest;
 @WebServlet("/promotionInsert.pr")
 public class promotionBoardInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServletRequest multiRequest;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public promotionBoardInsertController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public promotionBoardInsertController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,8 +56,6 @@ public class promotionBoardInsertController extends HttpServlet {
 			String promotionTitle = multiRequest.getParameter("title");
 			String promotionContent = multiRequest.getParameter("content");
 			String memberNo = multiRequest.getParameter("memberNo");
-			
-			// System.out.println(memberNo);
 
 			// 3) VO로 가공
 			// PROMOTIONBOARD
@@ -88,14 +86,13 @@ public class promotionBoardInsertController extends HttpServlet {
 
 					// 파일레벨 
 					if(i == 1){
-						// 대표이미지는 키값이 file1이라구요 그래서 i가 1
+						// 대표이미지
 						pf.setPromotionFileLevel(1);
 					} else {
 						pf.setPromotionFileLevel(2);
-						// 아닌 친구들은 다 2 넣어줌
 					}
 
-					list.add(pf); // 만들어진 promotionFile를 list의 요소로 넣어줄거임
+					list.add(pf);
 				
 				}
 			}
@@ -103,9 +100,9 @@ public class promotionBoardInsertController extends HttpServlet {
 			// 4) 서비스요청 
 			int result = new PromotionBoardService().insertPromotionBoard(pb, list);
 			
-			// 5) 결과에 따른 응답뷰 지정 
-			if(result > 0) { // 성공 => list.th로 요청
-				request.getSession().setAttribute("alertMsg", "게시글 작성 성공~~");
+			// 5) 결과에 따른 요청 받기
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 작성 성공이네요");
 				response.sendRedirect(request.getContextPath() + "/promotionList.pr");
 			} else {
 				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
@@ -116,9 +113,12 @@ public class promotionBoardInsertController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

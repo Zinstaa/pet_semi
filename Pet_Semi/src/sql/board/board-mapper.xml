@@ -179,7 +179,7 @@
 			BOARD_REVIEW_NO,
 			BOARD_REVIEW_CONTENT,
 			MEMBER_ID,
-			TO_CHAR(BOARD_REVIEW_DATE, 'YY/MM/DD HH:MI:SS') BOARD_REVIEW_DATE
+			TO_CHAR(BOARD_REVIEW_DATE, 'YY/MM/DD HH24:MI:SS') BOARD_REVIEW_DATE
 		FROM
 			BOARD_REVIEW 
 		JOIN
@@ -192,6 +192,25 @@
 		   BY
 		   	 BOARD_REVIEW_DATE DESC
 		
+	</entry>
+	
+	<entry key="insertBoardReview">
+		INSERT
+		  INTO
+		  	  BOARD_REVIEW
+		  	  (
+		  	  	BOARD_REVIEW_NO,
+		  	  	BOARD_REVIEW_CONTENT,
+		  	  	BOARD_NO,
+		  	  	BOARD_REVIEW_WRITER
+		  	  )
+		VALUES
+			  (
+			  	BOARD_REVIEW_SEQ.NEXTVAL,
+			  	?,
+			  	?,
+			  	?
+			  )
 	</entry>
 
 </properties>

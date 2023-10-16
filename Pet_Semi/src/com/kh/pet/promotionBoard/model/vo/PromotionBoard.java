@@ -15,6 +15,7 @@ public class PromotionBoard {
 	private int agentNo; //AGENT_NO	NUMBER
 	private String titleImage; //
 	private String PromotionWriter; //
+	private String titleImg;
 	
 	public PromotionBoard() {
 		super();
@@ -22,7 +23,7 @@ public class PromotionBoard {
 
 	public PromotionBoard(int promotionNo, String promotionTitle, String promotionContent, Date promotionDate,
 			int promotionView, String status, Date eventStartDate, Date eventFinishDate, int agentNo, String titleImage,
-			String promotionWriter) {
+			String promotionWriter, String titleImg) {
 		super();
 		this.promotionNo = promotionNo;
 		this.promotionTitle = promotionTitle;
@@ -35,6 +36,7 @@ public class PromotionBoard {
 		this.agentNo = agentNo;
 		this.titleImage = titleImage;
 		PromotionWriter = promotionWriter;
+		this.titleImg = titleImg;
 	}
 
 	public int getPromotionNo() {
@@ -125,15 +127,25 @@ public class PromotionBoard {
 		PromotionWriter = promotionWriter;
 	}
 
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
 	@Override
 	public String toString() {
 		return "PromotionBoard [promotionNo=" + promotionNo + ", promotionTitle=" + promotionTitle
 				+ ", promotionContent=" + promotionContent + ", promotionDate=" + promotionDate + ", promotionView="
 				+ promotionView + ", status=" + status + ", eventStartDate=" + eventStartDate + ", eventFinishDate="
 				+ eventFinishDate + ", agentNo=" + agentNo + ", titleImage=" + titleImage + ", PromotionWriter="
-				+ PromotionWriter + "]";
+				+ PromotionWriter + ", titleImg=" + titleImg + "]";
 	}
 
+	
+	
 	
 
 	

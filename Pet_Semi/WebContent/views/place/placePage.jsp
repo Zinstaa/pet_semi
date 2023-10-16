@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.Place" %>
+<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.*" %>
 
 <%
 	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
+	PlacePageInfo ppi = (PlacePageInfo)request.getAttribute("ppi");
+	
+	int currentPage = ppi.getCurrentPage(); 
+	int startPage = ppi.getStartPage();
+	int endPage = ppi.getEndPage();
+	int maxPage = ppi.getMaxPage(); 
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -140,8 +147,7 @@
         border-radius: 4px;
 	    margin-right: 10px;
     }
-
-
+    
     /* 맨위로 이동 키 */
     #top {
         float: right;
@@ -350,11 +356,29 @@
                             </div>
                         </div>
                         <div id="name-place">
-                            <p>[<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] <%= p.getPlaceName() %></p>
+                            <p>[<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] <%= p.getPlaceName() %></p>
                         </div>
                     </div>
                 <% } %>
             <% } %>
+            </div>
+            <div class="paging-area" align="center">
+	            <%if(currentPage != 1) { %>
+	        	<button onclick="location.href='<%=contextPath %>/place.pl?ppage=<%=currentPage-1 %>'" class="btn btn-sm btn-warning">&lt;</button>
+	        	<%} %>
+	        
+	        
+	        	<% for(int i = startPage; i<= endPage; i++){ %>
+	        		<%if(currentPage != i) {%>
+	        			<button onclick ="location.href='<%=contextPath%>/place.pl?ppage=<%=i%>'" class="btn btn-sm btn-warning"><%=i%></button>
+	        		<%} else { %>
+	        			<button disabled class="btn btn-sm btn-light"><%=i %></button>
+	        		<%} %>
+	        	<%} %>
+	        	
+	        	<%if(currentPage != maxPage) { %>
+	        	<button onclick="location.href='<%=contextPath %>/list.bo?cpage=<%=currentPage+1 %>'" class="btn btn-sm btn-warning">&gt;</button>
+	        	<%} %>
             </div>
         </div>
     </div>

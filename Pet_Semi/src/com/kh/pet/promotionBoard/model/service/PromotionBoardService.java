@@ -35,6 +35,19 @@ public class PromotionBoardService {
 		
 		return (result1 * result2);
 	}
+	
+	public ArrayList<PromotionBoard> selectPromotionBoardList(){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<PromotionBoard> list = new PromotionBoardDao().selectPromotionBoardList(conn);
+		
+		close(conn);
+		
+		return list;
+		
+		
+	}
 
 	
 

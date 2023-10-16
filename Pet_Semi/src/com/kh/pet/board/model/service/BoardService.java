@@ -137,15 +137,29 @@ public class BoardService {
 		return result;
 	}
 	
-	public ArrayList<BoardReview> selectReivewBoard(int boardNo) {
+	public ArrayList<BoardReview> selectBoardReviewList(int boardNo) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<BoardReview> list = new BoardDao().selectReviewBoard(conn, boardNo);
+		ArrayList<BoardReview> list = new BoardDao().selectBoardReviewList(conn, boardNo);
 		
 		close(conn);
 		
 		return list;
+	}
+	
+	public int insertBoardReview(BoardReview b) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertBoardReview(conn, b);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 	
 }

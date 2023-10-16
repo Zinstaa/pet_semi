@@ -324,5 +324,112 @@ private Properties prop = new Properties();
 					}
 		return result;
 		}
+	
+	public int updateMember(Connection conn, Member m ) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getMemberName());
+			pstmt.setString(2, m.getNickName());
+			pstmt.setString(3, m.getAddress());
+			pstmt.setString(4, m.getAge());
+			pstmt.setString(5, m.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result; 
+		
+	}
+	
+	public Member selectMember(Connection conn, String memberId) {
+		// SELECT 문 => MEMBER
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()){
+				m = new Member(rset.getInt("MEMBER_NO"),
+							   rset.getString("MEMBER_ID"),
+							   rset.getString("MEMBER_PWD"),
+							   rset.getString("MEMBER_NAME"),
+							   rset.getString("EMAIL"),
+							   rset.getString("PHONE"),
+							   rset.getString("NICKNAME"),
+							   rset.getString("ADDRESS"),
+							   rset.getString("AGE"),
+							   rset.getString("GENDER"),
+							   rset.getDate("ENROLL_DATE"),
+							   rset.getString("STATUS"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
+	public int updatePwdMember(Connection conn, int memberNo, String memberPwd, String updatePwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwdMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePwd);
+			pstmt.setInt(2, memberNo);
+			pstmt.setString(3, memberPwd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteMember(Connection conn, int memberNo, String memberPwd) {
+		
+		int result =0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, memberPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }
 		

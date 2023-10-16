@@ -1,5 +1,6 @@
 package com.kh.pet.place.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,7 +14,9 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.pet.common.MyFileRenamePolicy;
 import com.kh.pet.place.model.service.PlaceService;
+import com.kh.pet.place.model.vo.LocalCategory;
 import com.kh.pet.place.model.vo.Place;
+import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlaceFile;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -59,75 +62,9 @@ public class PlaceContentInsertController extends HttpServlet {
 			String placeMap = multiRequest.getParameter("pl-map");
 			String userNo = multiRequest.getParameter("memberNo");
 			
-			int placeCategoryNo = 0;
-			int placeLocalNo = 0;
-			if(placeCategory.equals("식당")) {
-				placeCategoryNo = 10;
-			} 
-			else if(placeCategory.equals("카페")) {
-				placeCategoryNo = 11;
-			}
-			else if(placeCategory.equals("공원")) {
-				placeCategoryNo = 12;
-			}
-			else if(placeCategory.equals("쇼핑")) {
-				placeCategoryNo = 13;
-			}
-			else if(placeCategory.equals("병원")) {
-				placeCategoryNo = 14;
-			}
-			
-			if(placeLocal.equals("서울")) {
-				placeLocalNo = 50;
-			}
-			else if(placeLocal.equals("경기")) {
-				placeLocalNo = 51;
-			}
-			else if(placeLocal.equals("강원")) {
-				placeLocalNo = 52;
-			}
-			else if(placeLocal.equals("충북")) {
-				placeLocalNo = 53;
-			}
-			else if(placeLocal.equals("충남")) {
-				placeLocalNo = 54;
-			}
-			else if(placeLocal.equals("경북")) {
-				placeLocalNo = 55;
-			}
-			else if(placeLocal.equals("경남")) {
-				placeLocalNo = 56;
-			}
-			else if(placeLocal.equals("전북")) {
-				placeLocalNo = 57;
-			}
-			else if(placeLocal.equals("전남")) {
-				placeLocalNo = 58;
-			}
-			else if(placeLocal.equals("제주")) {
-				placeLocalNo = 59;
-			}
-			
-			/*System.out.println(placeCategory);
-			System.out.println(placeLocal);
-			System.out.println(placeName);
-			System.out.println(placeCategoryNo);
-			System.out.println(placeLocalNo);
-			System.out.println(placeAddress);
-			System.out.println(placePhone);
-			System.out.println(placeTimes);
-			System.out.println(placeUrl);
-			System.out.println(placeInfo);
-			System.out.println(placeAround);
-			System.out.println(placePrice);
-			System.out.println(placeCaution);
-			System.out.println(placeMap);
-			System.out.println(userNo);*/
-			
-			
 			Place p = new Place();
-			p.setPlaceCategoryNo(placeCategoryNo);
-			p.setLocalCategoryNo(placeLocalNo);
+			p.setPlaceCategory(placeCategory);
+			p.setLocalCategory(placeLocal);
 			p.setPlaceName(placeName);
 			p.setPlaceAddress(placeAddress);
 			p.setPlacePhone(placePhone);
@@ -165,8 +102,17 @@ public class PlaceContentInsertController extends HttpServlet {
 			int result = new PlaceService().insertPlaceContent(p, list);
 			
 			if(result > 0) {
-				request.getSession().setAttribute("alertMsg", "게시글 작성 성공 ~ !");
-				response.sendRedirect(request.getContextPath() + "/place.pl");
+				request.getSession().setAttribute("alertMs	g", "게시글 작성 성공 ~ !");
+				response.sendRedirect(request.getContextPath() + "/place.pl?ppage=1");
+			} else {
+				if(list != null) {
+					for(int i = 0; i < list.size(); i++) {
+						new File(savePath + list.get(i).getPlaceFileChangeName()).delete();
+					}
+				}
+				
+				request.getSession().setAttribute("errorMsg", "게시글 작성 실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}
 		
 		}

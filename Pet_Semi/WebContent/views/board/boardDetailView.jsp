@@ -79,12 +79,27 @@
         </div>
 
     </div>
-    <div id="reply-area">
+    <div id="boardReview-area">
     
-		<table border="1" align="center">
-			<thread>
-			
-			</thread>
+		<table align="center">
+			<thead>
+					<tr>
+					<th>댓글</th>			
+					</tr>
+					<tr>
+					<%if(loginUser != null) { %>
+						<td colspan="2">
+							<textarea id="boardReviewContent" cols="50" rows="2" style="resize:none;"></textarea>
+						</td>
+						<td><button onclick="insertBoardReview();">댓글작성</button></td>
+						<% } else { %>
+						<td>
+    						<textarea readonly cols="50" rows="3" style="resize:none;">로그인 후 이용가능 합니다.</textarea>
+    					</td>
+    					<td><button>댓글작성</button></td>
+						<% } %>
+				</tr>
+			</thead>
 			<tbody>
 			
 			</tbody>
@@ -99,14 +114,55 @@
     		$.ajax({
     			url : 'rlist.do',
     			data : {bno : <%= b.getBoardNo() %>},
-    			success : function() {
+    			success : function(result) {
     				console.log(result);
+    				
+    				let resultStr = '';
+    				for(let i in result){
+    					
+    					resultStr += '<tr>'
+    							  +  '<td>' + result[i].boardReviewWriter + '</td>'
+    							  +  '<td>' + result[i].boardReviewContent + '</td>'
+    							  +  '<td>' + result[i].boardReviewDate + '</td>'
+    							  +  '</tr>'
+    				}
+    				
+    				$('#boardReview-area tbody').html(resultStr);
     			},
     			error : function(){
     				console.log("댓글을 읽어오지 못했습니다.");
     			}
     		
     		
+    		})
+    		
+    	};
+    	
+    	$(function(){
+    		selectBoardReviewList();
+    		
+    		setInterval(selectBoardReviewList, 1000);
+    	});
+    	
+    	function insertBoardReview(){
+    		$.ajax({
+    			url : 'rinsert.do',
+    			type : 'post',
+    			data : {
+    				bno : <%= b.getBoardNo()%>,
+    				content : $('#boardReviewContent').val()
+    			},
+    			success : function(result){
+    				
+    				if(result > 0) {
+    					$('BoardReviewContent').val('');
+    					
+    					selectBoardReviewList();
+    				};
+    			},
+    			error : function(){
+    				console.log('실패');
+    			}
     		})
     		
     	}
