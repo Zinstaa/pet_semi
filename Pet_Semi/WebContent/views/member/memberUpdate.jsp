@@ -10,7 +10,7 @@
 	
 	#enrollpet button{
 		height: 50px;
-		width: 100px;	
+		width: 120px;	
 	}
 </style>
 
@@ -58,15 +58,20 @@
 			<br><br>
 
 			<div align="center">
-				<button type="submit" class="btn btn-secondary btn-sm">수정확인</button>
-				<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#updatePwdForm">비밀번호 수정</button>
-				<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#deleteMemberForm">회원탈퇴</button>	
+				<button type="submit" class="btn btn-outline-dark">수정확인</button>
+				<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#updatePwdForm">비밀번호 수정</button>
+				<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteMemberForm">회원탈퇴</button>	
 			</div>
 		</form>
 		<br>
 		<div align="center" id="enrollpet">
-			<button type="button" class="btn btn-secondary btn-sm" onclick="enrollPetPage()">반려견 등록</button>
+			<button type="button" class="btn btn-outline-success" onclick="enrollPetPage()">반려견 등록</button>
 		</div>
+		<script>
+			function enrollPetPage(){
+				location.href = "<%=contextPath%>/enrollPetPage.me"
+			}
+		</script>
 	</div>
 	
 	        <!-- 비밀번호 수정 모달창 만들기-->

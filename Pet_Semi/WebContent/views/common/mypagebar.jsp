@@ -34,6 +34,11 @@
 		line-height : 50px;
 		color : black;
 		font-size:  30px;
+		margin-top : 50px;
+		
+	}
+	#mylist {
+	padding : 250px;
 	}
 
 	
@@ -55,12 +60,12 @@
 			<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#checkPwdForm">정보수정</button>
 			</div>
 	</div>
-	<br><br><br>
 	<div class="mypagemenubar" align="center">
 		<div class="mymenubar"><a href="<%=contextPath%>/myreview.me" >내 리뷰 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 찜리스트 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 게시글 보기</a></div>
 	</div>
+	
 </div>
 	
 	

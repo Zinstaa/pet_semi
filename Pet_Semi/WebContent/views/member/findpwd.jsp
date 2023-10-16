@@ -37,8 +37,8 @@
 		<br><br>
 		
 		<div align="center">
-		<button type="submit">비밀번호 찾기</button>
-		<button type="reset" onclick="history.back();" >취소</button>
+		<button type="submit" class="btn btn-outline-dark">비밀번호 찾기</button>
+		<button type="reset" class="btn btn-outline-warning" onclick="history.back();" >취소</button>
 		</div>
 	</form>
 </div>
