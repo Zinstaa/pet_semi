@@ -266,7 +266,7 @@
         <div id="place_search">
             <div id="place_input">
                 <h2 id="left-search-name">어댕가지 검색</h2>
-                <form id="place-search-form" action="<%=contextPath%>/search.pl" method="post">
+                <form id="place-search-form" action="<%=contextPath%>/search.pl?ppage=1" method="post">
                     <div id="place-search-input">
                         <input type="text" name="place-name" id="place-name" required>
                         <input type="image" src="https://svgsilh.com/svg/1093183-ffffff.svg" name="place-search" id="place-search" value="검색">
@@ -375,7 +375,7 @@
 	        	<%} %>
 	        	
 	        	<%if(currentPage != maxPage) { %>
-	        	<button onclick="location.href='<%=contextPath %>/list.bo?cpage=<%=currentPage+1 %>'" class="btn btn-sm btn-warning">&gt;</button>
+	        	<button onclick="location.href='<%=contextPath %>/place.pl?ppage=<%= currentPage + 1 %>'" class="btn btn-sm btn-warning">&gt;</button>
 	        	<%} %>
             </div>
         </div>
