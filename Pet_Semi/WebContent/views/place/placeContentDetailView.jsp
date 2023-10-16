@@ -403,7 +403,7 @@
                 <div id="work_btn">
                     <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
                             <a href="<%= contextPath %>/updateForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-info">수정하기</a>
-                            <a href="<%= contextPath %>/deleteForm.pl" class="btn btn-sm btn-danger">삭제하기</a>
+                            <a href="<%= contextPath %>/deleteForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-danger">삭제하기</a>
                     <% } %>
                     
                     <a href="#" class="btn btn-sm btn-secondary">문의하기</a>
