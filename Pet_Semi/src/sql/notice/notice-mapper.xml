@@ -108,6 +108,41 @@
 		NOTICE_TITLE = ?,
 		NOTICE_CONTENT = ?
 	WHERE
-		NOTCE_NO = ?
+		NOTICE_NO = ?
+	</entry>
+	
+	<entry key="updateNoticeFile">
+	UPDATE
+		NOTICE_FILE
+	SET
+		NOTICE_FILE_ORIGIN_NAME = ?,
+		NOTICE_FILE_CHANGE_NAME = ?,
+		NOTICE_FILE_PATH = ?,
+		NOTICE_FILE_UPLOAD_DATE = SYSDATE
+	WHERE
+		NOTICE_FILE_NO = ?
+		
+		
+	</entry>
+	
+	<entry key="insertNoticeNewFile">
+	INSERT INTO
+		NOTICE_FILE (
+			NOTICE_FILE_NO,
+			NOTICE_FILE_ORIGIN_NAME,
+			NOTICE_FILE_CHANGE_NAME,
+			NOTICE_FILE_PATH,
+			NOTICE_FILE_UPLOAD_DATE,
+			NOTICE_NO
+		)
+		VALUES(
+			NOTICE_FILE_SQL.NEXTVAL,
+			?,
+			?,
+			?,
+			SYSDATE,
+			?
+		)
+		
 	</entry>
 </properties>
