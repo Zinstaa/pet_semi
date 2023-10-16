@@ -396,7 +396,7 @@
             </div>
             <div id="place_nav_bar">
                 <div id="back_btn">
-                    <a href="<%= contextPath %>/place.pl">
+                    <a href="<%= contextPath %>/place.pl?ppage=1">
                         <img src="https://svgsilh.com/svg/97591-ffffff.svg" alt="목록으로">
                     </a>
                 </div>

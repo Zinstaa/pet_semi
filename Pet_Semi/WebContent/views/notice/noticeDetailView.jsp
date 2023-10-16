@@ -136,11 +136,16 @@
                 <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-sm btn-info">목록≡</a>
                  <%if(loginUser !=null && loginUser.getMemberId().equals(n.getMemberNo())){ %>
 		            <a href="<%=contextPath%>/updateForm.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
-		            <a href="<%=contextPath%>/deleteForm.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제하기</a>
+		            <a href="<%=contextPath%>/delete.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger" onclick="return deleteCheck()">삭제하기</a>
+		            <!--  <a href="<%=contextPath%>/delete.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>-->
 		           <%} %>
             </div>
             <script>
            
+            function deleteCheck(){
+            	var check = confirm('정말 삭제하시겠습니까?');
+            	return check;
+            }
             
 			$(function(){
 				//마지막 글일 경우 다음글 버튼이 사라짐
