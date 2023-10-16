@@ -95,11 +95,13 @@
 				PROMOTION_NO,
 				PROMOTION_TITLE,
 				PROMOTION_CONTENT,
-				PROMOTION_WRITER
+				PROMOTION_WRITER,
+				PROMOTION_EVENT_DATE
 				)
 		VALUES
 		 		(
 				PROMOTION_SEQ.NEXTVAL,
+				?,
 				?,
 				?,
 				?
@@ -146,6 +148,48 @@
 		 ORDER
 		 	BY
 		 		PROMOTION_NO DESC
+	</entry>
+	<entry key="increasePromotionView">
+		UPDATE
+				PROMOTION_BOARD
+		   SET
+		   		PROMOTION_VIEW = PROMOTION_VIEW + 1
+		 WHERE
+		 		PROMOTION_NO = ?
+		   AND
+		   		STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectPromotionBoard">
+		SELECT 
+				PROMOTION_NO,
+				PROMOTION_TITLE,
+				PROMOTION_CONTENT,
+				PROMOTION_DATE,
+				MEMBER_ID,
+				PROMOTION_EVENT_DATE
+		  FROM
+		  		PROMOTION_BOARD
+		  JOIN
+		  		MEMBER ON(PROMOTION_WRITER = MEMBER_NO)
+		 WHERE
+		 		PROMOTION_NO = ?
+		   AND
+		   		PROMOTION_BOARD.STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectPromotionFileList">
+		SELECT 
+				PROMOTION_FILE_NO,
+				PROMOTION_FILE_ORIGIN_NAME,
+				PROMOTION_FILE_CHANGE_NAME,
+				PROMOTION_FILE_PATH,
+				PROMOTION_FILE_UPLOAD_DATE
+		  FROM
+		  		PROMOTION_FILE
+		 ORDER
+		    BY
+		    	PROMOTION_NO DESC
 	</entry>
 	
 	
