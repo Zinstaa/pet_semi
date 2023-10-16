@@ -53,6 +53,30 @@ public class PlaceDao {
 		} return listCount;
 	}
 	
+	public int selectSearchListCount(Connection conn, String placeName) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, placeName);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT(*)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		} 
+		return listCount;
+	}
+	
 	public ArrayList<Place> selectPlaceContentList(Connection conn, PlacePageInfo ppi) {
 
 		ArrayList<Place> list = new ArrayList();
@@ -418,9 +442,9 @@ public class PlaceDao {
 		return result;
 	}
 
-	public ArrayList<Place> searchPlace(Connection conn, String placeName) {
+	public ArrayList<Place> searchPlace(Connection conn, String placeName, PlacePageInfo ppi) {
 		
-		ArrayList<Place> list = new ArrayList();
+		ArrayList<Place> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -428,9 +452,14 @@ public class PlaceDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-	
+			
+			int startRow = (ppi.getCurrentPage() - 1) * ppi.getPlaceLimit() + 1;
+	        int endRow = startRow + ppi.getPlaceLimit() - 1;
+			
 			pstmt.setString(1, placeName);
-
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -451,6 +480,7 @@ public class PlaceDao {
 			close(rset);
 			close(pstmt);
 		}
+		
 		return list;
 	}
 
