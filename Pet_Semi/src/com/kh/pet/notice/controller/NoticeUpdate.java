@@ -72,7 +72,7 @@ public class NoticeUpdate extends HttpServlet {
 				nf = new NoticeFile();
 				nf.setNoticeFileOriginName(multiRequest.getOriginalFileName("reUpfile"));
 				nf.setNoticeFileChangeName(multiRequest.getFilesystemName("reUpfile"));
-				nf.setNoticeFilePath("resources/notice_upfiles");
+				nf.setNoticeFilePath("/resources/notice_upfiles");
 				
 				//첨부파일 있고 원본파일이 있을 경우 => 원본파일 번호가 필요함
 				if(multiRequest.getParameter("originFileNo") != null) {
@@ -95,7 +95,16 @@ public class NoticeUpdate extends HttpServlet {
 			// case 3 : 새로운 첨부파일 O , 기존 첨부파일 X => b => BOARD UPDATE + at => ATTACHMENT INSERT
 			// 경우에 따라서 모두 한개의 트갠잭션으로 묶어서 처리해야함.
 			
-			new NoticeService().updateNotice(n, nf);
+			int result = new NoticeService().updateNotice(n, nf);
+			
+			//응답
+			if(result > 0) {
+				request.getSession().setAttribute("alertMsg", "게시글 수정 성공이요~");
+				response.sendRedirect(request.getContextPath()+"/detail.no?nno=" + noticeNo);
+			}else {
+				request.setAttribute("errorMsg", "게시글수정 실패");
+				request.getRequestDispatcher("views/common/errorPage.jsp").forward(request,response);
+			}
 			
 				
 		

@@ -60,25 +60,48 @@ public class NoticeService {
 		return (result1 * result2);
 	}
 	
-	public void updateNotice(Notice n, NoticeFile nf) {
+	public int updateNotice(Notice n, NoticeFile nf) {
 		Connection conn = getConnection();
 		
 		// 먼저 notice 테이블을 update한다.
-		int result = new NoticeDao().updateNotice(conn, n);
+		int result1 = new NoticeDao().updateNotice(conn, n);
 		
 		//notice 게시판 업데이트 작업 끝났으니 첨부파일 쪽 작업을 진행한다.
+		int result2 = 1; 
 		// 새로운 첨부파일이 있을 경우 update 및 insert 필요
 		if(nf != null) {//파일이 있을 경우
 			//1. 기존 파일이 있을 경우 -> 기존 파일 삭제 후 새로운 파일을 업데이트(update)
 			if(nf.getNoticeFileNo() != 0) {//파일이 있따면 파일번호는 0이 아니다.
-				new NoticeDao().updateNoticeFile(conn, nf);
+				//System.out.println("파일있어요~1");
+				 result2 = new NoticeDao().updateNoticeFile(conn, nf);
+			}else {//2. 기존파일 없을 경우 -> 새로운 파일을 추가(insert)
+				 result2 = new NoticeDao().insertNoticeNewFile(conn, nf);
 			}
-			//2. 기존파일 없을 경우 -> 새로운 파일을 추가(insert)
-			
+		} 
+		if((result1 * result2) > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
 		}
 		
+		return (result1 * result2);
 		
 		
+		
+	}
+	
+	public int deleteNotice(int noticeNo) {
+		Connection conn = getConnection();
+		
+		int result = new NoticeDao().deleteNotice(conn, noticeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
 	}
 	
 }

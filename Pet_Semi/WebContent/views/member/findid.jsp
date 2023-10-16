@@ -12,6 +12,7 @@
 <style>
 	#findid input{margin : 5px;}
 	
+	#findidb
 	
 </style>
 </head>
@@ -36,9 +37,9 @@
 		
 		<br><br>
 		
-		<div align="center">
-		<button type="submit">아이디찾기</button>
-		<button type="reset" onclick="history.back();">취소</button>
+		<div align="center" id="findidb">
+		<button type="submit" class="btn btn-outline-dark">아이디찾기</button>
+		<button type="reset" class="btn btn-outline-warning" onclick="history.back();">취소</button>
 		</div>
 		</form>
 	</div>
