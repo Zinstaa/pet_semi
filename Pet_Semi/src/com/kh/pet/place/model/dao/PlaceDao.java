@@ -399,8 +399,60 @@ public class PlaceDao {
 		return list.size() == result ? 1 : 0;
 	}
 
-	
+	public int deletePlace(Connection conn, int placeNo) {
+		int result = 0; 
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deletePlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
+	public ArrayList<Place> searchPlace(Connection conn, String placeName) {
+		
+		ArrayList<Place> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchPlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+	
+			pstmt.setString(1, placeName);
+
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Place p = new Place();
+				p.setPlaceCategory(rset.getString("PLACE_CATEGORY_NAME"));
+				p.setLocalCategory(rset.getString("LOCAL_CATEGORY_NAME"));
+				p.setPlaceName(rset.getString("PLACE_NAME"));
+				p.setPlaceNo(rset.getInt("PLACE_NO"));
+				
+				p.setTitleImg(rset.getString("TITLEIMG"));
+				
+				list.add(p);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }
 

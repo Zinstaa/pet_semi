@@ -1,0 +1,284 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.*" %>
+
+<%
+
+	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
+
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>플레이스 검색</title>
+<style>
+    div {
+        box-sizing: border-box;
+        /*border: 1px solid red;*/
+    }
+    h2 {
+        text-align: center;
+    }
+
+    /* place_Main 부분 */
+    #place_Main {
+        width: 1200px;
+        height: 1200px;
+        margin: auto;
+        padding-top: 125px;
+    }
+
+    #place_Main a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    #place_search {
+        width: 25%;
+        height: 70%;
+        margin-top: 100px;
+        float: left;
+    }
+    
+    #place_content {
+        width: 75%;
+        height: 90%;
+        margin-top: 55px;
+        float: left;
+    }
+
+    #left-search-name {
+        padding-top: 20px;
+        color: #ffffff;
+    }
+    
+    #place_search > div {
+        width: 100%;
+    }
+    
+    #place_input {
+        height: 30%;
+        background-color: #ffce50;
+    }
+    
+    #place_input > h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-top: 10px;
+    }
+
+    #place-search-input {
+        text-align: center;
+    }
+
+    input#place-name {
+        height: 40px;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        border: 1px solid lightgrey;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        margin-left: 10px;
+    }
+    input#place-search {
+        position: relative;
+        background-color: #a5765a;
+        background-repeat: no-repeat;
+        width: 35px;
+        height: 40px;
+        padding: 3px;
+        top: 12px;
+        right: 5px;
+        border: 1px solid lightgrey;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    #place-search-symbol {
+        float: left;
+    }
+
+    .symbol {
+        float: left;
+        height: 70px;
+        margin-left: 25px;
+        margin-top: 30px;
+    }
+
+    .symbol > img{
+        width: 30px;
+        height: 30px;
+    }
+
+    #place_category {
+        height: 70%;
+        background-color: #ffea97;
+    }
+
+    #place-category-form {
+        height: 100%;
+    }
+
+    .form {
+        width: 90%;
+        display: block;
+        padding: 6px 12px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid lightgray;  
+        border-radius: 4px;
+        margin: 0px 0px 150px 15px;
+
+    }
+
+    #btn-info {
+        float: right;
+        background-color: #ffce50;
+        color: #ffffff;
+        border: 1px solid lightgray;  
+        border-radius: 4px;
+	    margin-right: 10px;
+    }
+    
+    /* 맨위로 이동 키 */
+    #top {
+        float: right;
+        height: 50px;
+        width: 50px;
+        margin-right: 30px;
+    }
+    
+    #toTop {
+        height: 50px;
+        width: 50px;
+        margin: auto;
+        background-color: #ffce50;
+        border-radius: 50px;
+        color: black;
+        text-decoration: none;
+        position: fixed;   /* 포지션 고정 */
+        bottom: 175px;     /* 밑에서 175px */
+        display: none;     /* 보여지지 없음 - 기본적으로  안보여지게 */
+        z-index: 9999;     /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
+    }
+
+    #toTop > img {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 3px;
+        left: 13px;
+    }
+    
+    /* placeContent 부분 */
+    #list-area {
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .place-content {
+        width: 250px;
+        height: 200px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background-color: #FFF8DB;
+        display: inline-block;
+        margin: 7px;
+    }
+
+    
+    .place-content > #img-place, .place-content > #btn-place {
+        float: left;
+        height: 75%;
+    }
+    
+    #img-place {
+        width: 65%;
+    }
+    
+    #img-place > img {
+        width: 125px;
+        height: 125px;
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    
+    #img-place:hover ,#name-place:hover {
+        cursor: pointer;
+        opacity: 0.75;
+    }
+
+    #btn-place {
+        width: 35%;
+    }
+
+    #name-place {
+        float: left;
+        width: 100%;
+        height: 25%;
+        line-height: 49px;
+    }
+
+    .pl-btn {
+        background-color: #ffce50;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        margin-top: 20px;
+        margin-right: 10px;
+        line-height: 40px;
+    }
+
+    #star > a > img {
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		margin: 0;
+	}
+
+    #map > a > img {
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		margin: 0;
+	}
+</style>
+</head>
+<body>
+    <%@ include file = "../common/menubar.jsp" %>
+    
+    <div id="place_Main">
+        <% for(Place p : list) { %>
+            <div class="place-content">
+                <input type="hidden" value="<%= p.getPlaceNo() %>">
+                <div id="img-place">
+                    <img src="<%= p.getTitleImg() %>" alt="">
+                </div>
+                <div id="btn-place" align="center">
+                    <div class="pl-btn" id="star">
+                        <a href="https://kko.to/G2wEv1yqMf">
+                            <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+                        </a>
+                    </div>
+                    <div class="pl-btn" id="map">
+                        <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+                            <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+                        </a>
+                    </div>
+                </div>
+                <div id="name-place">
+                    <p>[<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] <%= p.getPlaceName() %></p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <%@ include file = "../common/footer.jsp" %>
+</body>
+</html>
