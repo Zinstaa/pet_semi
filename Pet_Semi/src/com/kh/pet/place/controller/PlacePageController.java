@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.pet.place.model.service.PlaceService;
+import com.kh.pet.place.model.vo.LocalCategory;
 import com.kh.pet.place.model.vo.Place;
+import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlacePageInfo;
 
 /**
@@ -65,7 +67,11 @@ public class PlacePageController extends HttpServlet {
 		
 		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
 		ArrayList<Place> list = new PlaceService().selectPlaceContentList(ppi);
+		ArrayList<PlaceCategory> pllist = new PlaceService().selectPlaceCategoryList();
+		ArrayList<LocalCategory> lolist = new PlaceService().selectLoaclCategoryList();
 		
+		request.setAttribute("pllist", pllist);
+		request.setAttribute("lolist", lolist);
 		request.setAttribute("list", list);
 		request.setAttribute("ppi", ppi);
 		request.getRequestDispatcher("views/place/placePage.jsp").forward(request, response);
