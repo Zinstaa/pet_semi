@@ -35,15 +35,18 @@ public class NotcieDetailController extends HttpServlet {
 		
 		int noticeNo = Integer.parseInt(request.getParameter("nno"));
 		
-		 HashMap<String, Object> map = new NoticeService().selectNotice(noticeNo);
+		//기존같으면 Notice로 받아 올테지만 이전글번호, 다음글 번호의 int 변수값이 있기 때문에 hashmap을 담아왔다.
+		HashMap<String, Object> map = new NoticeService().selectNotice(noticeNo);
+		//파일 첨부도 하기 때문에 해당 파일 첨부 정보도 가져온다.
 		NoticeFile nf = new NoticeService().selectNoticeFile(noticeNo);
 		
 		
-		
+		//jsp에서 hashmap값 활용이 어렵기 때문에 여기서 풀고 넘겨준다.
 		Notice n = (Notice)map.get("n");
 		
 		
-		System.out.println(map.get("nextNo"));
+		//System.out.println(map.get("nextNo"));
+		//hashmap에 int값이 남아있기 때문에 hashmap도 같이 넘겨준다.
 		request.setAttribute("map", map);
 		request.setAttribute("n", n);
 		request.setAttribute("nf", nf);

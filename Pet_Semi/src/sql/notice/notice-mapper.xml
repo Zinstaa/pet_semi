@@ -100,4 +100,14 @@
 		)
 		
 	</entry>
+	
+	<entry key="updateNotice">
+	UPDATE 
+		NOTICE
+	SET
+		NOTICE_TITLE = ?,
+		NOTICE_CONTENT = ?
+	WHERE
+		NOTCE_NO = ?
+	</entry>
 </properties>

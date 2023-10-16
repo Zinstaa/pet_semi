@@ -1,27 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@
-	page import="com.kh.pet.notice.vo.*, java.util.HashMap"
+    <%@
+	page import="com.kh.pet.notice.vo.*"
  %>
  
 <%
 	//공지사항 글을 가지고 온다.
-	//조회를 해올 때 앞글 뒷글 번호도 같이 조회 해온다.(이전글, 다음글 하기위해서)l
 	Notice n = (Notice)request.getAttribute("n");
 	NoticeFile nf = (NoticeFile)request.getAttribute("nf");
-	HashMap<String, Object> map = (HashMap<String, Object>)request.getAttribute("map");
-	
-
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 읽기</title>
-
+<title>공지사항 수정하기</title>
 <style>
 	div{border : 1px solid blue;}
-    
+    #update-form{
+    	width : 100%;
+    	height : 100%;
+    }
     .title-area-inform{
         margin : 0;
         margin-left : 30px;
@@ -73,19 +71,25 @@
     #file-area>table>tr>th{
         margin-right : 30%;
     }
-    
+    #content{
+        resize: none;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 </head>
 <body>
-	<%@ include file = "../common/menubar.jsp" %>
+    <%@ include file = "../common/menubar.jsp" %>
 
     <div class="outer1">
         <h2 align="center">공지사항</h2>
 		<br>
+        <form enctype="multipart/form-data" action="<%=contextPath%>/update.no" id="update-form" method="post">
+            <input type="hidden" name="noticeNo" value="<%=n.getNoticeNo() %>">
             <div id="title-area">
                 <table>
                     <tr>
-                        <td id="title"><%=n.getNoticeTitle() %></td>
+                        <td id="title"><input type="text" name="title" value="<%=n.getNoticeTitle() %>"></td>
                         <td id="inform">
                             <p class="title-area-inform">
                                 <span>작성일</span>                            
@@ -104,69 +108,37 @@
                 </table>
             </div>
             <div id="content-area">
-                <%=n.getNoticeContent() %>
+                <textarea name="content" id="content"><%=n.getNoticeContent() %></textarea>
+            <!--
                 <br>
-            	<%if(nf != null) {%>
-                	<img src="<%=contextPath %>/<%=nf.getNoticeFilePath() %>/<%=nf.getNoticeFileChangeName() %>" id="img" width="250" height="180">
-            	<%} %>
+            <%if(nf != null) {%>
+                <img src="<%=contextPath %>/<%=nf.getNoticeFilePath() %>/<%=nf.getNoticeFileChangeName() %>" id="img" width="250" height="180">
+            <%} %>
+            -->
             </div>
             <div id="file-area">
             	<table>
                     <tr>
                         <th>첨부파일</th>
                         <td>|</td>
+                            <%if(nf != null) { %>
                         <td>
-                            <%if(nf == null) { %>
-                            첨부파일 없어요
-                            <%}else{ %>
-                                <a href="<%=contextPath %>/<%=nf.getNoticeFilePath() %>/<%=nf.getNoticeFileChangeName() %>" download="<%=nf.getNoticeFileChangeName()%>"><%=nf.getNoticeFileChangeName()%></a>
+                        	<%= nf.getNoticeFileChangeName() %>
+                        </td>
+                            <input type="hidden" name="originFileNo" value="<%=nf.getNoticeFileNo() %>">
+						  	<input type="hidden" name="originalFileName" value="<%=nf.getNoticeFileChangeName() %>">
                                
                             <%} %>
-
+                        <td>
+                        <input type="file" name="reUpfile">
                         </td>
                     </tr>
                 </table>
             </div>
-            
             <div id="button-area">
-            	
-            	<button id="pre">◀이전글</button>
-            	<button id="next">다음글▶</button>
-            	
+                <button type="submit" class="btn btn-sm btn-warning">수정하기</button>
                 <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-sm btn-info">목록≡</a>
-                 <%if(loginUser !=null && loginUser.getMemberId().equals(n.getMemberNo())){ %>
-		            <a href="<%=contextPath%>/updateForm.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
-		            <a href="<%=contextPath%>/deleteForm.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제하기</a>
-		           <%} %>
             </div>
-            <script>
-           
-            
-			$(function(){
-				//마지막 글일 경우 다음글 버튼이 사라짐
-				if(<%=map.get("nextNo")%> == "-1"){
-					$('#next').hide();
-				}
-            	//첫 글일 경우 이전글 버튼이 사라짐
-            	if(<%=map.get("preNo")%> == "0"){
-					$('#pre').hide();
-				}
-				
-				//이전글로 이동하는 버튼 
-				//preNo는 해당 게시글 불러올때 이전글 번호도 불러와 map에 담아왔음
-				$('#pre').click(function(){
-					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("preNo") %>';
-				})
-				//다음글로 이동하는 버튼 
-				//nextNo는 해당 게시글 불러올때 다음글글 번호도 불러와 map에 담아왔음
-				$('#next').click(function(){
-					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("nextNo") %>';
-				})
-			})
-			</script>
-        
-    </div>
-    
-    
+        </form>
 </body>
 </html>

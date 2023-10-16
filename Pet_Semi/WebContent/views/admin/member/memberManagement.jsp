@@ -92,7 +92,7 @@
 		function search(){
 			//회원 조회 기능 (검색)
 			$.ajax({
-				
+				//ajax란 서버로 부터 데이터를 가져와서 젠체 페이지 만들지 않고 일부만 로드해서 내용 변경
 				url : 'search.me',
 				data : {
 					memberCondition : $('#member-condition').val(),
