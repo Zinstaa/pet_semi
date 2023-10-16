@@ -48,7 +48,6 @@
 		<button type="reset">취소</button>
 	</form>
 		
-		
 	</div>
 </body>
 </html>
