@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가이이입~</title>
+<title>회원가입하기</title>
 <style>
  #enroll-form{
  	margin-left : 370px;
@@ -16,6 +16,15 @@
  	color : red;
  	font-size : 10px;
  }
+ #idcheck{
+ 	border-radius : 12px; 
+	font-size: 12px;
+ }
+ #insertmembercheck > button{
+ 	border-radius : 10px; 
+	font-size: 12px;
+ }
+ 
 </style>
 </head>
 
@@ -30,7 +39,7 @@
 				<tr>
 					<td>*아이디 </td>
 					<td><input type="text" name ="memberId" maxlength="20" required placeholder="3~20자리이하로영어나숫자입력"></td>
-					<th><button type="button" onclick="idCheck();">중복체크</button></th>
+					<th><button type="button" id="idcheck" class="btn btn-dark" onclick="idCheck();">중복체크</button></th>
 				</tr>
 								
 				<tr>
@@ -83,8 +92,8 @@
 				 </tr>
 			</table>
 			<div id=insertmembercheck>
-				<button type="submit" disabled  onclick = "return validate();">회원가입</button>
-				<button type="reset">취소</button>
+				<button type="submit" disabled class="btn btn-dark" onclick = "return validate();">회원가입</button>
+				<button type="reset" class="btn btn-warning">취소</button>
 			</div>
 		</form>
 	</div>
@@ -92,7 +101,6 @@
 	<script>
 		function idCheck(){
 			const $memberId = $('#enroll-form input[name=memberId]');
-			let memberId = document.getElementById("memberId");
 			
 			$.ajax({
 				url : 'idcheck.me',
@@ -159,4 +167,5 @@
 	</script>
 
 	</body>
-</html>
+	</html>
+	

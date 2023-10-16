@@ -135,27 +135,35 @@
             	
                 <a href="<%=contextPath%>/list.no?cpage=1" class="btn btn-sm btn-info">목록≡</a>
                  <%if(loginUser !=null && loginUser.getMemberId().equals(n.getMemberNo())){ %>
-		            <a href="<%=contextPath%>/updateForm.no?bno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
-		            <a href="<%=contextPath%>/deleteForm.no?bno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">삭제하기</a>
+		            <a href="<%=contextPath%>/updateForm.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">수정하기</a>
+		            <a href="<%=contextPath%>/delete.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger" onclick="return deleteCheck()">삭제하기</a>
+		            <!--  <a href="<%=contextPath%>/delete.no?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>-->
 		           <%} %>
             </div>
             <script>
            
+            function deleteCheck(){
+            	var check = confirm('정말 삭제하시겠습니까?');
+            	return check;
+            }
             
 			$(function(){
+				//마지막 글일 경우 다음글 버튼이 사라짐
 				if(<%=map.get("nextNo")%> == "-1"){
 					$('#next').hide();
 				}
-            	
+            	//첫 글일 경우 이전글 버튼이 사라짐
             	if(<%=map.get("preNo")%> == "0"){
 					$('#pre').hide();
 				}
 				
-				
+				//이전글로 이동하는 버튼 
+				//preNo는 해당 게시글 불러올때 이전글 번호도 불러와 map에 담아왔음
 				$('#pre').click(function(){
-					
 					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("preNo") %>';
 				})
+				//다음글로 이동하는 버튼 
+				//nextNo는 해당 게시글 불러올때 다음글글 번호도 불러와 map에 담아왔음
 				$('#next').click(function(){
 					location.href = '<%=contextPath%>/detail.no?nno=<%=map.get("nextNo") %>';
 				})

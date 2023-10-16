@@ -34,14 +34,22 @@
 		</table>
 		<br><br>
 		<div align="center">
-		<button type="submit">로그인</button>
-		&nbsp/&nbsp 
-		<a href="<%=contextPath%>/findid.mem">아이디찾기</a>
-		&nbsp/&nbsp
-		 <a href="<%=contextPath%>/findpwd.mem">비밀번호찾기</a>
+		<button type="submit" class="btn btn-outline-dark">로그인</button>
+		&nbsp;/&nbsp;
+		<button type="button" class="btn btn-outline-warning" onclick="findid();" >아이디찾기</button>
+		&nbsp;/&nbsp;
+		<button type="button" class="btn btn-outline-warning" onclick="findpwd();" >비밀번호찾기</button>
 		</div>
 		
 	</form>
+	<script>
+	 function findid(){
+         location.href = "<%= contextPath %>/findid.mem"
+      }
+	 function findpwd(){
+         location.href = "<%= contextPath %>/findpwd.mem"
+      }
+	</script>
 	</div>
 
 </body>

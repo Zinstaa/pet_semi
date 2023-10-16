@@ -44,8 +44,7 @@ public class MemberPwdCheckController extends HttpServlet {
 		String memberPwd = request.getParameter("memberPwd");
 		
 		int result = new MemberService().pwdCheck(memberNo, memberPwd);
-		System.out.println(memberPwd); // <-- this is null
-		System.out.println(result);
+
 		if(result != 0) {
 			response.sendRedirect(request.getContextPath() + "/update.me");
 		} else {

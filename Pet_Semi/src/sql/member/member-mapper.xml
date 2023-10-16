@@ -131,6 +131,63 @@
 	WHERE
 		MEMBER_PWD = ?
 	</entry>
+	
+	<entry key="updateMember">
+	UPDATE
+		MEMBER
+	SET
+		MEMBER_NAME = ?,
+        NICKNAME = ?,
+		ADDRESS = ?,
+		AGE = ?
+	WHERE
+		MEMBER_ID = ? 
+	AND
+		STATUS = 'U'
+	</entry>
+	
+	<entry key="selectMember">
+	SELECT
+		MEMBER_NO,
+		MEMBER_ID,
+		MEMBER_PWD,
+		MEMBER_NAME,
+		EMAIL,
+		PHONE,
+		NICKNAME,
+		ADDRESS,
+		AGE,
+		GENDER,
+		ENROLL_DATE,
+		STATUS
+	FROM
+		MEMBER
+	WHERE
+		MEMBER_ID = ?
+	</entry>
+	
+	<entry key="updatePwdMember">
+	UPDATE
+		MEMBER
+	SET 
+		MEMBER_PWD = ?
+	WHERE
+		MEMBER_NO =?
+	AND
+		MEMBER_PWD = ?
+	</entry>
 
+	<entry key="deleteMember">
+	UPDATE
+		MEMBER
+	SET
+		STATUS='S'
+	WHERE
+		MEMBER_NO =?
+	AND	
+		MEMBER_PWD =?
+	AND 
+		STATUS = 'U'
+	</entry>
 	
 </properties>

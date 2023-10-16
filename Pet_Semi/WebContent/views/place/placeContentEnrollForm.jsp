@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.kh.pet.place.model.vo.PlaceCategory, com.kh.pet.place.model.vo.LocalCategory" %>
+<%
+	ArrayList<PlaceCategory> pllist = (ArrayList<PlaceCategory>)request.getAttribute("pllist");
+	ArrayList<LocalCategory> lolist = (ArrayList<LocalCategory>)request.getAttribute("lolist");
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +67,8 @@
 </style>
 </head>
 <body>
-	<%@ include file = "../common/menubar.jsp" %>
+	 <%@ include file = "../common/menubar.jsp" %>
+	
 	<div id="place-enroll-form">
 		<h2> 플레이스 작성 </h2>
 
@@ -74,27 +81,22 @@
 						<td colspan="2">
 							<select name="pl-category" class="place-form" required>
 								<option value="" selected disabled>카테고리</option>
-								<option value="식당">식당</option>
-								<option value="카페">카페</option>
-								<option value="공원">공원</option>
-								<option value="쇼핑">쇼핑</option>
-								<option value="병원">병원</option>
+								<% for(PlaceCategory plc : pllist) { %>
+									<option value="<%= plc.getPlaceCategoryNo() %>">
+										<%= plc.getPlaceCategoryName() %>
+									</option>
+								<% } %>
 							</select>
 						</td>
 						<th>지역</th>
 						<td>
 							<select name="pl-place" class="place-form" required>
 								<option value="" selected disabled>지역</option>
-								<option value="서울">서울</option>
-								<option value="경기">경기</option>
-								<option value="강원">강원</option>
-								<option value="충북">충북</option>
-								<option value="충남">충남</option>
-								<option value="경북">경북</option>
-								<option value="경남">경남</option>
-								<option value="전북">전북</option>
-								<option value="전남">전남</option>
-								<option value="제주">제주</option>
+								<% for(LocalCategory loc : lolist) { %>
+									<option value="<%= loc.getLocalCategoryNo() %>">
+										<%= loc.getLocalCategoryName() %>
+									</option>
+								<% } %>
 							</select>
 						</td>
 					</tr>
@@ -247,6 +249,6 @@
 
 		</form>
 	</div>
-	<%@ include file = "../common/footer.jsp" %>
+	<!-- <%@ include file = "../common/footer.jsp" %> -->
 </body>
 </html>

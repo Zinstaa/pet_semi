@@ -34,7 +34,31 @@
 		line-height : 50px;
 		color : black;
 		font-size:  30px;
+		margin-top : 50px;
+		
 	}
+	#mylist {
+		padding : 250px;
+	}
+	.thumbnail{
+ 	   border : 1px solid white;
+ 	   width: 300px;
+ 	   display: inline-block;
+  	   margin-left: 49px;
+	   margin-right: 48px;
+ 	   background-color: rgb(244, 255, 91);
+	
+    }
+    .thumbnail > img{
+        width: 250px;
+        padding: 10px;
+        height: 200px;
+    }
+
+    .thumbnail:hover{
+        cursor:pointer;
+        opacity: 0.7;
+    }
 
 	
 </style>
@@ -55,12 +79,34 @@
 			<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#checkPwdForm">정보수정</button>
 			</div>
 	</div>
-	<br><br><br>
 	<div class="mypagemenubar" align="center">
 		<div class="mymenubar"><a href="<%=contextPath%>/myreview.me" >내 리뷰 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 찜리스트 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 게시글 보기</a></div>
 	</div>
+	
+	 <div class="thumbnail" align="center">
+                    <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
+                    <p>
+                    	치와와/ 2살 <br>
+                    	도롱이
+						</p>
+                        </div>
+                         <div class="thumbnail" align="center">
+                    <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
+                    <p>
+                    No. 2 / 기엽죠? <br>
+                                        조회수 : 18221
+                        </p>
+                        </div>
+	 <div class="thumbnail" align="center">
+                    <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
+                    <p>
+                    No. 2 / 기엽죠? <br>
+                                        조회수 : 18221
+                        </p>
+                        </div>
+	
 </div>
 	
 	

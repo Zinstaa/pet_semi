@@ -33,7 +33,7 @@
     /* place_detail_main 부분 */
     #place_detail_main {
         width: 1200px;
-        height: 2400px;
+        height: 100%;
         margin: auto;
         padding-top: 125px;
     }
@@ -45,6 +45,7 @@
         height: 50px;
         margin: auto;
         border-radius: 33px;
+        margin-bottom: 20px;
     }
 
     #place_nav_bar > #back_btn > a > img {
@@ -70,12 +71,12 @@
 
     /* place_detail_content 부분 */
     #place_detail_content {
-
-        height: 90%;
+        height: 100%;
         margin: auto;
         border: 1px solid lightgray;
         border-radius: 30px;
         background-color: #fff5ce;
+        
     }
 
     #place_detail_content > div{
@@ -84,7 +85,7 @@
     
     /* place_detail_image_info 부분 */
     #place_detail_image_info {
-        height: 25%;
+        height: 510px;
     }
 
     #place_detail_image_info > div {
@@ -94,7 +95,8 @@
 
     /* place_detail_info 부분 */
     #place_detail_info {
-        height: 60%;
+        height: 100%;
+        margin-bottom: 20px;
     }
 
     /* place_detail_review 부분 */
@@ -264,7 +266,7 @@
     <div id="place_detail_main">
         <h2> 플레이스 </h2>
         
-        <h3 id="place_category"> [<%= p.getPlaceCategoryName() %>] - [<%= p.getLocalCategoryName() %>] </h3>
+        <h3 id="place_category"> [<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] </h3>
         
         <div id="place_detail_content">
             <div id="place_detail_image_info">
@@ -394,14 +396,14 @@
             </div>
             <div id="place_nav_bar">
                 <div id="back_btn">
-                    <a href="<%= contextPath %>/place.pl">
+                    <a href="<%= contextPath %>/place.pl?ppage=1">
                         <img src="https://svgsilh.com/svg/97591-ffffff.svg" alt="목록으로">
                     </a>
                 </div>
                 <div id="work_btn">
                     <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
                             <a href="<%= contextPath %>/updateForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-info">수정하기</a>
-                            <a href="<%= contextPath %>/deleteForm.pl" class="btn btn-sm btn-danger">삭제하기</a>
+                            <a href="<%= contextPath %>/deleteForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-danger">삭제하기</a>
                     <% } %>
                     
                     <a href="#" class="btn btn-sm btn-secondary">문의하기</a>
