@@ -51,6 +51,7 @@ public class MemberSearchListController extends HttpServlet {
 		
 		// GSON : Google JSON 라이브러리
 		// 형식, 인코딩 지정
+		// 값을 여러개로 넘겨주기 위해서 ArrayList를 JSON 타입으로 변환 (ajax에서 success에서 결과값으로 쓰기 위해서)
 		response.setContentType("application/json; charset=UTF-8");
 		//gson객체 생성 응답 보내기
 		new Gson().toJson(list,response.getWriter());

@@ -89,6 +89,8 @@ public class NoticeDao {
 	
 	public HashMap<String, Object> selectNotice(Connection conn, int noticeNo) {
 		Notice n = null;
+		//자료형이 Notice인 값과 int인 값 두개가 있기 때문에 hashmap으로 넘겨준다. 
+		//여기서 value의 제네릭은 두개이상의 자료형이기 때문에 Object로 설정을 한다.
 		HashMap<String, Object> map = new HashMap();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
@@ -108,6 +110,7 @@ public class NoticeDao {
 				int preNo = rset.getInt("PRE_NO");
 				int nextNo = rset.getInt("NEXT_NO");
 				
+				//map에 Notice 담는다.
 				map.put("n",n);
 				//map.put("noticeNo",n.getNoticeNo());
 				//map.put("noticeTitle",n.getNoticeTitle());
@@ -115,6 +118,7 @@ public class NoticeDao {
 				//map.put("noticeContent",n.getNoticeContent());
 				//map.put("noticeDate",n.getNoticeDate());
 				
+				//map에 int 값 담는다
 				map.put("preNo",preNo);
 				map.put("nextNo",nextNo);
 				//System.out.println(map);
@@ -129,6 +133,7 @@ public class NoticeDao {
 			close(rset);
 			close(pstmt);
 		}
+		//hashmap값을 리턴한다.
 		return map;
 		
 	}
@@ -197,6 +202,28 @@ public class NoticeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateNotice(Connection conn, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeTitle());
+			pstmt.setInt(3, n.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
 			close(pstmt);
 		}
 		return result;
