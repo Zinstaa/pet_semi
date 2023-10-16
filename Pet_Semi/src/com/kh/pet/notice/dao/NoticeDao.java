@@ -228,4 +228,53 @@ public class NoticeDao {
 		}
 		return result;
 	}
+	
+	public int updateNoticeFile(Connection conn, NoticeFile nf) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNoticeFile");
+		//System.out.println("파일있어요~2");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nf.getNoticeFileOriginName());
+			pstmt.setString(2, nf.getNoticeFileChangeName());
+			pstmt.setString(3, nf.getNoticeFilePath());
+			pstmt.setInt(4, nf.getNoticeFileNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertNoticeNewFile(Connection conn, NoticeFile nf) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNoticeNewFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nf.getNoticeFileOriginName());
+			pstmt.setString(2, nf.getNoticeFileChangeName());
+			pstmt.setString(3, nf.getNoticeFilePath());
+			pstmt.setInt(4, nf.getNoticeNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+		
+	}
 }
