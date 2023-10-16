@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/* 페이지 글꼴 설정 */
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    /*background-color: #fff5ce;*/
+ }
+/* 박스 테두리 설정 */
+div {
+   box-sizing: border-box;
+   /*border: 1px solid red;*/
+}
+
+/* 해더 부분 css */
+.header{
+   width : 1200px;
+   height: 100px;
+   margin : auto;
+   margin-bottom: 10px;
+}
+
+.header > div{
+   float: left;
+   height: 50%
+}
+
+.head_logo{
+   width : 75%;
+}
+
+.head_logo > h1 {
+   text-align: center;
+   line-height : 100px;
+}
+
+.head_login{
+   width : 25%;
+   height: 20%;
+   float: right;
+}
+
+.head_login > div{
+   float: left;
+}
+
+#member_login > div, #login_info > div{
+   height: 100%;
+   float: left;
+}	
+
+#bar {
+   text-align: center;
+   line-height: 35px;
+   color : black;
+}
+
+#login > button,  #access > button {
+   text-align: center;
+   line-height: 20px;
+   color : black;
+   font-size:  18px;
+}
+
+#admin_login {
+   height: 100%;
+   width: 300px;
+   padding-left: 100px;
+}
+
+.header > a, #admin_login a, #login_info  a{
+   text-decoration : none;
+   width : 100%;
+   height : 100%;
+   display: block;
+   line-height : 40px;
+   color : black;
+   font-weight : bold;
+   font-size:  18px;
+}
+
+#btn_img{
+   background: url("https://www.codingfactory.net/wp-content/uploads/button_search.png");
+   background-size: auto;
+   border: none;
+   width: 32px;
+   height: 32px;
+   cursor: pointer;
+   background-repeat: no-repeat;
+}
+
+/* 네비게이션 바 css*/
+.navbar {
+   margin : 0;
+   background-color : #fff5ce;
+   text-align: center;
+   border-top: 2px  solid lightgray;
+   border-bottom: 2px  solid lightgray;
+   line-height: 100%;
+   height: 70px;
+   box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.navbar ul, .navbar li {
+   list-style: none;
+   padding-left: 0;
+}
+
+.menu{
+   display : table-cell;
+   height : 50px;
+   width : 200px;
+}
+
+.menu a {
+   text-decoration : none;
+   width : 100%;
+   height : 100%;
+   display: block;
+   line-height : 50px;
+   color : black;
+   font-weight : bold;
+   font-size:  20px;
+}
+
+.menu a:hover{
+   color: #ffce50;
+} 
+
+.nav_sub:hover{
+   color: #ffce50;
+   cursor: pointer;
+} 
+.menu > li > ul {
+   z-index: 1;
+   position: relative;
+   list-style: none;
+   padding: 0;
+   display: none; /* 평소에는 안보이다가 마우스가 올라가는 순간 펼쳐지는 효과 1 */
+}
+
+.menu > li > a:hover + ul, .menu > li > ul:hover {
+   display: block; /* 평소에는 안보이다가 마우스가 올라가는 순간 펼쳐지는 효과 2 */
+}
+
+#co, #me {
+   width: 200px;
+   height: 50px;
+}
+
+#co > li > ul, #me > li > ul {
+   z-index: 1;
+   position: relative;
+   background-color: #fff5ce;
+   border: 2px solid lightgray;
+   border-top: none;
+   list-style: none;
+   padding: 0;
+}
+
+.outer{
+      width : 1200px;
+      margin : auto;
+      height : 600px;
+      background-color : #fff5ce;
+      color : black;
+}
+
+.myouter{
+      width : 1200px;
+      margin: auto;
+      padding-top: 125px;
+      height : 750px;
+      background-color : #fff5ce;
+      color : black;
+}

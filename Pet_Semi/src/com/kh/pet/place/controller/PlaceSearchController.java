@@ -16,16 +16,16 @@ import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlacePageInfo;
 
 /**
- * Servlet implementation class PlacePageController
+ * Servlet implementation class PlaceSearchController
  */
-@WebServlet("/place.pl")
-public class PlacePageController extends HttpServlet {
+@WebServlet("/search.pl")
+public class PlaceSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlacePageController() {
+    public PlaceSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,46 +35,15 @@ public class PlacePageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int listCount; 
-		int currentPage;
-		int pageLimit; 
-		int placeLimit;
-		  
-		int maxPage; 
-		int startPage;
-		int endPage;
-		
-		listCount = new PlaceService().selectListCount();
-		
-		currentPage = Integer.parseInt(request.getParameter("ppage"));
-		
-		pageLimit = 10;
-	      
-        placeLimit = 12;
         
-        maxPage = (int)Math.ceil((double)listCount / placeLimit);
-        
-        startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
-        
-        endPage = startPage + pageLimit - 1;
-        
-        if(endPage > maxPage) {
-            endPage = maxPage;
-         }
-        
-        PlacePageInfo ppi = new PlacePageInfo(listCount, currentPage, pageLimit,
-                placeLimit, maxPage, startPage, endPage);
+        String placeName = request.getParameter("place-name");
 		
 		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
-		ArrayList<Place> list = new PlaceService().selectPlaceContentList(ppi);
-		ArrayList<PlaceCategory> pllist = new PlaceService().selectPlaceCategoryList();
-		ArrayList<LocalCategory> lolist = new PlaceService().selectLoaclCategoryList();
-		
-		request.setAttribute("pllist", pllist);
-		request.setAttribute("lolist", lolist);
+        ArrayList<Place> list = new PlaceService().searchPlace(placeName);		
+
 		request.setAttribute("list", list);
-		request.setAttribute("ppi", ppi);
-		request.getRequestDispatcher("views/place/placePage.jsp").forward(request, response);
+
+		request.getRequestDispatcher("views/place/placeSearchPage.jsp").forward(request, response);
 	}
 
 	/**

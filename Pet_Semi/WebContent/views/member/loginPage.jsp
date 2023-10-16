@@ -34,11 +34,11 @@
 		</table>
 		<br><br>
 		<div align="center">
-		<button type="submit" class="btn btn-link">로그인</button>
+		<button type="submit" class="btn btn-outline-dark">로그인</button>
 		&nbsp;/&nbsp;
-		<button type="button" class="btn btn-link" onclick="findid();" >아이디찾기</button>
+		<button type="button" class="btn btn-outline-warning" onclick="findid();" >아이디찾기</button>
 		&nbsp;/&nbsp;
-		<button type="button" class="btn btn-link" onclick="findpwd();" >비밀번호찾기</button>
+		<button type="button" class="btn btn-outline-warning" onclick="findpwd();" >비밀번호찾기</button>
 		</div>
 		
 	</form>

@@ -140,7 +140,29 @@ public class PlaceService {
 		return (result1 * result2);
 	}
 	
+	public int deletePlace(int placeNo) {
+		Connection conn = getConnection();
+		
+		int result = new PlaceDao().deletePlace(conn, placeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 
+	public ArrayList<Place> searchPlace(String placeName) {
+		Connection conn = getConnection();
+		
+		ArrayList<Place> list = new PlaceDao().searchPlace(conn, placeName);
+		
+		close(conn);
+		
+		return list;
+	}
 
 
 
