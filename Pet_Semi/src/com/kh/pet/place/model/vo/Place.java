@@ -19,7 +19,14 @@ public class Place {
 	private String titleImg;
 	private String placeCategory;
 	private String localCategory;
+	private int resultCount; //RESULT_COUNT
 	
+	public int getResultCount() {
+		return resultCount;
+	}
+	public void setResultCount(int resultCount) {
+		this.resultCount = resultCount;
+	}
 	public String getPlaceCategory() {
 		return placeCategory;
 	}

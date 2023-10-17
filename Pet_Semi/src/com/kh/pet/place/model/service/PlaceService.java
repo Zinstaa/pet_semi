@@ -169,7 +169,6 @@ public class PlaceService {
 		Connection conn = getConnection();
 		
 		ArrayList<Place> list = new PlaceDao().searchPlace(conn, placeName, ppi);
-		
 		close(conn);
 		
 		return list;

@@ -110,6 +110,10 @@ public class PromotionBoardDao {
 			pstmt.setString(1, pb.getPromotionTitle());
 			pstmt.setString(2,  pb.getPromotionContent());
 			pstmt.setInt(3, Integer.parseInt(pb.getPromotionWriter()));
+			pstmt.setString(4, pb.getPromotionEventDate());
+			
+			System.out.println(pb);
+			
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -118,6 +122,7 @@ public class PromotionBoardDao {
 			close(pstmt);
 		}
 		return result;
+		
 	}
 	
 	public int insertPromotionFileList(Connection conn, ArrayList<PromotionFile> list) {
@@ -143,7 +148,7 @@ public class PromotionBoardDao {
 				// 이대로 넘어갈 수 없음, 파일이 3개가 들어왔어, 성공, 실패, 성공 가운데 실패된거 어떻게 되? 성공했네로 되네?
 				// 다 잘되었을 때만 1을 돌려주고 싶다 => 최소 1 하나부터 최대 1 네개 가지고 1을 만드는 방법은 곱하기 밖에 없어
 				// 진짜 간단하게 생각하면 = 앞에 * 붙여줘도 되지않냐.. , 근데 1 뒤에 0을 곱하면 0이 되는거니까...
-				// 
+				// +를 사용해서 result와 pstmt.executeUpdate값을 더하고 +1해주는 연산처리방식 이용함
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -195,7 +200,87 @@ public class PromotionBoardDao {
 		}
 		return list;
 	}
+	
+	public int increasePromotionView(Connection conn, int promotionNo) {
+		int result = 0;
+		String sql = prop.getProperty("increasePromotionView");
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, promotionNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public PromotionBoard selectPromotionBoard(Connection conn, int promotionNo) {
+		
+		PromotionBoard pb = new PromotionBoard();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPromotionBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  promotionNo);
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				
+				pb = new PromotionBoard();
+				pb.setPromotionNo(rset.getInt("PROMOTION_NO"));
+				pb.setPromotionTitle(rset.getString("PROMOTION_TITLE"));
+				pb.setPromotionContent(rset.getString("PROMOTION_CONTENT"));
+				pb.setPromotionDate(rset.getDate("PROMOTION_DATE"));
+				pb.setPromotionWriter(rset.getString("MEMBER_ID"));
+				pb.setPromotionEventDate(rset.getString("PROMOTION_EVENT_DATE"));
+			}
+;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pb;
+	}
+	
+	public ArrayList<PromotionFile> selectPromotionFileList(Connection conn, int promotionNo){
+		
+		ArrayList<PromotionFile> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPromotionFileList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  promotionNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PromotionFile pf = new PromotionFile();
+				pf.setPromotionFileNo(rset.getInt("PROMOTION_FILE_NO"));
+				pf.setPromotionFileOriginName(rset.getString("PROMOTION_FILE_ORIGIN_NAME"));
+				pf.setPromotionFileChangeName(rset.getString("PROMOTION_FILE_CHANGE_NAME"));
+				pf.setPromotionFilePath(rset.getString("PROMOTION_FILE_PATH"));
+				pf.setPromotionFileUploadDate(rset.getDate("PROMOTION_FILE_UPLOAD_DATE"));
+				
+				list.add(pf);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
+	}
 }
+	
 	
 
 

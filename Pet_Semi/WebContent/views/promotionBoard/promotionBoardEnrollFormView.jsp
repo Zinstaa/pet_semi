@@ -41,7 +41,7 @@
                 <tr>
                     <th>행사일정</th>
                     <td colspan="3">
-                        <input type="text" name="date" width="200" required>
+                        <input type="text" name="eventDate" width="200" required>
                     </td>
                 </tr>
                 </tr>
