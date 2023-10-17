@@ -277,7 +277,25 @@ public class PromotionBoardDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	public int deletePromotionBoard(Connection conn, int promotionNo) {
 		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deletePromotionBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, promotionNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }
 	

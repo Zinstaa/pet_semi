@@ -77,7 +77,17 @@ public class PromotionBoardService {
 		close(conn);
 		
 		return list;
-		
-
 }
+	
+	public int deletPromotionBoard(int promotionNo) {
+		
+		Connection conn = getConnection();
+		
+		int result = new PromotionBoardDao().deletePromotionBoard(conn, promotionNo);
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
 }

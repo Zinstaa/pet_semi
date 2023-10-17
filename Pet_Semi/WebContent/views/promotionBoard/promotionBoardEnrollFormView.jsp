@@ -6,15 +6,18 @@
 <meta charset="UTF-8">
 <title>홍보게시글 작성 및 등록하는 공간</title>
 <style>
+	.outer_8{
+		background-color:white;
+	}
     #enroll-form > table{
         border: 1px solid gray;
-        width: 100px;
-        height: 300px;
+        width: 500px;
+        height: 600px;
     }
 
     #enroll-form input, #enroll-form textarea {
-        width: 99%;
-        height: 98%;
+        width: 100%;
+        height: 99%;
         font-size: 13px;
     }
 </style>
@@ -23,7 +26,7 @@
 
 <%@ include file = "../common/menubar.jsp" %>
 
-    <div class="outer">
+    <div class="outer_8">
         <br>
         <h2 align="center">게시글을 등록하거라~~우하하하~~</h2>
         <br>
@@ -34,7 +37,7 @@
         <input type="hidden" name="memberNo" value="<%=loginUser.getMemberNo() %>">
         <table align="center" border="1">
             <tr>
-                <th width="70">제목</th>
+                <th width="80" align="center">제목</th>
                 <td colspan="3">
                     <input type="text" name="title" width="100" required>
                 </td>
