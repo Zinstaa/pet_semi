@@ -454,11 +454,16 @@ public class PlaceDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			int startRow = (ppi.getCurrentPage() - 1) * ppi.getPlaceLimit() + 1;
-	        int endRow = startRow + ppi.getPlaceLimit() - 1;
-			
+	        int endRow = startRow + ppi.getPlaceLimit() * ppi.getPlaceLimit(); 
+			/* System.out.println(ppi.getCurrentPage());
+			System.out.println(ppi.getPlaceLimit());
+			System.out.println(placeName);
+			System.out.println(startRow);
+			System.out.println(endRow); */
 			pstmt.setString(1, placeName);
-			pstmt.setInt(2, startRow);
-			pstmt.setInt(3, endRow);
+			pstmt.setString(2, placeName);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -471,6 +476,8 @@ public class PlaceDao {
 				
 				p.setTitleImg(rset.getString("TITLEIMG"));
 				
+				p.setResultCount(rset.getInt("RESULT_COUNT"));
+				
 				list.add(p);
 			}
 			
@@ -482,6 +489,7 @@ public class PlaceDao {
 		}
 		
 		return list;
+		
 	}
 
 }

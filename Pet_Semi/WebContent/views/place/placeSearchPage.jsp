@@ -8,6 +8,7 @@
 	String placeName = (String)session.getAttribute("placeName");
 	PlacePageInfo ppi = (PlacePageInfo)request.getAttribute("ppi");
 	
+    int placeLimit = ppi.getPlaceLimit();
 	int currentPage = ppi.getCurrentPage(); 
 	int startPage = ppi.getStartPage();
 	int endPage = ppi.getEndPage();
@@ -22,14 +23,14 @@
 <style>
     div {
         box-sizing: border-box;
-        /*border: 1px solid red;*/
+        /*border: 1px solid black;*/
     }
 
     /* place_content 부분 */
     #place_content {
         padding-top: 125px;
         width: 1200px;
-        height: 1200px;
+        height: 100%;
         margin: auto;
     }
     
@@ -144,6 +145,18 @@
 		padding: 0;
 		margin: 0;
 	}
+
+    /* search-page 부분*/
+    #search-page {
+        margin-bottom: 50px;
+    }
+
+    #more{
+        text-decoration: none;
+        color: #000000;
+    }
+        
+    
 </style>
 </head>
 <body>
@@ -153,59 +166,131 @@
     <div id="place_content">
         <h2 id="search_answer">'<%= placeName %>' 검색결과 </h2>
        
-            <div id="list-area">
+        <div id="list-area">
             <% if(list.isEmpty()) {%>
             
             <!-- 등록된 장소가 없을 때-->
             등록된 장소가 없습니다... <br>
-            
             <% } else { %>
             <!-- 등록된 장소가 있을 때-->
-
-                <% for(Place p : list) { %>
-                    <div class="place-content">
-                        <input type="hidden" value="<%= p.getPlaceNo() %>">
-                        <div id="img-place">
-                            <img src="<%= p.getTitleImg() %>" alt="">
-                        </div>
-                        <div id="btn-place" align="center">
-                            <div class="pl-btn" id="star">
-                                <a href="https://kko.to/G2wEv1yqMf">
-                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
-                                </a>
-                            </div>
-                            <div class="pl-btn" id="map">
-                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
-                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
-                                </a>
-                            </div>
-                        </div>
-                        <div id="name-place">
-                            <p>[<%= p.getPlaceCategory() %>] - [<%= p.getLocalCategory() %>] <%= p.getPlaceName() %></p>
-                        </div>
-                    </div>
+	            <% if(list.size() > placeLimit) { %>
+	                <% for(int i = 0; i < placeLimit; i++) { %>
+	                    <div class="place-content">
+	                        <input type="hidden" value="<%= list.get(i).getPlaceNo() %>">
+	                        <div id="img-place">
+	                            <img src="<%= list.get(i).getTitleImg() %>" alt="">
+	                        </div>
+	                        <div id="btn-place" align="center">
+	                            <div class="pl-btn" id="star">
+	                                <a href="https://kko.to/G2wEv1yqMf">
+	                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+	                                </a>
+	                            </div>
+	                            <div class="pl-btn" id="map">
+	                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+	                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+	                                </a>
+	                            </div>
+	                        </div>
+	                        <div id="name-place">
+	                            <p>[<%= list.get(i).getPlaceCategory() %>] - [<%= list.get(i).getLocalCategory() %>] <%= list.get(i).getPlaceName() %></p>
+	                        </div>
+	                    </div>
+	                <% } %>
+                <% } else { %>
+                <% for(int i = 0; i < list.size(); i++) { %>
+	                    <div class="place-content">
+	                        <input type="hidden" value="<%= list.get(i).getPlaceNo() %>">
+	                        <div id="img-place">
+	                            <img src="<%= list.get(i).getTitleImg() %>" alt="">
+	                        </div>
+	                        <div id="btn-place" align="center">
+	                            <div class="pl-btn" id="star">
+	                                <a href="https://kko.to/G2wEv1yqMf">
+	                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+	                                </a>
+	                            </div>
+	                            <div class="pl-btn" id="map">
+	                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+	                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+	                                </a>
+	                            </div>
+	                        </div>
+	                        <div id="name-place">
+	                            <p>[<%= list.get(i).getPlaceCategory() %>] - [<%= list.get(i).getLocalCategory() %>] <%= list.get(i).getPlaceName() %></p>
+	                        </div>
+	                    </div>
+                    <% } %>
                 <% } %>
-            <% } %>
+            <% } %> 
+            
         </div>
-        <div class="paging-area" align="center">
-	            <%if(currentPage != 1) { %>
-	        	<button onclick="location.href='<%=contextPath %>/search.pl?ppage=<%=currentPage-1 %>'" class="btn btn-sm btn-warning">&lt;</button>
-	        	<%} %>
-	        
-	        
-	        	<% for(int i = startPage; i<= endPage; i++){ %>
-	        		<%if(currentPage != i) {%>
-	        			<button onclick ="location.href='<%=contextPath%>/search.pl?ppage=<%=i%>'" class="btn btn-sm btn-warning"><%=i%></button>
-	        		<%} else { %>
-	        			<button disabled class="btn btn-sm btn-light"><%= i %></button>
-	        		<%} %>
-	        	<%} %>
-	        	
-	        	<%if(currentPage != maxPage) { %>
-	        	<button onclick="location.href='<%=contextPath %>/search.pl?ppage=<%=currentPage+1 %>'" class="btn btn-sm btn-warning">&gt;</button>
-	        	<%} %>
-            </div>
+ 
+        
+        <div id="search-page" align="right">
+            <% if(list.size() < placeLimit) {%>
+            
+                <!-- 등록된 장소가 없을 때-->
+                <a href="" id="more" style="display: none">더 보기</a>
+                
+            <% } else { %>
+                <!-- 등록된 장소가 있을 때-->
+                <a href="#more-page" id="more"> '<%= placeName %>' 검색결과 더 보기</a>
+
+                <div id="more-page" align="center" style="display: none;">
+                    <% for(int j = placeLimit; j < list.size(); j++) { %>
+                    <div class="place-content" align="center">
+                            <input type="hidden" value="<%= list.get(j).getPlaceNo() %>">
+                            <div id="img-place">
+                                <img src="<%= list.get(j).getTitleImg() %>" alt="">
+                            </div>
+                            <div id="btn-place" align="center">
+                                <div class="pl-btn" id="star">
+                                    <a href="https://kko.to/G2wEv1yqMf">
+                                        <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
+                                    </a>
+                                </div>
+                                <div class="pl-btn" id="map">
+                                    <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+                                        <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="name-place">
+                                <p>[<%= list.get(j).getPlaceCategory() %>] - [<%= list.get(j).getLocalCategory() %>] <%= list.get(j).getPlaceName() %></p>
+                            </div>
+                        </div>
+                    <% } %>	
+                </div>
+            <% } %>	
+        </div>
     </div>
+
+    <script>
+        $(function(){
+            $('.place-content').click(function(){
+
+                const pno = $(this).children().eq(0).val();
+
+                location.href = '<%= contextPath%>/detail.pl?pno=' + pno;
+
+            });
+            $('#more').click(function(){
+                const maxScroll = $('body').height(); 
+                console.log(maxScroll);
+            	if($('#more-page').css('display') == 'none'){
+                 $('#more-page').show();
+                 $("#more").hide();
+            	}
+                $('html, body').animate({
+                scrollTop : maxScroll - 250 // body의 footer길이 이전까지 animation 이동합니다.
+                }, 1000);          // 속도 1000
+                return false;
+            });
+            
+        });
+
+    </script>
     
     <div id="top">
         <a id="toTop" href="#">
@@ -218,7 +303,7 @@
         $(function() {
             // 보이기 | 숨기기
             $(window).scroll(function() {
-            if ($(this).scrollTop() > 500) { //250 넘으면 버튼이 보여짐니다.
+            if ($(this).scrollTop() > 500) { //500 넘으면 버튼이 보여짐니다.
                     $('#toTop').fadeIn();
                     $('#toTop').css('left', $('#sidebar').offset());  // #sidebar left:0 죄표
                     } else {
