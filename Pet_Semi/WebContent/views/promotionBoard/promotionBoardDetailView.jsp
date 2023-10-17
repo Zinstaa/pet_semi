@@ -36,8 +36,8 @@
             <tr>
                 <th style="color:lightgray;">작성자</th>
                 <td style="weight:20%; color:lightgray;"><%=pb.getPromotionWriter() %></td>
-                <th style="color:lightgray;">행사일정</th>
-                <td style="color:lightgray;"><%=pb.getPromotionEventDate() %></td>
+                <th>행사일정</th>
+                <td><%=pb.getPromotionEventDate() %></td>
                 <th style="color:lightgray;">작성일</th>
                 <td style="color:lightgray;"><%=pb.getPromotionDate() %></td>
             </tr>
@@ -66,8 +66,8 @@
         </table>
         <br>
         <div>
-        	<a href="<%= contextPath %>/promotionList.pr?cpage=1" class="btn btn-1">목록으로</a>
-        
+        	<a href="<%= contextPath %>/promotionList.pr?cpage=1" class="btn btn-sm btn-info">목록으로</a>
+        	<br>
         </div>
     </div>
 	
