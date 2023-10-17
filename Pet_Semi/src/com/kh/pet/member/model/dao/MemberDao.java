@@ -11,9 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.kh.pet.member.model.vo.Dog;
 import com.kh.pet.member.model.vo.FindId;
 import com.kh.pet.member.model.vo.FindPwd;
 import com.kh.pet.member.model.vo.Member;
+import com.kh.pet.member.model.vo.MemberFile;
+import com.kh.pet.notice.vo.Notice;
+import com.kh.pet.notice.vo.NoticeFile;
 import com.kh.pet.common.JDBCTemplate.*;
 
 public class MemberDao {
@@ -426,6 +430,45 @@ private Properties prop = new Properties();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertDog(Connection conn, Dog d) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertDog");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, d.getDogName());
+			pstmt.setString(2, d.getDogKind());
+			pstmt.setString(3, d.getDogAge());
+			pstmt.setString(4, d.getMemberNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertMemberFile(Connection conn, MemberFile mf) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMemberFile");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mf.getMemberFileOriginName());
+			pstmt.setString(2, mf.getMemberFileChangeName());
+			pstmt.setString(3, mf.getMemberFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
 			close(pstmt);
 		}
 		return result;

@@ -7,9 +7,14 @@ import java.util.ArrayList;
 
 import com.kh.pet.common.JDBCTemplate;
 import com.kh.pet.member.model.dao.MemberDao;
+import com.kh.pet.member.model.vo.Dog;
 import com.kh.pet.member.model.vo.FindId;
 import com.kh.pet.member.model.vo.FindPwd;
 import com.kh.pet.member.model.vo.Member;
+import com.kh.pet.member.model.vo.MemberFile;
+import com.kh.pet.notice.dao.NoticeDao;
+import com.kh.pet.notice.vo.Notice;
+import com.kh.pet.notice.vo.NoticeFile;
 
 
 public class MemberService {
@@ -147,5 +152,18 @@ public class MemberService {
 			} 
 		close(conn);
 		return result;
+	}
+	public int insertDog(Dog d, MemberFile mf) {
+		Connection conn = getConnection();
+		int result1 = new MemberDao().insertDog(conn, d);
+		
+		int result2 = new MemberDao().insertMemberFile(conn, mf);
+		if((result1 * result2) > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return (result1 * result2);
 	}
 }
