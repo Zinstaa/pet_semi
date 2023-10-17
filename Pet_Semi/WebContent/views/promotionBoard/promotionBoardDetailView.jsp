@@ -30,7 +30,7 @@
 
         <table align="center" border="1" id="promotionDetail-form">
             <tr>
-                <th type="hidden" width="90" style="font-size:30px;">제목</th>
+                <th type="hidden" width="90" style="font-size:10px;">제목</th>
                 <td colspan="5" style="font-size:30px;"><%=pb.getPromotionTitle() %></td>
             </tr>
             <tr>
@@ -63,8 +63,12 @@
             	<td><img src="<%= contextPath %>/<%=list.get(i).getPromotionFilePath()%>/<%=list.get(i).getPromotionFileChangeName()%>" alt="상세이미지<%=i %>" id="contentImg<%=i %>" width="350" height="280"></td>
             	<% } %>
             </tr>
-
         </table>
+        <br>
+        <div>
+        	<a href="<%= contextPath %>/promotionList.pr?cpage=1" class="btn btn-1">목록으로</a>
+        
+        </div>
     </div>
 	
 </body>
