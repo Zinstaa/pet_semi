@@ -1,12 +1,14 @@
 package com.kh.pet.promotionBoard.model.vo;
 
+import java.sql.Date;
+
 public class PromotionFile {
 	
 	private int promotionFileNo; // PROMOTION_FILE_NO	NUMBER
 	private String promotionFileOriginName; //PROMOTION_FILE_ORIGIN_NAME	VARCHAR2(100 BYTE)
 	private String promotionFileChangeName; //PROMOTION_FILE_CHANGE_NAME	VARCHAR2(100 BYTE)
 	private String promotionFilePath; //PROMOTION_FILE_PATH	VARCHAR2(100 BYTE)
-	private String promotionFileUploadDate; //PROMOTION_FILE_UPLOAD_DATE	DATE
+	private Date promotionFileUploadDate; //PROMOTION_FILE_UPLOAD_DATE	DATE
 	private int promotionFileLevel; //PROMOTION_FILE_LEVEL	NUMBER
 	private String status; //STATUS	VARCHAR2(1 BYTE)
 	private int promotionNo; //PROMOTION_NUMBER	NUMBER
@@ -16,7 +18,7 @@ public class PromotionFile {
 	}
 
 	public PromotionFile(int promotionFileNo, String promotionFileOriginName, String promotionFileChangeName,
-			String promotionFilePath, String promotionFileUploadDate, int promotionFileLevel, String status,
+			String promotionFilePath, Date promotionFileUploadDate, int promotionFileLevel, String status,
 			int promotionNo) {
 		super();
 		this.promotionFileNo = promotionFileNo;
@@ -61,11 +63,11 @@ public class PromotionFile {
 		this.promotionFilePath = promotionFilePath;
 	}
 
-	public String getPromotionFileUploadDate() {
+	public Date getPromotionFileUploadDate() {
 		return promotionFileUploadDate;
 	}
 
-	public void setPromotionFileUploadDate(String promotionFileUploadDate) {
+	public void setPromotionFileUploadDate(Date promotionFileUploadDate) {
 		this.promotionFileUploadDate = promotionFileUploadDate;
 	}
 
@@ -101,7 +103,6 @@ public class PromotionFile {
 				+ ", promotionFileLevel=" + promotionFileLevel + ", status=" + status + ", promotionNo=" + promotionNo
 				+ "]";
 	}
-	
 	
 	
 	

@@ -56,6 +56,7 @@ public class promotionBoardInsertController extends HttpServlet {
 			String promotionTitle = multiRequest.getParameter("title");
 			String promotionContent = multiRequest.getParameter("content");
 			String memberNo = multiRequest.getParameter("memberNo");
+			String promotionEventDate = multiRequest.getParameter("eventDate");
 
 			// 3) VO로 가공
 			// PROMOTIONBOARD
@@ -63,6 +64,7 @@ public class promotionBoardInsertController extends HttpServlet {
 			pb.setPromotionTitle(promotionTitle);
 			pb.setPromotionContent(promotionContent);
 			pb.setPromotionWriter(memberNo);
+			pb.setPromotionEventDate(promotionEventDate);
 
 			// => 최소한 게시글 한개당 한개의 첨부파일 존재! 무조건!
 			// 여러개의 VO를 묶어서 ... -> ArrayList를 쓰면 어떨까? 

@@ -36,19 +36,48 @@ public class PromotionBoardService {
 		return (result1 * result2);
 	}
 	
-	public ArrayList<PromotionBoard> selectPromotionBoardList(){
+	public int increasePromotionView(int promotionNo) {
 		
 		Connection conn = getConnection();
 		
+		int result = new PromotionBoardDao().increasePromotionView(conn, promotionNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public PromotionBoard selectPromotionBoard(int promotionNo){
+		
+		Connection conn = getConnection();
+		
+		PromotionBoard pb = new PromotionBoardDao().selectPromotionBoard(conn, promotionNo);
+		
+		close(conn);
+		
+		return pb;
+	}
+	
+	public ArrayList<PromotionBoard> selectPromotionBoardList(){
+		
+		Connection conn = getConnection();
 		ArrayList<PromotionBoard> list = new PromotionBoardDao().selectPromotionBoardList(conn);
+		close(conn);
+		return list;
+	}
+	
+	
+	public ArrayList<PromotionFile> selectPromotionFileList(int promotionNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<PromotionFile> list = new PromotionBoardDao().selectPromotionFileList(conn, promotionNo);
 		
 		close(conn);
 		
 		return list;
 		
-		
-	}
 
-	
-
+}
 }

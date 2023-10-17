@@ -13,6 +13,7 @@
 <style>
 	.outer9{
 	background-color:white;
+	cursor: url(https://cur.cursors-4u.net/nature/nat-10/nat909.cur), auto !important;
 	}
 	.list-area{
 	text-align:center;
@@ -37,7 +38,6 @@
 	cursor:url(https://cur.cursors-4u.net/nature/nat-10/nat909.cur), auto !important;
 	opacity:0.9;
 	}
-	<style type="text/css">* {cursor: url(https://cur.cursors-4u.net/nature/nat-10/nat909.cur), auto !important;}</style><a href="https://www.cursors-4u.com/cursor/2011/04/06/puppy-13.html" target="_blank" title="Puppy 13"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Puppy 13" style="position:absolute; top: 0px; right: 0px;" /></a>
 
 </style>
 
@@ -79,6 +79,19 @@
         </div>
         <br><br>
     </div>
+
+	<script>
+		$(function(){
+
+			$('.promotion').click(function(){
+				// 클릭할 때마다 url 요청 => location.href
+				const pno = $(this).children().eq(0).val();
+
+				location.href = '<%=contextPath%>/promotionDetail.pr?pno=' + pno;
+
+			})
+		})
+	</script>
    
 </body>
 </html>
