@@ -310,4 +310,42 @@
 			) B
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<entry key="selectPlaceReviewList">
+		SELECT 
+			   PLACE_REVIEW_NO, 
+			   PLACE_REVIEW_CONTENT, 
+			   MEMBER_ID, 
+			   TO_CHAR(PLACE_REVIEW_DATE, 'YY/MM/DD HH:MI:SS') PLACE_REVIEW_DATE
+		  FROM 
+		  	   PLACE_REVIEW 
+		  JOIN 
+		  	   MEMBER ON(PLACE_REVIEW_WRITER = MEMBER_NO) 
+		 WHERE 
+		 	   PLACE_NO = ? 
+		   AND 
+		   	   PLACE_REVIEW.PLACE_REVIEW_STATUS = 'Y' 
+		 ORDER 
+		 	BY 
+		 	   PLACE_REVIEW_DATE DESC 
+	</entry>
+	
+	<entry key="insertPlaceReview">
+		INSERT
+		  INTO
+		  	  PLACE_REVIEW
+		  	  (
+		  	  	PLACE_REVIEW_NO,
+		  	  	PLACE_REVIEW_CONTENT,
+		  	  	PLACE_NO,
+		  	  	PLACE_REVIEW_WRITER
+		  	  )
+		VALUES
+			  (
+			  	PLACE_REVIEW_SEQ.NEXTVAL,
+			  	?,
+			  	?,
+			  	?
+			  )
+	</entry>
 </properties>
