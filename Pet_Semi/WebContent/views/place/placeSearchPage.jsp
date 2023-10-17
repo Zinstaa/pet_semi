@@ -164,7 +164,7 @@
     
     
     <div id="place_content">
-        <h2 id="search_answer">'<%= placeName %>' 검색결과 </h2>
+        <h2 id="search_answer"><%= placeName %> 검색결과 </h2>
        
         <div id="list-area">
             <% if(list.isEmpty()) {%>
@@ -235,7 +235,7 @@
                 
             <% } else { %>
                 <!-- 등록된 장소가 있을 때-->
-                <a href="#more-page" id="more"> '<%= placeName %>' 검색결과 더 보기</a>
+                <a href="#more-page" id="more"> <%= placeName %> 검색결과 더 보기</a>
 
                 <div id="more-page" align="center" style="display: none;">
                     <% for(int j = placeLimit; j < list.size(); j++) { %>
