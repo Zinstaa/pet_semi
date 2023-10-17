@@ -8,12 +8,14 @@ import static com.kh.pet.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.kh.pet.board.model.dao.BoardDao;
 import com.kh.pet.place.model.dao.PlaceDao;
 import com.kh.pet.place.model.vo.LocalCategory;
 import com.kh.pet.place.model.vo.Place;
 import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlaceFile;
 import com.kh.pet.place.model.vo.PlacePageInfo;
+import com.kh.pet.place.model.vo.PlaceReview;
 
 public class PlaceService {
 
@@ -169,9 +171,37 @@ public class PlaceService {
 		Connection conn = getConnection();
 		
 		ArrayList<Place> list = new PlaceDao().searchPlace(conn, placeName, ppi);
+		
 		close(conn);
 		
 		return list;
+	}
+
+	public ArrayList<PlaceReview> selectPlaceReviewList(int placeNo) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<PlaceReview> list = new PlaceDao().selectPlaceReviewList(conn, placeNo);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int insertPlaceReview(PlaceReview pr) {
+		Connection conn = getConnection();
+		
+		int result = new PlaceDao().insertPlaceReview(conn, pr);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 
