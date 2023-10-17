@@ -13,14 +13,14 @@ public class PromotionBoard {
 	private int agentNo; //AGENT_NO	NUMBER
 	private String PromotionWriter; //
 	private String titleImg;
-	private Date promotionEventDate;
+	private String promotionEventDate;
+	
 	public PromotionBoard() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public PromotionBoard(int promotionNo, String promotionTitle, String promotionContent, Date promotionDate,
 			int promotionView, String status, int agentNo, String promotionWriter, String titleImg,
-			Date promotionEventDate) {
+			String promotionEventDate) {
 		super();
 		this.promotionNo = promotionNo;
 		this.promotionTitle = promotionTitle;
@@ -87,10 +87,10 @@ public class PromotionBoard {
 	public void setTitleImg(String titleImg) {
 		this.titleImg = titleImg;
 	}
-	public Date getPromotionEventDate() {
+	public String getPromotionEventDate() {
 		return promotionEventDate;
 	}
-	public void setPromotionEventDate(Date promotionEventDate) {
+	public void setPromotionEventDate(String promotionEventDate) {
 		this.promotionEventDate = promotionEventDate;
 	}
 	@Override

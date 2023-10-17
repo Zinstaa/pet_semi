@@ -50,7 +50,7 @@ public class promotionBoardDetailController extends HttpServlet {
 			
 			// PromotionBoard테이블 조회 요청
 			PromotionBoard pb = new PromotionBoardService().selectPromotionBoard(promotionNo);
-			System.out.println("pb");
+			// System.out.println("pb");
 			
 			// 기존에 만든 selectPromotionBoard()를 호출해서 재활용하려 했더니 null값 나옴
 			
@@ -60,6 +60,8 @@ public class promotionBoardDetailController extends HttpServlet {
 			// 요청 결과를 attribute 영역에 담는 단계
 			request.setAttribute("pb",pb);
 			request.setAttribute("list", list);
+			
+			System.out.println(pb);
 			
 			// 응답 view 지정단계 
 			request.getRequestDispatcher("views/promotionBoard/promotionBoardDetailView.jsp").forward(request, response);

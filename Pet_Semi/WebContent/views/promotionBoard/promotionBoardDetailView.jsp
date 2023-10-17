@@ -13,6 +13,8 @@
 <style>
 	.outer9_1{
 	background-color:white;
+	width:600px;
+	height:800px;
 	}
     
 </style>
@@ -23,7 +25,7 @@
 
     <div class="outer9_1">
         <br>
-        <h2 align="center" style="font-size: 45px;">저희 가게와 행사를 소개합니다.</h2>
+        <h2 align="center" style="font-size: 30px;">저희 가게와 행사를 소개합니다.</h2>
 
         <table align="center" border="1" id="promotionDetail-form">
             <tr>
@@ -57,7 +59,7 @@
             <% for(int i = 1; i < list.size(); i++) { %>
             <tr>
             	<td>상세이미지-<%= i %></td>
-            	<td><img src="<%= contextPath %>/<%=list.get(i).getPromotionFilePath()%>/<%=list.get(i).getPromotionFileChangeName()%>" alt="상세이미지<%=i %>" id="contentImg<%=i %>" width="300" height="300"></td>
+            	<td><img src="<%= contextPath %>/<%=list.get(i).getPromotionFilePath()%>/<%=list.get(i).getPromotionFileChangeName()%>" alt="상세이미지<%=i %>" id="contentImg<%=i %>" width="250" height="180"></td>
             	<% } %>
             </tr>
 

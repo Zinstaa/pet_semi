@@ -110,7 +110,10 @@ public class PromotionBoardDao {
 			pstmt.setString(1, pb.getPromotionTitle());
 			pstmt.setString(2,  pb.getPromotionContent());
 			pstmt.setInt(3, Integer.parseInt(pb.getPromotionWriter()));
-			pstmt.setDate(4, pb.getPromotionEventDate());
+			pstmt.setString(4, pb.getPromotionEventDate());
+			
+			System.out.println(pb);
+			
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -119,6 +122,7 @@ public class PromotionBoardDao {
 			close(pstmt);
 		}
 		return result;
+		
 	}
 	
 	public int insertPromotionFileList(Connection conn, ArrayList<PromotionFile> list) {
@@ -221,6 +225,7 @@ public class PromotionBoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  promotionNo);
 			rset = pstmt.executeQuery();
 			
 			while (rset.next()) {
@@ -231,7 +236,7 @@ public class PromotionBoardDao {
 				pb.setPromotionContent(rset.getString("PROMOTION_CONTENT"));
 				pb.setPromotionDate(rset.getDate("PROMOTION_DATE"));
 				pb.setPromotionWriter(rset.getString("MEMBER_ID"));
-				pb.setPromotionEventDate(rset.getDate("PRROMOTION_EVENT_DATE"));
+				pb.setPromotionEventDate(rset.getString("PROMOTION_EVENT_DATE"));
 			}
 ;
 		} catch (SQLException e) {
@@ -248,7 +253,7 @@ public class PromotionBoardDao {
 		ArrayList<PromotionFile> list = new ArrayList();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectPromotionFile");
+		String sql = prop.getProperty("selectPromotionFileList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -76,11 +76,13 @@
 		  		PROMOTION_NO,
 		  		PROMOTION_TITLE,
 		  		PROMOTION_CONTENT,
-		  		PROMPTION_WRITER
+		  		PROMPTION_WRITER,
+		  		PROMOTION_EVENT_DATE
 		  		)
 		VALUES
 				(
 				PROMOTION_SEQ.NEXTVAL,
+				?,
 				?,
 				?,
 				?
@@ -187,9 +189,11 @@
 				PROMOTION_FILE_UPLOAD_DATE
 		  FROM
 		  		PROMOTION_FILE
+		 WHERE
+		 		PROMOTION_NO = ?
 		 ORDER
 		    BY
-		    	PROMOTION_NO DESC
+		    	PROMOTION_NO ASC
 	</entry>
 	
 	
