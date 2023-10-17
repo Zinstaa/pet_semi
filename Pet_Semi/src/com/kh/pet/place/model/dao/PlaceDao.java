@@ -16,6 +16,7 @@ import com.kh.pet.place.model.vo.Place;
 import com.kh.pet.place.model.vo.PlaceCategory;
 import com.kh.pet.place.model.vo.PlaceFile;
 import com.kh.pet.place.model.vo.PlacePageInfo;
+import com.kh.pet.place.model.vo.PlaceReview;
 
 public class PlaceDao {
 	
@@ -490,6 +491,63 @@ public class PlaceDao {
 		
 		return list;
 		
+	}
+
+	public ArrayList<PlaceReview> selectPlaceReviewList(Connection conn, int placeNo) {
+
+		ArrayList<PlaceReview> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				PlaceReview pr = new PlaceReview();
+				pr.setPlaceReviewNo(rset.getInt("PLACE_REVIEW_NO")); 
+				pr.setPlaceReviewContent(rset.getString("PLACE_REVIEW_CONTENT")); 
+				pr.setPlaceReviewWriter(rset.getString("MEMBER_ID")); 
+				pr.setPlaceReviewDate(rset.getString("PLACE_REVIEW_DATE"));
+				
+				list.add(pr);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int insertPlaceReview(Connection conn, PlaceReview pr) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertPlaceReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pr.getPlaceReviewContent());
+			pstmt.setInt(2, pr.getPlaceNo());
+			pstmt.setInt(3, Integer.parseInt(pr.getPlaceReviewWriter()));
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }
