@@ -67,6 +67,7 @@
         <br>
         <div>
         	<a href="<%= contextPath %>/promotionList.pr?cpage=1" class="btn btn-sm btn-info">목록으로</a>
+        	<a href="<%= %>" class="" >삭제하기</a>
         	<br>
         </div>
     </div>
