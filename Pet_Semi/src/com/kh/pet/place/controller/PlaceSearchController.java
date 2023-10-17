@@ -72,9 +72,7 @@ public class PlaceSearchController extends HttpServlet {
 		
 		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
         ArrayList<Place> list = new PlaceService().searchPlace(placeName, ppi);		
-        
         // 사용자가 입력한 값을 세션에 저장
-        System.out.println(list.size());
         if (placeName != null) {
             HttpSession session = request.getSession();
             session.setAttribute("placeName", placeName);
