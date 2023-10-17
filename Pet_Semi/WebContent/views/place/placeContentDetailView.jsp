@@ -96,12 +96,12 @@
     /* place_detail_info 부분 */
     #place_detail_info {
         height: 100%;
-        margin-bottom: 20px;
     }
 
     /* place_detail_review 부분 */
     #place_detail_review {
         height: 15%;
+        margin-bottom: 20px;
     }
 
     /* place_detail_image 부분 */
@@ -391,7 +391,42 @@
                     </div>
                 </div>
                 <div id="place_detail_review">
-                    
+                    <div class="place_detail_content main" id="pl-review">
+                        <div class="place_main_text">
+                            <div class="place_symbol">
+                                <img src="https://svgsilh.com/svg/1084899.svg" alt="dog_symbol">
+                            </div>
+                            <h3>리뷰</h3>
+                        </div>
+                        <div class="place_content_text" id="place_review">
+                        	<div id="place_review_submit">
+                        	<table border=1>
+                            	<thead>
+                      			 	<tr>
+	                           		<th>리뷰작성</th>
+                           			<% if(loginUser != null) {%>
+	                           			<td>
+	                           				<textarea id="reviewContent" cols="50" row="2" style="resize: none"></textarea>
+	                           			</td>
+	                           			<td>
+	                           				<button onclick="insertPlaceReview();">등록</button>
+	                       				</td>
+                           			<% } else { %>
+	                           			<td>
+	                           			<textarea id="reviewContent" readonly cols="50" row="2" style="resize: none">로그인 후 이용가능합니다.</textarea>
+	                           				</td>
+	                           			<td>
+	                           				<button>등록</button>
+	                           			</td>
+                           			<% } %>
+                      				</tr>
+                   				</thead>
+								<tbody>
+								
+								</tbody>
+							</table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="place_nav_bar">
@@ -410,6 +445,61 @@
                 </div>
             </div>
         </div>
+        <script>
+            function selectPlaceReviewList() {
+
+                $.ajax({
+                    url : 'plist.pl',
+                    data : {
+                    	pno : <%= p.getPlaceNo() %>},
+                    	success : function(result) {
+                    	console.log(result)
+                    	
+                    	let resultPlStr = '';
+                    	for(let i in result) {
+                    		
+                    		resultPlStr += '<tr>'
+		  							  +  '<td>' + result[i].placeReviewWriter + ' (' +result[i].placeReviewDate + ')' + '</td>'
+		  							  +  '</tr>' + '<tr>'
+		  							  +  '<td colspan="2">' + result[i].placeReviewContent + '</td>'
+		  							  +  '</tr>'
+                    	}
+                    	
+                    	$('#place_review tbody').html(resultPlStr);
+                    },
+                    error : function() {
+                    	console.log('대 실 패 !')
+                    }
+                    
+                })
+            }
+            
+            $(function(){
+            	selectPlaceReviewList();
+            	
+            	setInterval(selectPlaceReviewList, 1000);
+            });
+            
+            function insertPlaceReview() {
+            	
+            	$.ajax({
+            		url : 'pinsert.pl',
+            		type : 'post',
+            		data : {
+            			pno : <%= p.getPlaceNo() %>},
+            			content : $('#reviewContent').val()
+            		},
+            		success : function(result){
+            			console.log(result);
+            		},
+            		error : function() {
+            			console.log('대 실 패 !')
+            		}
+            	})
+            	
+            }
+
+        </script>
         
         <script>
             // 슬라이더 동작 정의
