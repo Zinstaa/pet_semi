@@ -190,4 +190,44 @@
 		STATUS = 'U'
 	</entry>
 	
+	<entry key="insertDog">
+	INSERT INTO
+		DOG (
+			DOG_NO,
+			DOG_NAME,
+			DOG_KIND,
+			DOG_AGE,
+			MEMBER_NO
+		)
+		VALUES(
+			DOG_SEQ.NEXTVAL,
+			?,
+			?,
+			?,
+			?
+		)
+		
+	</entry>
+	<entry key="insertMemberFile">
+	INSERT INTO
+		MEMBER_FILE (
+			MEMBER_FILE_NO,
+			MEMBER_FILE_ORIGIN_NAME,
+			MEMBER_FILE_CHANGE_NAME,
+			MEMBER_FILE_PATH,
+			MEMBER_FILE_UPLOAD_DATE,
+			DOG_NO
+		)
+		VALUES(
+			ME_FILE_SEQ.NEXTVAL,
+			?,
+			?,
+			?,
+			SYSDATE,
+			DOG_SEQ.CURRVAL
+		)
+		
+	</entry>
+	
+	
 </properties>
