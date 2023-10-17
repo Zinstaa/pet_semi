@@ -164,7 +164,7 @@
     
     
     <div id="place_content">
-        <h2 id="search_answer"><%= placeName %> 검색결과 </h2>
+        <h2 id="search_answer">'<%= placeName %>'의 검색결과는 총 <%= list.size() %>개 입니다. </h2>
        
         <div id="list-area">
             <% if(list.isEmpty()) {%>
