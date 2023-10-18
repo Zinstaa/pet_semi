@@ -44,7 +44,7 @@ public class NotcieDetailController extends HttpServlet {
 		//jsp에서 hashmap값 활용이 어렵기 때문에 여기서 풀고 넘겨준다.
 		Notice n = (Notice)map.get("n");
 		
-		
+		if(n != null) {
 		//System.out.println(map.get("nextNo"));
 		//hashmap에 int값이 남아있기 때문에 hashmap도 같이 넘겨준다.
 		request.setAttribute("map", map);
@@ -52,6 +52,10 @@ public class NotcieDetailController extends HttpServlet {
 		request.setAttribute("nf", nf);
 		request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
 		//System.out.println(n.getNoticeDate());
+		}else {
+			request.setAttribute("errorMsg", "게시글 조회에 실패했습니다.");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}
 	}
 
 	/**
