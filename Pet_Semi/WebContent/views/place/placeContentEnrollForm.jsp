@@ -11,60 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>플레이스 작성</title>
-<style>
-
-	div{
-		border: 1px solid black;
-		box-sizing: border-box;
-	}
-
-	h2 {
-        text-align: center;
-    }
-
-	/* place_enroll-form 부분 */
-    #place-enroll-form {
-		text-align: center;
-        width: 1200px;
-        height: 1500px;
-        margin: auto;
-        padding-top: 125px;
-		background-color: #fff5ce;
-    }
-
-	#enroll-form {
-		width: 1000px;
-		margin: auto;
-	}
-
-	#enroll-form > div {
-		margin-top: 20px;
-	}
-
-	#enroll-form select, #enroll-form input, #enroll-form textarea {
-		width: 100%;
-	}
-
-	#enroll-form input[type="file"]{
-		width: 70%;
-	}
-
-	#enroll-form > div > table {
-		width: 80%;
-		border-collapse: separate;
-   		border-spacing: 5px 5px;
-	}
-
-	.file {
-		text-align: center;
-		width: 80%;
-	}
-
-	tr > td > img {
-		border: 1px solid lightgray;
-	}
-
-</style>
+<!-- placecontentenrollform.css 추가 -->
+<link rel="stylesheet" href="resources/css_files/place/placecontentenrollform.css">
 </head>
 <body>
 	 <%@ include file = "../common/menubar.jsp" %>
