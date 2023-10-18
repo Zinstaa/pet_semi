@@ -512,7 +512,7 @@ public class PlaceDao {
 				PlaceReview pr = new PlaceReview();
 				pr.setPlaceReviewNo(rset.getInt("PLACE_REVIEW_NO")); 
 				pr.setPlaceReviewContent(rset.getString("PLACE_REVIEW_CONTENT")); 
-				pr.setPlaceReviewWriter(rset.getString("MEMBER_ID")); 
+				pr.setPlaceReviewWriter(rset.getString("MEMBER_NAME")); 
 				pr.setPlaceReviewDate(rset.getString("PLACE_REVIEW_DATE"));
 				
 				list.add(pr);
