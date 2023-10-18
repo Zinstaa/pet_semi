@@ -166,4 +166,12 @@ public class MemberService {
 		close(conn);
 		return (result1 * result2);
 	}
+	public ArrayList<Dog> selectDogList(){
+		Connection conn = getConnection();
+		ArrayList<Dog> list = new MemberDao().selectDogList(conn);
+		
+		close(conn);
+		return list;
+	}
+	
 }

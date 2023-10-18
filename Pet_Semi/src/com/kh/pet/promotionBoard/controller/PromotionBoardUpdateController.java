@@ -1,29 +1,23 @@
-package com.kh.pet.member.controller;
+package com.kh.pet.promotionBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.member.model.service.MemberService;
-import com.kh.pet.member.model.vo.Dog;
-
 /**
- * Servlet implementation class MyPageController
+ * Servlet implementation class PromotionBoardUpdateController
  */
-@WebServlet("/mypage.me")
-public class MyPageController extends HttpServlet {
+@WebServlet("/promotionUpdate.pr")
+public class PromotionBoardUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageController() {
+    public PromotionBoardUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +26,12 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	//	ArrayList<Dog> list = new MemberService().selectDogList();
-	//	request.setAttribute("list", list);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/common/mypagebar.jsp");
-		view.forward(request, response);
+		// 인코딩 해줘야됨
+		request.setCharacterEncoding("UTF-8");
+		
+		// 값뽑기 해줘야되는데... 사진게시판도 파일용량 제한을 해둬야될지? 고민스러움
+		
 	}
 
 	/**

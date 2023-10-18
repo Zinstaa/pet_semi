@@ -19,6 +19,7 @@ import com.kh.pet.member.model.vo.MemberFile;
 import com.kh.pet.notice.vo.Notice;
 import com.kh.pet.notice.vo.NoticeFile;
 import com.kh.pet.common.JDBCTemplate.*;
+import com.kh.pet.common.model.PageInfo;
 
 public class MemberDao {
 	
@@ -473,6 +474,34 @@ private Properties prop = new Properties();
 		}
 		return result;
 	}
-	
+	public ArrayList<Dog> selectDogList(Connection conn){
+		ArrayList<Dog> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectDogList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Dog d = new Dog();
+				d.setDogKind(rset.getString("DOG_KIND"));
+				d.setDogAge(rset.getString("DOG_AGE"));
+				d.setDogName(rset.getString("DOG_NAME"));
+				d.setPhoth(rset.getString("PHOTO"));
+				
+				list.add(d);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 }
 		
