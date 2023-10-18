@@ -81,7 +81,7 @@ String contextPath = request.getContextPath();
             <input type="button" id="btn_img">
          </div>
          <%} %>
-         <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
+         <% if(loginUser != null && loginUser.getStatus().equals("A")){ %>
          <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
