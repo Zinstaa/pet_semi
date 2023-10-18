@@ -25,7 +25,7 @@
 		AND
 			MEMBER_PWD = ?
 		AND
-			STATUS = 'U'
+			STATUS IN ('U', 'A')
 	</entry>
 
 	<entry key="detailMember">
