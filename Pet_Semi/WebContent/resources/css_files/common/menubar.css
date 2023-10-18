@@ -25,12 +25,15 @@ div {
 }
 
 .head_logo{
-   width : 75%;
+   width: 900px;
+   height: 100px;
+   
 }
 
-.head_logo > h1 {
-   text-align: center;
-   line-height : 100px;
+.head_logo > img {
+   width: 250px;
+   height: 125px;
+   margin-left: 300px;
 }
 
 .head_login{

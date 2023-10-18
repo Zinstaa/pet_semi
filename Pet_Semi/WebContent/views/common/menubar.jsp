@@ -25,7 +25,7 @@ String contextPath = request.getContextPath();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- menubar.css 추가 -->
-<link rel="stylesheet" href="resources/css_files/menubar.css?after" type="text/css">
+<link rel="stylesheet" href="resources/css_files/common/menubar.css?after" type="text/css">
 </head>
 <body>
 <script>
@@ -40,7 +40,7 @@ String contextPath = request.getContextPath();
    <!-- 로고 위치 -->
  <div class="header">
       <div class="head_logo">
-         <h1>어댕가지~?</h1>
+         <img src="resources/common_files/logo.svg" alt="어댕가지 로고">
       </div>
       <div class="head_login">
          <% if(loginUser==null) {%>
@@ -81,7 +81,7 @@ String contextPath = request.getContextPath();
             <input type="button" id="btn_img">
          </div>
          <%} %>
-         
+         <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
          <div id="admin_login" ><!--style="display: none;"-->
             <table>
                <tr>
@@ -91,6 +91,7 @@ String contextPath = request.getContextPath();
                </tr>
             </table>
          </div>
+         <%} %>
          
       </div> <!-- <div class="head_login"> 닫히는부분 -->
          <script>

@@ -5,110 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>하단 푸터</title>
-<style>
-	div {
-		/*border: 1px solid black;*/
-		box-sizing: border-box;
-	}
-
-	#footer{
-		background-color: #975228;
-		position: relative;
-		width: 100%;
-		height: 150px;
-		font-weight: 300;
-		text-align: left;
-		padding: 30px 0;
-		font-size: 14px;
-	}
-
-	.footer_wrap {
-		width : 1200px;
-		height: 100px;
-		margin: auto;
-	}
-
-	.footer_wrap > div { 
-		float: left;
-	}
-	
-	#footer_logo, #footer_info, #footer_btn {
-		height : 100%;
-		margin: auto;
-	}
-
-	#footer_logo, #footer_btn {
-		width: 20%;
-	}
-
-	#footer_info {
-		width: 60%;
-		line-height: 100px;
-	}
-
-	#footer_logo {
-		background-size: 100%;
-		background-color: #975228;
-		background-repeat: repeat;
-	}
-
-	#footer_logo>img {
-		width : 50%;
-        height : 100%;
-        margin: auto;
-	}
-
-	.footer_span {
-		color: aliceblue;
-		line-height: 20px;
-	}
-
-	.copy {
-		color: gray;
-		line-height: 5px;
-	}
-
-	#footer_btn  {
-		float: right;
-    	position: relative;
-	}
-
-	.ft{
-		float: right;
-		position: absolute;
-		right: 40px;
-		display: block;
-		top: 30px;
-	}
-
-	.ft > div {
-		width: 40px;
-		height: 40px;
-		float: left;
-		text-align: center;
-		line-height: 35px;
-		background-color: #ffce50;
-		margin-right: 10px;
-		cursor: pointer;
-		border: none;
-		border-radius: 25px;
-	}
-
-	#site > a > img, #sns > a > img, #map > a > img {
-		width: 24px;
-		height: 24px;
-		padding: 0;
-		margin: 0;
-	}
-
-
-</style>
+<!-- footer.css 추가 -->
+<link rel="stylesheet" href="resources/css_files/common/footer.css">
 </head>
 <body>
 	<div id="footer">
 		<div class="footer_wrap">
 			<div id="footer_logo">
-				<img src="https://media.tenor.com/vxJjiiRh3CUAAAAd/%EC%B6%98%EC%8B%9D-%EC%B6%98%EC%8B%9D%EC%9D%B4.gif" alt="logo">
+				<h2>어댕가지~?</h2>
 			</div>
 			<div id="footer_info">
 				<p class="footer_span">

@@ -3,27 +3,24 @@ package com.kh.pet.member.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.pet.member.model.service.MemberService;
-import com.kh.pet.member.model.vo.Dog;
 
 /**
- * Servlet implementation class MyPageController
+ * Servlet implementation class PetListController
  */
-@WebServlet("/mypage.me")
-public class MyPageController extends HttpServlet {
+@WebServlet("/petList.me")
+public class PetListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageController() {
+    public PetListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +29,7 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	//	ArrayList<Dog> list = new MemberService().selectDogList();
-	//	request.setAttribute("list", list);
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/common/mypagebar.jsp");
-		view.forward(request, response);
 	}
 
 	/**

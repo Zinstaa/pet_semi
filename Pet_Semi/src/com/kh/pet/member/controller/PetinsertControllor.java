@@ -83,19 +83,16 @@ public class PetinsertControllor extends HttpServlet {
 			
 			//응답뷰 지정
 			if(result > 0) {
-				request.getSession().setAttribute("alertMsg", "게시글 등록 성공");
+				request.getSession().setAttribute("alertMsg", "강쥐 등록 성공");
 				response.sendRedirect(request.getContextPath()+"/mypage.me");
 			}else {
 				if(mf != null) 
 					new File(savePath + mf.getMemberFileChangeName()).delete();
-				request.getSession().setAttribute("alertMsg", "게시글 등록 실패");
+				request.getSession().setAttribute("alertMsg", "강쥐 등록 실패");
 				response.sendRedirect(request.getContextPath()+"/mypage.me");
 				}
 			}
 		}
-	
-
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
