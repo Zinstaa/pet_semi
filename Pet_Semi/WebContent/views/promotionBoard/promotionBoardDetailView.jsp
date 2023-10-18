@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <th style="color:lightgray;">작성자</th>
-                <td style="weight:20%; color:lightgray;"><%=pb.getPromotionWriter() %></td>
+                <td style="weight:20px; color:lightgray;"><%=pb.getPromotionWriter() %></td>
                 <th>행사일정</th>
                 <td><%=pb.getPromotionEventDate() %></td>
                 <th style="color:lightgray;">작성일</th>
