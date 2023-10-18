@@ -18,7 +18,7 @@
 <style>
     div {
         box-sizing: border-box;
-        border: 1px solid black;
+        /*border: 1px solid black;*/
     }
 
     h2 {
@@ -120,7 +120,7 @@
 
     /* place_detail_place_info 부분 */
     #place_detail_place_info {
-        height: 60%;
+        height: 100%;
     }
 
     /* place_url 부분 */
@@ -131,14 +131,14 @@
 
     /* place_info 부분 */
     #place_info {
-        height: 80%;
+        height: 60%;
         width: 90%;
         margin: auto;
-        margin-top: 40px;
+        margin-top: 100px;
         margin-left: 5px;
         border: 1px solid lightgray;
         border-radius: 20px;
-        padding-top: 20px;
+        padding-top: 40px;
         padding-left: 10px;
         background-color: #e0bc93;
     }
@@ -193,11 +193,6 @@
 
     .sub {
         margin-top: 40px;
-    }
-
-    /* place_detail_caution 부분 */
-    #place_detail_caution {
-        height: 40%;
     }
 
     /* swiper 라이브러리 css */
@@ -285,6 +280,10 @@
         height: 50px;
     }
 
+    #place_review{
+        margin-top: 20px;
+    }
+
 
 </style>
 </head>
@@ -350,10 +349,6 @@
                                 </tr>
                             </table>
                         </div>
-                    </div>
-                    <div id="place_detail_caution">
-                        <h2 style="margin-top: 20px;">※ 주의사항 ※</h2>
-						<!-- <%= p.getPlaceCaution() %> -->
                     </div>
                 </div>
             </div>
@@ -425,7 +420,7 @@
                             </div>
                             <h3>리뷰</h3>
                         </div>
-                        <div class="place_content_text" id="place_review">
+                        <div id="place_review">
                         	<div id="place_review_submit">
                         	<table>
                             	<thead>
@@ -471,6 +466,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <script>
             function selectPlaceReviewList() {
 
