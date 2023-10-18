@@ -259,6 +259,33 @@
         left: 13px;
     }
 
+    /* place_review_submit 부분 */
+    #place_review_submit {
+        margin: auto;
+    }
+
+    #place_review_submit > table {
+        width: 100%;
+    }
+
+    #place_review_submit > table > thead > tr > th,  #place_review_submit > table > thead > tr > td{
+        text-align: center;
+    }
+
+    #place_review_submit textarea {
+        margin-left: 30px;
+        width: 100%;
+        resize: none;
+    }
+
+    #place_review_submit button {
+        margin-left: 10px;
+        margin-bottom: 5px;
+        width: 50px;
+        height: 50px;
+    }
+
+
 </style>
 </head>
 <body>
@@ -400,20 +427,19 @@
                         </div>
                         <div class="place_content_text" id="place_review">
                         	<div id="place_review_submit">
-                        	<table border=1>
+                        	<table>
                             	<thead>
                       			 	<tr>
-	                           		<th>리뷰작성</th>
                            			<% if(loginUser != null) {%>
-	                           			<td>
-	                           				<textarea id="reviewContent" cols="50" row="2" style="resize: none"></textarea>
+	                           			<td colspan="2">
+	                           				<textarea id="reviewContent" cols="50" row="2" style="resize: none" onclick="document.getElementById('reviewContent').value='';">리뷰 내용을 작성해 주세요</textarea>
 	                           			</td>
 	                           			<td>
-	                           				<button onclick="insertPlaceReview();">등록</button>
+	                           				<button onclick="insertPlaceReview();" class="btn btn-sm btn-warning">등록</button>
 	                       				</td>
                            			<% } else { %>
 	                           			<td>
-	                           			<textarea id="reviewContent" readonly cols="50" row="2" style="resize: none">로그인 후 이용가능합니다.</textarea>
+	                           			<textarea id="reviewContent" readonly cols="50" row="1" >로그인 후 이용가능합니다.</textarea>
 	                           				</td>
 	                           			<td>
 	                           				<button>등록</button>
@@ -451,24 +477,26 @@
                 $.ajax({
                     url : 'plist.pl',
                     data : {
-                    	pno : <%= p.getPlaceNo() %>},
-                    	success : function(result) {
+                   	pno : <%= p.getPlaceNo() %>
+                   	},
+                   	success : function(result) {
                     	console.log(result)
                     	
                     	let resultPlStr = '';
                     	for(let i in result) {
                     		
                     		resultPlStr += '<tr>'
-		  							  +  '<td>' + result[i].placeReviewWriter + ' (' +result[i].placeReviewDate + ')' + '</td>'
-		  							  +  '</tr>' + '<tr>'
-		  							  +  '<td colspan="2">' + result[i].placeReviewContent + '</td>'
+		  							  +  '<td colspan="3" style="padding-left: 20px; padding-top:10px;">' + result[i].placeReviewWriter + ' (' +result[i].placeReviewDate + ')' + '</td>'
+		  							  +  '</tr>' 
+                                      + '<tr>'
+		  							  +  '<td colspan="3" style="padding-left: 20px; padding-bottom:10px;  border-bottom: 1px solid lightgray;">' + result[i].placeReviewContent + '</td>'
 		  							  +  '</tr>'
                     	}
-                    	
-                    	$('#place_review tbody').html(resultPlStr);
-                    },
+                   	
+                   		$('#place_review tbody').html(resultPlStr);
+                   	},
                     error : function() {
-                    	console.log('대 실 패 !')
+                    	console.log('댓글을 읽어오지 못했습니다.')
                     }
                     
                 })
@@ -486,14 +514,18 @@
             		url : 'pinsert.pl',
             		type : 'post',
             		data : {
-            			pno : <%= p.getPlaceNo() %>},
-            			content : $('#reviewContent').val()
+	           			pno : <%= p.getPlaceNo() %>,
+	           			content : $('#reviewContent').val()
             		},
             		success : function(result){
-            			console.log(result);
+            			if(result > 0) {
+        					$('reviewContent').val('');
+        					
+        					selectPlaceReviewList();
+        				};
             		},
             		error : function() {
-            			console.log('대 실 패 !')
+            			console.log('댓글을 읽어오지 못했습니다.')
             		}
             	})
             	
