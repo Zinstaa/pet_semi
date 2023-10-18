@@ -17,154 +17,16 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>플레이스 검색</title>
-<style>
-    div {
-        box-sizing: border-box;
-        /*border: 1px solid black;*/
-    }
-
-    /* place_content 부분 */
-    #place_content {
-        padding-top: 125px;
-        width: 1200px;
-        height: 100%;
-        margin: auto;
-    }
-    
-    #search_answer {
-        margin-bottom: 55px;
-        color: #000000;
-        text-align: center;
-    }
-
-    
-    /* 맨위로 이동 키 */
-    #top {
-        float: right;
-        height: 50px;
-        width: 50px;
-        margin-right: 30px;
-    }
-    
-    #toTop {
-        height: 50px;
-        width: 50px;
-        margin: auto;
-        background-color: #ffce50;
-        border-radius: 50px;
-        color: black;
-        text-decoration: none;
-        position: fixed;   /* 포지션 고정 */
-        bottom: 175px;     /* 밑에서 175px */
-        display: none;     /* 보여지지 없음 - 기본적으로  안보여지게 */
-        z-index: 9999;     /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
-    }
-
-    #toTop > img {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        top: 3px;
-        left: 13px;
-    }
-    
-    /* placeContent 부분 */
-    #list-area {
-        text-align: center;
-        border: 1px solid white;
-    }
-
-    .place-content {
-        width: 250px;
-        height: 200px;
-        border: 1px solid lightgray;
-        border-radius: 20px;
-        background-color: #FFF8DB;
-        display: inline-block;
-        margin: 7px;
-    }
-
-    
-    .place-content > #img-place, .place-content > #btn-place {
-        float: left;
-        height: 75%;
-    }
-    
-    #img-place {
-        width: 65%;
-    }
-    
-    #img-place > img {
-        width: 125px;
-        height: 125px;
-        border: 1px solid lightgrey;
-        border-radius: 10px;
-        margin-top: 15px;
-        margin-left: 10px;
-    }
-    
-    #img-place:hover ,#name-place:hover {
-        cursor: pointer;
-        opacity: 0.75;
-    }
-
-    #btn-place {
-        width: 35%;
-    }
-
-    #name-place {
-        float: left;
-        width: 100%;
-        height: 25%;
-        line-height: 49px;
-    }
-
-    .pl-btn {
-        background-color: #ffce50;
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        margin-top: 20px;
-        margin-right: 10px;
-        line-height: 40px;
-    }
-
-    #star > a > img {
-		width: 30px;
-		height: 30px;
-		padding: 0;
-		margin: 0;
-	}
-
-    #map > a > img {
-		width: 24px;
-		height: 24px;
-		padding: 0;
-		margin: 0;
-	}
-
-    /* search-page 부분*/
-    #search-page {
-        margin-bottom: 50px;
-    }
-
-    #more{
-        text-decoration: none;
-        color: #000000;
-    }
-        
-    
-</style>
+<link rel="stylesheet" href="resources/css_files/place/placesearchpage.css">
 </head>
 <body>
     <%@ include file = "../common/menubar.jsp" %>
     
     
     <div id="place_content">
-        <h2 id="search_answer">'<%= placeName %>' 검색결과 </h2>
+        <h2 id="search_answer">'<%= placeName %>' 의 검색결과는 총 <%= list.size() %>개 입니다. </h2>
        
         <div id="list-area">
             <% if(list.isEmpty()) {%>
@@ -182,12 +44,12 @@
 	                        </div>
 	                        <div id="btn-place" align="center">
 	                            <div class="pl-btn" id="star">
-	                                <a href="https://kko.to/G2wEv1yqMf">
+	                                <a href="#">
 	                                    <img src="https://svgsilh.com/svg/1139372-ffffff.svg" alt="찜">
 	                                </a>
 	                            </div>
 	                            <div class="pl-btn" id="map">
-	                                <a href="https://maps.google.com/maps?ll=38.576431,128.382538&z=14&t=m&hl=ko&gl=KR&mapclient=embed&cid=2641597827115945866">
+	                                <a href="https://www.google.co.kr/maps/search/"<%= list.get(i).getPlaceName() %>>
 	                                    <img src="https://svgsilh.com/svg/1294814-ffffff.svg" alt="지도">
 	                                </a>
 	                            </div>
@@ -235,7 +97,7 @@
                 
             <% } else { %>
                 <!-- 등록된 장소가 있을 때-->
-                <a href="#more-page" id="more"> '<%= placeName %>' 검색결과 더 보기</a>
+                <a href="#more-page" id="more"> <%= placeName %> 검색결과 더 보기</a>
 
                 <div id="more-page" align="center" style="display: none;">
                     <% for(int j = placeLimit; j < list.size(); j++) { %>

@@ -196,6 +196,17 @@
 		    	PROMOTION_NO ASC
 	</entry>
 	
+	<entry key="deletePromotionBoard">
+		UPDATE
+				PROMOTION_BOARD
+		   SET
+		   		STATUS = 'N'
+		 WHERE
+		 		PROMOTION_NO = ?
+		   AND
+		   		STATUS = 'Y'
+	</entry>
+	
 	
 	
 	
