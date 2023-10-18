@@ -226,7 +226,20 @@
 			SYSDATE,
 			DOG_SEQ.CURRVAL
 		)
-		
+	</entry>
+	<entry key="selectDogList">
+		SELECT
+			DOG_NO,
+			DOG_KIND,
+			DOG_AGE,
+			DOG_NAME,
+			MEMBER_FILE_CHANGE_NAME
+		FROM
+			DOG
+		JOIN 
+            MEMBER_FILE USING(DOG_NO)
+		WHERE
+			MEMBER_FILE.STATUS = 'Y';
 	</entry>
 	
 	

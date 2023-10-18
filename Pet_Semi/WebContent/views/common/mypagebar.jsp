@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="java.util.ArrayList, com.kh.pet.member.model.vo.*" %>
+<%
+	ArrayList<Dog> list = (ArrayList<Dog>)request.getAttribute("list");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +63,9 @@
         cursor:pointer;
         opacity: 0.7;
     }
+    #pet-area{
+        text-align:  center;
+    }
 
 	
 </style>
@@ -84,30 +91,15 @@
 		<div class="mymenubar"><a href="#" >내 찜리스트 보기</a></div>
 		<div class="mymenubar"><a href="#" >내 게시글 보기</a></div>
 	</div>
-	
-	 <div class="thumbnail" align="center">
+
+ 	 <div class="thumbnail" align="center">
                     <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
-                    <p>
+                   <p>
                     	치와와/ 2살 <br>
                     	도롱이
-						</p>
-                        </div>
-                         <div class="thumbnail" align="center">
-                    <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
-                    <p>
-                    No. 2 / 기엽죠? <br>
-                                        조회수 : 18221
-                        </p>
-                        </div>
-	 <div class="thumbnail" align="center">
-                    <img src="https://i.namu.wiki/i/geGngQMnvmK2g3wuKU4O1uNs8Ix1HXQULk9PrnT57lHOlU4AxL9qsNCYXOOY9DIqPWtXnphq8G6NzCcvzv-ppQ.webp" alt="치이카와">
-                    <p>
-                    No. 2 / 기엽죠? <br>
-                                        조회수 : 18221
-                        </p>
-                        </div>
-	
-</div>
+                    </p>
+				</div>
+                   
 	
 	
 <div class="container">
