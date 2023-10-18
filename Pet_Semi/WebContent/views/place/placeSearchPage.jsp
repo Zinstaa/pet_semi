@@ -93,11 +93,11 @@
             <% if(list.size() < placeLimit) {%>
             
                 <!-- 등록된 장소가 없을 때-->
-                <a href="" id="more" style="display: none">더 보기</a>
+                <a href="#" id="more" style="display: none">더 보기</a>
                 
             <% } else { %>
                 <!-- 등록된 장소가 있을 때-->
-                <a href="#more-page" id="more"> <%= placeName %> 검색결과 더 보기</a>
+                <a href="#more-page" id="more"> '<%= placeName %>' 의 검색결과 더 보기</a>
 
                 <div id="more-page" align="center" style="display: none;">
                     <% for(int j = placeLimit; j < list.size(); j++) { %>
