@@ -304,6 +304,5 @@ public class PromotionBoardDao {
 
 	
 	
-	
 
 

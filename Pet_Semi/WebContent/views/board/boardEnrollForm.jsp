@@ -43,7 +43,7 @@
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td><textarea name="content" style="resize:none;" rows="15"></textarea></td>
+                    <td><textarea name="content" style="resize:none;" rows="15" required></textarea></td>
                 </tr>
                 <tr>
                     <th>첨부파일</th>

@@ -12,6 +12,7 @@ import com.kh.pet.board.model.vo.Board;
 import com.kh.pet.board.model.vo.BoardFile;
 import com.kh.pet.board.model.vo.BoardReview;
 import com.kh.pet.common.model.PageInfo;
+import com.kh.pet.place.model.dao.PlaceDao;
 
 public class BoardService {
 	
@@ -36,6 +37,18 @@ public class BoardService {
 		
 		return list;
 	}
+	
+	public int selectSearchListCount(String boardName) {
+	
+	Connection conn = getConnection();
+	
+	int listCount = new BoardDao().selectSearchListCount(conn, boardName);
+	
+	close(conn);
+	
+	return listCount;
+
+}
 	
 	public int insertBoard(Board b, BoardFile bf) {
 		
@@ -161,5 +174,17 @@ public class BoardService {
 		
 		return result;
 	}
+	
+	public ArrayList<Board> searchBoard(String boardName, PageInfo pi) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().searchBoard(conn, boardName, pi);
+		
+		close(conn);
+		
+		return list;
+	}
+	
 	
 }

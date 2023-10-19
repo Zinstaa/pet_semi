@@ -23,6 +23,12 @@
         margin-top: 5px;
         color: black;
     }
+	#boardReview-area{
+		width: 1200px;
+		margin : auto;
+		background-color: #fff5ce;
+	}
+	
 </style>
 </head>
 <body>
@@ -84,21 +90,19 @@
 		<table align="center">
 			<thead>
 					<tr>
-					<th>댓글</th>			
-					</tr>
-					<tr>
-					<%if(loginUser != null) { %>
-						<td colspan="2">
-							<textarea id="boardReviewContent" cols="50" rows="2" style="resize:none;"></textarea>
-						</td>
-						<td><button onclick="insertBoardReview();">댓글작성</button></td>
+						<th>댓글</th>			
+						<%if(loginUser != null) { %>
+							<td>
+								<textarea id="boardReviewContent" cols="50" rows="3" style="resize:none;"></textarea>
+							</td>
+							<td><button onclick="insertBoardReview();">댓글작성</button></td>
 						<% } else { %>
-						<td>
-    						<textarea readonly cols="50" rows="3" style="resize:none;">로그인 후 이용가능 합니다.</textarea>
-    					</td>
-    					<td><button>댓글작성</button></td>
+							<td>
+	    						<textarea readonly cols="50" rows="2" style="resize:none;">로그인 후 이용가능 합니다.</textarea>
+	    					</td>
+	    					<td><button>댓글작성</button></td>
 						<% } %>
-				</tr>
+					</tr>
 			</thead>
 			<tbody>
 			
@@ -168,6 +172,8 @@
     	}
     
     </script>
+    
+    
 	
 	
 </body>
