@@ -13,134 +13,6 @@
 <!-- mainpage.css 추가-->
 <link rel="stylesheet" href="resources/css_files/common/mainpage.css">
 
-<style>
-    div{
-        border: 1px solid black;
-        box-sizing: border-box;
-    }
-    /* swiper 라이브러리 css */
-    /* 이미지 영역 사이즈 조절 */
-    .swiper {
-        width: 1024px;
-        height: 500px;
-    }
-
-    /* 이미지 사이즈 조절 */
-    .swiper-slide>img {
-        width : 88%;
-        height : 100%;
-        margin-left: 60px;
-    }
-
-    /* 화살표 버튼색 변경 (기본색은 파란색) */
-    div[class^=swiper-button] {
-        color : #ffce50;
-        /* display : none; */ /* 아니면 안보이게 숨기기도 가능 */
-    }
-
-	/* 슬라이드 바색 변경 (기본색은 파란색) */
-    .swiper-pagination-bullet { 
-        width: 12px; height: 12px; background: transparent; border: 1px solid #ffce50; opacity: 1; 
-    }
-    .swiper-pagination-bullet-active { 
-        width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
-    }
-
- 	/* 맨위로 이동 키 */
-    #top {
-        float: right;
-        height: 50px;
-        width: 50px;
-        margin-right: 30px;
-    }
-    
-    #toTop {
-        height: 50px;
-        width: 50px;
-        margin: auto;
-        background-color: #ffce50;
-        border-radius: 50px;
-        color: black;
-        text-decoration: none;
-        position: fixed;   /* 포지션 고정 */
-        bottom: 175px;     /* 밑에서 175px */
-        display: none;     /* 보여지지 없음 - 기본적으로  안보여지게 */
-        z-index: 9999;     /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
-    }
-
-    #toTop > img {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        top: 3px;
-        left: 13px;
-    }
-
-    #content_2{
-        width: 1200px;
-        height: 100%;
-        margin: auto;
-        margin-top: 30px ;
-    }
-
-    #head_logo{
-        width: 255px;
-        height: 130px;
-        
-    }
-
-    #head_logo > img {
-        width: 250px;
-        height: 125px;
-
-    }
-
-    #content_main {
-        margin-top: 20px;
-    }
-
-    #content_main h3 {
-        font-weight: 300;
-    }
-
-    #span{
-        margin-bottom: 10px;
-        display: block;
-        font-weight: lighter;
-    }
-
-    #strong{
-        margin-bottom: 10px;
-        display: block;
-        font-weight: bold;
-    }
-
-    #content_text1{
-        margin-top: 20px;
-        height: 500px;
-        width: 100%;
-    }
-    
-    .circle {
-        float: left;
-        height: 300px;
-        width: 300px;
-        background-image: linear-gradient(lightyellow, #ffce50);
-        border: 1px solid lightyellow;
-        border-radius: 150px;
-        margin-top: 50px;
-        margin-left: 200px;
-    }
-    .circle > h2 {
-        text-align: center;
-        line-height: 50px;
-    }
-
-    .circle > h6 {
-        text-align: right;
-    }
-</style>
-
 </head>
 <body>
 	<%@ include file = "views/common/menubar.jsp" %>
@@ -173,10 +45,13 @@
     
 
     <div id="content_2">
-        <div id="head_logo">
+        <div class="content_head">
+            <h1>어댕가지 소개</h1>
+        </div>
+        <div id="head_logo" class="content_head">
             <img src="resources/common_files/logo.svg" alt="어댕가지 로고">
         </div>
-        <div id="content_main">
+        <div id="content_main" class="content_head">
             <h2>
                 <span id="span">우리 댕댕이와 함께 즐겁고 편리하게!</span>
             </h2>
@@ -184,22 +59,49 @@
                 <strong id="strong">주인 우리 어디가~? 어댕가지~?!</strong>
             </h3>
         </div>
+        <div id="content_info" class="content_head">
+            <p>어댕가지는 '우리 댕댕이와 함께 하는 시간 즐겁고 편리하게' 라는</p>
+            <p>주제를 가지고 생각했으며 어댕가지를 통해 사용자와 반려견들의</p>
+            <p>편리한 생활에 도움이 되는 장소들을 안내하고 있습니다.</p>
+        </div>
         <div id="content_text1">
-            <h5>우리나라 반려견 가구 규모수는 *500만을 돌파했습니다. </h5>
+            <h1>기획 배경</h1>
+            <br>
+            <h5>우리나라의 반려견 가구 규모수는 어느덧 *500만을 돌파했습니다. </h5>
             <h5>현재에 이르러서도 그 수가 증가하고 있는데요,  반려견을 포함해 고양이, 앵무새 등의 반려동물이 있는 가구 규모수는 약 1200만명이라고 합니다. </h5> 
 
-                <div class="circle">
-                    <h2><br><br>반려가구<br>500만명<br><br></h2>
-                </div>
-                <div class="circle">
-                    <h2><br><br>반려인<br>1200만명<br><br></h2>
-                    <br><br><br>
-                    <h6>* 2023년 기준(한국 반려동물보고서) </h6>
-                </div>
+            <div class="circle" >
+                <h2><br><br>반려가구<br>500만명<br><br></h2>
+            </div>
+            <div class="circle">
+                <h2><br><br>반려인<br>1200만명<br><br></h2>
+                <br><br><br>
+                <h6>* 2023년 기준(한국 반려동물보고서) </h6>
+            </div>
+        </div>
+        <div id="content_text2">
+            <h1>기획 의도</h1>
+            <br>
+            <h5>해마다 증가하는 반려동물들의 추세지만 막상 반려동물들과 각각의 장소들에 가려고 하면 장소마다에 제약 조건들이 결려있습니다. </h5>
+            <h5>매번 장소에 방문할때마다 장소에 방문하기전에 정보들을 미리 찾아봐야한다거나 막상 찾아가더라도 정보가 달라 생기는 고충들이 있을 것입니다.</h5> 
+            <h5>늘어나는 반려견 가구수에 비해 매장내 취식이 불가능하거나 반려동물 출입금지 등 사회적 기반이 여전히 부족하지만</h5>
+            <h5>이러한 문제점등을 개선하여 각각의 정보를과 각 장소마다의 홍보등을 통해서 정보의 최신화가 이루어지고, </h5>
+            <h5>사용자간의 정보 교환을 통해 편리한 반려생활을 할 수 있도록 어댕가지를 기획하게 되었습니다</h5>
+            <img src="https://svgsilh.com/svg/98628.svg" alt="노노도그" id="nonodog">
 
         </div>
-        <div>asdasd</div>
-        <div></div>
+        <div id="content_text3" >
+
+            <h5>어댕가지는 각각의 지역과 장소에 해당하는 </h5>
+            <h5>여행지들을 소개하고 공유하는 공간입니다</h5>
+            <br>
+            <h5>반려동물 동반 업체의 사장님이시라면 어댕가지의 홍보기능을!</h5>
+            <h5>여행을 준비하는 반려인이라면 다양한 여행 장소로 미리 정보를 획득!</h5>
+            <br>
+            <h5>어댕가지와 함께 여행이라는 추억을 선물 하세요!</h5>
+            <img src="https://img.bemypet.kr/content/2023/02/13113843/%EB%A6%AC%EB%A6%AC%EB%A6%AC.png" alt="리리" id="lili">
+            <img src="https://img.bemypet.kr/content/2023/02/13113300/%EC%82%BC%EC%83%89%EB%82%A0%EB%8B%A4.png" alt="삼색이" id="samsec">
+        </div>
     </div>
     <script>
         // 슬라이더 동작 정의
@@ -258,6 +160,25 @@
             return false;
             });
         });
+    </script>
+
+    <script>
+        $(function(){
+            $(window).scroll(function() {
+                var scrollTop = $(this).scrollTop();
+                
+                $('.content_head').stop().fadeTo(500, scrollTop > 500 ? 1 : 0);
+                $('#content_text1').stop().fadeTo(500, scrollTop > 800 ? 1 : 0);
+                $('.circle').stop().fadeTo(500, scrollTop > 1100 ? 1 : 0);
+                $('#content_text2').stop().fadeTo(500, scrollTop > 1500 ? 1 : 0);
+                $('#nonodog').stop().fadeTo(500, scrollTop > 1800 ? 1 : 0);
+                $('#content_text3').stop().fadeTo(500, scrollTop > 2200 ? 1 : 0);
+                $('#samsec').stop().fadeTo(500, scrollTop > 2400 ? 1 : 0);
+                $('#lili').stop().fadeTo(500, scrollTop > 2400 ? 1 : 0);
+            });
+        });
+
+
     </script>
     
 	<%@ include file = "views/common/footer.jsp" %>
