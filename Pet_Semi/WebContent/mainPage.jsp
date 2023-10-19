@@ -78,7 +78,7 @@
 
     #content_2{
         width: 1200px;
-        height: 400px;
+        height: 100%;
         margin: auto;
         margin-top: 30px ;
     }
@@ -103,16 +103,41 @@
         font-weight: 300;
     }
 
-    #content_main h3 span{
+    #span{
         margin-bottom: 10px;
         display: block;
-        font-weight: 300;
+        font-weight: lighter;
     }
 
-    #content_main h3 strong{
+    #strong{
         margin-bottom: 10px;
         display: block;
-        font-weight: 500;
+        font-weight: bold;
+    }
+
+    #content_text1{
+        margin-top: 20px;
+        height: 500px;
+        width: 100%;
+    }
+    
+    .circle {
+        float: left;
+        height: 300px;
+        width: 300px;
+        background-image: linear-gradient(lightyellow, #ffce50);
+        border: 1px solid lightyellow;
+        border-radius: 150px;
+        margin-top: 50px;
+        margin-left: 200px;
+    }
+    .circle > h2 {
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .circle > h6 {
+        text-align: right;
     }
 </style>
 
@@ -152,15 +177,28 @@
             <img src="resources/common_files/logo.svg" alt="어댕가지 로고">
         </div>
         <div id="content_main">
+            <h2>
+                <span id="span">우리 댕댕이와 함께 즐겁고 편리하게!</span>
+            </h2>
             <h3>
-                <span>우리 댕댕이와 함께 즐겁고 편리하게!</span>
-                <strong>주인 우리 어디가~? 어댕가지~?!</strong>
+                <strong id="strong">주인 우리 어디가~? 어댕가지~?!</strong>
             </h3>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div id="content_text1">
+            <h5>우리나라 반려견 가구 규모수는 *500만을 돌파했습니다. </h5>
+            <h5>현재에 이르러서도 그 수가 증가하고 있는데요,  반려견을 포함해 고양이, 앵무새 등의 반려동물이 있는 가구 규모수는 약 1200만명이라고 합니다. </h5> 
+
+                <div class="circle">
+                    <h2><br><br>반려가구<br>500만명<br><br></h2>
+                </div>
+                <div class="circle">
+                    <h2><br><br>반려인<br>1200만명<br><br></h2>
+                    <br><br><br>
+                    <h6>* 2023년 기준(한국 반려동물보고서) </h6>
+                </div>
+
+        </div>
+        <div>asdasd</div>
         <div></div>
     </div>
     <script>
