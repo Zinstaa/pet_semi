@@ -13,19 +13,36 @@
 <title>회원관리</title>
 
 <style>
+	
 	#memberlist>tbody>tr:hover{
 	cursor : pointer;
 	background-color : yellow;
 	
 	}
+
+	#memberlist *{
+		border : solid 1px black;
+		
+	}
+
+	.outer1{
+        width: 1200px;
+		height: 750px;
+        margin : auto;
+		padding-top: 125px;
+        color: black;
+    }
+
 </style>
 </head>
 <body>
 	<%@ include file = "../../common/menubar.jsp" %>
 	<!-- 회원 검색창 -->
+<div class="outer1">
+	<h2 align="center">회원관리</h2>
 	<div>
 		
-			<table>
+			<table id="search-table">
 				<tr>
 					<th>검색조건</th>
 					<td>
@@ -40,17 +57,21 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr id="search-btn">
 					<th>검색어</th>
 					<td><input type="text" id="member-search" name="search-value"></td>
-					
+					<td></td>
+					<td>
+						<button onclick="search();" class="btn btn-sm btn-primary">검색</button>
+					</td>
+					<td></td>
+					<td>
+						<button type="reset" class="btn btn-sm btn-danger">리셋</button>
+					</td>
+					<td></td>
 				</tr>
 			</table>
-			
-			<div>
-				<button onclick="search();">검색</button>
-				<button type="reset">리셋</button>
-			</div>
+
 		
 	</div>
 	<div>
@@ -87,7 +108,7 @@
 			 -->
 		</table>
 	</div>
-	
+</div>
 	<script>
 		function search(){
 			//회원 조회 기능 (검색)
@@ -103,20 +124,20 @@
 					console.log(result);
 					let resultList = '';
 					if(result.length > 0){
-					for(let i =0; i < result.length; i++){
-						resultList += '<tr>'
-								+ '<td>' + result[i].memberNo + '</td>'
-								+ '<td>' + result[i].memberId + '</td>'
-								+ '<td>' + result[i].memberName + '</td>'
-								+ '<td>' + result[i].email + '</td>'
-								+ '<td>' + result[i].phone + '</td>'
-								+ '<td>' + result[i].nickName + '</td>'
-								+ '<td>' + result[i].enrollDate + '</td>'
-								+ '<td>' + result[i].status + '</td>'
-								+ '</tr>'
-					}
+						for(let i =0; i < result.length; i++){
+							resultList += '<tr class="list">'
+									+ '<td>' + result[i].memberNo + '</td>'
+									+ '<td>' + result[i].memberId + '</td>'
+									+ '<td>' + result[i].memberName + '</td>'
+									+ '<td>' + result[i].email + '</td>'
+									+ '<td>' + result[i].phone + '</td>'
+									+ '<td>' + result[i].nickName + '</td>'
+									+ '<td>' + result[i].enrollDate + '</td>'
+									+ '<td>' + result[i].status + '</td>'
+									+ '</tr>'
+						}
 					}else{
-						resultList = '<tr><td colspan="8">검색 결과가 없습니다.</td></tr>';
+						resultList = '<td colspan="8">검색 결과가 없습니다.</td>';
 					}
 					$('#memberlist tbody').html(resultList);
 				},

@@ -159,8 +159,8 @@
 								
 								//상태값을 가지고 정지된 고객 페이지에 들어가면 checked된 상태로 만든다.
 								let status = '<%=m.getStatus()%>'
-								console.log($(check).val());
-								console.log(status);
+								//console.log($(check).val());
+								//console.log(status);
 								if(status == "S"){
 									$('#memStatus').attr('checked',true);
 									$("p").toggle();
