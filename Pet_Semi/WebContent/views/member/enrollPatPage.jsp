@@ -44,7 +44,7 @@
 			
 			<tr>
 				<td>나이</td>
-				<td><input type="number" name ="dogAge" maxlength="3" required></td>
+				<td><input type="number" name ="dogAge" maxlength="3" required min="1"></td>
 			</tr>
 			
 		</table>

@@ -80,7 +80,7 @@
 				
 				<tr>
 					<td>&nbsp;나이 </td>
-					<td><input type="number" name="age" maxlength="3" ></td>
+					<td><input type="number" name="age" maxlength="3" min="1" ></td>
 				</tr>
 				
 				 <tr>
