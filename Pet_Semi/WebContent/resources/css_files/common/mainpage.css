@@ -44,7 +44,7 @@ div[class^=swiper-button] {
     width: 50px;
     margin: auto;
     background-color: #ffce50;
-    border: 1px solid #975228;
+    border: 1px solid lightyellow;
     border-radius: 50px;
     color: black;
     text-decoration: none;
