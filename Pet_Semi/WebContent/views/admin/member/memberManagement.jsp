@@ -121,7 +121,7 @@
 				},
 					
 				success : function(result){
-					console.log(result);
+					//console.log(result);
 					let resultList = '';
 					if(result.length > 0){
 						for(let i =0; i < result.length; i++){
@@ -142,8 +142,8 @@
 					$('#memberlist tbody').html(resultList);
 				},
 				error : function(){
-					console.log('AJAX실패')
-					console.log(result);
+					alert('AJAX실패');
+					
 				}
 			})
 		}
@@ -154,7 +154,7 @@
 				console.log(this);
 				console.log(location.href);
 				//http://localhost:9999/pet/member.me
-				console.log($(this).children().eq(0).text());
+				//console.log($(this).children().eq(0).text());
 				const mno = $(this).children().eq(0).text()
 				//회원 상세페이지 만들어주고 전달하기.
 				location.href="<%=contextPath%>/detail.me?mno="+mno;

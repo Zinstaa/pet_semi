@@ -33,6 +33,7 @@ public class MemberStatusController extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		System.out.println(checked);
 		System.out.println(no);
+		//checked 상태값에 따라 S 혹은 U로 담을 변수를 선언
 		String us = "";
 		if(checked.equals("true")) {
 			us = "S";
