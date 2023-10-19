@@ -35,15 +35,11 @@ public class MemberSearchListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("gggg");
 		//memberManagement에서 보내준 값을 뽑자
 		//회원 검색을 하기 위한 필요값(검색조건, 검색어)
 		String memberCondition = request.getParameter("memberCondition");
 		String memberSearch = request.getParameter("memberSearch");
-		
-		//System.out.println(memberCondition);
-		//System.out.println(memberSearch);
-		
+
 		//값이 두개이기 떄문에 굳이 가공없이 넘기자
 		ArrayList<Member> list = new MemberService().searchMember(memberCondition, memberSearch);
 		

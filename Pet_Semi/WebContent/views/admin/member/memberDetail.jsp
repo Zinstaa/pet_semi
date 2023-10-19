@@ -150,7 +150,9 @@
 						<span class="slider round"></span>
 						</label>
 						<p>정상</p><p style="display:none;">정지</p>
+							
 							<script>
+								//input type 이 checkbox인 요소를 var check라는 변수로 선언
 								var check = $("input[type='checkbox']");
 								//토글 기능
 								check.click(function(){
@@ -166,25 +168,6 @@
 									$("p").toggle();
 								};
 								
-								/*
-									$(check).filter(function(){
-										
-										if(!status.search($(this).val())){
-											$(this).attr('checked',true);
-											
-										}
-										
-									});
-									*/
-							/*
-								function toggle(status){
-									console.log(status.checked);
-									console.log(status.value);
-									const no = document.getElementsByName('memberNo');
-									
-								}
-									*/
-								 
 								//회원 상태를 실제 DB에서 변경하는 작업 (U -> S / S -> U)
 								$(function(){
 									$('#memStatus').click(function(){
@@ -208,19 +191,9 @@
 									})
 								})
 							</script>
-							<!--  
-								<span>정지</span>
-								<input type="checkbox" id="switch" name= "status" value="S">
-								<label for="switch" class="switch_label">
-									<span class="onf_btn"></span>
-								</label>
-								-->
+					
 					</div>
-					<!--
-						<div class="btn-btn" id="submit-btn">
-							<input type="submit" value="적용">
-						</div>
-						-->
+				
 			</div>
 		</div>
 		<div class="detail" id="inform">
