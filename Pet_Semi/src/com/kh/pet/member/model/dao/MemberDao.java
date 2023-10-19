@@ -101,6 +101,7 @@ private Properties prop = new Properties();
 						+ "'%'||?||'%'"
 					+ " ORDER BY "
 						+ "MEMBER_NO";
+		
 		//sql = sql.replaceAll("'","");
 		//System.out.println(sql);
 		try {

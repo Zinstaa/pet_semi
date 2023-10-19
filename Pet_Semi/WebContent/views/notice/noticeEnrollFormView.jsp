@@ -13,7 +13,7 @@
 <title>공지사항 작성</title>
 
 <style>
-	div{border : 1px solid blue;}
+
     
     .outer1{
         width: 1200px;

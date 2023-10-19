@@ -20,7 +20,6 @@
 <title>공지사항 읽기</title>
 
 <style>
-	div{border : 1px solid blue;}
     
     .title-area-inform{
         margin : 0;

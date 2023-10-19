@@ -51,7 +51,7 @@
 				</tr>
 				<tr>
 					<td>나이</td>
-					<td><input type="number" name="age" value="<%=age%>"></td>
+					<td><input type="number" name="age" value="<%=age%>" min="1"></td>
 					
 				</tr>
 			</table>
