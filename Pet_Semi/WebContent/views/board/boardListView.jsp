@@ -93,23 +93,23 @@
 	font-family: Arial, Helvetica, sans-serif;
 	}
 
-	.topnav {
+	.board_search {
 	overflow: hidden;
 	background-color: #e9e9e9;
 	}
 
-	.topnav .search-container {
+	.board_search .board_input {
 	float: right;
 	}
 
-	.topnav input[type=text] {
+	.board_search input[type=text] {
 	padding: 15px;
 	margin-left: 470px;
 	font-size: 17px;
 	border: 1px solid gray;
 	}
 
-	.topnav .search-container button {
+	.board_search .board_input button {
 	float: right;
 	padding: 15px 30px;
 	margin-right: 16px;
@@ -120,10 +120,10 @@
 	}
 
 	@media screen and (max-width: 600px) {
-	.topnav .search-container {
+	.board_search .board_input {
 		float: none;
 	}
-	.topnav a, .topnav input[type=text], .topnav .search-container button {
+	.board_search a, .board_search input[type=text], .board_search .board_input button {
 		float: none;
 		display: block;
 		text-align: left;
@@ -131,10 +131,10 @@
 		margin: 0;
 		padding: 14px;
 	}
-	.topnav input[type=text] {
+	.board_search input[type=text] {
 		border: 1px solid #ccc;  
 	}
-}
+	
 
 </style>
 </head>
@@ -159,11 +159,11 @@
 	<a href="#">1:1문의</a>
   </div>
 
-  <span class="topnav">
-	<div class="search-container">
-	  <form action="">
-		<input type="text" placeholder="검색.." name="search">
-		<button type="submit"><i class="fa fa-search"></i></button>
+  <span class="board_search">
+	<div class="board_input">
+	  <form id ="board-search-form" action="<%=contextPath%>/search.bo?cpage=1" method="post">
+		<input type="text" placeholder="검색.." name="board-name">
+		<input type="image" src="https://svgsilh.com/svg/1093183.svg" style="width:100px; height:30px;" name="board-search" id="board-search" value="검색">
 	  </form>
 	</div>
   </span>

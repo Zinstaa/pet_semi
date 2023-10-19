@@ -13,6 +13,18 @@
 
 	</entry>
 	
+	<entry key="selectSearchListCount">
+		SELECT
+			COUNT(*)
+		FROM
+			BOARD
+		WHERE 
+            UPPER(BOARD_NAME) LIKE UPPER('%'||?||'%')
+        AND
+        	STATUS = 'Y'
+			
+	</entry>
+	
 	<entry key="selectList">
 	SELECT *
     FROM (SELECT ROWNUM RNUM, A.*
@@ -211,6 +223,28 @@
 			  	?,
 			  	?
 			  )
+	</entry>
+	
+	<entry key="searchBoard">
+		SELECT *
+    		FROM (SELECT ROWNUM RNUM, A.*
+            	FROM(SELECT
+                        BOARD_NO,
+                        BOARD_NAME,
+                        MEMBER_ID,
+                        BOARD_VIEW,
+                        BOARD_DATE
+                    FROM
+                        BOARD B
+                    JOIN 
+                        MEMBER M ON(B.MEMBER_NO = M.MEMBER_NO)
+                    WHERE
+                        B.STATUS = 'Y'
+                    AND
+                    	UPPER(BOARD_NAME) LIKE UPPER('%'||?||'%')
+                    ORDER
+                        BY BOARD_DATE DESC) A)
+        		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
 </properties>

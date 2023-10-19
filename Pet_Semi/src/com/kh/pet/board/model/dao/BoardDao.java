@@ -95,6 +95,30 @@ public class BoardDao {
 		return list;
 	}
 	
+	public int selectSearchListCount(Connection conn, String boardName) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardName);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT(*)");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		} 
+		return listCount;
+	}
+	
 	public int insertBoard(Connection conn, Board b) {
 		
 		int result = 0;
@@ -365,6 +389,47 @@ public class BoardDao {
 		}
 		return result;
 		
+	}
+	
+	public ArrayList<Board> searchBoard(Connection conn, String boardName, PageInfo pi) {
+		
+		ArrayList<Board> list = new ArrayList();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1 ;
+			
+			pstmt.setString(1, boardName);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				Board b = new Board();
+				b.setBoardNo(rset.getInt("BOARD_NO"));
+				b.setBoardName(rset.getString("BOARD_NAME"));
+				b.setMemberNo(rset.getString("MEMBER_ID"));
+				b.setBoardView(rset.getInt("BOARD_VIEW"));
+				b.setBoardDate(rset.getDate("BOARD_DATE"));
+				
+				list.add(b);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 
 }
