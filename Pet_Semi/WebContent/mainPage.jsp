@@ -13,6 +13,109 @@
 <!-- mainpage.css 추가-->
 <link rel="stylesheet" href="resources/css_files/common/mainpage.css">
 
+<style>
+    div{
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+    /* swiper 라이브러리 css */
+    /* 이미지 영역 사이즈 조절 */
+    .swiper {
+        width: 1024px;
+        height: 500px;
+    }
+
+    /* 이미지 사이즈 조절 */
+    .swiper-slide>img {
+        width : 88%;
+        height : 100%;
+        margin-left: 60px;
+    }
+
+    /* 화살표 버튼색 변경 (기본색은 파란색) */
+    div[class^=swiper-button] {
+        color : #ffce50;
+        /* display : none; */ /* 아니면 안보이게 숨기기도 가능 */
+    }
+
+	/* 슬라이드 바색 변경 (기본색은 파란색) */
+    .swiper-pagination-bullet { 
+        width: 12px; height: 12px; background: transparent; border: 1px solid #ffce50; opacity: 1; 
+    }
+    .swiper-pagination-bullet-active { 
+        width: 40px; transition: width .5s; border-radius: 5px; background: #ffce50; border: 1px solid transparent; 
+    }
+
+ 	/* 맨위로 이동 키 */
+    #top {
+        float: right;
+        height: 50px;
+        width: 50px;
+        margin-right: 30px;
+    }
+    
+    #toTop {
+        height: 50px;
+        width: 50px;
+        margin: auto;
+        background-color: #ffce50;
+        border-radius: 50px;
+        color: black;
+        text-decoration: none;
+        position: fixed;   /* 포지션 고정 */
+        bottom: 175px;     /* 밑에서 175px */
+        display: none;     /* 보여지지 없음 - 기본적으로  안보여지게 */
+        z-index: 9999;     /* 포지션을 먼저 지정후 z-좌표(레이어) : 9999입니다. */
+    }
+
+    #toTop > img {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 3px;
+        left: 13px;
+    }
+
+    #content_2{
+        width: 1200px;
+        height: 400px;
+        margin: auto;
+        margin-top: 30px ;
+    }
+
+    #head_logo{
+        width: 255px;
+        height: 130px;
+        
+    }
+
+    #head_logo > img {
+        width: 250px;
+        height: 125px;
+
+    }
+
+    #content_main {
+        margin-top: 20px;
+    }
+
+    #content_main h3 {
+        font-weight: 300;
+    }
+
+    #content_main h3 span{
+        margin-bottom: 10px;
+        display: block;
+        font-weight: 300;
+    }
+
+    #content_main h3 strong{
+        margin-bottom: 10px;
+        display: block;
+        font-weight: 500;
+    }
+</style>
+
 </head>
 <body>
 	<%@ include file = "views/common/menubar.jsp" %>
@@ -22,12 +125,12 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-				<div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2017/04/11/15/55/animals-2222007__480.jpg"></div>
-                <div class="swiper-slide"><img src="https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1"></div>
-                <div class="swiper-slide"><img src="https://i.namu.wiki/i/L6iuHgsPod0cHQLXQ3jfyCFcJ1OSIG6MuE7ChjDTVqVJeBkfdQsJeNOhmuqu4_ESrYCLxDaN8xREnufFD_9LUw.gif"></div>
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/09/01/19/53/pocket-watch-1637396__480.jpg"></div>
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275__480.jpg"></div>
-                <div class="swiper-slide"><img src="https://cdn.pixabay.com/photo/2015/09/01/09/32/alphabet-916673__480.jpg"></div>
+				<div class="swiper-slide"><img src="https://img.freepik.com/free-photo/adorable-chihuahua-dog-with-female-owner_23-2149880082.jpg?size=626&ext=jpg&ga=GA1.1.1990079417.1697606118&semt=ais"></div>
+                <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/cute-shiba-inu-pet-with-family_23-2149428972.jpg?size=626&ext=jpg&ga=GA1.1.50944861.1697605529&semt=ais"></div>
+                <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/full-shot-man-sitting-with-dog-in-nature_23-2149013777.jpg?w=1380&t=st=1697605563~exp=1697606163~hmac=1f0f4da0819b2139569667237f93270abd74240008f5d99cf0ac2aedc0d98ccb"></div>
+                <div class="swiper-slide"><img src="https://dangdangmap.net/upload/popupzone/PPMAIN01/popupzone_PPMAIN01_20230201100756.jpg"></div>
+                <div class="swiper-slide"><img src="https://dangdangmap.net/upload/popupzone/PPMAIN01/popupzone_PPMAIN01_20230201100638.jpg"></div>
+                <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/side-view-owner-walking-with-dog_23-2149457838.jpg?size=626&ext=jpg&ga=GA1.1.50944861.1697605529&semt=ais"></div>
             </div>
         
             <!-- If we need pagination -->
@@ -42,6 +145,24 @@
         </div>
     </div>
 
+    
+
+    <div id="content_2">
+        <div id="head_logo">
+            <img src="resources/common_files/logo.svg" alt="어댕가지 로고">
+        </div>
+        <div id="content_main">
+            <h3>
+                <span>우리 댕댕이와 함께 즐겁고 편리하게!</span>
+                <strong>주인 우리 어디가~? 어댕가지~?!</strong>
+            </h3>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <script>
         // 슬라이더 동작 정의
         const swiper = new Swiper('.swiper', {
@@ -73,11 +194,6 @@
         })
     </script>
 
-    <div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    </div>
     <div id="top">
         <a id="toTop" href="#">
            <img src="https://svgsilh.com/svg/147174.svg" alt="맨위로"><br>

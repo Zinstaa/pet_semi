@@ -87,7 +87,7 @@
        
         </div>
         <div id="place_content">
-            <% if(loginUser != null && loginUser.getMemberId().equals("admin")) { %>
+            <% if(loginUser != null && loginUser.getStatus().equals("A")){ %>
             <div style="width: 900px;" align="right">
                 <a href="<%= contextPath %>/enrollForm.pl" class="btn btn-sm btn-primary">글작성</a>
             </div>

@@ -189,7 +189,7 @@
                 </a>
             </div>
             <div id="work_btn">
-                <% if(loginUser != null && loginUser.getMemberId().equals("admin")){ %>
+                <% if(loginUser != null && loginUser.getStatus().equals("A")){ %>
                         <a href="<%= contextPath %>/updateForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-info">수정하기</a>
                         <a href="<%= contextPath %>/deleteForm.pl?pno=<%= p.getPlaceNo() %>" class="btn btn-sm btn-danger">삭제하기</a>
                 <% } %>
