@@ -68,9 +68,7 @@ public class BoardSearchController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		// 화면에 표시하기 이전 상태 => 테이블로부터 조회
         ArrayList<Board> list = new BoardService().searchBoard(boardName, pi);		
-        // 사용자가 입력한 값을 세션에 저장
         if (boardName != null) {
             HttpSession session = request.getSession();
             session.setAttribute("boardName", boardName);
