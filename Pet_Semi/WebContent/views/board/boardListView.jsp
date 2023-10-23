@@ -162,7 +162,7 @@
   <span class="board_search">
 	<div class="board_input">
 	  <form id ="board-search-form" action="<%=contextPath%>/search.bo?cpage=1" method="post">
-		<input type="text" placeholder="검색.." name="board-name">
+		<input type="text" placeholder="검색.." name="board-name" >
 		<input type="image" src="https://svgsilh.com/svg/1093183.svg" style="width:100px; height:30px;" name="board-search" id="board-search" value="검색">
 	  </form>
 	</div>
